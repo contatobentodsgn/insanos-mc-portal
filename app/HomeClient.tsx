@@ -753,20 +753,21 @@ export function HomeClient() {
               </div>
 
               {/* Center Big Card: Projeto PcD */}
-              <div className="lg:col-span-5 rounded-2xl overflow-hidden bg-[#121316] border border-white/15 shadow-2xl hover-lift">
-                <div
-                  className="h-80 sm:h-96 bg-cover bg-center relative"
-                  style={{ backgroundImage: `url(/images/insanos/impact_pcd.webp)` }}
-                >
+              <div className="lg:col-span-5 group rounded-2xl overflow-hidden bg-[#121316] border border-white/15 hover:border-[#F2C21B]/60 shadow-2xl hover:shadow-[0_0_30px_rgba(242,194,27,0.15)] transition-all duration-300 hover-lift">
+                <div className="h-80 sm:h-96 overflow-hidden relative">
+                  <div
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                    style={{ backgroundImage: `url(/images/insanos/impact_pcd.webp)` }}
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-transparent to-transparent" />
-                  <div className="absolute top-4 left-4 px-3 py-1 rounded bg-black/70 backdrop-blur-md text-[#F2C21B] font-mono text-xs uppercase font-bold">
+                  <div className="absolute top-4 left-4 px-3 py-1 rounded bg-black/70 backdrop-blur-md text-[#F2C21B] font-mono text-xs uppercase font-bold border border-white/10">
                     Iniciativa Humanitária
                   </div>
                 </div>
                 <div className="p-6 sm:p-8">
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="w-3 h-3 bg-[#F2C21B] rounded-sm" />
-                    <h3 className="font-['Anton'] text-2xl sm:text-3xl uppercase text-white">
+                    <span className="w-3 h-3 bg-[#F2C21B] rounded-sm transition-transform duration-300 group-hover:scale-110" />
+                    <h3 className="font-['Anton'] text-2xl sm:text-3xl uppercase text-white group-hover:text-[#F2C21B] transition-colors duration-200">
                       Projeto PcD
                     </h3>
                   </div>
@@ -780,14 +781,18 @@ export function HomeClient() {
 
               {/* Right Stacked 2 Cards: Bonde Pela Vida & Combate Insano */}
               <div className="lg:col-span-3 space-y-6">
-                <div className="p-6 rounded-2xl bg-[#121316] border border-white/10 hover:border-[#F2C21B]/50 transition-colors duration-200">
-                  <div
-                    className="h-32 rounded-xl bg-cover bg-center mb-4"
-                    style={{ backgroundImage: `url(/images/insanos/impact_blood.webp)` }}
-                  />
+                <div className="group p-6 rounded-2xl bg-[#121316] border border-white/10 hover:border-[#F2C21B]/60 hover:shadow-[0_0_25px_rgba(242,194,27,0.15)] transition-all duration-300 hover-lift">
+                  <div className="h-32 rounded-xl overflow-hidden mb-4 relative">
+                    <div
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                      style={{ backgroundImage: `url(/images/insanos/impact_blood.webp)` }}
+                    />
+                  </div>
                   <div className="flex items-center gap-2 mb-1.5">
-                    <span className="w-2.5 h-2.5 bg-[#F2C21B] rounded-sm" />
-                    <h4 className="font-['Anton'] text-xl uppercase text-white">Bonde Pela Vida</h4>
+                    <span className="w-2.5 h-2.5 bg-[#F2C21B] rounded-sm transition-transform duration-300 group-hover:scale-110" />
+                    <h4 className="font-['Anton'] text-xl uppercase text-white group-hover:text-[#F2C21B] transition-colors duration-200">
+                      Bonde Pela Vida
+                    </h4>
                   </div>
                   <p className="text-xs text-[#AAA8A1] leading-relaxed">
                     Conscientização no trânsito, doação<br className="hidden sm:inline" />{" "}
@@ -796,14 +801,18 @@ export function HomeClient() {
                   </p>
                 </div>
 
-                <div className="p-6 rounded-2xl bg-[#121316] border border-white/10 hover:border-[#F2C21B]/50 transition-colors duration-200">
-                  <div
-                    className="h-32 rounded-xl bg-cover bg-center mb-4"
-                    style={{ backgroundImage: `url(/images/insanos/impact_combat.webp)` }}
-                  />
+                <div className="group p-6 rounded-2xl bg-[#121316] border border-white/10 hover:border-[#F2C21B]/60 hover:shadow-[0_0_25px_rgba(242,194,27,0.15)] transition-all duration-300 hover-lift">
+                  <div className="h-32 rounded-xl overflow-hidden mb-4 relative">
+                    <div
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                      style={{ backgroundImage: `url(/images/insanos/impact_combat.webp)` }}
+                    />
+                  </div>
                   <div className="flex items-center gap-2 mb-1.5">
-                    <span className="w-2.5 h-2.5 bg-[#F2C21B] rounded-sm" />
-                    <h4 className="font-['Anton'] text-xl uppercase text-white">Combate Insano</h4>
+                    <span className="w-2.5 h-2.5 bg-[#F2C21B] rounded-sm transition-transform duration-300 group-hover:scale-110" />
+                    <h4 className="font-['Anton'] text-xl uppercase text-white group-hover:text-[#F2C21B] transition-colors duration-200">
+                      Combate Insano
+                    </h4>
                   </div>
                   <p className="text-xs text-[#AAA8A1] leading-relaxed">
                     Ações de inclusão através de artes marciais para jovens em áreas de vulnerabilidade.
@@ -866,13 +875,16 @@ export function HomeClient() {
                     key={i}
                     className="group relative rounded-2xl bg-[#121316] border border-white/10 hover:border-[#F2C21B]/60 transition-all duration-300 overflow-hidden flex flex-col justify-between shadow-2xl hover-lift"
                   >
-                    {/* Leader Portrait Image */}
-                    <div className="relative h-60 sm:h-64 w-full overflow-hidden bg-[#0A0A0C]">
+                    {/* Leader Portrait Image with Full Face Alignment */}
+                    <div className="relative h-72 sm:h-80 w-full overflow-hidden bg-[#0A0A0C]">
                       <div
-                        className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                        style={{ backgroundImage: `url(${item.image})` }}
+                        className="absolute inset-0 bg-cover bg-[center_top] transition-transform duration-700 group-hover:scale-105"
+                        style={{
+                          backgroundImage: `url(${item.image})`,
+                          backgroundPosition: "center top",
+                        }}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-[#121316]/50 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-[#121316]/20 to-transparent" />
                       
                       {/* Location Badge */}
                       <div className="absolute top-3 left-3">
@@ -931,7 +943,7 @@ export function HomeClient() {
                       className="group relative rounded-2xl bg-[#121316] border border-white/10 hover:border-[#F2C21B]/40 transition-all duration-300 overflow-hidden shadow-xl"
                     >
                       <div
-                        className="h-56 bg-cover bg-center transition-transform duration-500 group-hover:scale-105 filter grayscale contrast-125"
+                        className="h-64 bg-cover bg-[center_top] transition-transform duration-500 group-hover:scale-105 filter grayscale contrast-125 relative"
                         style={{ backgroundImage: `url(${mem.image})` }}
                       >
                         <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-black/40 to-transparent" />
@@ -970,8 +982,8 @@ export function HomeClient() {
                 (07) Content Hub — Notícias, Eventos e Conteúdos
               </span>
               <h2 className="font-['Anton'] uppercase text-4xl sm:text-6xl lg:text-7xl leading-tight text-white mb-2">
-                18News. A Irmandade<br />
-                <span className="text-[#F2C21B]">em Movimento.</span>
+                <span className="text-[#F2C21B]">18News.</span> A Irmandade<br />
+                em Movimento.
               </h2>
               <p className="text-xs sm:text-sm uppercase tracking-wider text-[#AAA8A1] font-semibold">
                 Notícias, eventos e vozes que mantêm a irmandade conectada e em movimento.

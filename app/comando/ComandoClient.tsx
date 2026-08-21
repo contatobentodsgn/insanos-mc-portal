@@ -152,12 +152,15 @@ export function ComandoClient() {
                       key={idx}
                       className="group relative rounded-2xl bg-[#121316] border border-white/10 hover:border-[#F2C21B]/60 transition-all duration-300 overflow-hidden flex flex-col justify-between shadow-2xl hover-lift"
                     >
-                      <div className="relative h-52 w-full overflow-hidden bg-[#0A0A0C]">
+                      <div className="relative h-72 sm:h-80 w-full overflow-hidden bg-[#0A0A0C]">
                         <div
-                          className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                          style={{ backgroundImage: `url(${item.image})` }}
+                          className="absolute inset-0 bg-cover bg-[center_top] transition-transform duration-700 group-hover:scale-105"
+                          style={{
+                            backgroundImage: `url(${item.image})`,
+                            backgroundPosition: "center top",
+                          }}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-[#121316]/50 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-[#121316]/20 to-transparent" />
                         <div className="absolute top-3 left-3">
                           <span className="px-2.5 py-1 rounded bg-black/85 backdrop-blur-md border border-[#F2C21B]/40 text-[#F2C21B] font-mono text-[9px] font-bold uppercase tracking-wider">
                             {item.division}

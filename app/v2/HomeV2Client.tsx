@@ -704,8 +704,8 @@ export function HomeV2Client() {
                 (07) Content Hub — Notícias, Eventos e Conteúdos
               </span>
               <h2 className="font-['Anton'] uppercase text-4xl sm:text-6xl lg:text-7xl leading-tight text-white mb-2">
-                18News. A Irmandade<br />
-                <span className="text-[#F2C21B]">em Movimento.</span>
+                <span className="text-[#F2C21B]">18News.</span> A Irmandade<br />
+                em Movimento.
               </h2>
               <p className="text-xs sm:text-sm uppercase tracking-wider text-[#AAA8A1] font-semibold">
                 Notícias, eventos e vozes que mantêm a irmandade conectada e em movimento.
