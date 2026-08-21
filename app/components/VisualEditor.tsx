@@ -3,12 +3,28 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 
 export function VisualEditor() {
+  const [isAdminActive, setIsAdminActive] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [hasChanges, setHasChanges] = useState(false);
   const [changeCount, setChangeCount] = useState(0);
   const [isSaving, setIsSaving] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const modifiedMapRef = useRef<{ [key: string]: string }>({});
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const urlParams = new URLSearchParams(window.location.search);
+    const hasEditorParam = urlParams.get("editor") === "true";
+    const hasAdminSession = sessionStorage.getItem("insanos_admin_editor") === "true";
+
+    if (hasEditorParam) {
+      sessionStorage.setItem("insanos_admin_editor", "true");
+      setIsAdminActive(true);
+      setIsEditing(true);
+    } else if (hasAdminSession) {
+      setIsAdminActive(true);
+    }
+  }, []);
 
   // Generate a stable selector key for any DOM element
   const getElementKey = (el: HTMLElement): string => {
@@ -199,6 +215,16 @@ export function VisualEditor() {
     }
   };
 
+  const handleExitAdmin = () => {
+    sessionStorage.removeItem("insanos_admin_editor");
+    setIsAdminActive(false);
+    window.location.href = window.location.pathname;
+  };
+
+  if (!isAdminActive) {
+    return null;
+  }
+
   return (
     <>
       <style jsx global>{`
@@ -288,30 +314,44 @@ export function VisualEditor() {
                 </button>
               )}
 
-              <button
-                onClick={() => setIsEditing(false)}
+              <a
+                href="/admin"
                 className="px-3 py-2 bg-white/10 hover:bg-white/20 text-white font-mono text-xs rounded transition-colors"
-                title="Concluir e fechar barra"
+                title="Ir para o Painel Admin"
               >
-                ✓ Concluir
+                🏠 Painel
+              </a>
+
+              <button
+                onClick={handleExitAdmin}
+                className="px-3 py-2 bg-red-500/20 hover:bg-red-500/30 text-red-300 font-mono text-xs rounded transition-colors"
+                title="Sair do Modo Admin e voltar ao modo público"
+              >
+                🚪 Sair
               </button>
             </div>
           </div>
         ) : (
           /* Floating Toggle Button */
-          <button
-            onClick={() => setIsEditing(true)}
-            className="group px-4 py-3 bg-[#121316]/90 hover:bg-[#1A1C22] border border-[#F2C21B]/40 hover:border-[#F2C21B] text-white rounded-full shadow-2xl backdrop-blur-md flex items-center gap-2.5 transition-all duration-200 hover:scale-105"
-            title="Clique para editar qualquer texto diretamente na tela (Atalho: Ctrl+E / Cmd+E)"
-          >
-            <span className="w-2 h-2 rounded-full bg-[#F2C21B] group-hover:animate-ping" />
-            <span className="font-['Anton'] uppercase text-xs tracking-wider text-white">
-              ✏️ Editar Textos na Tela
-            </span>
-            <span className="hidden sm:inline-block px-1.5 py-0.5 rounded bg-white/10 font-mono text-[9px] text-[#AAA8A1]">
-              Ctrl+E
-            </span>
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setIsEditing(true)}
+              className="group px-4 py-3 bg-[#121316]/90 hover:bg-[#1A1C22] border border-[#F2C21B]/40 hover:border-[#F2C21B] text-white rounded-full shadow-2xl backdrop-blur-md flex items-center gap-2.5 transition-all duration-200 hover:scale-105"
+              title="Clique para editar qualquer texto diretamente na tela (Atalho: Ctrl+E / Cmd+E)"
+            >
+              <span className="w-2 h-2 rounded-full bg-[#F2C21B] group-hover:animate-ping" />
+              <span className="font-['Anton'] uppercase text-xs tracking-wider text-white">
+                ✏️ Editar Textos
+              </span>
+            </button>
+            <button
+              onClick={handleExitAdmin}
+              className="p-3 bg-[#121316]/90 hover:bg-red-950/40 border border-white/15 hover:border-red-500/40 text-[#AAA8A1] hover:text-red-300 rounded-full shadow-2xl backdrop-blur-md transition-all duration-200"
+              title="Desativar Modo Admin"
+            >
+              ✕
+            </button>
+          </div>
         )}
       </div>
     </>
