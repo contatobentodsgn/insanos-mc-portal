@@ -6,6 +6,8 @@ import { Footer } from "../../components/Footer";
 import { ARTICLES_DATA } from "../../data/articles";
 
 
+import { ShareButtons } from "../../components/ShareButtons";
+
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
@@ -62,9 +64,14 @@ export default async function ArticlePage({ params }: PageProps) {
             <h1 className="font-['Anton'] uppercase text-4xl sm:text-6xl text-white leading-tight mb-6">
               {article.title}
             </h1>
-            <p className="text-lg sm:text-xl text-[#C7C5BF] leading-relaxed border-l-4 border-[#F2C21B] pl-4">
+            <p className="text-lg sm:text-xl text-[#C7C5BF] leading-relaxed border-l-4 border-[#F2C21B] pl-4 mb-6">
               {article.desc}
             </p>
+
+            {/* Social Share Bar Top */}
+            <div className="pt-4 border-t border-white/10">
+              <ShareButtons title={article.title} />
+            </div>
           </div>
 
           {/* Featured Image */}
@@ -83,6 +90,12 @@ export default async function ArticlePage({ params }: PageProps) {
                 {para.trim()}
               </p>
             ))}
+          </div>
+
+          {/* Social Share Bar Bottom */}
+          <div className="p-6 rounded-xl bg-[#121316] border border-white/10 mb-12 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <span className="font-['Anton'] text-lg uppercase text-white">Gostou deste relato?</span>
+            <ShareButtons title={article.title} />
           </div>
 
           {/* Author Box */}

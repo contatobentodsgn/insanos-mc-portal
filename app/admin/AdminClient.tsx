@@ -104,6 +104,40 @@ export function AdminClient() {
     a.click();
   };
 
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = async (event) => {
+      try {
+        const parsed = JSON.parse(event.target?.result as string);
+        if (typeof parsed === "object" && parsed !== null) {
+          setHistory((prev) => [...prev, texts]);
+          setTexts(parsed);
+          const nowStr = new Date().toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+          setLastSyncTime(nowStr);
+
+          if (typeof window !== "undefined") {
+            localStorage.setItem("insanos_custom_texts", JSON.stringify(parsed));
+            localStorage.setItem("insanos_last_sync", nowStr);
+          }
+
+          await fetch("/api/save-content", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ texts: parsed }),
+          });
+
+          setSavedSuccess(true);
+          setTimeout(() => setSavedSuccess(false), 3000);
+        }
+      } catch (err) {
+        alert("Erro ao ler o arquivo JSON de backup. Certifique-se de que é um formato válido.");
+      }
+    };
+    reader.readAsText(file);
+  };
+
   const filteredEntries = Object.entries(texts).filter(
     ([key, val]) =>
       key.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -272,8 +306,18 @@ export function AdminClient() {
                 onClick={handleDownloadJSON}
                 className="px-4 py-2 bg-white/10 hover:bg-white/20 text-white font-mono text-xs rounded-lg transition-colors flex items-center gap-2"
               >
-                <span>📥 Baixar Backup JSON</span>
+                <span>📥 Baixar Backup</span>
               </button>
+
+              <label className="px-4 py-2 bg-[#F2C21B]/15 hover:bg-[#F2C21B]/25 text-[#F2C21B] border border-[#F2C21B]/40 font-mono text-xs rounded-lg transition-colors flex items-center gap-2 cursor-pointer">
+                <span>📤 Restaurar Backup (.json)</span>
+                <input
+                  type="file"
+                  accept=".json"
+                  onChange={handleFileUpload}
+                  className="hidden"
+                />
+              </label>
             </div>
           </div>
 

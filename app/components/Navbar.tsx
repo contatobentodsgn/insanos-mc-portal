@@ -211,6 +211,27 @@ export function Navbar({}: NavbarProps) {
               >
                 Faça Parte Agora ↘
               </Link>
+
+              {/* Mobile Social Shortcuts */}
+              <div className="pt-4 border-t border-white/10 flex items-center justify-around text-xs text-[#AAA8A1] font-mono">
+                <a
+                  href="https://www.instagram.com/insanosmc_oficial"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#F2C21B] transition-colors py-1"
+                >
+                  Instagram ↗
+                </a>
+                <span>•</span>
+                <a
+                  href="https://www.youtube.com/@InsanosMCOficial"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#F2C21B] transition-colors py-1"
+                >
+                  YouTube 18Cast ↗
+                </a>
+              </div>
             </nav>
           </div>
         )}

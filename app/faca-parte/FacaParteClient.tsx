@@ -54,11 +54,21 @@ export function FacaParteClient() {
   const [formError, setFormError] = useState("");
   const [protocol, setProtocol] = useState("");
 
+  const formatPhone = (val: string) => {
+    const digits = val.replace(/\D/g, "");
+    if (digits.length <= 2) return digits ? `(${digits}` : "";
+    if (digits.length <= 6) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+    if (digits.length <= 10) return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
+    return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7, 11)}`;
+  };
+
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
     if (type === "checkbox") {
       const checked = (e.target as HTMLInputElement).checked;
       setFormData((prev) => ({ ...prev, [name]: checked }));
+    } else if (name === "phone") {
+      setFormData((prev) => ({ ...prev, phone: formatPhone(value) }));
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
@@ -218,6 +228,14 @@ export function FacaParteClient() {
                 </div>
               ) : (
                 <form onSubmit={handleFormSubmit} className="space-y-6">
+                  {/* Progress Bar Indicator */}
+                  <div className="w-full bg-white/10 rounded-full h-1.5 overflow-hidden">
+                    <div
+                      className="bg-[#F2C21B] h-full transition-all duration-300 shadow-[0_0_8px_#F2C21B]"
+                      style={{ width: formStep === 1 ? "50%" : "100%" }}
+                    />
+                  </div>
+
                   <div className="flex items-center justify-between pb-6 border-b border-white/10">
                     <div>
                       <span className="text-xs uppercase font-extrabold text-[#F2C21B] tracking-wider block mb-1">
@@ -227,7 +245,9 @@ export function FacaParteClient() {
                         {formStep === 1 ? "1. Localização & Contato" : "2. Perfil, Motocicleta & Termos"}
                       </h2>
                     </div>
-                    <span className="text-xs font-mono text-[#AAA8A1]">Passo {formStep} de 2</span>
+                    <span className="text-xs font-mono text-[#AAA8A1]">
+                      Passo {formStep} de 2 ({formStep === 1 ? "50%" : "100%"})
+                    </span>
                   </div>
 
                   {formError && (
