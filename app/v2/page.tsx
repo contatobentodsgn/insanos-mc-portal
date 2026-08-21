@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { HomeV2Client } from "./HomeV2Client.tsx";
+import { HomeV2Client } from "./HomeV2Client";
 
 
 export const metadata: Metadata = {

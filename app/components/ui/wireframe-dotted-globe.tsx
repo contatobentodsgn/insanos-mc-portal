@@ -220,7 +220,7 @@ export default function RotatingEarth({
     };
 
     // Rotation & interaction state (starting facing Brazil [-46, -15])
-    const rotation = [46, 15];
+    const rotation: [number, number, number] = [46, 15, 0];
     let autoRotate = true;
     const rotationSpeed = 0.25;
 
