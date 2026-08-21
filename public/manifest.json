@@ -1,0 +1,26 @@
+{
+  "name": "Insanos Moto Clube — Portal Oficial",
+  "short_name": "Insanos MC",
+  "description": "O maior motoclube do Brasil e do mundo. Unidos por Deus, Família, Trabalho e Motoclube. Transmissão da Rádio 24h e notícias oficiais.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0A0A",
+  "theme_color": "#0A0A0A",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "https://www.insanosmc.com.br/wp-content/uploads/2018/04/insanosmc.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://www.insanosmc.com.br/wp-content/uploads/2018/04/insanosmc.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["lifestyle", "news", "music", "community"],
+  "lang": "pt-BR"
+}
