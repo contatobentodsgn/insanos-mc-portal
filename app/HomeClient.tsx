@@ -454,7 +454,7 @@ export function HomeClient() {
                 </p>
               </div>
 
-              <h1 className="hero-stagger font-['Anton'] uppercase text-5xl sm:text-7xl lg:text-9xl leading-[0.88] tracking-tight text-white mb-6">
+              <h1 className="hero-stagger font-['Anton'] uppercase text-5xl sm:text-7xl lg:text-9xl leading-[1.08] sm:leading-[1.06] tracking-tight text-white mb-6">
                 Nosso combustível<br />
                 é a <span className="text-[#F2C21B] underline decoration-[#F2C21B]/40 underline-offset-8">irmandade.</span>
               </h1>
