@@ -11,10 +11,16 @@ export function AdminClient() {
   const [savedSuccess, setSavedSuccess] = useState(false);
   const [editingKey, setEditingKey] = useState<string | null>(null);
   const [editValue, setEditValue] = useState("");
+  const [lastSyncTime, setLastSyncTime] = useState<string | null>(null);
+  const [history, setHistory] = useState<Record<string, string>[]>([]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       const local = localStorage.getItem("insanos_custom_texts");
+      const localSync = localStorage.getItem("insanos_last_sync");
+      if (localSync) {
+        setLastSyncTime(localSync);
+      }
       if (local) {
         try {
           const parsed = JSON.parse(local);
@@ -33,12 +39,17 @@ export function AdminClient() {
 
   const handleSaveItem = async () => {
     if (!editingKey) return;
+    setHistory((prev) => [...prev, texts]);
     const updated = { ...texts, [editingKey]: editValue };
     setTexts(updated);
     setEditingKey(null);
 
+    const nowStr = new Date().toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+    setLastSyncTime(nowStr);
+
     if (typeof window !== "undefined") {
       localStorage.setItem("insanos_custom_texts", JSON.stringify(updated));
+      localStorage.setItem("insanos_last_sync", nowStr);
     }
 
     try {
@@ -46,6 +57,29 @@ export function AdminClient() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ texts: updated }),
+      });
+      setSavedSuccess(true);
+      setTimeout(() => setSavedSuccess(false), 3000);
+    } catch {
+      // ignore
+    }
+  };
+
+  const handleUndo = async () => {
+    if (history.length === 0) return;
+    const previousState = history[history.length - 1];
+    setHistory((prev) => prev.slice(0, -1));
+    setTexts(previousState);
+
+    if (typeof window !== "undefined") {
+      localStorage.setItem("insanos_custom_texts", JSON.stringify(previousState));
+    }
+
+    try {
+      await fetch("/api/save-content", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ texts: previousState }),
       });
       setSavedSuccess(true);
       setTimeout(() => setSavedSuccess(false), 3000);
@@ -210,7 +244,23 @@ export function AdminClient() {
               </p>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-3">
+              {lastSyncTime && (
+                <span className="text-[11px] font-mono text-[#AAA8A1] bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg">
+                  Última sincronização: <strong className="text-[#F2C21B]">{lastSyncTime}</strong>
+                </span>
+              )}
+
+              {history.length > 0 && (
+                <button
+                  onClick={handleUndo}
+                  className="px-3.5 py-2 bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 font-mono text-xs rounded-lg transition-colors flex items-center gap-1.5"
+                  title="Desfazer última alteração de texto"
+                >
+                  <span>↩ Desfazer ({history.length})</span>
+                </button>
+              )}
+
               <button
                 onClick={handleCopyJSON}
                 className="px-4 py-2 bg-white/10 hover:bg-white/20 text-white font-mono text-xs rounded-lg transition-colors flex items-center gap-2"

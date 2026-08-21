@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
-import { RadioBar } from "../components/RadioBar";
 import { IconShop, IconRadio, IconPodcast, IconShield } from "../components/ui/Icons";
+import { useRadio } from "../context/RadioContext";
 
 const ASSETS = {
   storeBg: "/images/insanos/store_merch_official.webp",
@@ -14,12 +14,11 @@ const ASSETS = {
 };
 
 export function EcossistemaClient() {
-  const [isPlayingRadio, setIsPlayingRadio] = useState(false);
+  const { isPlaying: isPlayingRadio, toggleRadio } = useRadio();
 
   return (
     <div className="min-h-screen bg-[#0A0A0A] text-[#F4F1E8] font-sans">
-      <Navbar isPlayingRadio={isPlayingRadio} onToggleRadio={() => setIsPlayingRadio(!isPlayingRadio)} />
-      <RadioBar isPlaying={isPlayingRadio} onClose={() => setIsPlayingRadio(false)} />
+      <Navbar />
 
       <main id="conteudo">
         {/* Page Hero */}
@@ -98,7 +97,7 @@ export function EcossistemaClient() {
                 </p>
                 <div className="flex flex-wrap items-center gap-4">
                   <button
-                    onClick={() => setIsPlayingRadio(!isPlayingRadio)}
+                    onClick={toggleRadio}
                     className="px-8 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-base rounded shadow-lg transition-colors duration-200 hover-lift flex items-center gap-3"
                   >
                     <span>{isPlayingRadio ? "Pausar Rádio" : "Ouvir Ao Vivo Agora"}</span>

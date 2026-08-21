@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { IconRadio } from "./ui/Icons";
+import { useRadio } from "../context/RadioContext";
 
 const ASSETS = {
   logo: "/images/insanos/insanos_mc_logo.svg",
@@ -25,8 +26,9 @@ const navLinks = [
   { label: "Ecossistema", href: "/ecossistema" },
 ];
 
-export function Navbar({ isPlayingRadio = false, onToggleRadio }: NavbarProps) {
+export function Navbar({}: NavbarProps) {
   const pathname = usePathname();
+  const { isPlaying: isPlayingRadio, toggleRadio } = useRadio();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -35,6 +37,17 @@ export function Navbar({ isPlayingRadio = false, onToggleRadio }: NavbarProps) {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Close mobile menu on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && menuOpen) {
+        setMenuOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [menuOpen]);
 
   return (
     <>
@@ -48,11 +61,11 @@ export function Navbar({ isPlayingRadio = false, onToggleRadio }: NavbarProps) {
         </div>
         <div className="hidden md:flex items-center gap-6 shrink-0">
           <button
-            onClick={onToggleRadio}
+            onClick={toggleRadio}
             className="hover:text-[#F2C21B] transition-colors flex items-center gap-1.5 text-xs font-semibold focus:outline-none"
           >
             <IconRadio className="w-3.5 h-3.5 text-[#F2C21B]" />
-            <span>Rádio Insanos 24h</span>
+            <span>{isPlayingRadio ? "Rádio Tocando (Pausar)" : "Rádio Insanos 24h"}</span>
           </button>
           <span className="text-white/20">|</span>
           <span className="font-mono text-[11px] text-[#F2C21B]">#SomosDeVerdade</span>
@@ -75,6 +88,8 @@ export function Navbar({ isPlayingRadio = false, onToggleRadio }: NavbarProps) {
             <img
               src={ASSETS.logo}
               alt="Insanos Moto Clube"
+              width={160}
+              height={28}
               className="h-[25px] sm:h-[28px] w-auto object-contain transition-transform duration-300 group-hover:scale-105 group-hover:drop-shadow-[0_0_14px_rgba(242,194,27,0.35)]"
             />
           </Link>
@@ -91,7 +106,7 @@ export function Navbar({ isPlayingRadio = false, onToggleRadio }: NavbarProps) {
                   key={link.href}
                   href={link.href}
                   className={`py-1.5 transition-colors duration-200 relative ${
-                    isActive ? "text-[#F2C21B]" : "text-white/75 hover:text-white"
+                    isActive ? "text-[#F2C21B]" : "text-white/80 hover:text-white"
                   }`}
                 >
                   {link.label}
@@ -107,7 +122,7 @@ export function Navbar({ isPlayingRadio = false, onToggleRadio }: NavbarProps) {
           <div className="flex items-center gap-3">
             {/* Tactical Radio Button */}
             <button
-              onClick={onToggleRadio}
+              onClick={toggleRadio}
               className={`hidden sm:inline-flex items-center gap-2.5 px-3.5 py-2 rounded-lg border text-xs font-bold transition-all duration-200 ${
                 isPlayingRadio
                   ? "bg-[#F2C21B]/15 border-[#F2C21B] text-[#F2C21B] shadow-[0_0_15px_rgba(242,194,27,0.25)]"
@@ -161,22 +176,38 @@ export function Navbar({ isPlayingRadio = false, onToggleRadio }: NavbarProps) {
         {menuOpen && (
           <div className="xl:hidden bg-[#0D0E10] border-b border-white/10 px-6 py-6 transition-all duration-300">
             <nav className="flex flex-col gap-4 text-sm font-bold uppercase tracking-wider">
+              {/* Mobile Radio Button */}
+              <button
+                onClick={() => {
+                  toggleRadio();
+                  setMenuOpen(false);
+                }}
+                className="w-full py-3 px-4 rounded-lg bg-[#141518] border border-[#F2C21B]/40 text-[#F2C21B] flex items-center justify-between font-mono text-xs"
+              >
+                <div className="flex items-center gap-2">
+                  <IconRadio className="w-4 h-4" />
+                  <span>Rádio Insanos 24h</span>
+                </div>
+                <span>{isPlayingRadio ? "Pausar" : "Tocar ▶"}</span>
+              </button>
+
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
                   className={`py-2 border-b border-white/5 ${
-                    pathname === link.href ? "text-[#F2C21B]" : "hover:text-[#F2C21B]"
+                    pathname === link.href ? "text-[#F2C21B]" : "text-[#E0DDD8] hover:text-[#F2C21B]"
                   }`}
                 >
                   {link.label}
                 </Link>
               ))}
+
               <Link
                 href="/faca-parte"
                 onClick={() => setMenuOpen(false)}
-                className="mt-2 text-center py-3 bg-[#F2C21B] text-black font-['Anton'] tracking-wider rounded-lg uppercase"
+                className="mt-2 text-center py-3 bg-[#F2C21B] text-black font-['Anton'] tracking-wider rounded-lg uppercase shadow-lg"
               >
                 Faça Parte Agora ↘
               </Link>

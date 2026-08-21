@@ -70,13 +70,11 @@ const TIMELINE_EXPANDED: Array<{
 ];
 
 export function HistoriaClient() {
-  const [isPlayingRadio, setIsPlayingRadio] = useState(false);
   const [selectedMilestone, setSelectedMilestone] = useState(0);
 
   return (
     <div className="min-h-screen bg-[#0A0A0A] text-[#F4F1E8] font-sans">
-      <Navbar isPlayingRadio={isPlayingRadio} onToggleRadio={() => setIsPlayingRadio(!isPlayingRadio)} />
-      <RadioBar isPlaying={isPlayingRadio} onClose={() => setIsPlayingRadio(false)} />
+      <Navbar />
 
       <main>
         {/* Header Hero */}

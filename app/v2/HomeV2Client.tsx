@@ -6,7 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
-import { RadioBar } from "../components/RadioBar";
+import { useRadio } from "../context/RadioContext";
 import {
   IconBolt,
   IconFilm,
@@ -119,7 +119,7 @@ const ASSETS_V2 = {
 
 export function HomeV2Client() {
   const root = useRef<HTMLDivElement>(null);
-  const [isPlayingRadio, setIsPlayingRadio] = useState(false);
+  const { isPlaying: isPlayingRadio, toggleRadio } = useRadio();
   const [activePillarHover, setActivePillarHover] = useState<number | null>(0);
   const [searchCity, setSearchCity] = useState("");
   const [fastFormData, setFastFormData] = useState({ cityState: "", contact: "", agree: false });
@@ -176,8 +176,7 @@ export function HomeV2Client() {
         </span>
       </div>
 
-      <Navbar isPlayingRadio={isPlayingRadio} onToggleRadio={() => setIsPlayingRadio(!isPlayingRadio)} />
-      <RadioBar isPlaying={isPlayingRadio} onClose={() => setIsPlayingRadio(false)} />
+      <Navbar />
 
       <main id="conteudo">
         {/* =========================================================================
@@ -799,7 +798,7 @@ export function HomeV2Client() {
                   </div>
                   <h5 className="font-['Anton'] text-lg uppercase text-white mb-2">A Voz da Irmandade</h5>
                   <button
-                    onClick={() => setIsPlayingRadio(!isPlayingRadio)}
+                    onClick={toggleRadio}
                     className="w-full py-2.5 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] uppercase text-xs rounded transition-colors flex items-center justify-center gap-2 shadow-md hover-lift"
                   >
                     <span>{isPlayingRadio ? "Pausar" : "Ouvir Ao Vivo"}</span>

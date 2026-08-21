@@ -10,6 +10,7 @@ import { RadioBar } from "./components/RadioBar";
 import { InteractiveMap } from "./components/InteractiveMap";
 import { DnaQuiz } from "./components/DnaQuiz";
 import { CampaignThermometer } from "./components/CampaignThermometer";
+import { useRadio } from "./context/RadioContext";
 import { ExpeditionsGallery } from "./components/ExpeditionsGallery";
 import {
   IconStar,
@@ -326,8 +327,8 @@ const SOCIAL_PROJECTS = [
 
 export function HomeClient() {
   const root = useRef<HTMLDivElement>(null);
-  const heroRef = useRef<HTMLElement>(null);
-  const [isPlayingRadio, setIsPlayingRadio] = useState(false);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { isPlaying: isPlayingRadio, toggleRadio } = useRadio();
   const [activePillar, setActivePillar] = useState(0);
   const [activePillarHover, setActivePillarHover] = useState<number | null>(0);
   const [activeProject, setActiveProject] = useState("pcd");
@@ -404,8 +405,7 @@ export function HomeClient() {
 
   return (
     <div ref={root} className="min-h-screen bg-[#0A0A0A] text-[#F4F1E8] overflow-x-hidden font-sans">
-      <Navbar isPlayingRadio={isPlayingRadio} onToggleRadio={() => setIsPlayingRadio(!isPlayingRadio)} />
-      <RadioBar isPlaying={isPlayingRadio} onClose={() => setIsPlayingRadio(false)} />
+      <Navbar />
 
 
       <main id="conteudo">
@@ -1065,7 +1065,7 @@ export function HomeClient() {
                   </div>
                   <h5 className="font-['Anton'] text-lg uppercase text-white mb-2">A Voz da Irmandade</h5>
                   <button
-                    onClick={() => setIsPlayingRadio(!isPlayingRadio)}
+                    onClick={toggleRadio}
                     className="w-full py-2.5 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] uppercase text-xs rounded transition-colors flex items-center justify-center gap-2 shadow-md hover-lift"
                   >
                     <span>{isPlayingRadio ? "Pausar" : "Ouvir Ao Vivo"}</span>

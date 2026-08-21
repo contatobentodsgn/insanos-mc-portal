@@ -1,5 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { VisualEditor } from "./components/VisualEditor";
+import { RadioProvider } from "./context/RadioContext";
+import { RadioBar } from "./components/RadioBar";
 
 export const viewport: Viewport = {
   themeColor: "#0A0A0A",
@@ -36,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    url: "https://www.insanosmc.com.br",
+    url: "https://insanosmc.vercel.app",
     siteName: "Insanos Moto Clube",
     title: "Insanos MC — Nosso combustível é a irmandade",
     description:
@@ -68,9 +71,6 @@ export const metadata: Metadata = {
   },
 };
 
-
-import { VisualEditor } from "./components/VisualEditor";
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -87,10 +87,12 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-[#0A0A0A] text-[#F4F1E8] antialiased selection:bg-[#F2C21B] selection:text-black">
-        {children}
-        <VisualEditor />
+        <RadioProvider>
+          <RadioBar />
+          {children}
+          <VisualEditor />
+        </RadioProvider>
       </body>
     </html>
   );
 }
-

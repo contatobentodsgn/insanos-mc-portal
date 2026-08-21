@@ -1,71 +1,11 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import { IconVolumeUp, IconVolumeMute, IconClose } from "./ui/Icons";
+import { useRadio } from "../context/RadioContext";
 
-interface RadioBarProps {
-  isPlaying: boolean;
-  onClose: () => void;
-}
-
-// 24h High-Fidelity Rock Stream (Radio Paradise Rock Mix / Classic Rock)
-const ROCK_STREAM_URL = "https://stream.radioparadise.com/rock-128";
-
-export function RadioBar({ isPlaying, onClose }: RadioBarProps) {
-  const [volume, setVolume] = useState(85);
-  const [isMuted, setIsMuted] = useState(false);
-  const [isLoadingAudio, setIsLoadingAudio] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-
-  // Initialize and manage audio stream playback
-  useEffect(() => {
-    if (!audioRef.current) {
-      const audio = new Audio(ROCK_STREAM_URL);
-      audio.preload = "none";
-      audioRef.current = audio;
-
-      audio.addEventListener("waiting", () => setIsLoadingAudio(true));
-      audio.addEventListener("playing", () => setIsLoadingAudio(false));
-      audio.addEventListener("canplay", () => setIsLoadingAudio(false));
-      audio.addEventListener("error", (e) => {
-        console.warn("Primary radio stream error, switching to backup rock stream...", e);
-        audio.src = "https://stream.zeno.fm/k22222xsyreuv";
-        if (isPlaying) {
-          audio.play().catch(() => {});
-        }
-      });
-    }
-
-    const audio = audioRef.current;
-    if (audio) {
-      audio.volume = isMuted ? 0 : volume / 100;
-      if (isPlaying) {
-        setIsLoadingAudio(true);
-        audio.play().then(() => {
-          setIsLoadingAudio(false);
-        }).catch((err) => {
-          console.log("Audio autoplay prevented or stream interrupted:", err);
-          setIsLoadingAudio(false);
-        });
-      } else {
-        audio.pause();
-        setIsLoadingAudio(false);
-      }
-    }
-
-    return () => {
-      if (audio && !isPlaying) {
-        audio.pause();
-      }
-    };
-  }, [isPlaying]);
-
-  // Handle volume updates
-  useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.volume = isMuted ? 0 : volume / 100;
-    }
-  }, [volume, isMuted]);
+export function RadioBar() {
+  const { isPlaying, isMuted, volume, isLoading, pauseRadio, toggleMute, setVolume } = useRadio();
 
   if (!isPlaying) return null;
 
@@ -75,7 +15,7 @@ export function RadioBar({ isPlaying, onClose }: RadioBarProps) {
     <div
       role="region"
       aria-label="Player da Rádio Insanos Web"
-      className="sticky top-[69px] z-40 bg-[#141518]/95 backdrop-blur-md border-b border-[#F2C21B]/40 px-4 py-2.5 flex items-center justify-between text-xs shadow-2xl transition-all"
+      className="sticky top-[58px] sm:top-[63px] z-40 bg-[#141518]/95 backdrop-blur-md border-b border-[#F2C21B]/40 px-4 py-2.5 flex items-center justify-between text-xs shadow-2xl transition-all"
     >
       <div className="max-w-[1400px] mx-auto w-full flex items-center justify-between gap-4">
         {/* Equalizer & Station Info */}
@@ -91,16 +31,31 @@ export function RadioBar({ isPlaying, onClose }: RadioBarProps) {
               RÁDIO INSANOS WEB AO VIVO:
             </span>
             <span className="text-white font-medium truncate">
-              {isLoadingAudio ? "Sintonizando transmissão ao vivo..." : "Rock & Asfalto 24h · O som que embala o comboio"}
+              {isLoading ? "Sintonizando transmissão ao vivo..." : "Rock & Asfalto 24h · O som que embala o comboio"}
             </span>
           </div>
         </div>
 
         {/* Volume & Actions */}
-        <div className="flex items-center gap-4 shrink-0">
+        <div className="flex items-center gap-3 sm:gap-4 shrink-0">
+          {/* Mobile Mute Toggle */}
+          <button
+            onClick={toggleMute}
+            className="sm:hidden p-1.5 rounded-md bg-white/10 text-white hover:text-[#F2C21B] transition-colors"
+            title={isMuted ? "Desmutar rádio" : "Mutar rádio"}
+            aria-label={isMuted ? "Desmutar áudio" : "Mutar áudio"}
+          >
+            {isMuted || volume === 0 ? (
+              <IconVolumeMute className="w-3.5 h-3.5 text-[#AAA8A1]" />
+            ) : (
+              <IconVolumeUp className="w-3.5 h-3.5 text-[#F2C21B]" />
+            )}
+          </button>
+
+          {/* Desktop Volume Slider */}
           <div className="hidden sm:flex items-center gap-2">
             <button
-              onClick={() => setIsMuted(!isMuted)}
+              onClick={toggleMute}
               className="text-[#AAA8A1] hover:text-[#F2C21B] text-xs transition-colors focus:outline-none flex items-center justify-center w-5 h-5"
               title={isMuted ? "Desmutar rádio" : "Mutar rádio"}
               aria-label={isMuted ? "Desmutar áudio" : "Mutar áudio"}
@@ -116,11 +71,7 @@ export function RadioBar({ isPlaying, onClose }: RadioBarProps) {
               min="0"
               max="100"
               value={currentVolume}
-              onChange={(e) => {
-                const val = Number(e.target.value);
-                setVolume(val);
-                if (isMuted && val > 0) setIsMuted(false);
-              }}
+              onChange={(e) => setVolume(Number(e.target.value))}
               className="w-16 sm:w-24 accent-[#F2C21B] h-1 bg-white/20 rounded cursor-pointer focus:outline-none"
               aria-label="Controle de volume da rádio"
             />
@@ -130,7 +81,7 @@ export function RadioBar({ isPlaying, onClose }: RadioBarProps) {
           </div>
 
           <button
-            onClick={onClose}
+            onClick={pauseRadio}
             className="px-3.5 py-1.5 bg-white/10 hover:bg-[#F2C21B] hover:text-black text-white rounded text-[11px] font-bold uppercase transition-all focus:outline-none flex items-center gap-1.5 shadow-md"
             aria-label="Pausar rádio"
           >

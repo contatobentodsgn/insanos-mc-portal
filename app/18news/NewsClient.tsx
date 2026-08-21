@@ -4,13 +4,10 @@ import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
-import { RadioBar } from "../components/RadioBar";
 import { IconSearch } from "../components/ui/Icons";
 import { ARTICLES_DATA } from "../data/articles";
 
 export function NewsClient() {
-
-  const [isPlayingRadio, setIsPlayingRadio] = useState(false);
   const [selectedTag, setSelectedTag] = useState("Todas");
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -31,8 +28,7 @@ export function NewsClient() {
 
   return (
     <div className="min-h-screen bg-[#0A0A0A] text-[#F4F1E8] font-sans">
-      <Navbar isPlayingRadio={isPlayingRadio} onToggleRadio={() => setIsPlayingRadio(!isPlayingRadio)} />
-      <RadioBar isPlaying={isPlayingRadio} onClose={() => setIsPlayingRadio(false)} />
+      <Navbar />
 
       <main>
         {/* Header Hero */}

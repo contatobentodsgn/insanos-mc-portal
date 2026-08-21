@@ -33,7 +33,6 @@ const ADMISSION_STEPS = [
 ];
 
 export function FacaParteClient() {
-  const [isPlayingRadio, setIsPlayingRadio] = useState(false);
   const [currentTab, setCurrentTab] = useState<"formulario" | "simulador">("formulario");
   const [formStep, setFormStep] = useState(1);
 
@@ -104,8 +103,7 @@ export function FacaParteClient() {
 
   return (
     <div className="min-h-screen bg-[#0A0A0A] text-[#F4F1E8] font-sans">
-      <Navbar isPlayingRadio={isPlayingRadio} onToggleRadio={() => setIsPlayingRadio(!isPlayingRadio)} />
-      <RadioBar isPlaying={isPlayingRadio} onClose={() => setIsPlayingRadio(false)} />
+      <Navbar />
 
       <main>
         {/* Hero */}

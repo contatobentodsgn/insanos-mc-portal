@@ -87,6 +87,27 @@ const EXPEDITIONS_DATA: Expedition[] = [
 export function ExpeditionsGallery() {
   const [selectedExpedition, setSelectedExpedition] = useState<Expedition | null>(null);
 
+  React.useEffect(() => {
+    if (!selectedExpedition) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setSelectedExpedition(null);
+      } else if (e.key === "ArrowRight") {
+        const currentIndex = EXPEDITIONS_DATA.findIndex((exp) => exp.id === selectedExpedition.id);
+        const nextIndex = (currentIndex + 1) % EXPEDITIONS_DATA.length;
+        setSelectedExpedition(EXPEDITIONS_DATA[nextIndex]);
+      } else if (e.key === "ArrowLeft") {
+        const currentIndex = EXPEDITIONS_DATA.findIndex((exp) => exp.id === selectedExpedition.id);
+        const prevIndex = (currentIndex - 1 + EXPEDITIONS_DATA.length) % EXPEDITIONS_DATA.length;
+        setSelectedExpedition(EXPEDITIONS_DATA[prevIndex]);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedExpedition]);
+
   return (
     <div>
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">

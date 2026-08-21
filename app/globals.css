@@ -31,6 +31,20 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
+  /* Typography Balancing to avoid orphan words on all resolutions */
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Offset for fixed header navigation anchors */
+  section[id], div[id] {
+    scroll-margin-top: 80px;
+  }
 }
 
 /* Custom Typography Classes */

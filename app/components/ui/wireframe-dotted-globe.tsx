@@ -226,8 +226,20 @@ export default function RotatingEarth({
 
     projection.rotate(rotation);
 
+    // IntersectionObserver to pause rendering when out of viewport (saves CPU/Battery)
+    let isVisible = true;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          isVisible = entry.isIntersecting;
+        });
+      },
+      { threshold: 0.05 }
+    );
+    observer.observe(canvas);
+
     const rotate = () => {
-      if (autoRotate) {
+      if (autoRotate && isVisible) {
         rotation[0] += rotationSpeed;
         projection.rotate(rotation);
         render();
@@ -282,6 +294,7 @@ export default function RotatingEarth({
 
     return () => {
       rotationTimer.stop();
+      observer.disconnect();
       canvas.removeEventListener("mousedown", handleMouseDown);
       canvas.removeEventListener("wheel", handleWheel);
     };
