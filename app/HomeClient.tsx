@@ -524,19 +524,19 @@ export function HomeClient() {
             {/* Global Stats Grid */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 pt-10 border-t border-white/10" data-reveal>
               <div>
-                <strong className="block font-['Anton'] text-3xl sm:text-6xl text-[#F2C21B] tracking-tight">+12.000</strong>
+                <strong className="block font-['Anton'] text-3xl sm:text-6xl text-[#F2C21B] tracking-[0.06em]">+12.000</strong>
                 <span className="text-[11px] sm:text-xs text-[#AAA8A1] uppercase font-bold tracking-wider">Integrantes Ativos</span>
               </div>
               <div>
-                <strong className="block font-['Anton'] text-3xl sm:text-6xl text-[#F2C21B] tracking-tight">65</strong>
+                <strong className="block font-['Anton'] text-3xl sm:text-6xl text-[#F2C21B] tracking-[0.06em]">65</strong>
                 <span className="text-[11px] sm:text-xs text-[#AAA8A1] uppercase font-bold tracking-wider">Países Presentes</span>
               </div>
               <div>
-                <strong className="block font-['Anton'] text-3xl sm:text-6xl text-[#F2C21B] tracking-tight">+10.000</strong>
+                <strong className="block font-['Anton'] text-3xl sm:text-6xl text-[#F2C21B] tracking-[0.06em]">+10.000</strong>
                 <span className="text-[11px] sm:text-xs text-[#AAA8A1] uppercase font-bold tracking-wider">Famílias Atendidas</span>
               </div>
               <div>
-                <strong className="block font-['Anton'] text-3xl sm:text-6xl text-[#F2C21B] tracking-tight">480+</strong>
+                <strong className="block font-['Anton'] text-3xl sm:text-6xl text-[#F2C21B] tracking-[0.06em]">480+</strong>
                 <span className="text-[11px] sm:text-xs text-[#AAA8A1] uppercase font-bold tracking-wider">Capítulos & Facções</span>
               </div>
             </div>

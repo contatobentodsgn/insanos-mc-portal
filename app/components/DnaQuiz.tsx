@@ -5,7 +5,7 @@ import { IconShield } from "./ui/Icons";
 interface Question {
   id: number;
   pillar: string;
-  question: string;
+  question: React.ReactNode;
   options: {
     text: string;
     isCorrect: boolean;
@@ -17,7 +17,12 @@ const QUESTIONS: Question[] = [
   {
     id: 1,
     pillar: "Pilar: Doutrina & Prioridades",
-    question: "Em caso de conflito de tempo ou decisão pessoal, qual a ordem sagrada e inegociável de prioridades do integrante?",
+    question: (
+      <>
+        Em caso de conflito de tempo ou decisão pessoal, qual a<br className="hidden sm:inline" />{" "}
+        ordem sagrada e inegociável de prioridades do integrante?
+      </>
+    ),
     options: [
       {
         text: "1º Deus, 2º Família, 3º Trabalho e 4º Motoclube.",

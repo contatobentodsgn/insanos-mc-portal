@@ -830,13 +830,13 @@ export function InteractiveMap() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div className="p-4 rounded-xl bg-[#0E0F12] border border-white/10 text-center">
-                  <strong className="block font-['Anton'] text-2xl text-[#F2C21B]">
+                  <strong className="block font-['Anton'] text-2xl text-[#F2C21B] tracking-[0.06em]">
                     {selectedHub.faccoesCount}
                   </strong>
                   <span className="text-[10px] text-[#AAA8A1] uppercase font-bold">Sub-Divisões</span>
                 </div>
                 <div className="p-4 rounded-xl bg-[#0E0F12] border border-white/10 text-center">
-                  <strong className="block font-['Anton'] text-2xl text-[#F2C21B]">
+                  <strong className="block font-['Anton'] text-2xl text-[#F2C21B] tracking-[0.06em]">
                     {selectedHub.membersCount}
                   </strong>
                   <span className="text-[10px] text-[#AAA8A1] uppercase font-bold">Integrantes</span>
