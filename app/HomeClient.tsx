@@ -13,6 +13,7 @@ import { CampaignThermometer } from "./components/CampaignThermometer";
 import { useRadio } from "./context/RadioContext";
 import { ExpeditionsGallery } from "./components/ExpeditionsGallery";
 import { TireTrackTimelineLine } from "./components/TireTrackTimelineLine";
+import HeroScrollMedalThree from "./components/HeroScrollMedalThree";
 import {
   IconStar,
   IconCalendar,
@@ -522,95 +523,10 @@ export function HomeClient() {
 
       <main id="conteudo">
         {/* =========================================================================
-            CAPÍTULO 01: HERO CINEMATOGRÁFICO COM AMBIENT SPOTLIGHT
+            CAPÍTULO 01: HERO CINEMATOGRÁFICO COM MEDALHA 3D INTERATIVA (SCROLL)
         ========================================================================= */}
-        <section
-          id="inicio"
-          ref={heroRef}
-          onMouseMove={handleHeroMouseMove}
-          className="hero-section relative min-h-[92vh] flex items-center overflow-hidden border-b border-white/10"
-        >
-          {/* Cinematic Video Background with Parallax Scale */}
-          <div className="hero-parallax-bg absolute inset-0 will-change-transform scale-105 overflow-hidden">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              poster={ASSETS.heroBg}
-              preload="auto"
-              className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
-            >
-              {/* Mobile (< 768px): Lightweight 720p stream with VP9 & H.264 fallback */}
-              <source src={ASSETS.heroVideo720Webm} type="video/webm" media="(max-width: 768px)" />
-              <source src={ASSETS.heroVideo720Mp4} type="video/mp4" media="(max-width: 768px)" />
-
-              {/* Desktop (>= 768px): Full 1080p stream with VP9 & H.264 fallback */}
-              <source src={ASSETS.heroVideo1080Webm} type="video/webm" />
-              <source src={ASSETS.heroVideo1080Mp4} type="video/mp4" />
-            </video>
-            {/* Cinematic Gradient Overlays for readability and depth */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#080808]/95 via-[#080808]/75 to-[#080808]/35" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-black/50" />
-          </div>
-
-          {/* Dynamic Ambient Headlight / Flashlight Glow */}
-          <div
-            className="absolute inset-0 pointer-events-none transition-opacity duration-300 opacity-60"
-            style={{
-              background: `radial-gradient(circle 450px at ${mousePos.x}% ${mousePos.y}%, rgba(242,194,27,0.12), transparent 70%)`,
-            }}
-          />
-
-          <div className="absolute inset-0 bg-[radial-gradient(#ffffff08_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none opacity-30" />
-
-          <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-8 py-20 lg:py-32 w-full">
-            <div className="max-w-4xl">
-              <div className="hero-stagger flex items-center gap-3 mb-6">
-                <span className="w-10 h-[2px] bg-[#F2C21B]" />
-                <p className="text-xs sm:text-sm uppercase font-extrabold tracking-[0.25em] text-[#F2C21B]">
-                  Original de OZ · Desde 2015 · 18 do Forte
-                </p>
-              </div>
-
-              <h1 className="hero-stagger font-['Anton'] uppercase text-5xl sm:text-7xl lg:text-9xl leading-[1.08] sm:leading-[1.06] tracking-tight text-white mb-6">
-                Nosso combustível<br />
-                é a <span className="text-[#F2C21B] underline decoration-[#F2C21B]/40 underline-offset-8">irmandade.</span>
-              </h1>
-
-              <div className="hero-stagger inline-block mb-8 bg-[#F2C21B] text-black px-4 py-2 font-['Anton'] uppercase text-lg sm:text-2xl tracking-wide shadow-lg transform -skew-x-6">
-                Nosso destino é fazer o bem.
-              </div>
-
-              <p className="hero-stagger text-base sm:text-xl text-[#C7C5BF] leading-relaxed max-w-3xl lg:max-w-4xl mb-10 font-normal">
-                O maior motoclube do Brasil e do mundo. Forjados na disciplina, lealdade e respeito mútuo.<br className="hidden sm:inline" />{" "}
-                Nas ruas, na estrada ou na ação social: <strong>#SomosDeVerdade</strong>.
-              </p>
-
-              <div className="hero-stagger flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-6">
-                <Link
-                  href="/faca-parte"
-                  className="w-full sm:w-auto min-h-[52px] px-8 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider text-base sm:text-lg uppercase rounded-xl shadow-[0_0_30px_rgba(242,194,27,0.35)] transition-all duration-200 inline-flex items-center justify-center gap-3 active:scale-[0.98]"
-                >
-                  <span>Faça Parte da Irmandade</span>
-                  <IconArrowRight className="w-5 h-5 text-black shrink-0" strokeWidth={2.5} />
-                </Link>
-
-                <Link
-                  href="/historia"
-                  className="w-full sm:w-auto min-h-[52px] px-6 py-4 border border-white/30 hover:border-[#F2C21B] bg-[#121314]/80 text-white hover:text-[#F2C21B] font-bold text-xs sm:text-sm uppercase tracking-wider rounded-xl transition-all duration-200 inline-flex items-center justify-center gap-2 active:scale-[0.98]"
-                >
-                  <span>Conheça Nossa História</span>
-                  <IconArrowRight className="w-4 h-4 text-inherit" />
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          <div className="absolute right-8 bottom-8 hidden lg:flex flex-col items-center gap-2 text-[10px] uppercase font-bold tracking-[0.2em] text-[#AAA8A1]">
-            <span className="writing-mode-vertical">Rolar Para Conhecer</span>
-            <span className="text-[#F2C21B] text-lg animate-bounce">↓</span>
-          </div>
+        <section id="inicio" className="relative">
+          <HeroScrollMedalThree />
         </section>
 
         {/* =========================================================================
