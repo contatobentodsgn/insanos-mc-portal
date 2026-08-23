@@ -141,6 +141,9 @@ export default function HeroScrollMedalThree() {
         const center = box.getCenter(new THREE.Vector3());
         root.position.sub(center);
 
+        // Reduce side thickness by half (50% depth on Z axis) for a sleek, realistic challenge coin profile
+        root.scale.set(1, 1, 0.48);
+
         // Ensure double-sided metallic rendering
         root.traverse((child) => {
           if ((child as THREE.Mesh).isMesh) {
