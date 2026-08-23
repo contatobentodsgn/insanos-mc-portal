@@ -867,7 +867,7 @@ export function InteractiveMap() {
               activeFilter === "todos" ? "bg-[#F2C21B] text-black shadow-md" : "text-white/60 hover:text-white"
             }`}
           >
-            Todas as Sedes ({SEDES_DATA.length})
+            Sedes em Destaque ({SEDES_DATA.length})
           </button>
           <button
             onClick={() => handleFilterClick("brasil")}
@@ -1059,6 +1059,20 @@ export function InteractiveMap() {
             </a>
           </div>
         </div>
+      </div>
+
+      {/* Network Coverage Footnote */}
+      <div className="p-4 bg-[#0A0A0C] border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#AAA8A1]">
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span>* 13 sedes em destaque de uma malha global com mais de <strong>480 divisões ativas</strong> em <strong>65 países</strong>.</span>
+        </div>
+        <Link
+          href="/faca-parte"
+          className="text-[#F2C21B] font-bold hover:underline whitespace-nowrap"
+        >
+          Não encontrou sua cidade? Envie sua ficha de aproximação regional →
+        </Link>
       </div>
     </div>
   );

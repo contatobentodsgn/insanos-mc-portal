@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
-import { RadioBar } from "../components/RadioBar";
 import { DnaQuiz } from "../components/DnaQuiz";
 import { IconShield, IconCheck, IconArrowRight } from "../components/ui/Icons";
 
@@ -33,8 +33,30 @@ const ADMISSION_STEPS = [
 ];
 
 export function FacaParteClient() {
+  const searchParams = useSearchParams();
   const [currentTab, setCurrentTab] = useState<"formulario" | "simulador">("formulario");
   const [formStep, setFormStep] = useState(1);
+  const formContainerRef = useRef<HTMLDivElement | null>(null);
+  const firstInputRef = useRef<HTMLInputElement | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const tabParam = searchParams?.get("aba") || searchParams?.get("tab");
+      if (tabParam === "simulador" || tabParam === "quiz") {
+        setCurrentTab("simulador");
+      } else if (tabParam === "formulario" || tabParam === "form") {
+        setCurrentTab("formulario");
+      }
+    }
+  }, [searchParams]);
+
+  const handleSwitchToForm = () => {
+    setCurrentTab("formulario");
+    setTimeout(() => {
+      formContainerRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      firstInputRef.current?.focus();
+    }, 100);
+  };
 
   const [formData, setFormData] = useState({
     name: "",
@@ -196,9 +218,9 @@ export function FacaParteClient() {
             </div>
 
             {currentTab === "simulador" ? (
-              <DnaQuiz />
+              <DnaQuiz onProceedToForm={handleSwitchToForm} />
             ) : (
-              <div className="bg-[#121316] border border-white/15 rounded-2xl p-8 sm:p-14 shadow-2xl">
+              <div ref={formContainerRef} className="bg-[#121316] border border-white/15 rounded-2xl p-8 sm:p-14 shadow-2xl scroll-mt-28">
                 {formSubmitted ? (
                   <div className="text-center py-12 space-y-6">
                     <div className="w-20 h-20 rounded-full bg-[#F2C21B] text-black flex items-center justify-center font-bold text-4xl mx-auto shadow-[0_0_30px_rgba(242,194,27,0.4)]">
@@ -259,12 +281,15 @@ export function FacaParteClient() {
                   {formStep === 1 ? (
                     <div className="space-y-4">
                       <div>
-                        <label className="block text-xs uppercase font-bold text-[#AAA8A1] tracking-wider mb-2">
+                        <label htmlFor="nome-completo" className="block text-xs uppercase font-bold text-[#AAA8A1] tracking-wider mb-2">
                           Nome Completo *
                         </label>
                         <input
+                          ref={firstInputRef}
+                          id="nome-completo"
                           type="text"
                           name="name"
+                          autoComplete="name"
                           required
                           placeholder="Seu nome completo"
                           value={formData.name}
@@ -275,12 +300,14 @@ export function FacaParteClient() {
 
                       <div className="grid sm:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-xs uppercase font-bold text-[#AAA8A1] tracking-wider mb-2">
+                          <label htmlFor="estado-regiao" className="block text-xs uppercase font-bold text-[#AAA8A1] tracking-wider mb-2">
                             Estado / Região / País *
                           </label>
                           <input
+                            id="estado-regiao"
                             type="text"
                             name="state"
+                            autoComplete="address-level1"
                             required
                             placeholder="Ex: SP, RJ, MG ou Portugal"
                             value={formData.state}
@@ -289,12 +316,14 @@ export function FacaParteClient() {
                           />
                         </div>
                         <div>
-                          <label className="block text-xs uppercase font-bold text-[#AAA8A1] tracking-wider mb-2">
+                          <label htmlFor="cidade" className="block text-xs uppercase font-bold text-[#AAA8A1] tracking-wider mb-2">
                             Cidade *
                           </label>
                           <input
+                            id="cidade"
                             type="text"
                             name="city"
+                            autoComplete="address-level2"
                             required
                             placeholder="Ex: Osasco, Santos, Curitiba"
                             value={formData.city}
@@ -306,12 +335,14 @@ export function FacaParteClient() {
 
                       <div className="grid sm:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-xs uppercase font-bold text-[#AAA8A1] tracking-wider mb-2">
+                          <label htmlFor="telefone-whatsapp" className="block text-xs uppercase font-bold text-[#AAA8A1] tracking-wider mb-2">
                             WhatsApp com DDD *
                           </label>
                           <input
+                            id="telefone-whatsapp"
                             type="tel"
                             name="phone"
+                            autoComplete="tel"
                             required
                             placeholder="(11) 99999-9999"
                             value={formData.phone}
@@ -320,12 +351,14 @@ export function FacaParteClient() {
                           />
                         </div>
                         <div>
-                          <label className="block text-xs uppercase font-bold text-[#AAA8A1] tracking-wider mb-2">
+                          <label htmlFor="email" className="block text-xs uppercase font-bold text-[#AAA8A1] tracking-wider mb-2">
                             E-mail Principal *
                           </label>
                           <input
+                            id="email"
                             type="email"
                             name="email"
+                            autoComplete="email"
                             required
                             placeholder="seuemail@dominio.com"
                             value={formData.email}
@@ -355,10 +388,11 @@ export function FacaParteClient() {
                     <div className="space-y-4">
                       <div className="grid sm:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-xs uppercase font-bold text-[#AAA8A1] tracking-wider mb-2">
+                          <label htmlFor="hasBike" className="block text-xs uppercase font-bold text-[#AAA8A1] tracking-wider mb-2">
                             Possui Motocicleta?
                           </label>
                           <select
+                            id="hasBike"
                             name="hasBike"
                             value={formData.hasBike}
                             onChange={handleFormChange}
@@ -370,10 +404,11 @@ export function FacaParteClient() {
                           </select>
                         </div>
                         <div>
-                          <label className="block text-xs uppercase font-bold text-[#AAA8A1] tracking-wider mb-2">
+                          <label htmlFor="bikeModel" className="block text-xs uppercase font-bold text-[#AAA8A1] tracking-wider mb-2">
                             Modelo / Cilindrada
                           </label>
                           <input
+                            id="bikeModel"
                             type="text"
                             name="bikeModel"
                             placeholder="Ex: Shadow 750, Tiger 900, Harley"
@@ -386,10 +421,11 @@ export function FacaParteClient() {
 
                       <div className="grid sm:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-xs uppercase font-bold text-[#AAA8A1] tracking-wider mb-2">
+                          <label htmlFor="cnhCategory" className="block text-xs uppercase font-bold text-[#AAA8A1] tracking-wider mb-2">
                             Categoria da CNH
                           </label>
                           <select
+                            id="cnhCategory"
                             name="cnhCategory"
                             value={formData.cnhCategory}
                             onChange={handleFormChange}
@@ -401,10 +437,11 @@ export function FacaParteClient() {
                           </select>
                         </div>
                         <div>
-                          <label className="block text-xs uppercase font-bold text-[#AAA8A1] tracking-wider mb-2">
+                          <label htmlFor="ridingExperience" className="block text-xs uppercase font-bold text-[#AAA8A1] tracking-wider mb-2">
                             Tempo de Estrada
                           </label>
                           <select
+                            id="ridingExperience"
                             name="ridingExperience"
                             value={formData.ridingExperience}
                             onChange={handleFormChange}
@@ -442,7 +479,14 @@ export function FacaParteClient() {
                             className="mt-0.5 w-4 h-4 accent-[#F2C21B] rounded cursor-pointer"
                           />
                           <span>
-                            Declaro estar ciente da hierarquia, disciplina, respeito aos 4 Pilares e autorizo o contato da diretoria conforme a LGPD. *
+                            Declaro estar ciente do regimento, disciplina, respeito aos 4 Pilares e autorizo o contato da diretoria conforme os{" "}
+                            <Link href="/termos" target="_blank" className="text-[#F2C21B] underline hover:text-[#ffe053]">
+                              Termos de Uso
+                            </Link>{" "}
+                            e a{" "}
+                            <Link href="/privacidade" target="_blank" className="text-[#F2C21B] underline hover:text-[#ffe053]">
+                              Política de Privacidade (LGPD)
+                            </Link>. *
                           </span>
                         </label>
                       </div>

@@ -87,7 +87,11 @@ const QUESTIONS: Question[] = [
   },
 ];
 
-export function DnaQuiz() {
+interface DnaQuizProps {
+  onProceedToForm?: () => void;
+}
+
+export function DnaQuiz({ onProceedToForm }: DnaQuizProps = {}) {
   const [currentStep, setCurrentStep] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<number[]>([]);
   const [showResult, setShowResult] = useState(false);
@@ -220,13 +224,23 @@ export function DnaQuiz() {
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              href="/faca-parte"
-              className="px-8 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-base rounded transition-colors duration-200 hover-lift shadow-xl inline-flex items-center gap-2.5 whitespace-nowrap"
-            >
-              <span>Preencher Ficha de Ingresso Oficial</span>
-              <IconArrowRight className="w-4 h-4 text-black" strokeWidth={2.5} />
-            </Link>
+            {onProceedToForm ? (
+              <button
+                onClick={onProceedToForm}
+                className="px-8 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-base rounded transition-colors duration-200 hover-lift shadow-xl inline-flex items-center gap-2.5 whitespace-nowrap cursor-pointer"
+              >
+                <span>Preencher Ficha de Ingresso Oficial</span>
+                <IconArrowRight className="w-4 h-4 text-black" strokeWidth={2.5} />
+              </button>
+            ) : (
+              <Link
+                href="/faca-parte?aba=formulario"
+                className="px-8 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-base rounded transition-colors duration-200 hover-lift shadow-xl inline-flex items-center gap-2.5 whitespace-nowrap"
+              >
+                <span>Preencher Ficha de Ingresso Oficial</span>
+                <IconArrowRight className="w-4 h-4 text-black" strokeWidth={2.5} />
+              </Link>
+            )}
             <button
               onClick={handleReset}
               className="px-6 py-4 bg-white/10 hover:bg-white/20 text-white rounded text-xs font-bold uppercase tracking-wider transition-colors duration-150 inline-flex items-center gap-2"

@@ -145,7 +145,7 @@ const MEMORIAL_MEMBERS = [
   },
 ];
 
-// 4 Pillars Data
+// 4 Pillars Data (Doutrina Oficial do Insanos MC)
 const PILLARS_DATA: Array<{
   num: string;
   title: string;
@@ -159,13 +159,13 @@ const PILLARS_DATA: Array<{
   {
     num: "01",
     title: "Deus",
-    subtitle: "Família",
-    tagline: "Convicção & Fé",
+    subtitle: "Fé & Convicção",
+    tagline: "Alicerce Espiritual",
     desc: (
       <>
-        A fé que guia cada curva da vida,<br />
-        o respeito sagrado ao lar e filhos.<br />
-        O alicerce que nos mantém de pé.
+        A fé que guia nossos passos e o respeito<br />
+        sagrado às convicções de cada homem.<br />
+        O alicerce que nos mantém firmes na vida.
       </>
     ),
     quote: "A estrada é longa, mas a proteção divina guia o comboio.",
@@ -174,46 +174,46 @@ const PILLARS_DATA: Array<{
   },
   {
     num: "02",
-    title: "Comunidade",
-    subtitle: "Ajuda",
-    tagline: "Nosso Destino é Fazer o Bem",
+    title: "Família",
+    subtitle: "Base Inegociável",
+    tagline: "O Lar é Sagrado",
     desc: (
       <>
-        Nosso destino é fazer o bem real.<br />
-        Ação humanitária contínua e apoio<br />
-        a quem mais precisa em cada cidade.
+        O lar e os filhos são a base sagrada.<br />
+        O motoclube jamais exige o sacrifício do lar:<br />
+        o verdadeiro irmão honra e cuida da sua casa.
       </>
     ),
-    quote: "Ninguém fica para trás, em casa ou no asfalto.",
+    quote: "Nenhum sucesso na estrada compensa o descuido com a família.",
     image: "/images/insanos/pillar_02_comunidade_ajuda.webp",
     bgPosition: "center 22%",
   },
   {
     num: "03",
-    title: "Caráter",
-    subtitle: "Trabalho",
-    tagline: "Honra & Dignidade",
+    title: "Trabalho",
+    subtitle: "Honra & Dignidade",
+    tagline: "Sustento Honrado",
     desc: (
       <>
         A dignidade que sustenta o homem e a<br />
-        disciplina que forja o respeito. Clube<br />
-        composto por trabalhadores honrados.
+        disciplina profissional. Clube formado por<br />
+        trabalhadores que vencem pelo próprio suor.
       </>
     ),
-    quote: "O suor do trabalho sustenta a liberdade na estrada.",
+    quote: "O trabalho dignifica o homem e sustenta a liberdade na estrada.",
     image: "/images/insanos/pillar_03_carater_trabalho.webp",
     bgPosition: "center 20%",
   },
   {
     num: "04",
-    title: "Estrada",
-    subtitle: "Motoclube",
-    tagline: "Irmandade & Lealdade",
+    title: "Motoclube",
+    subtitle: "Irmandade & Ação",
+    tagline: "Lealdade & Caridade",
     desc: (
       <>
         Colete não cria irmão, atitude cria.<br />
-        Hierarquia inabalável, união na<br />
-        rodovia e lealdade gravada no peito.
+        Hierarquia respeitada, lealdade no peito<br />
+        e compromisso diário com a ajuda social.
       </>
     ),
     quote: "Colete não cria irmão. Atitude cria.",

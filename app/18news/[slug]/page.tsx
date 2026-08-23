@@ -16,12 +16,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const article = ARTICLES_DATA.find((a) => a.slug === slug);
   if (!article) return { title: "Artigo Não Encontrado" };
 
+  const articleUrl = `https://insanosmc.vercel.app/18news/${slug}`;
+
   return {
     title: `${article.title} | 18News`,
     description: article.desc,
+    alternates: {
+      canonical: articleUrl,
+    },
     openGraph: {
       title: `${article.title} | 18News`,
       description: article.desc,
+      url: articleUrl,
       images: [{ url: article.image }],
     },
   };
@@ -35,6 +41,7 @@ export default async function ArticlePage({ params }: PageProps) {
     notFound();
   }
 
+  const articleUrl = `https://insanosmc.vercel.app/18news/${slug}`;
   const related = ARTICLES_DATA.filter((a) => a.slug !== slug).slice(0, 2);
 
   return (
@@ -61,7 +68,7 @@ export default async function ArticlePage({ params }: PageProps) {
 
             {/* Social Share Bar Top */}
             <div className="pt-4 border-t border-white/10">
-              <ShareButtons title={article.title} />
+              <ShareButtons title={article.title} url={articleUrl} />
             </div>
           </div>
 
@@ -86,7 +93,7 @@ export default async function ArticlePage({ params }: PageProps) {
           {/* Social Share Bar Bottom */}
           <div className="p-6 rounded-xl bg-[#121316] border border-white/10 mb-12 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <span className="font-['Anton'] text-lg uppercase text-white">Gostou deste relato?</span>
-            <ShareButtons title={article.title} />
+            <ShareButtons title={article.title} url={articleUrl} />
           </div>
 
           {/* Author Box */}

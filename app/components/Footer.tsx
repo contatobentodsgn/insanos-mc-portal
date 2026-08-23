@@ -83,8 +83,8 @@ export function Footer() {
             © 2015–2026 Insanos Moto Clube. Todos os direitos reservados.
           </div>
           <div className="flex gap-6">
-            <Link href="/faca-parte" className="text-[#C7C5BF] hover:text-[#F2C21B] transition-colors">Termos de Uso</Link>
-            <Link href="/faca-parte" className="text-[#C7C5BF] hover:text-[#F2C21B] transition-colors">Política de Privacidade (LGPD)</Link>
+            <Link href="/termos" className="text-[#C7C5BF] hover:text-[#F2C21B] transition-colors">Termos de Uso</Link>
+            <Link href="/privacidade" className="text-[#C7C5BF] hover:text-[#F2C21B] transition-colors">Política de Privacidade (LGPD)</Link>
             <a href="#" className="text-[#C7C5BF] hover:text-[#F2C21B] transition-colors">Voltar ao Topo ↑</a>
           </div>
         </div>
