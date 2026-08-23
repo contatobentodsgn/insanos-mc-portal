@@ -228,14 +228,30 @@ export function HistoriaClient() {
               </div>
 
               <div className="lg:col-span-6">
-                <div className="p-8 sm:p-12 rounded-2xl bg-[#16171B] border border-white/15 text-center shadow-2xl relative">
-                  <span className="font-['Anton'] text-8xl sm:text-9xl text-[#F2C21B] block opacity-80 mb-2">
-                    18
-                  </span>
-                  <h3 className="font-['Anton'] text-2xl uppercase text-white mb-2">O Símbolo do Forte</h3>
-                  <p className="text-xs text-[#AAA8A1] max-w-md mx-auto">
-                    Honra · Lealdade · Disciplina · Bravura no Asfalto · Resistência
-                  </p>
+                <div className="p-8 sm:p-12 rounded-2xl bg-[#16171B] border border-[#F2C21B]/30 text-center shadow-2xl relative min-h-[440px] sm:min-h-[500px] flex flex-col items-center justify-center overflow-hidden group">
+                  {/* Subtle Ambient Glow */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute w-[300px] h-[300px] rounded-full bg-[#F2C21B]/10 blur-3xl -z-0 pointer-events-none" />
+
+                  {/* 18 do Forte Authentic Distressed Gothic Emblem */}
+                  <div className="relative z-10 my-2 flex items-center justify-center">
+                    <img
+                      src="/images/insanos/18_do_forte_logo.png"
+                      alt="18 do Forte — Insanos Moto Clube"
+                      width={240}
+                      height={330}
+                      className="max-h-[260px] sm:max-h-[320px] w-auto object-contain filter drop-shadow-[0_12px_30px_rgba(0,0,0,0.9)] transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
+
+                  <div className="relative z-10 mt-3">
+                    <h3 className="font-['Anton'] text-2xl sm:text-3xl uppercase text-white mb-2 tracking-wide">
+                      O Símbolo do Forte
+                    </h3>
+                    <p className="text-xs sm:text-sm text-[#AAA8A1] max-w-md mx-auto font-mono">
+                      Honra · Lealdade · Disciplina · Bravura no Asfalto · Resistência
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
