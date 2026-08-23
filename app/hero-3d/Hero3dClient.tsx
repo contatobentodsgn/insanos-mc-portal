@@ -13,7 +13,7 @@ import { CampaignThermometer } from "../components/CampaignThermometer";
 import { useRadio } from "../context/RadioContext";
 import { ExpeditionsGallery } from "../components/ExpeditionsGallery";
 import { TireTrackTimelineLine } from "../components/TireTrackTimelineLine";
-import HeroScrollMedal from "../components/HeroScrollMedal";
+import HeroScrollMedalThree from "../components/HeroScrollMedalThree";
 import {
   IconStar,
   IconCalendar,
@@ -526,7 +526,7 @@ export function Hero3dClient() {
             CAPÍTULO 01: HERO CINEMATOGRÁFICO COM MEDALHA 3D INTERATIVA (SCROLL)
         ========================================================================= */}
         <section id="inicio" className="relative">
-          <HeroScrollMedal />
+          <HeroScrollMedalThree />
         </section>
 
         {/* =========================================================================
