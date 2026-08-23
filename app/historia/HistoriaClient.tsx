@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { RadioBar } from "../components/RadioBar";
+import { IconArrowRight } from "../components/ui/Icons";
 
 const ASSETS = {
   heroBg: "/images/insanos/hero_biker.webp",
@@ -92,7 +93,8 @@ export function HistoriaClient() {
                 </span>
               </div>
               <h1 className="font-['Anton'] uppercase text-5xl sm:text-7xl lg:text-8xl text-white leading-tight mb-6">
-                Rompendo paradigmas<br />
+                Rompendo<br />
+                paradigmas<br />
                 <span className="text-[#F2C21B]">desde 2015.</span>
               </h1>
               <p className="text-base sm:text-xl text-[#C7C5BF] leading-relaxed">
@@ -207,10 +209,10 @@ export function HistoriaClient() {
             </p>
             <Link
               href="/faca-parte"
-              className="px-8 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-lg rounded shadow-xl inline-flex items-center gap-2 transition-colors duration-200 hover-lift"
+              className="px-8 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-lg rounded shadow-xl inline-flex items-center gap-2.5 transition-colors duration-200 hover-lift whitespace-nowrap"
             >
               <span>Solicitar Ingresso</span>
-              <span>↘</span>
+              <IconArrowRight className="w-4 h-4 text-black" strokeWidth={2.5} />
             </Link>
           </div>
         </section>

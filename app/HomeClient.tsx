@@ -12,6 +12,7 @@ import { DnaQuiz } from "./components/DnaQuiz";
 import { CampaignThermometer } from "./components/CampaignThermometer";
 import { useRadio } from "./context/RadioContext";
 import { ExpeditionsGallery } from "./components/ExpeditionsGallery";
+import { TireTrackTimelineLine } from "./components/TireTrackTimelineLine";
 import {
   IconStar,
   IconCalendar,
@@ -20,6 +21,8 @@ import {
   IconShield,
   IconPlay,
   IconPause,
+  IconArrowRight,
+  IconArrowUpRight,
 } from "./components/ui/Icons";
 
 // Assets & Imagery
@@ -151,6 +154,7 @@ const PILLARS_DATA: Array<{
   desc: React.ReactNode;
   quote: string;
   image: string;
+  bgPosition?: string;
 }> = [
   {
     num: "01",
@@ -159,13 +163,14 @@ const PILLARS_DATA: Array<{
     tagline: "Convicção & Fé",
     desc: (
       <>
-        A fé que guia cada curva e o respeito<br className="hidden sm:inline" />{" "}
-        inegociável ao lar e aos filhos. O alicerce<br className="hidden sm:inline" />{" "}
-        que nos mantém firmes na estrada.
+        A fé que guia cada curva da vida,<br />
+        o respeito sagrado ao lar e filhos.<br />
+        O alicerce que nos mantém de pé.
       </>
     ),
     quote: "A estrada é longa, mas a proteção divina guia o comboio.",
     image: "/images/insanos/pillar_01_deus_familia.webp",
+    bgPosition: "center 18%",
   },
   {
     num: "02",
@@ -174,13 +179,14 @@ const PILLARS_DATA: Array<{
     tagline: "Nosso Destino é Fazer o Bem",
     desc: (
       <>
-        Nosso destino é fazer o bem. Ação<br className="hidden sm:inline" />{" "}
-        humanitária contínua e apoio direto para<br className="hidden sm:inline" />{" "}
-        quem mais precisa em cada cidade.
+        Nosso destino é fazer o bem real.<br />
+        Ação humanitária contínua e apoio<br />
+        a quem mais precisa em cada cidade.
       </>
     ),
     quote: "Ninguém fica para trás, em casa ou no asfalto.",
     image: "/images/insanos/pillar_02_comunidade_ajuda.webp",
+    bgPosition: "center 22%",
   },
   {
     num: "03",
@@ -189,13 +195,14 @@ const PILLARS_DATA: Array<{
     tagline: "Honra & Dignidade",
     desc: (
       <>
-        A dignidade que sustenta o homem e a<br className="hidden sm:inline" />{" "}
-        disciplina que forja o respeito. O clube é<br className="hidden sm:inline" />{" "}
+        A dignidade que sustenta o homem e a<br />
+        disciplina que forja o respeito. Clube<br />
         composto por trabalhadores honrados.
       </>
     ),
     quote: "O suor do trabalho sustenta a liberdade na estrada.",
     image: "/images/insanos/pillar_03_carater_trabalho.webp",
+    bgPosition: "center 20%",
   },
   {
     num: "04",
@@ -204,13 +211,14 @@ const PILLARS_DATA: Array<{
     tagline: "Irmandade & Lealdade",
     desc: (
       <>
-        Colete não cria irmão, atitude cria.<br className="hidden sm:inline" />{" "}
-        Hierarquia inabalável, união na<br className="hidden sm:inline" />{" "}
+        Colete não cria irmão, atitude cria.<br />
+        Hierarquia inabalável, união na<br />
         rodovia e lealdade gravada no peito.
       </>
     ),
     quote: "Colete não cria irmão. Atitude cria.",
     image: "/images/insanos/pillar_04_estrada_motoclube.webp",
+    bgPosition: "center 24%",
   },
 ];
 
@@ -221,7 +229,7 @@ const TIMELINE_DATA: Array<{
   badge: string;
   title: string;
   desc: React.ReactNode;
-  highlight: string;
+  highlight: React.ReactNode;
 }> = [
   {
     year: "1922",
@@ -233,7 +241,12 @@ const TIMELINE_DATA: Array<{
         coragem inabalável, lealdade à causa e marcha unida mesmo contra todas as adversidades.
       </>
     ),
-    highlight: "Símbolo perpétuo bordado no peito.",
+    highlight: (
+      <>
+        <span>Símbolo perpétuo</span>
+        <span className="block sm:inline sm:ml-1">bordado no peito.</span>
+      </>
+    ),
   },
   {
     year: "2015",
@@ -245,7 +258,12 @@ const TIMELINE_DATA: Array<{
         os velhos paradigmas do motociclismo tradicional, unindo disciplina militar e ação social direta.
       </>
     ),
-    highlight: "O início da maior irmandade do país.",
+    highlight: (
+      <>
+        <span>O início da maior</span>
+        <span className="block sm:inline sm:ml-1">irmandade do país.</span>
+      </>
+    ),
   },
   {
     year: "2018",
@@ -257,7 +275,12 @@ const TIMELINE_DATA: Array<{
         diretorias regionais, padronização de conduta e fortalecendo as frentes sociais.
       </>
     ),
-    highlight: "Presença em 100% dos estados brasileiros.",
+    highlight: (
+      <>
+        <span>Presença em todos os</span>
+        <span className="block sm:inline sm:ml-1">estados brasileiros.</span>
+      </>
+    ),
   },
   {
     year: "2021",
@@ -269,7 +292,12 @@ const TIMELINE_DATA: Array<{
         consolidando a doutrina e a ação beneficente além das fronteiras brasileiras.
       </>
     ),
-    highlight: "Mais de 30 países com bandeira Insanos.",
+    highlight: (
+      <>
+        <span>Bandeira do motoclube</span>
+        <span className="block sm:inline sm:ml-1">em mais de 30 países.</span>
+      </>
+    ),
   },
   {
     year: "Hoje",
@@ -281,7 +309,12 @@ const TIMELINE_DATA: Array<{
         ativas e centenas de toneladas de doações entregues todos os meses.
       </>
     ),
-    highlight: "#SomosDeVerdade em escala global.",
+    highlight: (
+      <>
+        <span>#SomosDeVerdade</span>
+        <span className="block sm:inline sm:ml-1">em escala global.</span>
+      </>
+    ),
   },
 ];
 
@@ -328,6 +361,7 @@ const SOCIAL_PROJECTS = [
 export function HomeClient() {
   const root = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
+  const timelineContainerRef = useRef<HTMLDivElement>(null);
   const { isPlaying: isPlayingRadio, toggleRadio } = useRadio();
   const [activePillar, setActivePillar] = useState(0);
   const [activePillarHover, setActivePillarHover] = useState<number | null>(0);
@@ -387,20 +421,75 @@ export function HomeClient() {
         },
       });
 
-      // History Progress Line: starts when the first milestone is reached and draws downwards
-      gsap.to(".timeline-progress-bar", {
-        scaleY: 1,
+      // History Progress Line: reveals gold tire track progressively via clip-path (zero distortion)
+      gsap.to(".timeline-track-gold", {
+        clipPath: "inset(0% 0% 0% 0%)",
         ease: "none",
         scrollTrigger: {
-          trigger: ".timeline-container",
-          start: "top 60%",
-          end: "bottom 75%",
-          scrub: 0.4,
+          trigger: timelineContainerRef.current,
+          start: "top 70%",
+          end: "bottom 30%",
+          scrub: 0.8,
+          onUpdate: (self) => {
+            const progress = self.progress;
+            const line = document.getElementById("timeline-progress-line");
+            if (line) {
+              line.style.height = `${progress * 100}%`;
+            }
+          },
         },
       });
     }, root);
 
     return () => ctx.revert();
+  }, []);
+
+  // Mobile Scroll-Driven Auto-Expansion for 4 Pillars Cards
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    let observer: IntersectionObserver | null = null;
+
+    const setupObserver = () => {
+      if (window.innerWidth >= 640) {
+        if (observer) observer.disconnect();
+        return;
+      }
+
+      const cardElements = document.querySelectorAll("[data-pillar-card]");
+      if (!cardElements.length) return;
+
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const idxStr = entry.target.getAttribute("data-pillar-card");
+              if (idxStr !== null) {
+                const idx = parseInt(idxStr, 10);
+                if (!isNaN(idx)) {
+                  setActivePillarHover(idx);
+                }
+              }
+            }
+          });
+        },
+        {
+          root: null,
+          rootMargin: "-25% 0px -35% 0px",
+          threshold: 0.2,
+        }
+      );
+
+      cardElements.forEach((el) => observer?.observe(el));
+    };
+
+    setupObserver();
+    window.addEventListener("resize", setupObserver);
+
+    return () => {
+      if (observer) observer.disconnect();
+      window.removeEventListener("resize", setupObserver);
+    };
   }, []);
 
   return (
@@ -446,7 +535,7 @@ export function HomeClient() {
           <div className="absolute inset-0 bg-[radial-gradient(#ffffff08_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none opacity-30" />
 
           <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-8 py-20 lg:py-32 w-full">
-            <div className="max-w-3xl">
+            <div className="max-w-4xl">
               <div className="hero-stagger flex items-center gap-3 mb-6">
                 <span className="w-10 h-[2px] bg-[#F2C21B]" />
                 <p className="text-xs sm:text-sm uppercase font-extrabold tracking-[0.25em] text-[#F2C21B]">
@@ -463,26 +552,26 @@ export function HomeClient() {
                 Nosso destino é fazer o bem.
               </div>
 
-              <p className="hero-stagger text-base sm:text-xl text-[#C7C5BF] leading-relaxed max-w-2xl mb-10 font-normal">
-                O maior motoclube do Brasil e do mundo. Forjados na disciplina,<br className="hidden sm:inline" />{" "}
-                lealdade e respeito mútuo. Nas ruas, na estrada ou na ação social: <strong>#SomosDeVerdade</strong>.
+              <p className="hero-stagger text-base sm:text-xl text-[#C7C5BF] leading-relaxed max-w-3xl lg:max-w-4xl mb-10 font-normal">
+                O maior motoclube do Brasil e do mundo. Forjados na disciplina, lealdade e respeito mútuo.<br className="hidden sm:inline" />{" "}
+                Nas ruas, na estrada ou na ação social: <strong>#SomosDeVerdade</strong>.
               </p>
 
-              <div className="hero-stagger flex flex-wrap items-center gap-4 sm:gap-6">
+              <div className="hero-stagger flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-6">
                 <Link
                   href="/faca-parte"
-                  className="px-8 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider text-lg uppercase rounded shadow-[0_0_30px_rgba(242,194,27,0.35)] transition-colors duration-200 inline-flex items-center gap-3 hover-lift"
+                  className="w-full sm:w-auto min-h-[52px] px-8 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider text-base sm:text-lg uppercase rounded-xl shadow-[0_0_30px_rgba(242,194,27,0.35)] transition-all duration-200 inline-flex items-center justify-center gap-3 active:scale-[0.98]"
                 >
                   <span>Faça Parte da Irmandade</span>
-                  <span className="font-sans font-extrabold text-xl">↘</span>
+                  <IconArrowRight className="w-5 h-5 text-black shrink-0" strokeWidth={2.5} />
                 </Link>
 
                 <Link
                   href="/historia"
-                  className="px-6 py-4 border border-white/30 hover:border-[#F2C21B] bg-[#121314]/80 text-white hover:text-[#F2C21B] font-bold text-sm uppercase tracking-wider rounded transition-colors duration-200 flex items-center gap-2"
+                  className="w-full sm:w-auto min-h-[52px] px-6 py-4 border border-white/30 hover:border-[#F2C21B] bg-[#121314]/80 text-white hover:text-[#F2C21B] font-bold text-xs sm:text-sm uppercase tracking-wider rounded-xl transition-all duration-200 inline-flex items-center justify-center gap-2 active:scale-[0.98]"
                 >
                   <span>Conheça Nossa História</span>
-                  <span>→</span>
+                  <IconArrowRight className="w-4 h-4 text-inherit" />
                 </Link>
               </div>
             </div>
@@ -549,40 +638,49 @@ export function HomeClient() {
         <section id="pilares" className="py-24 sm:py-32 bg-[#0D0E10] border-b border-white/10 relative">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8">
             <div className="grid lg:grid-cols-12 gap-8 items-center" data-reveal>
-              {/* 4 Interactive Vertical Image Columns (Accordion on hover / Stack on mobile) */}
+              {/* 4 Interactive Vertical Image Columns (Accordion on hover / Dynamic expanding cards on mobile) */}
               <div className="lg:col-span-7 flex flex-col sm:flex-row gap-3 h-auto sm:h-[540px]">
                 {PILLARS_DATA.map((pillar, idx) => {
                   const isHovered = activePillarHover === idx;
                   return (
                     <div
                       key={pillar.num}
+                      data-pillar-card={idx}
                       onMouseEnter={() => setActivePillarHover(idx)}
-                      onClick={() => setActivePillarHover(idx)}
-                      className={`relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] bg-cover bg-center border min-h-[160px] sm:min-h-0 ${
+                      onClick={() => setActivePillarHover(activePillarHover === idx ? -1 : idx)}
+                      className={`relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] bg-cover border flex flex-col justify-end p-5 sm:p-6 ${
                         isHovered
-                          ? "sm:flex-[2.5] border-[#F2C21B] shadow-[0_0_30px_rgba(242,194,27,0.25)]"
-                          : "sm:flex-1 border-white/10 opacity-70 hover:opacity-90"
+                          ? "min-h-[290px] sm:min-h-0 sm:flex-[2.6] border-[#F2C21B] shadow-[0_0_30px_rgba(242,194,27,0.25)]"
+                          : "min-h-[145px] sm:min-h-0 sm:flex-1 border-white/10 opacity-80 hover:opacity-100"
                       }`}
-                      style={{ backgroundImage: `url(${pillar.image})` }}
+                      style={{
+                        backgroundImage: `url(${pillar.image})`,
+                        backgroundPosition: pillar.bgPosition || "center center",
+                      }}
                     >
-                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent" />
-                      <div className="absolute bottom-6 left-5 right-5 sm:left-6 sm:right-6">
-                        <span className="font-['Anton'] text-4xl sm:text-5xl text-[#F2C21B] block mb-1">
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-transparent pointer-events-none" />
+                      <div className="relative z-10">
+                        <span className="font-['Anton'] text-4xl sm:text-5xl text-[#F2C21B] block mb-0.5 leading-none">
                           {pillar.num}
                         </span>
                         <h3 className="font-['Anton'] text-2xl sm:text-3xl uppercase text-white leading-tight">
                           {pillar.title}
                         </h3>
-                        <p className="text-xs font-bold uppercase text-[#F2C21B] mb-2">{pillar.subtitle}</p>
+                        <div className="flex items-center justify-between">
+                          <p className="text-xs font-bold uppercase text-[#F2C21B] mb-2">{pillar.subtitle}</p>
+                          <span className="sm:hidden text-[10px] font-mono text-[#F2C21B]/80 mb-2 flex items-center gap-1 bg-black/50 px-2 py-0.5 rounded-full border border-white/10">
+                            {isHovered ? "▲" : "▼ Detalhes"}
+                          </span>
+                        </div>
 
                         <div
                           className={`overflow-hidden transition-all duration-400 ease-out ${
                             isHovered
-                              ? "max-h-28 opacity-100 translate-y-0"
-                              : "max-h-0 opacity-0 translate-y-3 pointer-events-none"
+                              ? "max-h-40 opacity-100 translate-y-0 mt-1"
+                              : "max-h-0 opacity-0 translate-y-2 pointer-events-none"
                           }`}
                         >
-                          <p className="text-xs sm:text-[13px] text-[#E0DDD8] leading-relaxed max-w-[280px]">
+                          <p className="text-xs sm:text-[13px] text-[#E0DDD8] leading-relaxed max-w-[320px]">
                             {pillar.desc}
                           </p>
                         </div>
@@ -605,18 +703,18 @@ export function HomeClient() {
                   <span className="text-[#F2C21B]">Uma Só Irmandade.</span>
                 </h2>
 
-                <div className="flex flex-wrap gap-2 text-xs font-mono font-bold text-white/80 py-2 border-y border-white/10">
+                <div className="flex items-center justify-between text-[9.5px] min-[370px]:text-[11px] sm:text-xs font-mono font-bold text-white/80 py-2 border-y border-white/10 whitespace-nowrap">
                   <span>01 DEUS</span>
-                  <span>•</span>
+                  <span className="text-[#F2C21B]">•</span>
                   <span>02 FAMÍLIA</span>
-                  <span>•</span>
+                  <span className="text-[#F2C21B]">•</span>
                   <span>03 TRABALHO</span>
-                  <span>•</span>
+                  <span className="text-[#F2C21B]">•</span>
                   <span>04 MOTOCLUBE</span>
                 </div>
 
                 <div className="inline-block w-fit px-6 py-3.5 rounded-xl bg-[#F2C21B] text-black font-['Anton'] text-lg sm:text-2xl uppercase tracking-wider shadow-lg transform -skew-x-3">
-                  "Colete não cria irmão. Atitude cria."
+"Colete não cria irmão. Atitude cria."
                 </div>
 
                 <p className="text-sm text-[#AAA8A1] leading-relaxed">
@@ -631,7 +729,7 @@ export function HomeClient() {
                     className="px-6 py-3.5 bg-white/10 hover:bg-[#F2C21B] hover:text-black rounded text-xs font-['Anton'] uppercase tracking-wider transition-colors duration-200 inline-flex items-center gap-2"
                   >
                     <span>Conheça Nossa Essência</span>
-                    <span>→</span>
+                    <IconArrowRight className="w-3.5 h-3.5 text-inherit" />
                   </Link>
                 </div>
               </div>
@@ -641,6 +739,64 @@ export function HomeClient() {
 
         {/* =========================================================================
             CAPÍTULO 04: HISTÓRIA, 18 DO FORTE & ORIGEM EM OSASCO
+        ========================================================================= */}
+        <section id="origem" className="py-24 sm:py-32 bg-[#090A0C] border-b border-white/10 relative overflow-hidden">
+          {/* Background Image: bordado.webp */}
+          <div
+            className="absolute inset-0 bg-cover bg-right sm:bg-center bg-no-repeat pointer-events-none opacity-60"
+            style={{ backgroundImage: `url('/images/insanos/bordado.webp')` }}
+          />
+
+          {/* Gradients & Vignettes for contrast & text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#090A0C] via-[#090A0C]/80 sm:via-[#090A0C]/70 to-transparent pointer-events-none" />
+          <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#090A0C] to-transparent pointer-events-none" />
+          <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#090A0C] to-transparent pointer-events-none" />
+
+          <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-8">
+            <div className="max-w-3xl mb-12" data-reveal>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#F2C21B]/15 text-[#F2C21B] text-xs font-mono font-bold uppercase tracking-wider mb-4 border border-[#F2C21B]/30 backdrop-blur-sm">
+                <span>Tradição & Origem · 18 do Forte</span>
+              </div>
+              <h2 className="font-['Anton'] uppercase text-3xl sm:text-6xl text-white leading-tight mb-4 drop-shadow-md">
+                Nascido em Osasco.<br />
+                <span className="text-[#F2C21B]">Forjado no asfalto.</span>
+              </h2>
+              <p className="text-[#C7C5BF] text-base sm:text-lg leading-relaxed">
+                Em 2015, na cidade de Osasco/SP, motociclistas experientes decidiram criar algo novo.<br className="hidden sm:inline" />{" "}
+                Um motoclube com disciplina inegociável, respeito sagrado à família, amor ao trabalho e<br className="hidden sm:inline" />{" "}
+                uma vocação inabalável para fazer o bem a quem mais precisa.
+              </p>
+            </div>
+
+            {/* Historical Origin Bento Grid */}
+            <div className="grid md:grid-cols-3 gap-6" data-reveal>
+              {MEMORIAL_MEMBERS.map((item) => (
+                <div
+                  key={item.name}
+                  className="bg-[#121316]/80 border border-white/10 hover:border-[#F2C21B]/50 rounded-2xl overflow-hidden group transition-all duration-300 backdrop-blur-sm"
+                >
+                  <div
+                    className="h-48 bg-cover bg-center relative"
+                    style={{ backgroundImage: `url(${item.image})` }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-transparent to-transparent" />
+                    <span className="absolute top-4 left-4 px-2.5 py-1 rounded bg-black/70 border border-[#F2C21B]/40 text-[#F2C21B] text-[10px] font-mono font-bold uppercase">
+                      {item.badge}
+                    </span>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="font-['Anton'] text-xl uppercase text-white mb-1">{item.name}</h3>
+                    <p className="text-xs font-bold uppercase text-[#F2C21B] mb-3">{item.role}</p>
+                    <p className="text-xs text-[#AAA8A1] leading-relaxed">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* =========================================================================
+            CAPÍTULO 04: LINHA DO TEMPO (HISTÓRICO)
         ========================================================================= */}
         <section id="historia" className="history-section py-24 sm:py-32 bg-[#0A0A0B] border-b border-white/10 relative overflow-hidden">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8">
@@ -652,28 +808,30 @@ export function HomeClient() {
                 </p>
               </div>
               <h2 className="font-['Anton'] uppercase text-4xl sm:text-6xl lg:text-7xl leading-tight text-white mb-6">
-                Rompendo paradigmas<br />
+                Rompendo<br />
+                paradigmas<br />
                 <span className="text-[#F2C21B]">desde 2015.</span>
               </h2>
               <p className="text-[#C7C5BF] text-base sm:text-lg leading-relaxed">
-                Nossa história foi escrita no asfalto com coragem, união e compromisso irrevogável.<br className="hidden sm:inline" />{" "}
-                Da bravura histórica de 1922 à fundação em Osasco<br className="hidden sm:inline" />{" "}
-                e à consagração como o maior motoclube do planeta.
+                Nossa história foi escrita no asfalto com<br className="sm:hidden" /> coragem, união e compromisso irrevogável.<br className="hidden sm:inline" />{" "}
+                Da bravura histórica de 1922 à fundação<br className="sm:hidden" /> em Osasco e à consagração como<br className="sm:hidden" />{" "}
+                o maior motoclube do planeta.
               </p>
             </div>
 
-            <div className="timeline-container relative space-y-12 sm:space-y-16">
-              {/* Central Background Track Line: starts at center of first circle (28px) and ends at center of last circle */}
-              <div className="absolute top-[28px] bottom-[28px] left-3 sm:left-4 w-[2px] bg-white/15 -translate-x-1/2 rounded-full overflow-hidden">
-                {/* Animated Yellow GSAP Progress Bar: scales down from first circle */}
-                <div className="timeline-progress-bar w-full h-full bg-[#F2C21B] origin-top scale-y-0 shadow-[0_0_12px_rgba(242,194,27,0.9)]" />
-              </div>
+            <div ref={timelineContainerRef} className="timeline-container relative space-y-12 sm:space-y-16">
+              {/* Continuous Tire Track from Dot 0 Center (top: 28px) down to Last Dot Center (lastItem.offsetTop) */}
+              <TireTrackTimelineLine containerRef={timelineContainerRef} />
 
               {TIMELINE_DATA.map((item, idx) => (
-                <div key={item.year} className="relative pl-10 sm:pl-14 group" data-reveal>
-                  {/* Timeline Pin Dot: 100% centered on vertical axis */}
+                <div
+                  key={item.year}
+                  className="timeline-item relative pl-10 sm:pl-14 group"
+                  data-reveal
+                >
+                  {/* Timeline Pin Dot: 100% centered on vertical axis, sits above track with z-10 */}
                   <div
-                    className={`absolute left-3 sm:left-4 top-4 w-6 h-6 -translate-x-1/2 rounded-full bg-[#0A0A0B] border-4 border-[#F2C21B] z-10 transition-transform duration-200 ease-out group-hover:scale-110 ${
+                    className={`timeline-dot absolute left-3 sm:left-4 top-4 w-6 h-6 -translate-x-1/2 rounded-full bg-[#0A0A0B] border-4 border-[#F2C21B] z-10 transition-transform duration-200 ease-out group-hover:scale-110 ${
                       idx === 0
                         ? "shadow-[0_0_20px_rgba(242,194,27,0.9)] ring-2 ring-[#F2C21B]/40 ring-offset-2 ring-offset-[#0A0A0A]"
                         : "shadow-[0_0_12px_rgba(242,194,27,0.5)]"
@@ -705,7 +863,7 @@ export function HomeClient() {
                 className="px-8 py-4 bg-[#141517] hover:bg-[#F2C21B] hover:text-black border border-white/20 text-white font-['Anton'] tracking-wider uppercase text-base rounded transition-colors duration-200 inline-flex items-center gap-3 hover-lift"
               >
                 <span>Ler História Completa & Documentos</span>
-                <span>→</span>
+                <IconArrowRight className="w-4 h-4 text-inherit" />
               </Link>
             </div>
           </div>
@@ -714,7 +872,7 @@ export function HomeClient() {
         {/* =========================================================================
             CAPÍTULO 05: AÇÕES SOCIAIS (BENTO GRID ASSIMÉTRICO + TERMÔMETRO)
         ========================================================================= */}
-        <section id="impacto" className="py-24 sm:py-32 bg-[#0D0E10] border-b border-white/10 relative overflow-hidden">
+        <section id="impacto" className="py-24 sm:py-32 bg-[#161820] border-b border-white/10 relative overflow-hidden">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8">
             {/* Campaign Live Goal Thermometer */}
             <div className="mb-20" data-reveal>
@@ -747,19 +905,19 @@ export function HomeClient() {
                     className="px-6 py-3.5 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-sm rounded transition-colors duration-200 inline-flex items-center gap-2 hover-lift"
                   >
                     <span>Conheça Nossas Ações</span>
-                    <span>↘</span>
+                    <IconArrowRight className="w-4 h-4 text-black shrink-0" strokeWidth={2.5} />
                   </Link>
                 </div>
               </div>
 
               {/* Center Big Card: Projeto PcD */}
-              <div className="lg:col-span-5 group rounded-2xl overflow-hidden bg-[#121316] border border-white/15 hover:border-[#F2C21B]/60 shadow-2xl hover:shadow-[0_0_30px_rgba(242,194,27,0.15)] transition-all duration-300 hover-lift">
+              <div className="lg:col-span-5 group rounded-2xl overflow-hidden bg-[#1C1F2A] border border-white/15 hover:border-[#F2C21B]/60 shadow-2xl hover:shadow-[0_0_30px_rgba(242,194,27,0.15)] transition-all duration-300 hover-lift">
                 <div className="h-80 sm:h-96 overflow-hidden relative">
                   <div
                     className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
                     style={{ backgroundImage: `url(/images/insanos/impact_pcd.webp)` }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1C1F2A] via-transparent to-transparent" />
                   <div className="absolute top-4 left-4 px-3 py-1 rounded bg-black/70 backdrop-blur-md text-[#F2C21B] font-mono text-xs uppercase font-bold border border-white/10">
                     Iniciativa Humanitária
                   </div>
@@ -771,7 +929,7 @@ export function HomeClient() {
                       Projeto PcD
                     </h3>
                   </div>
-                  <p className="text-sm text-[#C7C5BF] leading-relaxed">
+                  <p className="text-sm text-[#E0DDD8] leading-relaxed">
                     Apoiamos e promovemos inclusão, mobilidade<br className="hidden sm:inline" />{" "}
                     e respeito no motociclismo. Porque liberdade<br className="hidden sm:inline" />{" "}
                     também é poder ir e vir sobre duas ou três rodas.
@@ -781,7 +939,7 @@ export function HomeClient() {
 
               {/* Right Stacked 2 Cards: Bonde Pela Vida & Combate Insano */}
               <div className="lg:col-span-3 space-y-6">
-                <div className="group p-6 rounded-2xl bg-[#121316] border border-white/10 hover:border-[#F2C21B]/60 hover:shadow-[0_0_25px_rgba(242,194,27,0.15)] transition-all duration-300 hover-lift">
+                <div className="group p-6 rounded-2xl bg-[#1C1F2A] border border-white/10 hover:border-[#F2C21B]/60 hover:shadow-[0_0_25px_rgba(242,194,27,0.15)] transition-all duration-300 hover-lift">
                   <div className="h-32 rounded-xl overflow-hidden mb-4 relative">
                     <div
                       className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
@@ -794,14 +952,14 @@ export function HomeClient() {
                       Bonde Pela Vida
                     </h4>
                   </div>
-                  <p className="text-xs text-[#AAA8A1] leading-relaxed">
+                  <p className="text-xs text-[#C7C5BF] leading-relaxed">
                     Conscientização no trânsito, doação<br className="hidden sm:inline" />{" "}
                     de sangue e responsabilidade social<br className="hidden sm:inline" />{" "}
                     em todo o país.
                   </p>
                 </div>
 
-                <div className="group p-6 rounded-2xl bg-[#121316] border border-white/10 hover:border-[#F2C21B]/60 hover:shadow-[0_0_25px_rgba(242,194,27,0.15)] transition-all duration-300 hover-lift">
+                <div className="group p-6 rounded-2xl bg-[#1C1F2A] border border-white/10 hover:border-[#F2C21B]/60 hover:shadow-[0_0_25px_rgba(242,194,27,0.15)] transition-all duration-300 hover-lift">
                   <div className="h-32 rounded-xl overflow-hidden mb-4 relative">
                     <div
                       className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
@@ -814,7 +972,7 @@ export function HomeClient() {
                       Combate Insano
                     </h4>
                   </div>
-                  <p className="text-xs text-[#AAA8A1] leading-relaxed">
+                  <p className="text-xs text-[#C7C5BF] leading-relaxed">
                     Ações de inclusão através de artes marciais para jovens em áreas de vulnerabilidade.
                   </p>
                 </div>
@@ -845,10 +1003,10 @@ export function HomeClient() {
               </p>
             </div>
 
-            <div className="flex gap-4 mb-10 border-b border-white/10 pb-4" data-reveal>
+            <div className="flex flex-wrap sm:flex-nowrap gap-4 sm:gap-6 mb-10 border-b border-white/10 pb-4 items-end" data-reveal>
               <button
                 onClick={() => setActiveLeaderTab("comando")}
-                className={`pb-2 text-sm sm:text-base font-['Anton'] uppercase tracking-wider transition-colors duration-200 border-b-2 ${
+                className={`pb-2 text-sm sm:text-base font-['Anton'] uppercase tracking-wider transition-colors duration-200 border-b-2 text-left sm:text-center ${
                   activeLeaderTab === "comando"
                     ? "border-[#F2C21B] text-[#F2C21B]"
                     : "border-transparent text-white/50 hover:text-white"
@@ -858,13 +1016,14 @@ export function HomeClient() {
               </button>
               <button
                 onClick={() => setActiveLeaderTab("memorial")}
-                className={`pb-2 text-sm sm:text-base font-['Anton'] uppercase tracking-wider transition-colors duration-200 border-b-2 ${
+                className={`pb-2 text-sm sm:text-base font-['Anton'] uppercase tracking-wider transition-colors duration-200 border-b-2 text-left sm:text-center leading-tight ${
                   activeLeaderTab === "memorial"
                     ? "border-[#F2C21B] text-[#F2C21B]"
                     : "border-transparent text-white/50 hover:text-white"
                 }`}
               >
-                Fundadores, Legado & In Memoriam
+                Fundadores, Legado<br />
+                & In Memoriam
               </button>
             </div>
 
@@ -978,12 +1137,13 @@ export function HomeClient() {
         <section id="noticias" className="py-24 sm:py-32 bg-[#0B0C0E] border-b border-white/10 relative">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8 space-y-16">
             <div className="max-w-3xl" data-reveal>
-              <span className="px-3 py-1 rounded bg-[#F2C21B]/15 text-[#F2C21B] text-xs font-mono font-bold uppercase tracking-wider block w-fit mb-3">
+              <span className="px-2.5 sm:px-3 py-1 rounded bg-[#F2C21B]/15 text-[#F2C21B] text-[9.5px] min-[360px]:text-[10.5px] sm:text-xs font-mono font-bold uppercase tracking-wider block w-fit mb-3 whitespace-nowrap border border-[#F2C21B]/30">
                 (07) Content Hub — Notícias, Eventos e Conteúdos
               </span>
               <h2 className="font-['Anton'] uppercase text-4xl sm:text-6xl lg:text-7xl leading-tight text-white mb-2">
-                <span className="text-[#F2C21B]">18News.</span> A Irmandade<br />
-                em Movimento.
+                <span className="text-[#F2C21B]">18NEWS.</span><br />
+                A IRMANDADE<br />
+                EM MOVIMENTO.
               </h2>
               <p className="text-xs sm:text-sm uppercase tracking-wider text-[#AAA8A1] font-semibold">
                 Notícias, eventos e vozes que mantêm a irmandade conectada e em movimento.
@@ -1015,7 +1175,7 @@ export function HomeClient() {
                     className="px-6 py-3 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-xs rounded transition-colors inline-flex items-center gap-2"
                   >
                     <span>Todas as Notícias</span>
-                    <span>→</span>
+                    <IconArrowRight className="w-3.5 h-3.5 text-black" strokeWidth={2.5} />
                   </Link>
                 </div>
               </div>
@@ -1049,9 +1209,10 @@ export function HomeClient() {
                 <div className="pt-2">
                   <Link
                     href="/18news"
-                    className="w-full py-3 bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider rounded transition-colors block text-center"
+                    className="w-full py-3 bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider rounded transition-colors flex items-center justify-center gap-2 text-center"
                   >
-                    Ver Agenda Completa →
+                    <span>Ver Agenda Completa</span>
+                    <IconArrowRight className="w-3.5 h-3.5 text-white" />
                   </Link>
                 </div>
               </div>
@@ -1066,7 +1227,10 @@ export function HomeClient() {
                   </span>
                   <h5 className="font-['Anton'] text-lg uppercase text-white mb-1">Estradas & Destinos</h5>
                   <p className="text-[11px] text-[#AAA8A1] mb-3">Grandes travessias documentadas pelos pilotos.</p>
-                  <Link href="/18news" className="text-xs font-bold text-[#F2C21B] hover:underline">Ver Expedições →</Link>
+                  <Link href="/18news" className="text-xs font-bold text-[#F2C21B] hover:underline inline-flex items-center gap-1.5">
+                    <span>Ver Expedições</span>
+                    <IconArrowRight className="w-3 h-3 text-[#F2C21B]" />
+                  </Link>
                 </div>
 
                 {/* Radio Live */}
@@ -1167,17 +1331,17 @@ export function HomeClient() {
                   Preencha seus dados de contato, região e dados de motocicleta<br className="hidden sm:inline" />{" "}
                   para que a diretoria regional do seu estado entre em contato.
                 </p>
-                <div className="flex flex-wrap justify-center gap-4">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                   <Link
                     href="/faca-parte"
-                    className="px-10 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-lg rounded shadow-xl inline-flex items-center gap-3 transition-colors duration-200 hover-lift"
+                    className="w-full sm:w-auto px-6 sm:px-10 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-base sm:text-lg rounded shadow-xl inline-flex items-center justify-center gap-2.5 transition-colors duration-200 hover-lift whitespace-nowrap"
                   >
                     <span>Acessar Ficha de Cadastro</span>
-                    <span>↘</span>
+                    <IconArrowRight className="w-5 h-5 text-black shrink-0" strokeWidth={2.5} />
                   </Link>
                   <Link
                     href="/ecossistema"
-                    className="px-8 py-4 bg-[#141517] hover:border-[#F2C21B] border border-white/20 text-white font-bold uppercase text-sm rounded transition-colors duration-200"
+                    className="w-full sm:w-auto px-6 sm:px-8 py-4 bg-[#141517] hover:border-[#F2C21B] border border-white/20 text-white font-bold uppercase text-xs sm:text-sm rounded transition-colors duration-200 inline-flex items-center justify-center whitespace-nowrap"
                   >
                     Conhecer Ecossistema 18
                   </Link>

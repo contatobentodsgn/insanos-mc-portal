@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { IconShield } from "./ui/Icons";
+import { IconShield, IconArrowRight, IconRefresh } from "./ui/Icons";
 
 interface Question {
   id: number;
@@ -193,9 +193,10 @@ export function DnaQuiz() {
               </p>
               <button
                 onClick={handleNext}
-                className="shrink-0 px-6 py-3 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-xs rounded transition-colors duration-200 hover-lift shadow-md"
+                className="shrink-0 px-6 py-3 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-xs rounded transition-colors duration-200 hover-lift shadow-md inline-flex items-center gap-2"
               >
-                {currentStep < QUESTIONS.length - 1 ? "Próxima Pergunta →" : "Ver Resultado Final ↘"}
+                <span>{currentStep < QUESTIONS.length - 1 ? "Próxima Pergunta" : "Ver Resultado Final"}</span>
+                <IconArrowRight className="w-3.5 h-3.5 text-black" strokeWidth={2.5} />
               </button>
             </div>
           )}
@@ -221,15 +222,17 @@ export function DnaQuiz() {
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/faca-parte"
-              className="px-8 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-base rounded transition-colors duration-200 hover-lift shadow-xl"
+              className="px-8 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-base rounded transition-colors duration-200 hover-lift shadow-xl inline-flex items-center gap-2.5 whitespace-nowrap"
             >
-              Preencher Ficha de Ingresso Oficial ↘
+              <span>Preencher Ficha de Ingresso Oficial</span>
+              <IconArrowRight className="w-4 h-4 text-black" strokeWidth={2.5} />
             </Link>
             <button
               onClick={handleReset}
-              className="px-6 py-4 bg-white/10 hover:bg-white/20 text-white rounded text-xs font-bold uppercase tracking-wider transition-colors duration-150"
+              className="px-6 py-4 bg-white/10 hover:bg-white/20 text-white rounded text-xs font-bold uppercase tracking-wider transition-colors duration-150 inline-flex items-center gap-2"
             >
-              Refazer Simulação ↻
+              <IconRefresh className="w-3.5 h-3.5 text-white" />
+              <span>Refazer Simulação</span>
             </button>
           </div>
         </div>

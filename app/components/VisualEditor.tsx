@@ -5,6 +5,7 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 export function VisualEditor() {
   const [isAdminActive, setIsAdminActive] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
+  const [isNoiseActive, setIsNoiseActive] = useState(false);
   const [hasChanges, setHasChanges] = useState(false);
   const [changeCount, setChangeCount] = useState(0);
   const [isSaving, setIsSaving] = useState(false);
@@ -16,6 +17,8 @@ export function VisualEditor() {
     const urlParams = new URLSearchParams(window.location.search);
     const hasEditorParam = urlParams.get("editor") === "true";
     const hasAdminSession = sessionStorage.getItem("insanos_admin_editor") === "true";
+    const savedNoise = localStorage.getItem("insanos_noise_overlay") === "true";
+    setIsNoiseActive(savedNoise);
 
     if (hasEditorParam) {
       sessionStorage.setItem("insanos_admin_editor", "true");
@@ -25,6 +28,17 @@ export function VisualEditor() {
       setIsAdminActive(true);
     }
   }, []);
+
+  const handleToggleNoise = () => {
+    const next = !isNoiseActive;
+    setIsNoiseActive(next);
+    localStorage.setItem("insanos_noise_overlay", String(next));
+    window.dispatchEvent(
+      new CustomEvent("insanos_noise_change", { detail: { enabled: next } })
+    );
+    setToastMessage(next ? "🎞️ Film Grain Ativado!" : "🎞️ Film Grain Desativado!");
+    setTimeout(() => setToastMessage(null), 2500);
+  };
 
   // Generate a stable selector key for any DOM element
   const getElementKey = (el: HTMLElement): string => {
@@ -90,7 +104,7 @@ export function VisualEditor() {
         if (serverData && Object.keys(serverData).length > 0) {
           const localData = localStorage.getItem("insanos_custom_texts");
           const localParsed = localData ? JSON.parse(localData) : {};
-          const merged = { ...serverData, ...localParsed };
+          const merged = { ...localParsed, ...serverData };
           localStorage.setItem("insanos_custom_texts", JSON.stringify(merged));
         }
         applyStoredTexts();
@@ -280,6 +294,18 @@ export function VisualEditor() {
 
             <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
               <button
+                onClick={handleToggleNoise}
+                className={`px-3 py-2 rounded text-xs font-mono font-bold transition-colors flex items-center gap-1.5 ${
+                  isNoiseActive
+                    ? "bg-[#F2C21B] text-black"
+                    : "bg-white/10 hover:bg-white/20 text-white"
+                }`}
+                title="Ativar/Desativar efeito Film Grain"
+              >
+                <span>🎞️ Grain {isNoiseActive ? "ON" : "OFF"}</span>
+              </button>
+
+              <button
                 onClick={handleSaveToProject}
                 disabled={isSaving}
                 className="px-3.5 py-2 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] uppercase text-xs rounded transition-colors flex items-center gap-1.5 shadow-md font-bold"
@@ -332,8 +358,23 @@ export function VisualEditor() {
             </div>
           </div>
         ) : (
-          /* Floating Toggle Button */
+          /* Floating Toggle Buttons */
           <div className="flex items-center gap-2">
+            <button
+              onClick={handleToggleNoise}
+              className={`px-3.5 py-3 rounded-full shadow-2xl backdrop-blur-md flex items-center gap-2 transition-all duration-200 border ${
+                isNoiseActive
+                  ? "bg-[#F2C21B] text-black border-[#F2C21B] font-bold"
+                  : "bg-[#121316]/90 hover:bg-[#1A1C22] text-white/80 hover:text-white border-white/15"
+              }`}
+              title="Ativar/Desativar efeito Film Grain (Noise Overlay)"
+            >
+              <span>🎞️</span>
+              <span className="font-mono text-xs font-bold uppercase">
+                Grain: {isNoiseActive ? "ON" : "OFF"}
+              </span>
+            </button>
+
             <button
               onClick={() => setIsEditing(true)}
               className="group px-4 py-3 bg-[#121316]/90 hover:bg-[#1A1C22] border border-[#F2C21B]/40 hover:border-[#F2C21B] text-white rounded-full shadow-2xl backdrop-blur-md flex items-center gap-2.5 transition-all duration-200 hover:scale-105"

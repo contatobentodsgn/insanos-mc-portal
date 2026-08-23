@@ -19,6 +19,7 @@ import {
   IconLock,
   IconPlay,
   IconPause,
+  IconArrowRight,
 } from "../components/ui/Icons";
 
 // High-Definition Assets for Version 2 (Cinema Edition)
@@ -45,6 +46,7 @@ const ASSETS_V2 = {
       subtitle: "Família",
       desc: "A fé que guia cada curva e o respeito inegociável ao lar e aos filhos.",
       image: "/images/insanos/pillar_01_deus_familia.webp",
+      bgPosition: "center 18%",
     },
     {
       num: "02",
@@ -52,6 +54,7 @@ const ASSETS_V2 = {
       subtitle: "Ajuda",
       desc: "Nosso destino é fazer o bem. Ação humanitária contínua e auxílio direto.",
       image: "/images/insanos/pillar_02_comunidade_ajuda.webp",
+      bgPosition: "center 22%",
     },
     {
       num: "03",
@@ -59,6 +62,7 @@ const ASSETS_V2 = {
       subtitle: "Trabalho",
       desc: "A dignidade que sustenta o homem e a disciplina que forja o respeito.",
       image: "/images/insanos/pillar_03_carater_trabalho.webp",
+      bgPosition: "center 20%",
     },
     {
       num: "04",
@@ -66,6 +70,7 @@ const ASSETS_V2 = {
       subtitle: "Motoclube",
       desc: "Colete não cria irmão. Atitude cria. União e lealdade na rodovia.",
       image: "/images/insanos/pillar_04_estrada_motoclube.webp",
+      bgPosition: "center 24%",
     },
   ],
 
@@ -193,7 +198,7 @@ export function HomeV2Client() {
           <div className="absolute inset-0 bg-[radial-gradient(#ffffff08_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none opacity-40" />
 
           <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-8 py-24 lg:py-36 w-full">
-            <div className="max-w-3xl">
+            <div className="max-w-4xl">
               <div className="flex items-center gap-3 mb-6">
                 <span className="w-10 h-[2px] bg-[#F2C21B]" />
                 <p className="text-xs sm:text-sm uppercase font-extrabold tracking-[0.25em] text-[#F2C21B]">
@@ -210,20 +215,21 @@ export function HomeV2Client() {
                 Nosso destino é fazer o bem.
               </div>
 
-              <div className="flex flex-wrap items-center gap-4 sm:gap-6 mt-4">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-6">
                 <Link
                   href="/faca-parte"
-                  className="px-8 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider text-lg uppercase rounded shadow-[0_0_30px_rgba(242,194,27,0.35)] transition-colors duration-200 inline-flex items-center gap-3 hover-lift"
+                  className="w-full sm:w-auto min-h-[52px] px-8 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider text-base sm:text-lg uppercase rounded-xl shadow-[0_0_30px_rgba(242,194,27,0.35)] transition-all duration-200 inline-flex items-center justify-center gap-3 active:scale-[0.98]"
                 >
-                  <span>Faça Parte</span>
-                  <span className="font-sans font-extrabold text-xl">↘</span>
+                  <span>Faça Parte da Irmandade</span>
+                  <IconArrowRight className="w-5 h-5 text-black shrink-0" strokeWidth={2.5} />
                 </Link>
 
                 <Link
                   href="/historia"
-                  className="px-6 py-4 border border-white/30 hover:border-[#F2C21B] bg-[#121314]/80 text-white hover:text-[#F2C21B] font-bold text-sm uppercase tracking-wider rounded transition-colors duration-200"
+                  className="w-full sm:w-auto min-h-[52px] px-6 py-4 border border-white/30 hover:border-[#F2C21B] bg-[#121314]/80 text-white hover:text-[#F2C21B] font-bold text-xs sm:text-sm uppercase tracking-wider rounded-xl transition-all duration-200 inline-flex items-center justify-center gap-2 active:scale-[0.98]"
                 >
-                  Conheça Nossa História
+                  <span>Conheça Nossa História</span>
+                  <IconArrowRight className="w-4 h-4 text-inherit" />
                 </Link>
               </div>
             </div>
@@ -363,14 +369,17 @@ export function HomeV2Client() {
                       key={pillar.num}
                       onMouseEnter={() => setActivePillarHover(idx)}
                       onClick={() => setActivePillarHover(idx)}
-                      className={`relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 ease-out bg-cover bg-center border ${
+                      className={`relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 ease-out bg-cover border ${
                         isHovered
-                          ? "sm:flex-[2.5] border-[#F2C21B] shadow-[0_0_30px_rgba(242,194,27,0.2)]"
-                          : "sm:flex-1 border-white/10 opacity-70 hover:opacity-90"
+                          ? "min-h-[290px] sm:min-h-0 sm:flex-[2.6] border-[#F2C21B] shadow-[0_0_30px_rgba(242,194,27,0.2)]"
+                          : "min-h-[145px] sm:min-h-0 sm:flex-1 border-white/10 opacity-80 hover:opacity-100"
                       }`}
-                      style={{ backgroundImage: `url(${pillar.image})` }}
+                      style={{
+                        backgroundImage: `url(${pillar.image})`,
+                        backgroundPosition: pillar.bgPosition || "center center",
+                      }}
                     >
-                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-transparent pointer-events-none" />
                       <div className="absolute bottom-6 left-6 right-6">
                         <span className="font-['Anton'] text-4xl sm:text-5xl text-[#F2C21B] block mb-1">
                           {pillar.num}
@@ -403,13 +412,13 @@ export function HomeV2Client() {
                   <span className="text-[#F2C21B]">Uma Só Irmandade.</span>
                 </h2>
 
-                <div className="flex flex-wrap gap-2 text-xs font-mono font-bold text-white/80 py-2 border-y border-white/10">
+                <div className="flex items-center justify-between text-[9.5px] min-[370px]:text-[11px] sm:text-xs font-mono font-bold text-white/80 py-2 border-y border-white/10 whitespace-nowrap">
                   <span>01 DEUS</span>
-                  <span>•</span>
+                  <span className="text-[#F2C21B]">•</span>
                   <span>02 FAMÍLIA</span>
-                  <span>•</span>
+                  <span className="text-[#F2C21B]">•</span>
                   <span>03 TRABALHO</span>
-                  <span>•</span>
+                  <span className="text-[#F2C21B]">•</span>
                   <span>04 MOTOCLUBE</span>
                 </div>
 
@@ -454,7 +463,8 @@ export function HomeV2Client() {
                 </span>
               </div>
               <h2 className="font-['Anton'] uppercase text-4xl sm:text-6xl lg:text-7xl leading-tight text-white mb-3">
-                Rompendo paradigmas<br />
+                Rompendo<br />
+                paradigmas<br />
                 <span className="text-[#F2C21B]">desde 2015.</span>
               </h2>
               <p className="text-sm uppercase tracking-widest text-[#AAA8A1] font-bold">
@@ -542,7 +552,7 @@ export function HomeV2Client() {
                     className="px-6 py-3.5 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-sm rounded transition-colors duration-200 inline-flex items-center gap-2 hover-lift"
                   >
                     <span>Conheça Nossas Ações</span>
-                    <span>↘</span>
+                    <IconArrowRight className="w-4 h-4 text-black" strokeWidth={2.5} />
                   </Link>
                 </div>
               </div>
@@ -700,12 +710,13 @@ export function HomeV2Client() {
         <section className="py-24 sm:py-32 bg-[#0B0C0E] border-b border-white/10 relative">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8">
             <div className="max-w-3xl mb-12" data-reveal>
-              <span className="px-3 py-1 rounded bg-[#F2C21B]/15 text-[#F2C21B] text-xs font-mono font-bold uppercase tracking-wider block w-fit mb-3">
+              <span className="px-2.5 sm:px-3 py-1 rounded bg-[#F2C21B]/15 text-[#F2C21B] text-[9.5px] min-[360px]:text-[10.5px] sm:text-xs font-mono font-bold uppercase tracking-wider block w-fit mb-3 whitespace-nowrap border border-[#F2C21B]/30">
                 (07) Content Hub — Notícias, Eventos e Conteúdos
               </span>
               <h2 className="font-['Anton'] uppercase text-4xl sm:text-6xl lg:text-7xl leading-tight text-white mb-2">
-                <span className="text-[#F2C21B]">18News.</span> A Irmandade<br />
-                em Movimento.
+                <span className="text-[#F2C21B]">18NEWS.</span><br />
+                A IRMANDADE<br />
+                EM MOVIMENTO.
               </h2>
               <p className="text-xs sm:text-sm uppercase tracking-wider text-[#AAA8A1] font-semibold">
                 Notícias, eventos e vozes que mantêm a irmandade conectada e em movimento.
@@ -912,7 +923,7 @@ export function HomeV2Client() {
                     className="flex-1 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-base rounded-xl transition-colors duration-200 hover-lift shadow-xl flex items-center justify-center gap-2"
                   >
                     <span>Faça Parte</span>
-                    <span>↘</span>
+                    <IconArrowRight className="w-4 h-4 text-black" strokeWidth={2.5} />
                   </button>
                   <a
                     href="https://wa.me/5511988881818?text=Ola%2C%20gostaria%20de%20saber%20como%20ingressar%20no%20Insanos%20MC"

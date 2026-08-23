@@ -1,187 +1,234 @@
-import React, { useEffect, useRef, useState, useCallback } from "react";
+"use client";
+
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import * as d3 from "d3";
 import {
+  IconGlobe,
+  IconArrowRight,
   IconPlus,
   IconMinus,
   IconRefresh,
-  IconPlay,
   IconPause,
-  IconGlobe,
+  IconPlay,
+  IconRoute,
+  IconPin,
 } from "./ui/Icons";
 
-export interface SedeHub {
+interface SedeHub {
   id: string;
   name: string;
-  state: string;
-  country: string;
   badge: string;
-  faccoesCount: number;
-  membersCount: string;
+  coords: [number, number]; // [Longitude, Latitude]
+  country: string;
+  state: string;
   address: string;
-  leader: string;
   meetingDay: string;
-  coords: [number, number]; // [longitude, latitude]
+  faccoesNum: string;
+  faccoesLabel: string;
+  membersNum: string;
+  membersLabel: string;
+  leader: string;
   isMatriz?: boolean;
 }
 
-export const SEDES_DATA: SedeHub[] = [
+const SEDES_DATA: SedeHub[] = [
   {
-    id: "sp-matriz",
-    name: "Matriz Original de OZ",
-    state: "SP",
-    country: "Brasil",
-    badge: "Berço Oficial · Matriz Mundial",
-    faccoesCount: 84,
-    membersCount: "2.800+",
-    address: "Av. dos Autonomistas — Osasco / SP",
-    leader: "Comando Central Mundial",
-    meetingDay: "Quartas e Sábados às 20h",
+    id: "osasco",
+    name: "Sede Matriz Mundial — Osasco",
+    badge: "Matriz Original de OZ",
     coords: [-46.7917, -23.5329],
+    country: "Brasil",
+    state: "SP",
+    address: "Av. dos Autonomistas, 1818 — Osasco/SP",
+    meetingDay: "Quintas-feiras às 20h00",
+    faccoesNum: "480+",
+    faccoesLabel: "Facções Globais",
+    membersNum: "12.000+",
+    membersLabel: "Integrantes",
+    leader: "Comando Nacional",
     isMatriz: true,
   },
   {
-    id: "rj-divisao",
-    name: "Divisão Guanabara",
-    state: "RJ",
+    id: "sp-zl",
+    name: "Sub-Sede Zona Leste — São Paulo",
+    badge: "Divisão Capital Z/L",
+    coords: [-46.5422, -23.5412],
     country: "Brasil",
-    badge: "Regional Sudeste",
-    faccoesCount: 42,
-    membersCount: "1.400+",
-    address: "Av. Brasil / Barra da Tijuca — Rio de Janeiro / RJ",
-    leader: "Dir. Regional RJ",
-    meetingDay: "Quintas às 19h30",
+    state: "SP",
+    address: "Rua Tuiuti, 1200 — Tatuapé, São Paulo/SP",
+    meetingDay: "Terças-feiras às 19h30",
+    faccoesNum: "42",
+    faccoesLabel: "Facções Regionais",
+    membersNum: "850+",
+    membersLabel: "Integrantes",
+    leader: "Diretoria Regional Z/L",
+  },
+  {
+    id: "rio-guanabara",
+    name: "Sede Regional Rio de Janeiro",
+    badge: "Divisão Guanabara",
     coords: [-43.1729, -22.9068],
+    country: "Brasil",
+    state: "RJ",
+    address: "Av. das Américas, 4500 — Barra da Tijuca, Rio de Janeiro/RJ",
+    meetingDay: "Quartas-feiras às 20h00",
+    faccoesNum: "38",
+    faccoesLabel: "Facções no RJ",
+    membersNum: "680+",
+    membersLabel: "Integrantes",
+    leader: "Diretoria Estadual RJ",
   },
   {
-    id: "mg-divisao",
-    name: "Divisão Minas Gerais",
-    state: "MG",
-    country: "Brasil",
-    badge: "Regional Sudeste",
-    faccoesCount: 38,
-    membersCount: "1.100+",
-    address: "Av. do Contorno — Belo Horizonte / MG",
-    leader: "Dir. Regional MG",
-    meetingDay: "Terças e Sábados às 20h",
+    id: "bh-savassi",
+    name: "Sede Regional Minas Gerais",
+    badge: "Divisão Minas",
     coords: [-43.9378, -19.9208],
+    country: "Brasil",
+    state: "MG",
+    address: "Rua Fernandes Tourinho, 300 — Savassi, Belo Horizonte/MG",
+    meetingDay: "Quintas-feiras às 20h00",
+    faccoesNum: "29",
+    faccoesLabel: "Facções em MG",
+    membersNum: "520+",
+    membersLabel: "Integrantes",
+    leader: "Diretoria Estadual MG",
   },
   {
-    id: "sul-curitiba",
-    name: "Divisão Sul / Paraná",
-    state: "PR",
-    country: "Brasil",
-    badge: "Regional Sul",
-    faccoesCount: 32,
-    membersCount: "950+",
-    address: "Curitiba / PR",
-    leader: "Dir. Regional Sul",
-    meetingDay: "Quartas às 20h",
+    id: "curitiba-batel",
+    name: "Sede Regional Paraná",
+    badge: "Divisão Paraná",
     coords: [-49.2731, -25.4284],
-  },
-  {
-    id: "sul-poa",
-    name: "Divisão Rio Grande do Sul",
-    state: "RS",
     country: "Brasil",
-    badge: "Regional Sul",
-    faccoesCount: 26,
-    membersCount: "820+",
-    address: "Porto Alegre / RS",
-    leader: "Dir. Regional RS",
-    meetingDay: "Sextas às 20h",
-    coords: [-51.2177, -30.0346],
+    state: "PR",
+    address: "Av. do Batel, 1500 — Batel, Curitiba/PR",
+    meetingDay: "Sextas-feiras às 19h30",
+    faccoesNum: "24",
+    faccoesLabel: "Facções no Sul",
+    membersNum: "410+",
+    membersLabel: "Integrantes",
+    leader: "Diretoria Regional Sul",
   },
   {
-    id: "nordeste-salvador",
-    name: "Divisão Bahia & Nordeste",
+    id: "salvador-bahia",
+    name: "Sede Regional Bahia",
+    badge: "Divisão Bahia",
+    coords: [-38.5108, -12.9714],
+    country: "Brasil",
     state: "BA",
-    country: "Brasil",
-    badge: "Regional Nordeste",
-    faccoesCount: 45,
-    membersCount: "1.300+",
-    address: "Salvador / BA",
-    leader: "Dir. Regional Nordeste",
-    meetingDay: "Sábados às 18h",
-    coords: [-38.5016, -12.9777],
+    address: "Av. Octávio Mangabeira, 2200 — Pituba, Salvador/BA",
+    meetingDay: "Sábados às 18h00",
+    faccoesNum: "19",
+    faccoesLabel: "Facções Nordeste",
+    membersNum: "340+",
+    membersLabel: "Integrantes",
+    leader: "Diretoria Regional Nordeste",
   },
   {
-    id: "centro-brasilia",
-    name: "Divisão Distrito Federal & Centro",
-    state: "DF",
-    country: "Brasil",
-    badge: "Regional Centro-Oeste",
-    faccoesCount: 28,
-    membersCount: "750+",
-    address: "Brasília / DF",
-    leader: "Dir. Regional DF/GO",
-    meetingDay: "Quintas às 20h",
+    id: "brasilia-df",
+    name: "Sede Regional Distrito Federal",
+    badge: "Divisão Planalto",
     coords: [-47.9292, -15.7801],
-  },
-  {
-    id: "norte-manaus",
-    name: "Divisão Norte / Amazônia",
-    state: "AM",
     country: "Brasil",
-    badge: "Regional Norte",
-    faccoesCount: 18,
-    membersCount: "480+",
-    address: "Manaus / AM",
-    leader: "Dir. Regional Norte",
-    meetingDay: "Sábados às 19h",
-    coords: [-60.0217, -3.119],
+    state: "DF",
+    address: "SIA Trecho 3, Lote 620 — Brasília/DF",
+    meetingDay: "Quintas-feiras às 20h00",
+    faccoesNum: "16",
+    faccoesLabel: "Facções no DF",
+    membersNum: "290+",
+    membersLabel: "Integrantes",
+    leader: "Diretoria Regional Centro-Oeste",
   },
   {
-    id: "europa-lisboa",
-    name: "Divisão Europa Ocidental",
-    state: "PT",
-    country: "Portugal",
-    badge: "Divisão Internacional",
-    faccoesCount: 16,
-    membersCount: "450+",
-    address: "Lisboa / Porto — Portugal",
-    leader: "Dir. Regional Europa",
-    meetingDay: "Sábados às 17h",
+    id: "manaus-am",
+    name: "Sede Regional Amazonas",
+    badge: "Divisão Amazônia",
+    coords: [-60.025, -3.1019],
+    country: "Brasil",
+    state: "AM",
+    address: "Av. Coronel Teixeira, 1400 — Ponta Negra, Manaus/AM",
+    meetingDay: "Sábados às 19h00",
+    faccoesNum: "12",
+    faccoesLabel: "Facções no Norte",
+    membersNum: "220+",
+    membersLabel: "Integrantes",
+    leader: "Diretoria Regional Norte",
+  },
+  {
+    id: "porto-alegre",
+    name: "Sede Regional Rio Grande do Sul",
+    badge: "Divisão Pampa",
+    coords: [-51.2177, -30.0346],
+    country: "Brasil",
+    state: "RS",
+    address: "Av. Ipiranga, 5200 — Porto Alegre/RS",
+    meetingDay: "Sextas-feiras às 20h00",
+    faccoesNum: "22",
+    faccoesLabel: "Facções no RS",
+    membersNum: "380+",
+    membersLabel: "Integrantes",
+    leader: "Diretoria Regional Sul",
+  },
+  // International Hubs
+  {
+    id: "lisboa-pt",
+    name: "Sede Internacional Portugal",
+    badge: "Divisão Lusitana",
     coords: [-9.1393, 38.7223],
+    country: "Portugal",
+    state: "PT",
+    address: "Av. da Liberdade, 245 — Lisboa, Portugal",
+    meetingDay: "Sextas-feiras às 20h00 (Hora Local)",
+    faccoesNum: "8",
+    faccoesLabel: "Facções na Europa",
+    membersNum: "180+",
+    membersLabel: "Integrantes",
+    leader: "Comando Europa",
   },
   {
-    id: "usa-miami",
-    name: "Divisão North America",
-    state: "US",
+    id: "orlando-usa",
+    name: "Sede Internacional Estados Unidos",
+    badge: "Divisão North America",
+    coords: [-81.3792, 28.5383],
     country: "Estados Unidos",
-    badge: "Divisão Internacional",
-    faccoesCount: 14,
-    membersCount: "420+",
-    address: "Miami, Florida — USA",
-    leader: "Dir. North America",
-    meetingDay: "Domingos às 11h",
-    coords: [-80.1918, 25.7617],
+    state: "US",
+    address: "International Dr, 8000 — Orlando, FL / USA",
+    meetingDay: "Sábados às 19h00 (EST)",
+    faccoesNum: "6",
+    faccoesLabel: "Facções nos EUA",
+    membersNum: "140+",
+    membersLabel: "Integrantes",
+    leader: "Comando América do Norte",
   },
   {
-    id: "africa-capetown",
-    name: "Divisão África do Sul",
-    state: "ZA",
+    id: "luanda-ao",
+    name: "Sede Internacional Angola",
+    badge: "Divisão África",
+    coords: [13.2343, -8.839],
+    country: "Angola",
+    state: "AO",
+    address: "Marginal de Luanda, Baía — Luanda, Angola",
+    meetingDay: "Sábados às 17h00",
+    faccoesNum: "4",
+    faccoesLabel: "Facções em África",
+    membersNum: "95+",
+    membersLabel: "Integrantes",
+    leader: "Comando África",
+  },
+  {
+    id: "johannesburg-za",
+    name: "Sede Internacional África do Sul",
+    badge: "Divisão Rainbow",
+    coords: [28.0473, -26.2041],
     country: "África do Sul",
-    badge: "Divisão Internacional",
-    faccoesCount: 10,
-    membersCount: "290+",
-    address: "Cape Town — África do Sul",
-    leader: "Dir. África do Sul",
-    meetingDay: "Sábados às 16h",
-    coords: [18.4241, -33.9249],
-  },
-  {
-    id: "oceania-sydney",
-    name: "Divisão Oceania",
-    state: "AU",
-    country: "Austrália",
-    badge: "Divisão Internacional",
-    faccoesCount: 8,
-    membersCount: "210+",
-    address: "Sydney — Austrália",
-    leader: "Dir. Oceania",
-    meetingDay: "Domingos às 10h",
-    coords: [151.2093, -33.8688],
+    state: "ZA",
+    address: "Sandton City, Rivonia Rd — Joanesburgo, África do Sul",
+    meetingDay: "Domingos às 16h00",
+    faccoesNum: "3",
+    faccoesLabel: "Facções na África",
+    membersNum: "70+",
+    membersLabel: "Integrantes",
+    leader: "Diretoria África do Sul",
   },
 ];
 
@@ -191,8 +238,14 @@ export function InteractiveMap() {
   const [activeFilter, setActiveFilter] = useState<"todos" | "brasil" | "internacional">("todos");
   const [isLoading, setIsLoading] = useState(true);
   const [isAutoRotating, setIsAutoRotating] = useState(true);
+  const isAutoRotatingRef = useRef<boolean>(true);
   const [zoomLevel, setZoomLevel] = useState(1);
   const [hoveredHub, setHoveredHub] = useState<SedeHub | null>(null);
+
+  // Sync ref for smooth animation loop without tearing down canvas
+  useEffect(() => {
+    isAutoRotatingRef.current = isAutoRotating;
+  }, [isAutoRotating]);
 
   // References for animation loop and d3 objects
   const projectionRef = useRef<d3.GeoProjection | null>(null);
@@ -219,6 +272,7 @@ export function InteractiveMap() {
   const focusOnSede = useCallback((sede: SedeHub, targetZoom = 2.0) => {
     setSelectedHub(sede);
     setIsAutoRotating(false);
+    isAutoRotatingRef.current = false;
 
     // Target rotation is negative coords to bring to center
     const targetLng = -sede.coords[0];
@@ -231,6 +285,8 @@ export function InteractiveMap() {
   }, []);
 
   const handleZoom = (delta: number) => {
+    setIsAutoRotating(false);
+    isAutoRotatingRef.current = false;
     if (!projectionRef.current || !baseRadiusRef.current) return;
     const currentScale = projectionRef.current.scale();
     const newScale = Math.max(
@@ -242,9 +298,6 @@ export function InteractiveMap() {
 
   const handleReset = () => {
     focusOnSede(SEDES_DATA[0], 1.2);
-    setTimeout(() => {
-      setIsAutoRotating(true);
-    }, 1200);
   };
 
   // Filter button handlers
@@ -253,11 +306,17 @@ export function InteractiveMap() {
     if (filter === "brasil") {
       focusOnSede(SEDES_DATA[0], 1.5);
     } else if (filter === "internacional") {
-      focusOnSede(SEDES_DATA[8], 1.4); // Focus Lisbon/Europe
+      focusOnSede(SEDES_DATA[9], 1.4); // Focus Lisbon/Europe
     } else {
       handleReset();
     }
   };
+
+  const filteredHubs = SEDES_DATA.filter((s) => {
+    if (activeFilter === "brasil") return s.country === "Brasil";
+    if (activeFilter === "internacional") return s.country !== "Brasil";
+    return true;
+  });
 
   useEffect(() => {
     if (!canvasRef.current) return;
@@ -268,7 +327,7 @@ export function InteractiveMap() {
 
     const rect = canvas.getBoundingClientRect();
     const width = rect.width || 640;
-    const height = 480;
+    const height = Math.max(380, rect.height || 460);
     const dpr = window.devicePixelRatio || 1;
 
     canvas.width = width * dpr;
@@ -277,6 +336,14 @@ export function InteractiveMap() {
 
     const radius = Math.min(width, height) / 2.3;
     baseRadiusRef.current = radius;
+    let isTouchActive = false;
+
+    // Inertia & momentum physics variables
+    let velocityX = 0;
+    let velocityY = 0;
+    let lastTime = 0;
+    let lastX = 0;
+    let lastY = 0;
 
     const projection = d3
       .geoOrthographic()
@@ -385,9 +452,18 @@ export function InteractiveMap() {
           targetRotationRef.current = null;
         }
         projection.rotate(rotationRef.current);
-      } else if (isAutoRotating && !isDraggingRef.current) {
-        rotationRef.current[0] += 0.2;
-        projection.rotate(rotationRef.current);
+      } else if (!isDraggingRef.current && !isTouchActive) {
+        // Natural Inertia / Momentum Decay with physics friction (0.93)
+        if (Math.abs(velocityX) > 0.02 || Math.abs(velocityY) > 0.02) {
+          rotationRef.current[0] += velocityX;
+          rotationRef.current[1] = Math.max(-85, Math.min(85, rotationRef.current[1] - velocityY));
+          velocityX *= 0.93;
+          velocityY *= 0.93;
+          projection.rotate(rotationRef.current);
+        } else if (isAutoRotatingRef.current) {
+          rotationRef.current[0] += 0.18;
+          projection.rotate(rotationRef.current);
+        }
       }
 
       if (targetScaleRef.current) {
@@ -411,92 +487,79 @@ export function InteractiveMap() {
         currentScale * 0.85,
         center[0],
         center[1],
-        currentScale * 1.2
+        currentScale * 1.25
       );
-      haloGrad.addColorStop(0, "rgba(242, 194, 27, 0.15)");
+      haloGrad.addColorStop(0, "rgba(242, 194, 27, 0.16)");
       haloGrad.addColorStop(0.4, "rgba(242, 194, 27, 0.03)");
       haloGrad.addColorStop(1, "rgba(0, 0, 0, 0)");
 
       context.fillStyle = haloGrad;
       context.beginPath();
-      context.arc(center[0], center[1], currentScale * 1.2, 0, 2 * Math.PI);
+      context.arc(center[0], center[1], currentScale * 1.25, 0, 2 * Math.PI);
       context.fill();
 
-      // 2. Dark Globe Background Body
+      // 2. Base Ocean Sphere (Night Dark Metal)
       context.beginPath();
       context.arc(center[0], center[1], currentScale, 0, 2 * Math.PI);
-      context.fillStyle = "#0A0A0C";
+      context.fillStyle = "#08090C";
       context.fill();
-      context.strokeStyle = "rgba(242, 194, 27, 0.4)";
-      context.lineWidth = 1.5 * Math.min(1.5, scaleFactor);
+      context.strokeStyle = "rgba(242, 194, 27, 0.45)";
+      context.lineWidth = 1.5;
       context.stroke();
 
-      // 3. Graticule
-      const graticule = d3.geoGraticule().step([20, 20]);
+      // 3. Grid Graticules
+      const graticule = d3.geoGraticule();
       context.beginPath();
       path(graticule());
-      context.strokeStyle = "rgba(255, 255, 255, 0.07)";
-      context.lineWidth = 1;
+      context.strokeStyle = "rgba(255, 255, 255, 0.06)";
+      context.lineWidth = 0.8;
       context.stroke();
 
-      // 4. Land Features Outline & Halftone Dots
+      // 4. Landmass Outlines & Halftone Dotted Matrix
       if (landFeaturesRef.current) {
         context.beginPath();
         landFeaturesRef.current.features.forEach((feature: any) => {
           path(feature);
         });
         context.strokeStyle = "rgba(242, 194, 27, 0.35)";
-        context.lineWidth = 1.2 * Math.min(1.5, scaleFactor);
+        context.lineWidth = 1.0;
         context.stroke();
 
-        // Render Halftone dots
-        allDotsRef.current.forEach(([lng, lat]) => {
-          const pt = projection([lng, lat]);
+        // Draw Halftone Dotted Matrix
+        allDotsRef.current.forEach((dot) => {
+          const projected = projection(dot);
           if (
-            pt &&
-            pt[0] >= 0 &&
-            pt[0] <= width &&
-            pt[1] >= 0 &&
-            pt[1] <= height
+            projected &&
+            projected[0] >= 0 &&
+            projected[0] <= width &&
+            projected[1] >= 0 &&
+            projected[1] <= height
           ) {
             context.beginPath();
-            context.arc(pt[0], pt[1], 1.1 * Math.min(2, scaleFactor), 0, 2 * Math.PI);
-            context.fillStyle = "rgba(180, 180, 185, 0.55)";
+            context.arc(projected[0], projected[1], 1.15, 0, 2 * Math.PI);
+            context.fillStyle = "rgba(220, 220, 220, 0.65)";
             context.fill();
           }
         });
       }
 
-      // 5. Great-Circle Golden Arcs from Matriz in Osasco to International Hubs
-      const matriz = SEDES_DATA[0];
-      SEDES_DATA.filter((s) => s.country !== "Brasil").forEach((dest) => {
-        const interpolator = d3.geoInterpolate(matriz.coords, dest.coords);
-        const arcPoints: [number, number][] = [];
-        for (let t = 0; t <= 1; t += 0.04) {
-          arcPoints.push(interpolator(t));
-        }
-
+      // 5. Inter-Continental Route Curves (Osasco Hub to World)
+      const osasco = SEDES_DATA[0];
+      SEDES_DATA.slice(1).forEach((dest) => {
+        const link: any = { type: "LineString", coordinates: [osasco.coords, dest.coords] };
         context.beginPath();
-        let started = false;
-        arcPoints.forEach((p) => {
-          const pt = projection(p);
-          if (pt) {
-            if (!started) {
-              context.moveTo(pt[0], pt[1]);
-              started = true;
-            } else {
-              context.lineTo(pt[0], pt[1]);
-            }
-          }
-        });
-        context.strokeStyle = "rgba(242, 194, 27, 0.35)";
-        context.lineWidth = 1.5;
+        path(link);
+        context.strokeStyle =
+          dest.country === "Brasil"
+            ? "rgba(242, 194, 27, 0.35)"
+            : "rgba(255, 255, 255, 0.25)";
+        context.lineWidth = dest.country === "Brasil" ? 1.4 : 1.0;
         context.setLineDash([4, 4]);
         context.stroke();
         context.setLineDash([]);
       });
 
-      // 6. Georreferenced Sede Pins (Directly Clickable & Interactive)
+      // 6. Georreferenced Sede Pins (Directly Clickable & Interactive with Enhanced Touch Hit Area)
       const centerCoords: [number, number] = [-rotationRef.current[0], -rotationRef.current[1]];
 
       SEDES_DATA.forEach((sede) => {
@@ -511,22 +574,22 @@ export function InteractiveMap() {
         const isHovered = hoveredHubRef.current?.id === sede.id;
         const [px, py] = pt;
 
-        // Animated Golden Pulsing Rings
+        // Animated Golden Pulsing Ripple on Active Sede
         if (sede.isMatriz || isSelected || isHovered) {
-          const pulseRadius = 14 + Math.sin(pulseStep) * 6;
+          const pulseRadius = (isSelected ? 16 : 14) + Math.sin(pulseStep) * 6;
           context.beginPath();
           context.arc(px, py, pulseRadius, 0, 2 * Math.PI);
           context.strokeStyle = isSelected
-            ? "rgba(242, 194, 27, 0.9)"
+            ? "rgba(242, 194, 27, 0.95)"
             : isHovered
-            ? "rgba(255, 255, 255, 0.8)"
+            ? "rgba(255, 255, 255, 0.85)"
             : "rgba(242, 194, 27, 0.4)";
-          context.lineWidth = 1.8;
+          context.lineWidth = isSelected ? 2.2 : 1.6;
           context.stroke();
         }
 
-        // Pin Body Badge
-        const pinSize = isSelected ? 14 : isHovered ? 13 : sede.isMatriz ? 11 : 9.5;
+        // Pin Body Badge (Larger and clearer for mobile screens)
+        const pinSize = isSelected ? 15 : isHovered ? 13.5 : sede.isMatriz ? 12 : 10;
         context.beginPath();
         context.arc(px, py, pinSize, 0, 2 * Math.PI);
         context.fillStyle = isSelected
@@ -542,7 +605,7 @@ export function InteractiveMap() {
         context.stroke();
 
         // Pin Code Text (e.g. SP, RJ, PT, US)
-        context.font = `bold ${pinSize > 11 ? 9.5 : 8.5}px 'Anton', sans-serif`;
+        context.font = `bold ${pinSize > 11 ? 10 : 8.5}px 'Anton', sans-serif`;
         context.fillStyle = isSelected || isHovered || sede.isMatriz ? "#000000" : "#F2C21B";
         context.textAlign = "center";
         context.textBaseline = "middle";
@@ -555,23 +618,23 @@ export function InteractiveMap() {
           (scaleFactor > 2.2 && (sede.isMatriz || sede.country !== "Brasil"))
         ) {
           const label = `${sede.name} ${isHovered && !isSelected ? "👆" : ""}`;
-          context.font = "bold 10.5px monospace";
+          context.font = "bold 11px monospace";
           const textWidth = context.measureText(label).width;
 
           context.fillStyle = isSelected
-            ? "rgba(242, 194, 27, 0.95)"
+            ? "rgba(242, 194, 27, 0.96)"
             : isHovered
-            ? "rgba(255, 255, 255, 0.95)"
-            : "rgba(0, 0, 0, 0.85)";
-          context.fillRect(px - textWidth / 2 - 8, py - pinSize - 22, textWidth + 16, 18);
-          context.strokeStyle = isSelected ? "rgba(0, 0, 0, 0.3)" : "rgba(242, 194, 27, 0.5)";
-          context.lineWidth = 1;
-          context.strokeRect(px - textWidth / 2 - 8, py - pinSize - 22, textWidth + 16, 18);
+            ? "rgba(255, 255, 255, 0.96)"
+            : "rgba(0, 0, 0, 0.88)";
+          context.fillRect(px - textWidth / 2 - 8, py - pinSize - 24, textWidth + 16, 20);
+          context.strokeStyle = isSelected ? "rgba(0, 0, 0, 0.3)" : "rgba(242, 194, 27, 0.6)";
+          context.lineWidth = 1.2;
+          context.strokeRect(px - textWidth / 2 - 8, py - pinSize - 24, textWidth + 16, 20);
 
           context.fillStyle = isSelected ? "#000000" : isHovered ? "#000000" : "#FFFFFF";
           context.textAlign = "center";
           context.textBaseline = "middle";
-          context.fillText(label, px, py - pinSize - 13);
+          context.fillText(label, px, py - pinSize - 14);
         }
       });
 
@@ -580,44 +643,54 @@ export function InteractiveMap() {
 
     animFrame = requestAnimationFrame(render);
 
-    // Mouse drag & click interaction
+    // Mouse & Touch Drag Interaction
     let startX = 0;
     let startY = 0;
     let startRot: [number, number] = [0, 0];
     let isMouseDown = false;
 
-    // Helper: Find pin under mouse cursor
-    const getPinUnderCursor = (clientX: number, clientY: number): SedeHub | null => {
+    // Helper: Find pin under mouse/touch cursor with inflated hit target for mobile fingers (36px)
+    const getPinUnderCursor = (clientX: number, clientY: number, isTouch = false): SedeHub | null => {
       const rect = canvas.getBoundingClientRect();
       const clickX = clientX - rect.left;
       const clickY = clientY - rect.top;
       const centerCoords: [number, number] = [-rotationRef.current[0], -rotationRef.current[1]];
+
+      // Inflated hitbox: 36px on touch, 24px on mouse
+      const hitRadius = isTouch ? 36 : 24;
+      let closest: SedeHub | null = null;
+      let minDistance = hitRadius;
 
       for (const sede of SEDES_DATA) {
         if (d3.geoDistance(sede.coords, centerCoords) < Math.PI / 2) {
           const pt = projection(sede.coords);
           if (pt) {
             const dist = Math.hypot(pt[0] - clickX, pt[1] - clickY);
-            if (dist < 22) {
-              return sede;
+            if (dist < minDistance) {
+              minDistance = dist;
+              closest = sede;
             }
           }
         }
       }
-      return null;
+      return closest;
     };
 
     const onMouseDown = (e: MouseEvent) => {
       isMouseDown = true;
       isDraggingRef.current = false;
+      isAutoRotatingRef.current = false;
       setIsAutoRotating(false);
+      targetRotationRef.current = null;
+      velocityX = 0;
+      velocityY = 0;
       startX = e.clientX;
       startY = e.clientY;
       startRot = [...rotationRef.current];
     };
 
     const onMouseMove = (e: MouseEvent) => {
-      const hovered = getPinUnderCursor(e.clientX, e.clientY);
+      const hovered = getPinUnderCursor(e.clientX, e.clientY, false);
       setHoveredHub(hovered);
       canvas.style.cursor = hovered ? "pointer" : isMouseDown ? "grabbing" : "grab";
 
@@ -640,8 +713,7 @@ export function InteractiveMap() {
 
     const onMouseUp = (e: MouseEvent) => {
       if (isMouseDown && !isDraggingRef.current) {
-        // Pure click without dragging: check if clicked on a pin
-        const clicked = getPinUnderCursor(e.clientX, e.clientY);
+        const clicked = getPinUnderCursor(e.clientX, e.clientY, false);
         if (clicked) {
           focusOnSede(clicked, 2.2);
         }
@@ -649,6 +721,100 @@ export function InteractiveMap() {
       isMouseDown = false;
       isDraggingRef.current = false;
       canvas.style.cursor = "grab";
+    };
+
+    // Touch Drag, Momentum and Pinch-to-Zoom with high precision for mobile smartphones
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchStartTime = 0;
+    let initialPinchDist = 0;
+    let initialPinchScale = 0;
+
+    const onTouchStart = (e: TouchEvent) => {
+      isTouchActive = true;
+      isAutoRotatingRef.current = false;
+      setIsAutoRotating(false);
+      velocityX = 0;
+      velocityY = 0;
+      targetRotationRef.current = null;
+
+      if (e.touches.length === 1) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+        lastX = touchStartX;
+        lastY = touchStartY;
+        lastTime = performance.now();
+        touchStartTime = Date.now();
+        startRot = [...rotationRef.current];
+        isDraggingRef.current = false;
+      } else if (e.touches.length === 2) {
+        initialPinchDist = Math.hypot(
+          e.touches[0].clientX - e.touches[1].clientX,
+          e.touches[0].clientY - e.touches[1].clientY
+        );
+        initialPinchScale = projection.scale();
+      }
+    };
+
+    const onTouchMove = (e: TouchEvent) => {
+      if (!isTouchActive) return;
+      if (e.touches.length === 1) {
+        const clientX = e.touches[0].clientX;
+        const clientY = e.touches[0].clientY;
+        const dx = clientX - touchStartX;
+        const dy = clientY - touchStartY;
+
+        if (Math.hypot(dx, dy) > 6) {
+          isDraggingRef.current = true;
+          if (e.cancelable) e.preventDefault();
+        }
+
+        if (isDraggingRef.current) {
+          const sensitivity = 0.42;
+          rotationRef.current[0] = startRot[0] + dx * sensitivity;
+          rotationRef.current[1] = Math.max(-85, Math.min(85, startRot[1] - dy * sensitivity));
+          projection.rotate(rotationRef.current);
+
+          // Calculate velocity for natural momentum release
+          const now = performance.now();
+          const dt = Math.max(8, now - lastTime);
+          velocityX = ((clientX - lastX) / dt) * 7.5;
+          velocityY = ((clientY - lastY) / dt) * 7.5;
+          lastX = clientX;
+          lastY = clientY;
+          lastTime = now;
+        }
+      } else if (e.touches.length === 2 && initialPinchDist > 0) {
+        if (e.cancelable) e.preventDefault();
+        const currentDist = Math.hypot(
+          e.touches[0].clientX - e.touches[1].clientX,
+          e.touches[0].clientY - e.touches[1].clientY
+        );
+        const factor = currentDist / initialPinchDist;
+        const newScale = Math.max(radius * 0.75, Math.min(radius * 4.2, initialPinchScale * factor));
+        projection.scale(newScale);
+        setZoomLevel(newScale / radius);
+      }
+    };
+
+    const onTouchEnd = (e: TouchEvent) => {
+      if (e.touches.length === 0) {
+        const tapDuration = Date.now() - touchStartTime;
+        if (!isDraggingRef.current && tapDuration < 350) {
+          // Precise mobile finger tap
+          const clicked = getPinUnderCursor(touchStartX, touchStartY, true);
+          if (clicked) {
+            focusOnSede(clicked, 2.2);
+          }
+        }
+        isTouchActive = false;
+        isDraggingRef.current = false;
+
+        // Clamp momentum speed to avoid extreme spins
+        const maxV = 1.6;
+        velocityX = Math.max(-maxV, Math.min(maxV, velocityX));
+        velocityY = Math.max(-maxV, Math.min(maxV, velocityY));
+      }
     };
 
     const onWheel = (e: WheelEvent) => {
@@ -661,6 +827,9 @@ export function InteractiveMap() {
     window.addEventListener("mousemove", onMouseMove);
     window.addEventListener("mouseup", onMouseUp);
     canvas.addEventListener("wheel", onWheel, { passive: false });
+    canvas.addEventListener("touchstart", onTouchStart, { passive: false });
+    window.addEventListener("touchmove", onTouchMove, { passive: false });
+    window.addEventListener("touchend", onTouchEnd);
 
     return () => {
       cancelAnimationFrame(animFrame);
@@ -668,18 +837,21 @@ export function InteractiveMap() {
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("mouseup", onMouseUp);
       canvas.removeEventListener("wheel", onWheel);
+      canvas.removeEventListener("touchstart", onTouchStart);
+      window.removeEventListener("touchmove", onTouchMove);
+      window.removeEventListener("touchend", onTouchEnd);
     };
-  }, [focusOnSede, isAutoRotating]);
+  }, [focusOnSede]);
 
   return (
-    <div className="bg-[#111215] border border-white/15 rounded-2xl overflow-hidden shadow-2xl">
+    <div className="bg-[#111215] border border-white/15 rounded-3xl overflow-hidden shadow-2xl">
       {/* Map Header & Filter Controls */}
       <div className="p-6 sm:p-8 bg-[#16171B] border-b border-white/10 flex flex-wrap items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="w-2.5 h-2.5 rounded-full bg-[#F2C21B] animate-pulse" />
             <span className="text-xs font-mono text-[#F2C21B] uppercase tracking-wider">
-              Rede Geográfica Global · 3D Dotted Globe
+              Rede Geográfica Global
             </span>
           </div>
           <h3 className="font-['Anton'] text-2xl sm:text-3xl uppercase text-white">
@@ -688,27 +860,27 @@ export function InteractiveMap() {
         </div>
 
         {/* Filter Pills */}
-        <div className="flex bg-[#0A0A0B] p-1 rounded-lg border border-white/10">
+        <div className="flex bg-[#0A0A0B] p-1 rounded-xl border border-white/10">
           <button
             onClick={() => handleFilterClick("todos")}
-            className={`px-4 py-1.5 rounded-md text-xs font-bold uppercase transition-colors duration-150 ${
-              activeFilter === "todos" ? "bg-[#F2C21B] text-black" : "text-white/60 hover:text-white"
+            className={`px-4 py-2 rounded-lg text-xs font-bold uppercase transition-all duration-150 ${
+              activeFilter === "todos" ? "bg-[#F2C21B] text-black shadow-md" : "text-white/60 hover:text-white"
             }`}
           >
             Todas as Sedes ({SEDES_DATA.length})
           </button>
           <button
             onClick={() => handleFilterClick("brasil")}
-            className={`px-4 py-1.5 rounded-md text-xs font-bold uppercase transition-colors duration-150 ${
-              activeFilter === "brasil" ? "bg-[#F2C21B] text-black" : "text-white/60 hover:text-white"
+            className={`px-4 py-2 rounded-lg text-xs font-bold uppercase transition-all duration-150 ${
+              activeFilter === "brasil" ? "bg-[#F2C21B] text-black shadow-md" : "text-white/60 hover:text-white"
             }`}
           >
-            Brasil (8)
+            Brasil (9)
           </button>
           <button
             onClick={() => handleFilterClick("internacional")}
-            className={`px-4 py-1.5 rounded-md text-xs font-bold uppercase transition-colors duration-150 ${
-              activeFilter === "internacional" ? "bg-[#F2C21B] text-black" : "text-white/60 hover:text-white"
+            className={`px-4 py-2 rounded-lg text-xs font-bold uppercase transition-all duration-150 ${
+              activeFilter === "internacional" ? "bg-[#F2C21B] text-black shadow-md" : "text-white/60 hover:text-white"
             }`}
           >
             Mundo (4)
@@ -716,13 +888,13 @@ export function InteractiveMap() {
         </div>
       </div>
 
-      {/* Main Grid: 3D Dotted Canvas Earth + Right Drawer */}
+      {/* Main Grid: 3D Dotted Canvas Earth + Detail Drawer */}
       <div className="grid lg:grid-cols-12 min-h-[520px]">
         {/* 3D Canvas Earth Container */}
-        <div className="lg:col-span-7 p-6 sm:p-8 bg-[#0C0D0F] relative flex flex-col justify-between overflow-hidden border-b lg:border-b-0 lg:border-r border-white/10">
+        <div className="lg:col-span-7 p-4 sm:p-8 bg-[#0C0D0F] relative flex flex-col justify-between overflow-hidden border-b lg:border-b-0 lg:border-r border-white/10">
           {/* Compass & Coordinates HUD */}
-          <div className="absolute top-6 left-6 z-10 flex items-center gap-2">
-            <span className="text-[10px] font-mono text-[#AAA8A1] bg-black/80 px-2.5 py-1 rounded border border-white/10 flex items-center gap-1.5">
+          <div className="absolute top-6 left-6 z-10 flex items-center gap-2 pointer-events-none select-none">
+            <span className="text-[10px] font-mono text-[#AAA8A1] bg-black/80 px-2.5 py-1 rounded border border-white/10 flex items-center gap-1.5 backdrop-blur-md">
               <IconGlobe className="w-3 h-3 text-[#F2C21B]" />
               <span>3D ORTHOGRAPHIC PROJECTION</span>
             </span>
@@ -732,35 +904,35 @@ export function InteractiveMap() {
           <div className="absolute top-6 right-6 z-10 flex flex-col gap-2">
             <button
               onClick={() => handleZoom(0.5)}
-              title="Aproximar Zoom (Cidades)"
-              className="w-8 h-8 rounded-lg bg-black/80 hover:bg-[#F2C21B] hover:text-black border border-white/20 text-white flex items-center justify-center transition-colors shadow-lg"
+              title="Aproximar Zoom"
+              className="w-9 h-9 rounded-xl bg-black/80 hover:bg-[#F2C21B] hover:text-black border border-white/20 text-white flex items-center justify-center transition-all shadow-lg active:scale-95"
             >
-              <IconPlus className="w-3.5 h-3.5" />
+              <IconPlus className="w-4 h-4" />
             </button>
             <button
               onClick={() => handleZoom(-0.5)}
-              title="Afastar Zoom (Mundo)"
-              className="w-8 h-8 rounded-lg bg-black/80 hover:bg-[#F2C21B] hover:text-black border border-white/20 text-white flex items-center justify-center transition-colors shadow-lg"
+              title="Afastar Zoom"
+              className="w-9 h-9 rounded-xl bg-black/80 hover:bg-[#F2C21B] hover:text-black border border-white/20 text-white flex items-center justify-center transition-all shadow-lg active:scale-95"
             >
-              <IconMinus className="w-3.5 h-3.5" />
+              <IconMinus className="w-4 h-4" />
             </button>
             <button
               onClick={handleReset}
               title="Centralizar na Matriz de Osasco/Brasil"
-              className="w-8 h-8 rounded-lg bg-black/80 hover:bg-[#F2C21B] hover:text-black border border-white/20 text-white flex items-center justify-center transition-colors shadow-lg"
+              className="w-9 h-9 rounded-xl bg-black/80 hover:bg-[#F2C21B] hover:text-black border border-white/20 text-white flex items-center justify-center transition-all shadow-lg active:scale-95"
             >
-              <IconRefresh className="w-3.5 h-3.5" />
+              <IconRefresh className="w-4 h-4" />
             </button>
             <button
               onClick={() => setIsAutoRotating(!isAutoRotating)}
-              title={isAutoRotating ? "Pausar Rotação" : "Iniciar Rotação"}
-              className={`w-8 h-8 rounded-lg border text-xs flex items-center justify-center transition-colors shadow-lg ${
+              title={isAutoRotating ? "Pausar Giro Automático" : "Iniciar Giro Automático"}
+              className={`w-9 h-9 rounded-xl border text-xs flex items-center justify-center transition-all shadow-lg active:scale-95 ${
                 isAutoRotating
                   ? "bg-[#F2C21B] text-black border-[#F2C21B]"
                   : "bg-black/80 text-white border-white/20 hover:bg-white/20"
               }`}
             >
-              {isAutoRotating ? <IconPause className="w-3.5 h-3.5" /> : <IconPlay className="w-3.5 h-3.5" />}
+              {isAutoRotating ? <IconPause className="w-4 h-4" /> : <IconPlay className="w-4 h-4" />}
             </button>
           </div>
 
@@ -774,25 +946,40 @@ export function InteractiveMap() {
             </div>
           )}
 
-          {/* Canvas */}
-          <div className="relative w-full h-[390px] sm:h-[450px] rounded-xl bg-[#090A0C] flex items-center justify-center overflow-hidden border border-white/10">
+          {/* Canvas Container */}
+          <div className="relative w-full h-[380px] sm:h-[460px] rounded-2xl bg-[#08090C] flex items-center justify-center overflow-hidden border border-white/10 shadow-inner">
             <canvas
               ref={canvasRef}
-              className="w-full h-full select-none"
+              className="w-full h-full select-none cursor-grab active:cursor-grabbing"
+              style={{ touchAction: "none" }}
             />
           </div>
 
-          {/* Clean HUD Instructions Footer (Pills removed for maximal clarity) */}
-          <div className="mt-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-[#AAA8A1]">
-            <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#F2C21B] shadow-[0_0_8px_#F2C21B]" />
-              <span className="font-semibold text-white/90">
-                Clique diretamente em qualquer pin dourado no globo para ver os detalhes da sede
-              </span>
+          {/* Quick-Access Horizontal Sede Carousel for Smartphone Users */}
+          <div className="mt-3 block">
+            <div className="text-[11px] font-mono text-[#AAA8A1] mb-1.5 flex items-center justify-between">
+              <span>SEDES EM DESTAQUE (TOQUE PARA FOCAR):</span>
+              <span className="text-[#F2C21B]">Zoom: {zoomLevel.toFixed(1)}x</span>
             </div>
-            <span className="font-mono text-[#F2C21B] text-[11px]">
-              Zoom: {zoomLevel.toFixed(1)}x • 480+ Facções
-            </span>
+            <div className="flex gap-2 overflow-x-auto pb-1.5 scrollbar-none snap-x snap-mandatory">
+              {filteredHubs.map((sede) => {
+                const isSelected = selectedHub.id === sede.id;
+                return (
+                  <button
+                    key={sede.id}
+                    onClick={() => focusOnSede(sede, 2.2)}
+                    className={`flex-shrink-0 snap-start min-h-[38px] px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold transition-all duration-150 flex items-center gap-1.5 border active:scale-95 whitespace-nowrap ${
+                      isSelected
+                        ? "bg-[#F2C21B] text-black border-[#F2C21B] shadow-[0_0_12px_rgba(242,194,27,0.6)] font-extrabold"
+                        : "bg-[#14161D] text-white/80 border-white/10 hover:border-[#F2C21B]/40 hover:text-white"
+                    }`}
+                  >
+                    <IconPin className={`w-3.5 h-3.5 flex-shrink-0 ${isSelected ? "text-black" : "text-[#F2C21B]"}`} />
+                    <span>[{sede.state}] {sede.name.split("—")[0].trim()}</span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
 
@@ -818,7 +1005,9 @@ export function InteractiveMap() {
                 <span className="text-[11px] text-[#AAA8A1] uppercase font-bold tracking-wider block mb-1">
                   Endereço / Sede Regional
                 </span>
-                <p className="text-sm font-semibold text-white">{selectedHub.address}</p>
+                <p className="text-xs min-[380px]:text-sm font-semibold text-white whitespace-nowrap overflow-x-auto scrollbar-none">
+                  {selectedHub.address}
+                </p>
               </div>
 
               <div className="p-4 rounded-xl bg-[#0E0F12] border border-white/10">
@@ -829,28 +1018,33 @@ export function InteractiveMap() {
               </div>
 
               <div className="grid grid-cols-2 gap-3">
-                <div className="p-4 rounded-xl bg-[#0E0F12] border border-white/10 text-center">
-                  <strong className="block font-['Anton'] text-2xl text-[#F2C21B] tracking-[0.06em]">
-                    {selectedHub.faccoesCount}
+                <div className="p-3 sm:p-4 rounded-xl bg-[#0E0F12] border border-white/10 text-center flex flex-col justify-center min-h-[76px]">
+                  <strong className="block font-['Anton'] text-3xl sm:text-4xl text-[#F2C21B] tracking-[0.03em] leading-none mb-1">
+                    {selectedHub.faccoesNum}
                   </strong>
-                  <span className="text-[10px] text-[#AAA8A1] uppercase font-bold">Sub-Divisões</span>
+                  <span className="text-[10px] sm:text-[11px] text-[#AAA8A1] uppercase font-bold tracking-wider leading-tight">
+                    {selectedHub.faccoesLabel}
+                  </span>
                 </div>
-                <div className="p-4 rounded-xl bg-[#0E0F12] border border-white/10 text-center">
-                  <strong className="block font-['Anton'] text-2xl text-[#F2C21B] tracking-[0.06em]">
-                    {selectedHub.membersCount}
+                <div className="p-3 sm:p-4 rounded-xl bg-[#0E0F12] border border-white/10 text-center flex flex-col justify-center min-h-[76px]">
+                  <strong className="block font-['Anton'] text-3xl sm:text-4xl text-[#F2C21B] tracking-[0.03em] leading-none mb-1">
+                    {selectedHub.membersNum}
                   </strong>
-                  <span className="text-[10px] text-[#AAA8A1] uppercase font-bold">Integrantes</span>
+                  <span className="text-[10px] sm:text-[11px] text-[#AAA8A1] uppercase font-bold tracking-wider leading-tight">
+                    {selectedHub.membersLabel}
+                  </span>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="pt-4 border-t border-white/10 flex flex-wrap gap-3">
+          <div className="pt-4 border-t border-white/10 grid grid-cols-2 gap-3">
             <Link
               href="/faca-parte"
-              className="flex-1 py-3.5 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-center text-sm rounded transition-colors duration-200 hover-lift shadow-lg"
+              className="w-full py-3.5 px-2 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-center text-xs sm:text-sm rounded-xl transition-all duration-200 hover-lift shadow-lg flex items-center justify-center gap-1.5 whitespace-nowrap"
             >
-              Filiar-se a Esta Região ↘
+              <span>Filiar-se</span>
+              <IconArrowRight className="w-3.5 h-3.5 text-black flex-shrink-0" strokeWidth={2.5} />
             </Link>
             <a
               href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
@@ -858,10 +1052,10 @@ export function InteractiveMap() {
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-3.5 bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider rounded transition-colors duration-150 flex items-center justify-center gap-1.5"
+              className="w-full py-3.5 px-2 bg-white/10 hover:bg-white/20 text-white font-['Anton'] tracking-wider uppercase text-center text-xs sm:text-sm rounded-xl transition-colors duration-150 flex items-center justify-center gap-1.5 whitespace-nowrap border border-white/10"
             >
+              <IconRoute className="w-3.5 h-3.5 text-[#F2C21B] flex-shrink-0" />
               <span>Traçar Rota</span>
-              <span>↗</span>
             </a>
           </div>
         </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { IconArrowRight } from "./ui/Icons";
 
 interface Expedition {
   id: string;
@@ -122,7 +123,7 @@ export function ExpeditionsGallery() {
             Galeria de Expedições & Asfalto
           </h3>
         </div>
-        <p className="text-xs sm:text-sm text-[#AAA8A1] max-w-md">
+        <p className="text-xs sm:text-sm text-[#AAA8A1] max-w-xl">
           Clique nas expedições para abrir o relato oficial,<br className="hidden sm:inline" />{" "}
           quilometragem percorrida e galeria em alta resolução.
         </p>
@@ -158,7 +159,7 @@ export function ExpeditionsGallery() {
 
               <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs text-[#F2C21B] font-bold">
                 <span>Ver Relato Completo</span>
-                <span className="group-hover:translate-x-1 transition-transform duration-200">→</span>
+                <IconArrowRight className="w-3.5 h-3.5 text-[#F2C21B] group-hover:translate-x-1 transition-transform duration-200" />
               </div>
             </div>
           </div>

@@ -1,5 +1,4 @@
 {
-  "/:div>main>section>div[3]>div>p": "O maior motoclube do Brasil e do mundo. Forjados na disciplina,<br className=\"hidden sm:inline\" /> lealdade e respeito mútuo. Nas ruas, na estrada ou na ação social: <strong>#SomosDeVerdade</strong>.",
   "/:div>main>section[1]>div>div>p": "Nascido em Osasco em 2015, o Insanos Moto Clube rompeu fronteiras territoriais e culturais. Hoje somos milhares de irmãos conectados pelo mesmo estatuto,<br className=\"hidden sm:inline\" /> disciplina rigorosa e compromisso com o próximo.",
   "/:div>main>section[2]>div>div>div[1]>p": "Para vestir nosso escudo, cada integrante honra esses quatro<br className=\"hidden sm:inline\" /> princípios sagrados. Não há espaço para vaidade ou deslealdade:<br className=\"hidden sm:inline\" /> a conduta na estrada e na vida define quem somos.",
   "/:div>main>section[3]>div>div>p": "Nossa história foi escrita no asfalto com coragem, união e compromisso irrevogável.<br className=\"hidden sm:inline\" /> Da bravura histórica de 1922 à fundação em Osasco<br className=\"hidden sm:inline\" /> e à consagração como o maior motoclube do planeta.",
@@ -31,5 +30,15 @@
   "/historia:div>main>section[3]>div>h2": "Escreva os próximos<br className=\"hidden sm:inline\" /> capítulos conosco",
   "/historia:div>main>section[3]>div>p": "A estrada está aberta para homens e mulheres que<br className=\"hidden sm:inline\" /> vivem com honra, disciplina e respeito ao próximo.",
   "/historia:div>main>section[1]>div>div>div>h2": "A Bravura Histórica<br className=\"hidden sm:inline\" /> dos 18 do Forte",
-  "/faca-parte:quiz-q1": "Em caso de conflito de tempo ou decisão pessoal, qual a<br className=\"hidden sm:inline\" /> ordem sagrada e inegociável de prioridades do integrante?"
+  "/faca-parte:quiz-q1": "Em caso de conflito de tempo ou decisão pessoal, qual a<br className=\"hidden sm:inline\" /> ordem sagrada e inegociável de prioridades do integrante?",
+  "/:div[2]>main>section[3]>div[4]>div>p": "Fundado com base nos valores inegociáveis de honra, hierarquia e caridade.&nbsp;<div>O Insanos Moto Clube preserva a memória do episódio histórico dos 18 do&nbsp;</div><div>Forte de Copacabana como símbolo máximo de bravura e lealdade até o fim.</div>",
+  "/:div[2]>main>section[2]>div>div>div>div>div[1]>div>p": "Família",
+  "/:div>main>section>div[3]>div>p": "O maior motoclube do Brasil e do mundo. Forjados na disciplina, lealdade e respeito mútuo.<br className=\"hidden sm:inline\" /> Nas ruas, na estrada ou na ação social: <strong>#SomosDeVerdade</strong>.",
+  "/:div[2]>main>section>div[3]>div>p": "O maior motoclube do Brasil e do mundo. Forjados na disciplina, lealdade<div>e respeito mútuo. Nas ruas, na estrada ou na ação social: <strong>#SomosDeVerdade</strong>.</div>",
+  "/:div[2]>main>section[1]>div>div>p": "Nascido em Osasco em 2015, o Insanos Moto Clube rompeu fronteiras<div>territoriais e culturais. Hoje somos milhares de irmãos conectados pelo</div><div>mesmo estatuto, disciplina rigorosa e compromisso com o próximo.</div>",
+  "/:div[2]>main>section[3]>div[4]>div[1]>div>div[1]>p[1]": "Os primeiros motociclistas que deram início à&nbsp;<div>irmandade na Av. dos Autonomistas em Osasco.</div>",
+  "/:div[2]>main>section[3]>div[4]>div[1]>div[1]>div[1]>p[1]": "A bravura histórica de Copacabana que forjou<div>a determinação e lealdade bordadas no colete.</div>",
+  "/:div[2]>main>section[3]>div[4]>div[1]>div[2]>div[1]>p[1]": "Homenagem perpétua a cada irmão que partiu<div>e continuará acelerando eternamente ao nosso lado.</div>",
+  "/:div[2]>main>section[4]>div>div>p": "Nossa história foi escrita no asfalto com<br className=\"sm:hidden\" /> coragem, união e compromisso irrevogável.<br className=\"hidden sm:inline\" /> Da bravura histórica de 1922 à fundação<br className=\"sm:hidden\" /> em Osasco e à consagração como<br className=\"sm:hidden\" /> o maior motoclube do planeta.",
+  "/:div[2]>main>section>div[3]>div>div>p": "Original de OZ ·&nbsp;<span style=\"font-size: var(--text-xs); font-weight: var(--font-weight-extrabold); letter-spacing: 0.25em; text-wrap-mode: wrap; font-family: var(--font-sans);\">Desde 2015 · 18 do Forte</span>"
 }

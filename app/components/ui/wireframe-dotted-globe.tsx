@@ -327,7 +327,7 @@ export default function RotatingEarth({
         style={{ maxWidth: "100%", height: "auto" }}
       />
       <div className="absolute bottom-4 left-4 text-[10px] text-[#AAA8A1] font-mono px-3 py-1.5 rounded-lg bg-black/80 backdrop-blur-md border border-white/15">
-        🖱️ Arraste para girar em 360° • 🔍 Scroll para zoom nas cidades
+        Arraste para girar em 360° · Scroll para zoom nas cidades
       </div>
     </div>
   );

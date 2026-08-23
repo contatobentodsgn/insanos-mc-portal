@@ -3,6 +3,8 @@ import "./globals.css";
 import { VisualEditor } from "./components/VisualEditor";
 import { RadioProvider } from "./context/RadioContext";
 import { RadioBar } from "./components/RadioBar";
+import { ScrollProgressBar } from "./components/ScrollProgressBar";
+import { NoiseOverlay } from "./components/NoiseOverlay";
 
 export const viewport: Viewport = {
   themeColor: "#0A0A0A",
@@ -12,6 +14,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://insanosmc.vercel.app"),
   title: {
     default: "Insanos MC — Nosso combustível é a irmandade | Original de OZ",
     template: "%s | Insanos MC",
@@ -40,16 +43,16 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
     url: "https://insanosmc.vercel.app",
-    siteName: "Insanos Moto Clube",
+    siteName: "Insanos Moto Clube Mundial",
     title: "Insanos MC — Nosso combustível é a irmandade",
     description:
-      "Original de OZ · Desde 2015. Uma irmandade em movimento com presença em mais de 65 países e compromisso com o impacto social.",
+      "Original de OZ · Desde 2015. Uma irmandade em movimento com presença em mais de 65 países e compromisso inegociável com a caridade e a honra.",
     images: [
       {
-        url: "https://www.insanosmc.com.br/wp-content/uploads/2018/04/parallax-main.jpg",
+        url: "/images/insanos/hero_biker.webp",
         width: 1200,
         height: 630,
-        alt: "Insanos Moto Clube — Comboio na Estrada",
+        alt: "Insanos Moto Clube — Comboio Oficial na Estrada",
       },
     ],
   },
@@ -60,14 +63,14 @@ export const metadata: Metadata = {
     title: "Insanos MC",
   },
   icons: {
-    icon: "https://www.insanosmc.com.br/wp-content/uploads/2018/04/insanosmc.png",
-    apple: "https://www.insanosmc.com.br/wp-content/uploads/2018/04/insanosmc.png",
+    icon: "/images/insanos/insanos_mc_logo.svg",
+    apple: "/images/insanos/insanos_mc_logo.svg",
   },
   twitter: {
     card: "summary_large_image",
     title: "Insanos MC — Nosso combustível é a irmandade",
-    description: "Original de OZ · Desde 2015 rompendo paradigmas do motociclismo.",
-    images: ["https://www.insanosmc.com.br/wp-content/uploads/2018/04/parallax-main.jpg"],
+    description: "Original de OZ · Desde 2015 rompendo paradigmas do motociclismo mundial.",
+    images: ["/images/insanos/hero_biker.webp"],
   },
 };
 
@@ -87,6 +90,8 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-[#0A0A0A] text-[#F4F1E8] antialiased selection:bg-[#F2C21B] selection:text-black">
+        <NoiseOverlay />
+        <ScrollProgressBar />
         <RadioProvider>
           <RadioBar />
           {children}

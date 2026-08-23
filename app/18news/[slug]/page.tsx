@@ -4,9 +4,8 @@ import { notFound } from "next/navigation";
 import { Navbar } from "../../components/Navbar";
 import { Footer } from "../../components/Footer";
 import { ARTICLES_DATA } from "../../data/articles";
-
-
 import { ShareButtons } from "../../components/ShareButtons";
+import { IconArrowRight } from "../../components/ui/Icons";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -21,7 +20,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: `${article.title} | 18News`,
     description: article.desc,
     openGraph: {
-      title: article.title,
+      title: `${article.title} | 18News`,
       description: article.desc,
       images: [{ url: article.image }],
     },
@@ -42,16 +41,8 @@ export default async function ArticlePage({ params }: PageProps) {
     <div className="min-h-screen bg-[#0A0A0A] text-[#F4F1E8] font-sans">
       <Navbar />
 
-      <main className="py-16 sm:py-24">
+      <main className="py-24 sm:py-32">
         <div className="max-w-4xl mx-auto px-4 sm:px-8">
-          {/* Breadcrumbs */}
-          <div className="flex items-center gap-2 text-xs uppercase font-bold text-[#AAA8A1] tracking-wider mb-8">
-            <Link href="/" className="hover:text-[#F2C21B]">Início</Link>
-            <span>/</span>
-            <Link href="/18news" className="hover:text-[#F2C21B]">18News</Link>
-            <span>/</span>
-            <span className="text-[#F2C21B]">{article.tag}</span>
-          </div>
 
           {/* Article Header */}
           <div className="mb-10">
@@ -129,7 +120,10 @@ export default async function ArticlePage({ params }: PageProps) {
                   <h4 className="font-['Anton'] text-xl uppercase text-white group-hover:text-[#F2C21B] transition-colors mb-2">
                     {rel.title}
                   </h4>
-                  <span className="text-xs text-[#AAA8A1]">{rel.readTime} · Ler →</span>
+                  <span className="text-xs text-[#C7C5BF] inline-flex items-center gap-1.5">
+                    <span>{rel.readTime} · Ler</span>
+                    <IconArrowRight className="w-3 h-3 text-[#F2C21B]" />
+                  </span>
                 </Link>
               ))}
             </div>

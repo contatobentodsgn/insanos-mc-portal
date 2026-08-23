@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { IconRadio } from "./ui/Icons";
+import { IconRadio, IconArrowRight, IconPlay, IconPause, IconVolumeUp, IconVolumeMute, IconClose } from "./ui/Icons";
 import { useRadio } from "../context/RadioContext";
 
 const ASSETS = {
@@ -28,9 +28,20 @@ const navLinks = [
 
 export function Navbar({}: NavbarProps) {
   const pathname = usePathname();
-  const { isPlaying: isPlayingRadio, toggleRadio } = useRadio();
+  const {
+    isPlaying: isPlayingRadio,
+    isMuted,
+    volume,
+    isLoading,
+    pauseRadio,
+    toggleMute,
+    setVolume,
+    toggleRadio,
+  } = useRadio();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const currentVolume = isMuted ? 0 : volume;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -52,8 +63,48 @@ export function Navbar({}: NavbarProps) {
   return (
     <>
       {/* Top Banner / Ticker */}
-      <div className="bg-[#0E0F11] border-b border-white/5 py-1.5 px-4 sm:px-8 text-[10.5px] sm:text-[11px] text-[#AAA8A1] flex justify-between items-center select-none overflow-hidden">
-        <div className="flex items-center gap-2 truncate">
+      <div className="bg-[#0E0F11] border-b border-white/5 py-1.5 px-4 sm:px-8 text-[10.5px] sm:text-[11px] text-[#AAA8A1] flex justify-between items-center select-none overflow-hidden relative">
+        {/* Mobile Horizontal Auto-scrolling Marquee */}
+        <div className="md:hidden flex overflow-hidden w-full">
+          <div className="animate-marquee-track flex items-center gap-6 text-[#AAA8A1]">
+            <div className="flex items-center gap-2 shrink-0">
+              <span className="w-2 h-2 rounded-full bg-[#F2C21B] animate-pulse shrink-0" />
+              <span>
+                Presença Global: <strong className="text-white">+12.000 Integrantes</strong> · <strong className="text-white">65 Países</strong> · <strong className="text-white">480+ Capítulos</strong>
+              </span>
+            </div>
+            <span className="text-[#F2C21B]">•</span>
+            <span className="font-mono text-[#F2C21B] shrink-0">#SomosDeVerdade</span>
+            <span className="text-[#F2C21B]">•</span>
+            <div className="flex items-center gap-2 shrink-0">
+              <span className="w-2 h-2 rounded-full bg-[#F2C21B] animate-pulse shrink-0" />
+              <span>
+                Original de OZ · <strong className="text-white">Desde 2015</strong> · 18 do Forte
+              </span>
+            </div>
+            <span className="text-[#F2C21B]">•</span>
+            {/* Duplicated track for seamless infinite loop */}
+            <div className="flex items-center gap-2 shrink-0">
+              <span className="w-2 h-2 rounded-full bg-[#F2C21B] animate-pulse shrink-0" />
+              <span>
+                Presença Global: <strong className="text-white">+12.000 Integrantes</strong> · <strong className="text-white">65 Países</strong> · <strong className="text-white">480+ Capítulos</strong>
+              </span>
+            </div>
+            <span className="text-[#F2C21B]">•</span>
+            <span className="font-mono text-[#F2C21B] shrink-0">#SomosDeVerdade</span>
+            <span className="text-[#F2C21B]">•</span>
+            <div className="flex items-center gap-2 shrink-0">
+              <span className="w-2 h-2 rounded-full bg-[#F2C21B] animate-pulse shrink-0" />
+              <span>
+                Original de OZ · <strong className="text-white">Desde 2015</strong> · 18 do Forte
+              </span>
+            </div>
+            <span className="text-[#F2C21B]">•</span>
+          </div>
+        </div>
+
+        {/* Desktop Static Ticker */}
+        <div className="hidden md:flex items-center gap-2 truncate">
           <span className="w-2 h-2 rounded-full bg-[#F2C21B] animate-pulse shrink-0" />
           <span className="truncate">
             Presença Global: <strong>+12.000 Integrantes</strong> · <strong>65 Países</strong> · <strong>480+ Capítulos</strong>
@@ -64,8 +115,10 @@ export function Navbar({}: NavbarProps) {
             onClick={toggleRadio}
             className="hover:text-[#F2C21B] transition-colors flex items-center gap-1.5 text-xs font-semibold focus:outline-none"
           >
-            <IconRadio className="w-3.5 h-3.5 text-[#F2C21B]" />
-            <span>{isPlayingRadio ? "Rádio Tocando (Pausar)" : "Rádio Insanos 24h"}</span>
+            <IconRadio className={`w-3.5 h-3.5 ${isPlayingRadio ? "text-[#F2C21B] animate-pulse" : "text-[#AAA8A1]"}`} />
+            <span className={isPlayingRadio ? "text-[#F2C21B]" : "text-[#AAA8A1]"}>
+              Rádio Insanos 24h {isPlayingRadio ? "(Ao Vivo)" : ""}
+            </span>
           </button>
           <span className="text-white/20">|</span>
           <span className="font-mono text-[11px] text-[#F2C21B]">#SomosDeVerdade</span>
@@ -120,44 +173,43 @@ export function Navbar({}: NavbarProps) {
 
           {/* Header Action Buttons */}
           <div className="flex items-center gap-3">
-            {/* Tactical Radio Button */}
+            {/* Tactical Radio Button (Stable Width & Gold Equalizer) */}
             <button
               onClick={toggleRadio}
-              className={`hidden sm:inline-flex items-center gap-2.5 px-3.5 py-2 rounded-lg border text-xs font-bold transition-all duration-200 ${
+              className={`hidden sm:inline-flex items-center justify-center gap-2 px-3.5 py-2 rounded-lg border text-xs font-bold transition-all duration-200 min-w-[122px] ${
                 isPlayingRadio
                   ? "bg-[#F2C21B]/15 border-[#F2C21B] text-[#F2C21B] shadow-[0_0_15px_rgba(242,194,27,0.25)]"
                   : "bg-[#141517] border-white/15 text-[#F4F1E8] hover:border-[#F2C21B]/60 hover:text-white"
               }`}
-              title="Ouvir Rádio Insanos Web"
+              title={isPlayingRadio ? "Pausar Rádio" : "Ouvir Rádio Insanos Web"}
             >
-              <span className="relative flex h-2 w-2">
-                {isPlayingRadio && (
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                )}
-                <span
-                  className={`relative inline-flex rounded-full h-2 w-2 ${
-                    isPlayingRadio ? "bg-emerald-500" : "bg-[#F2C21B]"
-                  }`}
-                />
-              </span>
-              <span className="font-mono text-[11px] tracking-wider uppercase">
-                {isPlayingRadio ? "Pausar Rádio" : "Rádio 24h"}
+              {isPlayingRadio ? (
+                <div className="flex items-end gap-0.5 h-3 w-3 shrink-0" aria-hidden="true">
+                  <span className="w-0.5 bg-[#F2C21B] h-full animate-[bounce_0.8s_infinite] rounded-t-sm" />
+                  <span className="w-0.5 bg-[#F2C21B] h-2/3 animate-[bounce_1.1s_infinite] rounded-t-sm" />
+                  <span className="w-0.5 bg-[#F2C21B] h-4/5 animate-[bounce_0.9s_infinite] rounded-t-sm" />
+                </div>
+              ) : (
+                <span className="w-2 h-2 rounded-full bg-[#F2C21B] shrink-0" />
+              )}
+              <span className="font-mono text-[11px] tracking-wider uppercase whitespace-nowrap">
+                {isPlayingRadio ? "NO AR" : "RÁDIO 24H"}
               </span>
             </button>
 
             {/* CTA Faça Parte */}
             <Link
               href="/faca-parte"
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider text-xs sm:text-sm uppercase transition-all shadow-[0_0_20px_rgba(242,194,27,0.35)] hover:shadow-[0_0_30px_rgba(242,194,27,0.6)] transform hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider text-xs sm:text-sm uppercase transition-all shadow-[0_0_20px_rgba(242,194,27,0.35)] hover:shadow-[0_0_30px_rgba(242,194,27,0.6)] transform hover:-translate-y-0.5 whitespace-nowrap shrink-0"
             >
               <span>Faça Parte</span>
-              <span className="text-black font-sans font-bold">↘</span>
+              <IconArrowRight className="w-3.5 h-3.5 text-black" strokeWidth={2.5} />
             </Link>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="xl:hidden p-2.5 rounded-lg border border-white/20 bg-[#121314] text-white hover:border-[#F2C21B] focus:outline-none"
+              className="xl:hidden min-w-[44px] min-h-[44px] p-2.5 rounded-xl border border-white/20 bg-[#121314] text-white hover:border-[#F2C21B] focus:outline-none flex items-center justify-center active:scale-95 transition-transform"
               aria-label="Abrir menu de navegação"
               aria-expanded={menuOpen}
             >
@@ -172,44 +224,128 @@ export function Navbar({}: NavbarProps) {
           </div>
         </div>
 
+        {/* Desktop Attached Radio Sub-Bar (Opens seamlessly right below the menu, fixed as you scroll) */}
+        {isPlayingRadio && (
+          <div className="hidden sm:block border-t border-[#F2C21B]/30 bg-[#101215]/95 backdrop-blur-xl px-4 sm:px-8 py-2 text-xs transition-all duration-300 mt-2.5 shadow-2xl">
+            <div className="max-w-[1400px] mx-auto flex items-center justify-between gap-4">
+              {/* Equalizer & Station Info */}
+              <div className="flex items-center gap-3">
+                <div className="flex items-end gap-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true">
+                  <span className="w-0.5 bg-[#F2C21B] h-full animate-[bounce_0.8s_infinite] rounded-t-sm" />
+                  <span className="w-0.5 bg-[#F2C21B] h-2/3 animate-[bounce_1.1s_infinite] rounded-t-sm" />
+                  <span className="w-0.5 bg-[#F2C21B] h-4/5 animate-[bounce_0.9s_infinite] rounded-t-sm" />
+                  <span className="w-0.5 bg-[#F2C21B] h-1/2 animate-[bounce_1.3s_infinite] rounded-t-sm" />
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="font-mono text-[#F2C21B] font-bold uppercase tracking-wider text-[11px] flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-red-500 animate-ping inline-block" />
+                    RÁDIO AO VIVO:
+                  </span>
+                  <span className="text-white font-medium text-xs">
+                    {isLoading ? "Sintonizando transmissão..." : "Rádio Insanos Web 24h · O som que embala o comboio"}
+                  </span>
+                </div>
+              </div>
+
+              {/* Volume & Actions */}
+              <div className="flex items-center gap-4 shrink-0">
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={toggleMute}
+                    className="text-[#AAA8A1] hover:text-[#F2C21B] text-xs transition-colors focus:outline-none flex items-center justify-center w-5 h-5"
+                    title={isMuted ? "Desmutar rádio" : "Mutar rádio"}
+                    aria-label={isMuted ? "Desmutar áudio" : "Mutar áudio"}
+                  >
+                    {isMuted || volume === 0 ? (
+                      <IconVolumeMute className="w-3.5 h-3.5 text-[#AAA8A1]" />
+                    ) : (
+                      <IconVolumeUp className="w-3.5 h-3.5 text-[#F2C21B]" />
+                    )}
+                  </button>
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    value={currentVolume}
+                    onChange={(e) => setVolume(Number(e.target.value))}
+                    className="w-20 lg:w-28 accent-[#F2C21B] h-1 bg-white/20 rounded cursor-pointer focus:outline-none"
+                    aria-label="Controle de volume da rádio"
+                  />
+                  <span className="text-[10px] font-mono text-[#AAA8A1] w-7 text-right">
+                    {currentVolume}%
+                  </span>
+                </div>
+
+                <button
+                  onClick={pauseRadio}
+                  className="px-3 py-1 bg-[#F2C21B] hover:bg-[#ffe053] text-black rounded text-[10.5px] font-['Anton'] tracking-wider uppercase transition-all flex items-center gap-1.5 shadow-md hover-lift"
+                  aria-label="Pausar rádio"
+                >
+                  <span>Pausar</span>
+                  <IconClose className="w-3 h-3 text-black" />
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Mobile Navigation Drawer */}
         {menuOpen && (
-          <div className="xl:hidden bg-[#0D0E10] border-b border-white/10 px-6 py-6 transition-all duration-300">
-            <nav className="flex flex-col gap-4 text-sm font-bold uppercase tracking-wider">
+          <div className="xl:hidden bg-[#0D0E10] border-b border-white/10 px-5 py-5 transition-all duration-300">
+            <nav className="flex flex-col gap-2 text-sm font-bold uppercase tracking-wider">
               {/* Mobile Radio Button */}
               <button
                 onClick={() => {
                   toggleRadio();
                   setMenuOpen(false);
                 }}
-                className="w-full py-3 px-4 rounded-lg bg-[#141518] border border-[#F2C21B]/40 text-[#F2C21B] flex items-center justify-between font-mono text-xs"
+                className="w-full min-h-[48px] py-3 px-4 rounded-xl bg-[#141518] border border-[#F2C21B]/40 text-[#F2C21B] flex items-center justify-between font-mono text-xs mb-2 active:scale-[0.98] transition-transform"
               >
                 <div className="flex items-center gap-2">
                   <IconRadio className="w-4 h-4" />
                   <span>Rádio Insanos 24h</span>
                 </div>
-                <span>{isPlayingRadio ? "Pausar" : "Tocar ▶"}</span>
+                <span className="flex items-center gap-1.5 font-bold">
+                  {isPlayingRadio ? (
+                    <>
+                      <span>Pausar</span>
+                      <IconPause className="w-3 h-3 text-[#F2C21B]" />
+                    </>
+                  ) : (
+                    <>
+                      <span>Tocar</span>
+                      <IconPlay className="w-3 h-3 text-[#F2C21B]" />
+                    </>
+                  )}
+                </span>
               </button>
 
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  className={`py-2 border-b border-white/5 ${
-                    pathname === link.href ? "text-[#F2C21B]" : "text-[#E0DDD8] hover:text-[#F2C21B]"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = pathname === link.href;
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    className={`min-h-[46px] flex items-center justify-between px-3.5 py-2.5 rounded-xl transition-all duration-150 active:scale-[0.98] ${
+                      isActive
+                        ? "bg-[#F2C21B]/15 text-[#F2C21B] border border-[#F2C21B]/30 font-extrabold"
+                        : "text-[#E0DDD8] hover:text-[#F2C21B] hover:bg-white/5 border border-transparent"
+                    }`}
+                  >
+                    <span>{link.label}</span>
+                    <span className={`text-xs ${isActive ? "text-[#F2C21B]" : "text-white/30"}`}>→</span>
+                  </Link>
+                );
+              })}
 
               <Link
                 href="/faca-parte"
                 onClick={() => setMenuOpen(false)}
-                className="mt-2 text-center py-3 bg-[#F2C21B] text-black font-['Anton'] tracking-wider rounded-lg uppercase shadow-lg"
+                className="mt-3 min-h-[50px] text-center py-3.5 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider rounded-xl uppercase shadow-lg flex items-center justify-center gap-2 active:scale-[0.98] transition-transform"
               >
-                Faça Parte Agora ↘
+                <span>Faça Parte Agora</span>
+                <IconArrowRight className="w-4 h-4 text-black" strokeWidth={2.5} />
               </Link>
 
               {/* Mobile Social Shortcuts */}
@@ -218,18 +354,18 @@ export function Navbar({}: NavbarProps) {
                   href="https://www.instagram.com/insanosmc_oficial"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#F2C21B] transition-colors py-1"
+                  className="hover:text-[#F2C21B] transition-colors py-2 px-3 flex items-center"
                 >
-                  Instagram ↗
+                  Instagram
                 </a>
                 <span>•</span>
                 <a
                   href="https://www.youtube.com/@InsanosMCOficial"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#F2C21B] transition-colors py-1"
+                  className="hover:text-[#F2C21B] transition-colors py-2 px-3 flex items-center"
                 >
-                  YouTube 18Cast ↗
+                  YouTube 18Cast
                 </a>
               </div>
             </nav>

@@ -120,13 +120,14 @@ export function ComandoClient() {
               </button>
               <button
                 onClick={() => setActiveTab("memorial")}
-                className={`pb-3 text-lg sm:text-2xl font-['Anton'] uppercase tracking-wider transition-colors duration-200 border-b-2 ${
+                className={`pb-3 text-lg sm:text-2xl font-['Anton'] uppercase tracking-wider transition-colors duration-200 border-b-2 text-left sm:text-center leading-tight ${
                   activeTab === "memorial"
                     ? "border-[#F2C21B] text-[#F2C21B]"
                     : "border-transparent text-white/50 hover:text-white"
                 }`}
               >
-                Fundadores, Legado & In Memoriam
+                Fundadores, Legado<br />
+                & In Memoriam
               </button>
             </div>
           </div>

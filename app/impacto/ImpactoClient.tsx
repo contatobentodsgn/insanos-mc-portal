@@ -7,6 +7,7 @@ import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { RadioBar } from "../components/RadioBar";
 import { CampaignThermometer } from "../components/CampaignThermometer";
+import { IconArrowRight, IconCheck } from "../components/ui/Icons";
 
 const ASSETS = {
   impactBg: "/images/insanos/impact_agasalho.webp",
@@ -198,10 +199,10 @@ export function ImpactoClient() {
                   <h4 className="text-xs uppercase font-bold text-[#F2C21B] tracking-wider mb-3">
                     Como atua na prática:
                   </h4>
-                  <ul className="grid sm:grid-cols-2 gap-3 text-sm text-[#AAA8A1]">
+                  <ul className="grid sm:grid-cols-2 gap-3 text-sm text-[#C7C5BF]">
                     {currentProject.points.map((pt, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <span className="text-[#F2C21B] font-bold">✓</span>
+                      <li key={i} className="flex items-start gap-2.5">
+                        <IconCheck className="w-4 h-4 text-[#F2C21B] shrink-0 mt-0.5" strokeWidth={3} />
                         <span>{pt}</span>
                       </li>
                     ))}
@@ -219,9 +220,10 @@ export function ImpactoClient() {
                   </div>
                   <Link
                     href="/faca-parte"
-                    className="px-8 py-3.5 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-sm rounded shadow-lg transition-colors duration-200 hover-lift"
+                    className="px-8 py-3.5 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-sm rounded shadow-lg transition-colors duration-200 hover-lift flex items-center justify-center gap-2"
                   >
-                    Quero Participar / Apoiar ↘
+                    <span>Quero Participar / Apoiar</span>
+                    <IconArrowRight className="w-4 h-4 text-black" strokeWidth={2.5} />
                   </Link>
                 </div>
               </div>
