@@ -124,10 +124,19 @@ export function DnaQuiz({ onProceedToForm }: DnaQuizProps = {}) {
   const [isGeneratingCard, setIsGeneratingCard] = useState(false);
   const [downloadSuccess, setDownloadSuccess] = useState(false);
 
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const triggerHaptic = (pattern: number | number[] = 15) => {
+    if (typeof navigator !== "undefined" && "vibrate" in navigator) {
+      try {
+        navigator.vibrate(pattern);
+      } catch {
+        // ignore
+      }
+    }
+  };
 
   const handleSelectOption = (index: number) => {
     if (isAnswered) return;
+    triggerHaptic(15);
     const currentQ = QUESTIONS[currentStep];
     const option = currentQ.options[index];
     const newAnswers = [...selectedAnswers, index];
@@ -138,15 +147,18 @@ export function DnaQuiz({ onProceedToForm }: DnaQuizProps = {}) {
 
   const handleNext = () => {
     if (currentStep < QUESTIONS.length - 1) {
+      triggerHaptic(12);
       setCurrentStep(currentStep + 1);
       setIsAnswered(false);
       setFeedbackText("");
     } else {
+      triggerHaptic([20, 60, 20]);
       setShowResult(true);
     }
   };
 
   const handleReset = () => {
+    triggerHaptic(12);
     setCurrentStep(0);
     setSelectedAnswers([]);
     setShowResult(false);
@@ -299,6 +311,7 @@ export function DnaQuiz({ onProceedToForm }: DnaQuizProps = {}) {
       a.href = dataUrl;
       a.download = `Certificado-DNA-Insanos-${scorePercentage}pct.png`;
       a.click();
+      triggerHaptic(25);
       setIsGeneratingCard(false);
       setDownloadSuccess(true);
       setTimeout(() => setDownloadSuccess(false), 4000);

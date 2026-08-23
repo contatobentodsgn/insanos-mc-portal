@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { IconArrowRight } from "./ui/Icons";
 
 interface Expedition {
@@ -85,6 +85,100 @@ const EXPEDITIONS_DATA: Expedition[] = [
   },
 ];
 
+function TiltExpeditionCard({
+  exp,
+  onSelect,
+}: {
+  exp: Expedition;
+  onSelect: (exp: Expedition) => void;
+}) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [tilt, setTilt] = useState({ rx: 0, ry: 0, mx: 50, my: 50, isHovered: false });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const width = rect.width;
+    const height = rect.height;
+
+    const rx = ((y - height / 2) / height) * -8;
+    const ry = ((x - width / 2) / width) * 8;
+    const mx = (x / width) * 100;
+    const my = (y / height) * 100;
+
+    setTilt({ rx, ry, mx, my, isHovered: true });
+  };
+
+  const handleMouseLeave = () => {
+    setTilt({ rx: 0, ry: 0, mx: 50, my: 50, isHovered: false });
+  };
+
+  const handleClick = () => {
+    if (typeof navigator !== "undefined" && "vibrate" in navigator) {
+      try {
+        navigator.vibrate(12);
+      } catch {
+        // ignore
+      }
+    }
+    onSelect(exp);
+  };
+
+  return (
+    <div
+      ref={cardRef}
+      onClick={handleClick}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        transform: tilt.isHovered
+          ? `perspective(1000px) rotateX(${tilt.rx}deg) rotateY(${tilt.ry}deg) scale3d(1.02, 1.02, 1.02)`
+          : "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)",
+        transition: tilt.isHovered ? "transform 0.1s ease-out" : "transform 0.5s ease-out",
+      }}
+      className="group cursor-pointer rounded-2xl overflow-hidden bg-[#131417] border border-white/10 hover:border-[#F2C21B] flex flex-col justify-between shadow-xl relative select-none will-change-transform"
+    >
+      {/* Specular Ambient Glow that follows mouse */}
+      {tilt.isHovered && (
+        <div
+          className="absolute inset-0 pointer-events-none z-20 transition-opacity duration-300 opacity-40"
+          style={{
+            background: `radial-gradient(circle 200px at ${tilt.mx}% ${tilt.my}%, rgba(242,194,27,0.25), transparent 70%)`,
+          }}
+        />
+      )}
+
+      <div
+        className="h-56 bg-cover bg-center relative transition-transform duration-500 group-hover:scale-[1.04]"
+        style={{ backgroundImage: `url(${exp.image})` }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-t from-[#131417] via-transparent to-transparent opacity-80" />
+        <span className="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/70 backdrop-blur-md border border-white/20 text-[#F2C21B] font-mono text-[10px] uppercase font-bold">
+          {exp.tag}
+        </span>
+        <span className="absolute bottom-3 right-3 px-2.5 py-1 rounded bg-[#F2C21B] text-black font-mono text-[10px] font-extrabold">
+          {exp.distance}
+        </span>
+      </div>
+
+      <div className="p-6 relative z-10">
+        <span className="text-[11px] font-mono text-[#AAA8A1] block mb-1">{exp.year}</span>
+        <h4 className="font-['Anton'] text-xl uppercase text-white group-hover:text-[#F2C21B] transition-colors duration-200 mb-2">
+          {exp.title}
+        </h4>
+        <p className="text-xs text-[#AAA8A1] line-clamp-2 mb-4">{exp.destination}</p>
+
+        <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs text-[#F2C21B] font-bold">
+          <span>Ver Relato Completo</span>
+          <IconArrowRight className="w-3.5 h-3.5 text-[#F2C21B] group-hover:translate-x-1 transition-transform duration-200" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function ExpeditionsGallery() {
   const [selectedExpedition, setSelectedExpedition] = useState<Expedition | null>(null);
 
@@ -129,40 +223,14 @@ export function ExpeditionsGallery() {
         </p>
       </div>
 
-      {/* Grid of Expedition Cards */}
+      {/* Grid of 3D Tilt Expedition Cards */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {EXPEDITIONS_DATA.map((exp) => (
-          <div
+          <TiltExpeditionCard
             key={exp.id}
-            onClick={() => setSelectedExpedition(exp)}
-            className="group cursor-pointer rounded-2xl overflow-hidden bg-[#131417] border border-white/10 hover:border-[#F2C21B] transition-colors duration-200 flex flex-col justify-between hover-lift shadow-xl"
-          >
-            <div
-              className="h-56 bg-cover bg-center relative transition-transform duration-500 group-hover:scale-[1.03]"
-              style={{ backgroundImage: `url(${exp.image})` }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-t from-[#131417] via-transparent to-transparent opacity-80" />
-              <span className="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/70 backdrop-blur-md border border-white/20 text-[#F2C21B] font-mono text-[10px] uppercase font-bold">
-                {exp.tag}
-              </span>
-              <span className="absolute bottom-3 right-3 px-2.5 py-1 rounded bg-[#F2C21B] text-black font-mono text-[10px] font-extrabold">
-                {exp.distance}
-              </span>
-            </div>
-
-            <div className="p-6">
-              <span className="text-[11px] font-mono text-[#AAA8A1] block mb-1">{exp.year}</span>
-              <h4 className="font-['Anton'] text-xl uppercase text-white group-hover:text-[#F2C21B] transition-colors duration-200 mb-2">
-                {exp.title}
-              </h4>
-              <p className="text-xs text-[#AAA8A1] line-clamp-2 mb-4">{exp.destination}</p>
-
-              <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs text-[#F2C21B] font-bold">
-                <span>Ver Relato Completo</span>
-                <IconArrowRight className="w-3.5 h-3.5 text-[#F2C21B] group-hover:translate-x-1 transition-transform duration-200" />
-              </div>
-            </div>
-          </div>
+            exp={exp}
+            onSelect={(selected) => setSelectedExpedition(selected)}
+          />
         ))}
       </div>
 

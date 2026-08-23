@@ -65,9 +65,20 @@ export function RadioProvider({ children }: { children: React.ReactNode }) {
     }
   }, [volume, isMuted]);
 
+  const triggerHaptic = (ms = 15) => {
+    if (typeof navigator !== "undefined" && "vibrate" in navigator) {
+      try {
+        navigator.vibrate(ms);
+      } catch {
+        // ignore
+      }
+    }
+  };
+
   // Handle Play / Pause
   const playRadio = () => {
     if (!audioRef.current) return;
+    triggerHaptic(15);
     setIsLoading(true);
     setIsPlaying(true);
     sessionStorage.setItem("insanos_radio_playing", "true");
@@ -85,6 +96,7 @@ export function RadioProvider({ children }: { children: React.ReactNode }) {
 
   const pauseRadio = () => {
     if (!audioRef.current) return;
+    triggerHaptic(12);
     audioRef.current.pause();
     setIsPlaying(false);
     setIsLoading(false);
@@ -100,6 +112,7 @@ export function RadioProvider({ children }: { children: React.ReactNode }) {
   };
 
   const toggleMute = () => {
+    triggerHaptic(12);
     setIsMuted((prev) => !prev);
   };
 
