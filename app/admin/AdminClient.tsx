@@ -15,6 +15,7 @@ export function AdminClient() {
   const [lastSyncTime, setLastSyncTime] = useState<string | null>(null);
   const [history, setHistory] = useState<Record<string, string>[]>([]);
   const [isNoiseActive, setIsNoiseActive] = useState(false);
+  const [isDustActive, setIsDustActive] = useState(true);
 
   // Mobile Simulator States
   const [activeTab, setActiveTab] = useState<"dashboard" | "simulator">("dashboard");
@@ -42,6 +43,8 @@ export function AdminClient() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       setIsNoiseActive(localStorage.getItem("insanos_noise_overlay") === "true");
+      const dustStored = localStorage.getItem("insanos_hero_dust_particles");
+      setIsDustActive(dustStored === null ? true : dustStored !== "false");
       const local = localStorage.getItem("insanos_custom_texts");
       const localSync = localStorage.getItem("insanos_last_sync");
       if (localSync) {
@@ -174,6 +177,15 @@ export function AdminClient() {
     localStorage.setItem("insanos_noise_overlay", String(next));
     window.dispatchEvent(
       new CustomEvent("insanos_noise_change", { detail: { enabled: next } })
+    );
+  };
+
+  const handleToggleDust = () => {
+    const next = !isDustActive;
+    setIsDustActive(next);
+    localStorage.setItem("insanos_hero_dust_particles", String(next));
+    window.dispatchEvent(
+      new CustomEvent("insanos_settings_changed", { detail: { dust: next } })
     );
   };
 
@@ -527,38 +539,106 @@ export function AdminClient() {
             </section>
 
         {/* Controles de Efeitos Visuais & Experiência */}
-        <section className="p-6 rounded-2xl bg-[#111215] border border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-          <div className="space-y-1">
-            <div className="flex items-center gap-2">
-              <span className="text-lg">🎞️</span>
-              <h2 className="font-['Anton'] text-xl uppercase text-white tracking-wide">
-                Efeito Visual: Granulação de Filme (Noise Overlay)
+        <section className="space-y-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <h2 className="font-['Anton'] text-2xl uppercase text-white">
+                Efeitos Visuais Cinemáticos & Partículas 3D
               </h2>
-              <span
-                className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase ${
-                  isNoiseActive
-                    ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/40"
-                    : "bg-white/10 text-white/50 border border-white/10"
-                }`}
-              >
-                {isNoiseActive ? "Ativado" : "Desativado"}
-              </span>
+              <p className="text-xs text-[#AAA8A1]">
+                Controle os efeitos visuais e a atmosfera gráfica do portal em tempo real.
+              </p>
             </div>
-            <p className="text-xs text-[#AAA8A1] max-w-2xl leading-relaxed">
-              Sobreposição cinematográfica procedural de granulação de filme sobre o viewport. Ative para testar a estética vintage escura ou desative a qualquer momento.
-            </p>
           </div>
 
-          <button
-            onClick={handleToggleNoise}
-            className={`px-6 py-3.5 rounded-xl font-['Anton'] uppercase text-xs tracking-wider transition-all flex items-center gap-2 shrink-0 ${
-              isNoiseActive
-                ? "bg-[#F2C21B] text-black shadow-[0_0_20px_rgba(242,194,27,0.4)] hover:bg-[#ffe053]"
-                : "bg-white/10 hover:bg-white/20 text-white border border-white/20"
-            }`}
-          >
-            <span>{isNoiseActive ? "✓ Desativar Granulação" : "▶ Ativar Granulação (Noise)"}</span>
-          </button>
+          <div className="grid md:grid-cols-2 gap-4">
+            {/* Card 1: Partículas de Poeira Dourada 3D */}
+            <div className="p-6 rounded-2xl bg-[#111215] border border-white/10 flex flex-col justify-between gap-5 hover:border-[#F2C21B]/40 transition-all">
+              <div className="space-y-2">
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xl">✨</span>
+                    <h3 className="font-['Anton'] text-lg uppercase text-white tracking-wide">
+                      Poeira Dourada & Faíscas 3D (Hero)
+                    </h3>
+                  </div>
+                  <span
+                    className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase shrink-0 ${
+                      isDustActive
+                        ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/40"
+                        : "bg-white/10 text-white/50 border border-white/10"
+                    }`}
+                  >
+                    {isDustActive ? "Ativado" : "Desativado"}
+                  </span>
+                </div>
+                <p className="text-xs text-[#AAA8A1] leading-relaxed">
+                  Micro-partículas douradas e âmbar flutuando suavemente em 3D ao redor da medalha, simulando a poeira e o pôr do sol na rodovia com aceleração de GPU.
+                </p>
+              </div>
+
+              <div className="flex items-center justify-between gap-3 pt-3 border-t border-white/5">
+                <a
+                  href="/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-mono text-[#F2C21B] hover:underline flex items-center gap-1"
+                >
+                  <span>Ver na Home ↗</span>
+                </a>
+
+                <button
+                  onClick={handleToggleDust}
+                  className={`px-5 py-2.5 rounded-xl font-['Anton'] uppercase text-xs tracking-wider transition-all flex items-center gap-2 shrink-0 cursor-pointer ${
+                    isDustActive
+                      ? "bg-[#F2C21B] text-black shadow-[0_0_20px_rgba(242,194,27,0.35)] hover:bg-[#ffe053]"
+                      : "bg-white/10 hover:bg-white/20 text-white border border-white/20"
+                  }`}
+                >
+                  <span>{isDustActive ? "✓ Desativar Poeira 3D" : "▶ Ativar Poeira Dourada 3D"}</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Card 2: Granulação de Filme (Noise Overlay) */}
+            <div className="p-6 rounded-2xl bg-[#111215] border border-white/10 flex flex-col justify-between gap-5 hover:border-white/25 transition-all">
+              <div className="space-y-2">
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xl">🎞️</span>
+                    <h3 className="font-['Anton'] text-lg uppercase text-white tracking-wide">
+                      Granulação de Filme (Noise Overlay)
+                    </h3>
+                  </div>
+                  <span
+                    className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase shrink-0 ${
+                      isNoiseActive
+                        ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/40"
+                        : "bg-white/10 text-white/50 border border-white/10"
+                    }`}
+                  >
+                    {isNoiseActive ? "Ativado" : "Desativado"}
+                  </span>
+                </div>
+                <p className="text-xs text-[#AAA8A1] leading-relaxed">
+                  Sobreposição cinematográfica procedural de granulação de filme sobre o viewport para criar uma atmosfera analógica e vintage.
+                </p>
+              </div>
+
+              <div className="flex items-center justify-end gap-3 pt-3 border-t border-white/5">
+                <button
+                  onClick={handleToggleNoise}
+                  className={`px-5 py-2.5 rounded-xl font-['Anton'] uppercase text-xs tracking-wider transition-all flex items-center gap-2 shrink-0 cursor-pointer ${
+                    isNoiseActive
+                      ? "bg-[#F2C21B] text-black shadow-[0_0_20px_rgba(242,194,27,0.35)] hover:bg-[#ffe053]"
+                      : "bg-white/10 hover:bg-white/20 text-white border border-white/20"
+                  }`}
+                >
+                  <span>{isNoiseActive ? "✓ Desativar Granulação" : "▶ Ativar Granulação (Noise)"}</span>
+                </button>
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* Links Rápidos por Página com Editor Ativo */}
