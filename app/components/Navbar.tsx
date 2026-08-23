@@ -62,6 +62,14 @@ export function Navbar({}: NavbarProps) {
 
   return (
     <>
+      {/* Accessible Skip to Content Link */}
+      <a
+        href="#conteudo"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:px-4 focus:py-2 focus:bg-[#F2C21B] focus:text-black focus:font-extrabold focus:rounded-lg focus:shadow-2xl"
+      >
+        Pular para o conteúdo principal
+      </a>
+
       {/* Top Banner / Ticker */}
       <div className="bg-[#0E0F11] border-b border-white/5 py-1.5 px-4 sm:px-8 text-[10.5px] sm:text-[11px] text-[#AAA8A1] flex justify-between items-center select-none overflow-hidden relative">
         {/* Mobile Horizontal Auto-scrolling Marquee */}

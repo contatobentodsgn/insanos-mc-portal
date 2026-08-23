@@ -676,9 +676,19 @@ export function HomeClient() {
                     <div
                       key={pillar.num}
                       data-pillar-card={idx}
+                      role="button"
+                      tabIndex={0}
+                      aria-expanded={isHovered}
+                      aria-label={`Pilar ${pillar.num}: ${pillar.title}`}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" || e.key === " ") {
+                          e.preventDefault();
+                          setActivePillarHover(activePillarHover === idx ? -1 : idx);
+                        }
+                      }}
                       onMouseEnter={() => setActivePillarHover(idx)}
                       onClick={() => setActivePillarHover(activePillarHover === idx ? -1 : idx)}
-                      className={`relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] bg-cover border flex flex-col justify-end p-4 sm:p-5 lg:p-6 ${
+                      className={`relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] bg-cover border flex flex-col justify-end p-4 sm:p-5 lg:p-6 focus:outline-none focus:ring-2 focus:ring-[#F2C21B] ${
                         isHovered
                           ? "min-h-[290px] sm:min-h-0 sm:flex-[3.2] border-[#F2C21B] shadow-[0_0_30px_rgba(242,194,27,0.25)]"
                           : "min-h-[145px] sm:min-h-0 sm:flex-1 border-white/10 opacity-80 hover:opacity-100"

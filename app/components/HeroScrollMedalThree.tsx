@@ -13,13 +13,22 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
+const TOTAL_FALLBACK_FRAMES = 60;
+const FALLBACK_FRAME_PATHS = Array.from(
+  { length: TOTAL_FALLBACK_FRAMES },
+  (_, i) => `/images/medal-sequence/frame_${String(i).padStart(2, "0")}.webp`
+);
+
 export default function HeroScrollMedalThree() {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasMountRef = useRef<HTMLDivElement>(null);
+  const fallbackCanvasRef = useRef<HTMLCanvasElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const hintRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
+
   const [loading, setLoading] = useState(true);
+  const [useFallback2D, setUseFallback2D] = useState(false);
 
   // Dynamic ambient spotlight position following mouse
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
@@ -33,18 +42,54 @@ export default function HeroScrollMedalThree() {
   };
 
   useEffect(() => {
-    if (!containerRef.current || !canvasMountRef.current) return;
+    if (!containerRef.current) return;
+
+    // Detect WebGL capability and low-power hardware
+    const checkWebGLSupport = (): boolean => {
+      try {
+        const testCanvas = document.createElement("canvas");
+        const gl = testCanvas.getContext("webgl2") || testCanvas.getContext("webgl");
+        if (!gl) return false;
+        // Check for reduced motion preference
+        if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          return false;
+        }
+        return true;
+      } catch (e) {
+        return false;
+      }
+    };
+
+    const hasWebGL = checkWebGLSupport();
+
+    if (!hasWebGL) {
+      // Graceful 2D fallback mode
+      setUseFallback2D(true);
+      setLoading(false);
+      return;
+    }
+
+    if (!canvasMountRef.current) return;
 
     const mount = canvasMountRef.current;
     let width = mount.clientWidth || window.innerWidth;
     let height = mount.clientHeight || window.innerHeight;
 
     // 1. WebGL Renderer with High Precision & ACES Tone Mapping
-    const renderer = new THREE.WebGLRenderer({
-      antialias: true,
-      alpha: true,
-      powerPreference: "high-performance",
-    });
+    let renderer: THREE.WebGLRenderer;
+    try {
+      renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        alpha: true,
+        powerPreference: "high-performance",
+      });
+    } catch (err) {
+      console.warn("WebGL initialization failed, falling back to 2D canvas:", err);
+      setUseFallback2D(true);
+      setLoading(false);
+      return;
+    }
+
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(width, height);
     renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -117,7 +162,9 @@ export default function HeroScrollMedalThree() {
       },
       undefined,
       (err) => {
-        console.error("Error loading GLB medal:", err);
+        console.warn("Failed to load GLB, activating 2D fallback:", err);
+        setUseFallback2D(true);
+        setLoading(false);
       }
     );
 
@@ -254,6 +301,57 @@ export default function HeroScrollMedalThree() {
     };
   }, []);
 
+  // Fallback 2D Image Sequence Loader (if WebGL is disabled or unavailable)
+  useEffect(() => {
+    if (!useFallback2D || !containerRef.current || !fallbackCanvasRef.current) return;
+
+    const canvas = fallbackCanvasRef.current;
+    const ctx2d = canvas.getContext("2d");
+    if (!ctx2d) return;
+
+    const imgs: HTMLImageElement[] = [];
+    FALLBACK_FRAME_PATHS.forEach((path) => {
+      const img = new Image();
+      img.src = path;
+      imgs.push(img);
+    });
+
+    const render2D = (idx: number) => {
+      const img = imgs[idx];
+      if (img && img.complete) {
+        ctx2d.clearRect(0, 0, canvas.width, canvas.height);
+        ctx2d.drawImage(img, 0, 0, canvas.width, canvas.height);
+      }
+    };
+
+    const ctx = gsap.context(() => {
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: "+=1800",
+          pin: true,
+          pinSpacing: true,
+          scrub: 0.5,
+          onUpdate: (self) => {
+            const p = self.progress;
+            let frameIdx = 0;
+            if (p < 0.36) {
+              frameIdx = Math.floor((p / 0.36) * (TOTAL_FALLBACK_FRAMES - 1));
+            } else if (p < 0.72) {
+              frameIdx = Math.floor(((p - 0.36) / 0.36) * (TOTAL_FALLBACK_FRAMES - 1));
+            } else {
+              frameIdx = 0;
+            }
+            render2D(Math.max(0, Math.min(TOTAL_FALLBACK_FRAMES - 1, frameIdx)));
+          },
+        },
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, [useFallback2D]);
+
   return (
     <div
       ref={containerRef}
@@ -295,14 +393,26 @@ export default function HeroScrollMedalThree() {
 
       <div className="absolute inset-0 bg-[radial-gradient(#ffffff08_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none opacity-30" />
 
-      {/* THREE.JS 3D MEDAL CANVAS (Full Viewport, Calibrated Scale) */}
-      <div
-        ref={canvasMountRef}
-        className="absolute inset-0 z-20 w-full h-full pointer-events-none flex items-center justify-center overflow-hidden"
-      >
-        {/* Ambient Halo Glow */}
-        <div className="absolute w-[400px] sm:w-[540px] h-[400px] sm:h-[540px] rounded-full bg-gradient-to-r from-[#F2C21B]/15 via-white/10 to-[#F2C21B]/15 blur-3xl -z-10 animate-pulse" />
-      </div>
+      {/* 3D MEDAL (Three.js WebGL or Adaptive 2D Fallback) */}
+      {!useFallback2D ? (
+        <div
+          ref={canvasMountRef}
+          className="absolute inset-0 z-20 w-full h-full pointer-events-none flex items-center justify-center overflow-hidden"
+        >
+          <div className="absolute w-[400px] sm:w-[540px] h-[400px] sm:h-[540px] rounded-full bg-gradient-to-r from-[#F2C21B]/15 via-white/10 to-[#F2C21B]/15 blur-3xl -z-10 animate-pulse" />
+        </div>
+      ) : (
+        <div className="absolute inset-0 z-20 w-full h-full pointer-events-none flex items-center justify-center overflow-hidden">
+          <div className="relative w-[340px] h-[340px] sm:w-[460px] sm:h-[460px]">
+            <canvas
+              ref={fallbackCanvasRef}
+              width={540}
+              height={540}
+              className="w-full h-full object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.9)]"
+            />
+          </div>
+        </div>
+      )}
 
       {/* INITIAL SCROLL HINT */}
       <div
@@ -317,7 +427,7 @@ export default function HeroScrollMedalThree() {
         </div>
       </div>
 
-      {/* FINAL HERO REVEAL CONTENT (EXACT MATCH OF OFFICIAL HOMEPAGE PRINT 3) */}
+      {/* FINAL HERO REVEAL CONTENT (EXACT MATCH OF OFFICIAL HOMEPAGE) */}
       <div
         ref={contentRef}
         className="relative z-30 max-w-[1400px] mx-auto px-4 sm:px-8 py-20 lg:py-32 w-full opacity-0 pointer-events-none"
@@ -369,7 +479,7 @@ export default function HeroScrollMedalThree() {
         </div>
       </div>
 
-      {/* Right Vertical Scroll Label (Official indicator from Print 3) */}
+      {/* Right Vertical Scroll Label */}
       <div className="absolute right-8 bottom-8 hidden lg:flex flex-col items-center gap-2 text-[10px] uppercase font-bold tracking-[0.2em] text-[#AAA8A1] z-30 pointer-events-none">
         <span className="writing-mode-vertical">Rolar Para Conhecer</span>
         <span className="text-[#F2C21B] text-lg animate-bounce">↓</span>
