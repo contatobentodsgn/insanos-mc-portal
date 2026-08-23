@@ -163,9 +163,9 @@ const PILLARS_DATA: Array<{
     tagline: "Alicerce Espiritual",
     desc: (
       <>
-        A fé que guia nossos passos e o respeito<br />
-        sagrado às convicções de cada homem.<br />
-        O alicerce que nos mantém firmes na vida.
+        <span className="block">A fé viva que guia nossos passos,</span>
+        <span className="block">o respeito a todas as convicções e</span>
+        <span className="block">o alicerce que nos mantém de pé.</span>
       </>
     ),
     quote: "A estrada é longa, mas a proteção divina guia o comboio.",
@@ -179,9 +179,9 @@ const PILLARS_DATA: Array<{
     tagline: "O Lar é Sagrado",
     desc: (
       <>
-        O lar e os filhos são a base sagrada.<br />
-        O motoclube jamais exige o sacrifício do lar:<br />
-        o verdadeiro irmão honra e cuida da sua casa.
+        <span className="block">O lar e os filhos são a base sagrada.</span>
+        <span className="block">O clube jamais divide a nossa casa:</span>
+        <span className="block">o irmão de verdade cuida dos seus.</span>
       </>
     ),
     quote: "Nenhum sucesso na estrada compensa o descuido com a família.",
@@ -195,9 +195,9 @@ const PILLARS_DATA: Array<{
     tagline: "Sustento Honrado",
     desc: (
       <>
-        A dignidade que sustenta o homem e a<br />
-        disciplina profissional. Clube formado por<br />
-        trabalhadores que vencem pelo próprio suor.
+        <span className="block">A dignidade de vencer pelo suor,</span>
+        <span className="block">a honra na rotina profissional e</span>
+        <span className="block">o sustento que garante a liberdade.</span>
       </>
     ),
     quote: "O trabalho dignifica o homem e sustenta a liberdade na estrada.",
@@ -211,9 +211,9 @@ const PILLARS_DATA: Array<{
     tagline: "Lealdade & Caridade",
     desc: (
       <>
-        Colete não cria irmão, atitude cria.<br />
-        Hierarquia respeitada, lealdade no peito<br />
-        e compromisso diário com a ajuda social.
+        <span className="block">Colete não cria irmão, atitude cria.</span>
+        <span className="block">Hierarquia com lealdade no peito e</span>
+        <span className="block">compromisso diário com o próximo.</span>
       </>
     ),
     quote: "Colete não cria irmão. Atitude cria.",
@@ -650,7 +650,7 @@ export function HomeClient() {
                       onClick={() => setActivePillarHover(activePillarHover === idx ? -1 : idx)}
                       className={`relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] bg-cover border flex flex-col justify-end p-5 sm:p-6 ${
                         isHovered
-                          ? "min-h-[290px] sm:min-h-0 sm:flex-[2.6] border-[#F2C21B] shadow-[0_0_30px_rgba(242,194,27,0.25)]"
+                          ? "min-h-[290px] sm:min-h-0 sm:flex-[3.2] border-[#F2C21B] shadow-[0_0_30px_rgba(242,194,27,0.25)]"
                           : "min-h-[145px] sm:min-h-0 sm:flex-1 border-white/10 opacity-80 hover:opacity-100"
                       }`}
                       style={{
@@ -680,9 +680,9 @@ export function HomeClient() {
                               : "max-h-0 opacity-0 translate-y-2 pointer-events-none"
                           }`}
                         >
-                          <p className="text-xs sm:text-[13px] text-[#E0DDD8] leading-relaxed max-w-[320px]">
+                          <div className="text-[12px] sm:text-[12.5px] lg:text-[13px] text-[#E0DDD8] leading-tight sm:leading-snug">
                             {pillar.desc}
-                          </p>
+                          </div>
                         </div>
                       </div>
                     </div>
