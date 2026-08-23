@@ -149,7 +149,7 @@ const MEMORIAL_MEMBERS = [
 const PILLARS_DATA: Array<{
   num: string;
   title: string;
-  subtitle: string;
+  subtitle: React.ReactNode;
   tagline: string;
   desc: React.ReactNode;
   quote: string;
@@ -159,7 +159,12 @@ const PILLARS_DATA: Array<{
   {
     num: "01",
     title: "Deus",
-    subtitle: "Fé & Convicção",
+    subtitle: (
+      <>
+        <span className="block whitespace-nowrap">Fé, Propósito</span>
+        <span className="block whitespace-nowrap">& Respeito</span>
+      </>
+    ),
     tagline: "Alicerce Espiritual",
     desc: (
       <>
@@ -175,7 +180,12 @@ const PILLARS_DATA: Array<{
   {
     num: "02",
     title: "Família",
-    subtitle: "Base Inegociável",
+    subtitle: (
+      <>
+        <span className="block whitespace-nowrap">Base</span>
+        <span className="block whitespace-nowrap">Inegociável</span>
+      </>
+    ),
     tagline: "O Lar é Sagrado",
     desc: (
       <>
@@ -191,7 +201,12 @@ const PILLARS_DATA: Array<{
   {
     num: "03",
     title: "Trabalho",
-    subtitle: "Honra & Dignidade",
+    subtitle: (
+      <>
+        <span className="block whitespace-nowrap">Honra &</span>
+        <span className="block whitespace-nowrap">Dignidade</span>
+      </>
+    ),
     tagline: "Sustento Honrado",
     desc: (
       <>
@@ -207,7 +222,12 @@ const PILLARS_DATA: Array<{
   {
     num: "04",
     title: "Motoclube",
-    subtitle: "Irmandade & Ação",
+    subtitle: (
+      <>
+        <span className="block whitespace-nowrap">Irmandade</span>
+        <span className="block whitespace-nowrap">& Ação</span>
+      </>
+    ),
     tagline: "Lealdade & Caridade",
     desc: (
       <>
@@ -648,7 +668,7 @@ export function HomeClient() {
                       data-pillar-card={idx}
                       onMouseEnter={() => setActivePillarHover(idx)}
                       onClick={() => setActivePillarHover(activePillarHover === idx ? -1 : idx)}
-                      className={`relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] bg-cover border flex flex-col justify-end p-5 sm:p-6 ${
+                      className={`relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] bg-cover border flex flex-col justify-end p-4 sm:p-5 lg:p-6 ${
                         isHovered
                           ? "min-h-[290px] sm:min-h-0 sm:flex-[3.2] border-[#F2C21B] shadow-[0_0_30px_rgba(242,194,27,0.25)]"
                           : "min-h-[145px] sm:min-h-0 sm:flex-1 border-white/10 opacity-80 hover:opacity-100"
@@ -666,9 +686,11 @@ export function HomeClient() {
                         <h3 className="font-['Anton'] text-2xl sm:text-3xl uppercase text-white leading-tight">
                           {pillar.title}
                         </h3>
-                        <div className="flex items-center justify-between">
-                          <p className="text-xs font-bold uppercase text-[#F2C21B] mb-2">{pillar.subtitle}</p>
-                          <span className="sm:hidden text-[10px] font-mono text-[#F2C21B]/80 mb-2 flex items-center gap-1 bg-black/50 px-2 py-0.5 rounded-full border border-white/10">
+                        <div className="flex items-end justify-between mb-2">
+                          <div className="text-[10.5px] min-[380px]:text-[11px] sm:text-xs font-bold uppercase text-[#F2C21B] leading-tight tracking-wide">
+                            {pillar.subtitle}
+                          </div>
+                          <span className="sm:hidden text-[10px] font-mono text-[#F2C21B]/80 flex items-center gap-1 bg-black/50 px-2 py-0.5 rounded-full border border-white/10">
                             {isHovered ? "▲" : "▼ Detalhes"}
                           </span>
                         </div>
