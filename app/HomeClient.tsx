@@ -29,7 +29,10 @@ import {
 const ASSETS = {
   logo: "/images/insanos/insanos_mc_logo.svg",
   heroBg: "/images/insanos/hero_biker.webp",
-  heroVideo: "/videos/hero-video-1080p.webm",
+  heroVideo1080Webm: "/videos/hero-video-1080p.webm",
+  heroVideo1080Mp4: "/videos/hero-video-1080p.mp4",
+  heroVideo720Webm: "/videos/hero-video-720p.webm",
+  heroVideo720Mp4: "/videos/hero-video-720p.mp4",
   impactBg: "/images/insanos/impact_agasalho.webp",
   newsBg: "/images/insanos/news_featured_aniversario.webp",
   pcdBg: "/images/insanos/impact_pcd.webp",
@@ -535,9 +538,16 @@ export function HomeClient() {
               muted
               playsInline
               poster={ASSETS.heroBg}
+              preload="auto"
               className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
             >
-              <source src={ASSETS.heroVideo} type="video/webm" />
+              {/* Mobile (< 768px): Lightweight 720p stream with VP9 & H.264 fallback */}
+              <source src={ASSETS.heroVideo720Webm} type="video/webm" media="(max-width: 768px)" />
+              <source src={ASSETS.heroVideo720Mp4} type="video/mp4" media="(max-width: 768px)" />
+
+              {/* Desktop (>= 768px): Full 1080p stream with VP9 & H.264 fallback */}
+              <source src={ASSETS.heroVideo1080Webm} type="video/webm" />
+              <source src={ASSETS.heroVideo1080Mp4} type="video/mp4" />
             </video>
             {/* Cinematic Gradient Overlays for readability and depth */}
             <div className="absolute inset-0 bg-gradient-to-r from-[#080808]/95 via-[#080808]/75 to-[#080808]/35" />
