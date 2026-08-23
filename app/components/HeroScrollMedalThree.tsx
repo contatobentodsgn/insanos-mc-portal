@@ -19,25 +19,6 @@ const FALLBACK_FRAME_PATHS = Array.from(
   (_, i) => `/images/medal-sequence/frame_${String(i).padStart(2, "0")}.webp`
 );
 
-// Procedural texture generator for warm glowing dust/ember particles
-function createDustParticleTexture(): THREE.Texture {
-  const canvas = document.createElement("canvas");
-  canvas.width = 64;
-  canvas.height = 64;
-  const ctx = canvas.getContext("2d");
-  if (ctx) {
-    const grad = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
-    grad.addColorStop(0, "rgba(255, 240, 180, 1)");
-    grad.addColorStop(0.3, "rgba(242, 194, 27, 0.85)");
-    grad.addColorStop(0.7, "rgba(242, 194, 27, 0.25)");
-    grad.addColorStop(1, "rgba(0, 0, 0, 0)");
-    ctx.fillStyle = grad;
-    ctx.fillRect(0, 0, 64, 64);
-  }
-  const texture = new THREE.CanvasTexture(canvas);
-  return texture;
-}
-
 export default function HeroScrollMedalThree() {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasMountRef = useRef<HTMLDivElement>(null);
@@ -189,52 +170,6 @@ export default function HeroScrollMedalThree() {
       }
     );
 
-    // 5.1 Golden Highway Dust / Ember Particles System (Configurable via Admin)
-    const PARTICLE_COUNT = 160;
-    const particleGeo = new THREE.BufferGeometry();
-    const particlePos = new Float32Array(PARTICLE_COUNT * 3);
-    const particleSpeeds = new Float32Array(PARTICLE_COUNT);
-    const particlePhases = new Float32Array(PARTICLE_COUNT);
-
-    for (let i = 0; i < PARTICLE_COUNT; i++) {
-      particlePos[i * 3 + 0] = (Math.random() - 0.5) * 6.5;    // X
-      particlePos[i * 3 + 1] = (Math.random() - 0.5) * 5.5;    // Y
-      particlePos[i * 3 + 2] = (Math.random() - 0.5) * 4.0 + 1.0; // Z
-      particleSpeeds[i] = 0.003 + Math.random() * 0.005;
-      particlePhases[i] = Math.random() * Math.PI * 2;
-    }
-
-    particleGeo.setAttribute("position", new THREE.BufferAttribute(particlePos, 3));
-
-    const particleTexture = createDustParticleTexture();
-    const particleMat = new THREE.PointsMaterial({
-      size: 0.09,
-      map: particleTexture,
-      transparent: true,
-      opacity: 0.7,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false,
-    });
-
-    const dustParticles = new THREE.Points(particleGeo, particleMat);
-    scene.add(dustParticles);
-
-    // Check if dust is active from localStorage
-    const checkDustActive = () => {
-      if (typeof window === "undefined") return true;
-      const stored = localStorage.getItem("insanos_hero_dust_particles");
-      return stored === null ? true : stored !== "false";
-    };
-
-    dustParticles.visible = checkDustActive();
-
-    // Listen to admin toggle changes in real-time
-    const handleSettingsChanged = () => {
-      dustParticles.visible = checkDustActive();
-    };
-    window.addEventListener("insanos_settings_changed", handleSettingsChanged);
-    window.addEventListener("storage", handleSettingsChanged);
-
     // Interactive mouse tilt parallax
     const handleMouseTilt = (e: MouseEvent) => {
       const x = e.clientX / window.innerWidth - 0.5;
@@ -339,27 +274,6 @@ export default function HeroScrollMedalThree() {
       medalGroup.position.y = scrollObj.yOffset;
       renderer.domElement.style.opacity = String(scrollObj.opacity);
 
-      // Animate floating dust particles
-      if (dustParticles.visible) {
-        const positions = particleGeo.attributes.position.array as Float32Array;
-        const time = performance.now() * 0.001;
-
-        for (let i = 0; i < PARTICLE_COUNT; i++) {
-          positions[i * 3 + 1] += particleSpeeds[i];
-          positions[i * 3 + 0] += Math.sin(time + particlePhases[i]) * 0.0015;
-          positions[i * 3 + 2] += Math.cos(time + particlePhases[i]) * 0.001;
-
-          // Recycle particles to bottom
-          if (positions[i * 3 + 1] > 2.8) {
-            positions[i * 3 + 1] = -2.8;
-            positions[i * 3 + 0] = (Math.random() - 0.5) * 6.5;
-          }
-        }
-        particleGeo.attributes.position.needsUpdate = true;
-        dustParticles.rotation.y = currentRotationY * 0.15 + mouseTiltX * 0.4;
-        particleMat.opacity = scrollObj.opacity * 0.7;
-      }
-
       renderer.render(scene, camera);
     };
     animate();
@@ -380,17 +294,12 @@ export default function HeroScrollMedalThree() {
       cancelAnimationFrame(animId);
       window.removeEventListener("mousemove", handleMouseTilt);
       window.removeEventListener("resize", handleResize);
-      window.removeEventListener("insanos_settings_changed", handleSettingsChanged);
-      window.removeEventListener("storage", handleSettingsChanged);
       ctx.revert();
       if (renderer.domElement.parentNode) {
         renderer.domElement.parentNode.removeChild(renderer.domElement.parentNode);
       }
       renderer.dispose();
       pmrem.dispose();
-      particleTexture.dispose();
-      particleGeo.dispose();
-      particleMat.dispose();
     };
   }, []);
 
@@ -486,7 +395,7 @@ export default function HeroScrollMedalThree() {
 
       <div className="absolute inset-0 bg-[radial-gradient(#ffffff08_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none opacity-30" />
 
-      {/* 3D MEDAL & DUST PARTICLES (Three.js WebGL or Adaptive 2D Fallback) */}
+      {/* 3D MEDAL (Three.js WebGL or Adaptive 2D Fallback) */}
       {!useFallback2D ? (
         <div
           ref={canvasMountRef}
