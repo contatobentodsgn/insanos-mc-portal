@@ -217,9 +217,9 @@ export function ComandoClient() {
                         Homenagem Solene
                       </span>
                       <h3 className="font-['Anton'] text-2xl uppercase text-white mb-2">Edson Lopes</h3>
-                      <p className="text-xs text-[#F2C21B] uppercase font-bold mb-3 font-mono">Cofundador & Ícone da Disciplina (1965 – 2024)</p>
+                      <p className="text-xs text-[#F2C21B] uppercase font-bold mb-3 font-mono">Fundador & Ícone da Disciplina (1965 – 09/11/2024)</p>
                       <p className="text-sm text-[#AAA8A1] leading-relaxed">
-                        Líder exemplar cuja integridade moldou o regimento de disciplina e conduta do clube. Seu legado continuará guiando cada comboio pelo mundo.
+                        Líder exemplar cuja integridade moldou o regimento de disciplina e conduta do clube desde a fundação em 2015. Seu legado continuará guiando cada comboio pelo mundo.
                       </p>
                     </div>
                   </div>
@@ -236,9 +236,9 @@ export function ComandoClient() {
                         Pioneirismo & Coragem
                       </span>
                       <h3 className="font-['Anton'] text-2xl uppercase text-white mb-2">Os Fundadores de 2015</h3>
-                      <p className="text-xs text-[#F2C21B] uppercase font-bold mb-3 font-mono">Original de OZ — Osasco / SP</p>
+                      <p className="text-xs text-[#F2C21B] uppercase font-bold mb-3 font-mono">Original de OZ — 03 de Dezembro de 2015</p>
                       <p className="text-sm text-[#AAA8A1] leading-relaxed">
-                        Aos pioneiros que tiveram a coragem de romper paradigmas e fundar em Osasco uma nova história de fraternidade e caridade.
+                        Aos pioneiros liderados por Jonatas Kiss Feitosa, Bugdam Alves Nunes, Edson Lopes e Bin, que tiveram a coragem de romper paradigmas e fundar em Osasco uma nova história de fraternidade e caridade.
                       </p>
                     </div>
                   </div>

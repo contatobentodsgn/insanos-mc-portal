@@ -234,10 +234,10 @@ const TIMELINE_DATA: Array<{
   {
     year: "1922",
     badge: "Raízes Históricas",
-    title: "Os 18 do Forte",
+    title: "Memória dos 18 do Forte",
     desc: (
       <>
-        A bravura dos 18 militares de Copacabana que inspirou o símbolo adotado pelo clube:<br className="hidden sm:inline" />{" "}
+        A bravura da resistência de Copacabana que inspirou o símbolo 18 adotado pelo clube:<br className="hidden sm:inline" />{" "}
         coragem inabalável, lealdade à causa e marcha unida mesmo contra todas as adversidades.
       </>
     ),
@@ -250,12 +250,12 @@ const TIMELINE_DATA: Array<{
   },
   {
     year: "2015",
-    badge: "Fundação Oficial",
+    badge: "03/12/2015 · Fundação",
     title: "Original de OZ (Osasco/SP)",
     desc: (
       <>
-        Fundação do Insanos Moto Clube em Osasco/SP. Um grupo de homens decididos a romper<br className="hidden sm:inline" />{" "}
-        os velhos paradigmas do motociclismo tradicional, unindo disciplina militar e ação social direta.
+        Fundação histórica do Insanos Moto Clube em Osasco/SP por motociclistas pioneiros decididos a romper<br className="hidden sm:inline" />{" "}
+        paradigmas e construir uma irmandade pautada em disciplina, respeito à família e ação social.
       </>
     ),
     highlight: (
@@ -267,12 +267,12 @@ const TIMELINE_DATA: Array<{
   },
   {
     year: "2018",
-    badge: "Consolidação",
-    title: "Expansão Nacional",
+    badge: "Associação & Sede",
+    title: "Formalização e Expansão",
     desc: (
       <>
-        O Insanos alcança todos os 26 estados brasileiros e o Distrito Federal, estruturando<br className="hidden sm:inline" />{" "}
-        diretorias regionais, padronização de conduta e fortalecendo as frentes sociais.
+        Formalização jurídica da Associação Civil (CNPJ 32.197.906/0001-34) e cessão municipal da sede OZ,<br className="hidden sm:inline" />{" "}
+        alcançando divisões em todos os estados brasileiros com frentes sociais coordenadas.
       </>
     ),
     highlight: (
@@ -285,28 +285,28 @@ const TIMELINE_DATA: Array<{
   {
     year: "2021",
     badge: "Travessia de Fronteiras",
-    title: "Presença Internacional",
+    title: "Presença Internacional & Sangue",
     desc: (
       <>
-        Abertura oficial de capítulos na América Latina, Europa e Estados Unidos,<br className="hidden sm:inline" />{" "}
-        consolidando a doutrina e a ação beneficente além das fronteiras brasileiras.
+        Abertura oficial de capítulos na América Latina, Europa e Estados Unidos, além da consolidação<br className="hidden sm:inline" />{" "}
+        da Mega Ação Mundial de Doação de Sangue e do Bonde Pela Vida.
       </>
     ),
     highlight: (
       <>
         <span>Bandeira do motoclube</span>
-        <span className="block sm:inline sm:ml-1">em mais de 30 países.</span>
+        <span className="block sm:inline sm:ml-1">em dezenas de países.</span>
       </>
     ),
   },
   {
     year: "Hoje",
-    badge: "O Maior do Mundo",
-    title: "12 Mil Integrantes · 65 Países",
+    badge: "Mais de 70 Países",
+    title: "Presença Global & Salva de Prata",
     desc: (
       <>
-        Consolidado como a maior força do motociclismo mundial. Mais de 480 facções<br className="hidden sm:inline" />{" "}
-        ativas e centenas de toneladas de doações entregues todos os meses.
+        Reconhecido pela Câmara de SP com a Salva de Prata, o Insanos MC reúne dezenas de milhares de integrantes,<br className="hidden sm:inline" />{" "}
+        centenas de divisões e mais de 14 mil ações sociais anuais.
       </>
     ),
     highlight: (
@@ -762,7 +762,7 @@ export function HomeClient() {
                 <span className="text-[#F2C21B]">Forjado no asfalto.</span>
               </h2>
               <p className="text-[#C7C5BF] text-base sm:text-lg leading-relaxed">
-                Em 2015, na cidade de Osasco/SP, motociclistas experientes decidiram criar algo novo.<br className="hidden sm:inline" />{" "}
+                Em <strong>03 de dezembro de 2015</strong>, na cidade de Osasco/SP, motociclistas experientes decidiram criar algo novo.<br className="hidden sm:inline" />{" "}
                 Um motoclube com disciplina inegociável, respeito sagrado à família, amor ao trabalho e<br className="hidden sm:inline" />{" "}
                 uma vocação inabalável para fazer o bem a quem mais precisa.
               </p>
