@@ -11,7 +11,7 @@ interface ShareButtonsProps {
 export function ShareButtons({ title, url }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false);
 
-  const shareUrl = typeof window !== "undefined" ? (url || window.location.href) : "https://insanos-mc-portal.vercel.app";
+  const shareUrl = typeof window !== "undefined" ? (url || window.location.href) : "https://insanosmc.vercel.app";
   const encodedTitle = encodeURIComponent(`${title} — Insanos Moto Clube`);
   const encodedUrl = encodeURIComponent(shareUrl);
 

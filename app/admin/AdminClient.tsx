@@ -239,7 +239,7 @@ export function AdminClient() {
 
           <div className="flex items-center gap-3">
             <a
-              href="https://insanos-mc-portal.vercel.app"
+              href="https://insanosmc.vercel.app"
               target="_blank"
               rel="noopener noreferrer"
               className="hidden sm:flex px-3 py-1.5 rounded-lg bg-emerald-950/60 border border-emerald-500/40 text-emerald-300 text-xs font-mono items-center gap-2 hover:bg-emerald-900/60 transition-colors"
