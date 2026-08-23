@@ -14,7 +14,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://insanosmc.vercel.app"),
+  metadataBase: new URL("https://insanos-mc-portal.vercel.app"),
   title: {
     default: "Insanos MC — Nosso combustível é a irmandade | Original de OZ",
     template: "%s | Insanos MC",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    url: "https://insanosmc.vercel.app",
+    url: "https://insanos-mc-portal.vercel.app",
     siteName: "Insanos Moto Clube Mundial",
     title: "Insanos MC — Nosso combustível é a irmandade",
     description:
