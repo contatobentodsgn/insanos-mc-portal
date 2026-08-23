@@ -21,7 +21,7 @@ export default function HeroScrollMedalThree() {
   const overlayRef = useRef<HTMLDivElement>(null);
   const [loading, setLoading] = useState(true);
 
-  // Mouse spotlight position for authentic ambient glow
+  // Dynamic ambient spotlight position following mouse
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
 
   const handleMouseMoveGlow = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -39,7 +39,7 @@ export default function HeroScrollMedalThree() {
     let width = mount.clientWidth || window.innerWidth;
     let height = mount.clientHeight || window.innerHeight;
 
-    // 1. WebGL Renderer with ACES ToneMapping & High Precision
+    // 1. WebGL Renderer with High Precision & ACES Tone Mapping
     const renderer = new THREE.WebGLRenderer({
       antialias: true,
       alpha: true,
@@ -52,16 +52,16 @@ export default function HeroScrollMedalThree() {
     renderer.toneMappingExposure = 1.35;
     mount.appendChild(renderer.domElement);
 
-    // 2. Scene & PBR Studio Reflection Environment
+    // 2. Scene & PBR Studio Environment
     const scene = new THREE.Scene();
     const pmrem = new THREE.PMREMGenerator(renderer);
     scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
 
-    // 3. Perspective Camera (Calculated to prevent ANY clipping at all angles)
+    // 3. Camera with calibrated distance (4.6 for balanced, elegant medal scale)
     const camera = new THREE.PerspectiveCamera(38, width / height, 0.1, 100);
-    camera.position.set(0, 0, 3.2);
+    camera.position.set(0, 0, 4.6);
 
-    // 4. Lights (Warm Sunset Key + Cool Fill + Sharp Metallic Rim)
+    // 4. Studio 3-Point Lighting
     scene.add(new THREE.AmbientLight(0xe8edf7, 0.9));
 
     const keyLight = new THREE.DirectionalLight(0xffc387, 4.2);
@@ -76,7 +76,7 @@ export default function HeroScrollMedalThree() {
     rimLight.position.set(0, 4, -2.5);
     scene.add(rimLight);
 
-    // 5. Load GLTF 3D Master Model
+    // 5. Load Master 3D GLTF Medal
     const medalGroup = new THREE.Group();
     scene.add(medalGroup);
 
@@ -91,12 +91,12 @@ export default function HeroScrollMedalThree() {
       (gltf) => {
         const root = gltf.scene;
 
-        // Perfect center of geometry bounding box
+        // Center geometry to pivot
         const box = new THREE.Box3().setFromObject(root);
         const center = box.getCenter(new THREE.Vector3());
         root.position.sub(center);
 
-        // Ensure double-sided rendering for all metallic surfaces
+        // Ensure double-sided metallic rendering
         root.traverse((child) => {
           if ((child as THREE.Mesh).isMesh) {
             const mesh = child as THREE.Mesh;
@@ -121,31 +121,33 @@ export default function HeroScrollMedalThree() {
       }
     );
 
-    // Interactive mouse tilt on medal
+    // Interactive mouse tilt parallax
     const handleMouseTilt = (e: MouseEvent) => {
       const x = e.clientX / window.innerWidth - 0.5;
       const y = e.clientY / window.innerHeight - 0.5;
-      mouseTiltX = x * 0.22;
-      mouseTiltY = y * 0.18;
+      mouseTiltX = x * 0.18;
+      mouseTiltY = y * 0.14;
     };
     window.addEventListener("mousemove", handleMouseTilt);
 
-    // 6. GSAP ScrollTrigger Master Timeline
-    const scrollObj = { progress: 0, scale: 1, opacity: 1, yOffset: 0 };
+    // 6. GSAP ScrollTrigger Setup
+    const scrollObj = { scale: 1, opacity: 1, yOffset: 0 };
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: "+=2000",
+          end: "+=1800",
           pin: true,
-          scrub: 0.6,
+          pinSpacing: true,
+          scrub: 0.5,
           anticipatePin: 1,
+          invalidateOnRefresh: true,
           onUpdate: (self) => {
             const p = self.progress;
 
-            // 2 full turns (4 * PI) up to 72% scroll
+            // 2 full turns (4 * PI) up to 72% of scroll
             if (p <= 0.72) {
               targetRotationY = (p / 0.72) * (Math.PI * 4);
             } else {
@@ -155,27 +157,27 @@ export default function HeroScrollMedalThree() {
         },
       });
 
-      // Hint fade out immediately on scroll
+      // Scroll hint fades out immediately
       tl.to(
         hintRef.current,
         {
           opacity: 0,
           y: 20,
-          duration: 0.1,
+          duration: 0.08,
           ease: "power1.out",
         },
         0
       );
 
-      // Darken background overlay as scroll deepens
+      // Darken background overlay smoothly
       tl.to(
         overlayRef.current,
         {
           opacity: 0.88,
-          duration: 0.7,
+          duration: 0.65,
           ease: "none",
         },
-        0.1
+        0.08
       );
 
       // Medal exit: scale down and fade out (p: 0.68 -> 0.88)
@@ -185,7 +187,7 @@ export default function HeroScrollMedalThree() {
           scale: 0.15,
           opacity: 0,
           yOffset: -0.8,
-          duration: 0.24,
+          duration: 0.22,
           ease: "power2.inOut",
         },
         0.68
@@ -196,21 +198,21 @@ export default function HeroScrollMedalThree() {
         contentRef.current,
         {
           opacity: 0,
-          y: 50,
+          y: 40,
           pointerEvents: "none",
         },
         {
           opacity: 1,
           y: 0,
           pointerEvents: "auto",
-          duration: 0.25,
+          duration: 0.24,
           ease: "power3.out",
         },
         0.74
       );
     }, containerRef);
 
-    // 7. Render Loop with Smooth Lerping
+    // 7. Render Loop
     let animId: number;
     const animate = () => {
       animId = requestAnimationFrame(animate);
@@ -227,7 +229,7 @@ export default function HeroScrollMedalThree() {
     };
     animate();
 
-    // 8. Responsive Resize (Recalculates aspect without stretching)
+    // 8. Resize Handler
     const handleResize = () => {
       if (!mount) return;
       width = mount.clientWidth || window.innerWidth;
@@ -235,6 +237,7 @@ export default function HeroScrollMedalThree() {
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
       renderer.setSize(width, height);
+      ScrollTrigger.refresh();
     };
     window.addEventListener("resize", handleResize);
 
@@ -255,10 +258,10 @@ export default function HeroScrollMedalThree() {
     <div
       ref={containerRef}
       onMouseMove={handleMouseMoveGlow}
-      className="hero-section relative min-h-screen w-full overflow-hidden bg-[#0A0A0A] flex items-center border-b border-white/10"
+      className="hero-section relative h-screen w-full overflow-hidden bg-[#0A0A0A] flex items-center border-b border-white/10"
     >
-      {/* Cinematic Video Background with Parallax Scale */}
-      <div className="hero-parallax-bg absolute inset-0 will-change-transform scale-105 overflow-hidden pointer-events-none">
+      {/* Background Video with bleed to prevent any border gap */}
+      <div className="absolute -top-10 -bottom-10 -left-6 -right-6 scale-105 overflow-hidden pointer-events-none">
         <video
           autoPlay
           loop
@@ -282,7 +285,7 @@ export default function HeroScrollMedalThree() {
         <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-black/50" />
       </div>
 
-      {/* Dynamic Ambient Headlight Spotlight */}
+      {/* Ambient Spotlight */}
       <div
         className="absolute inset-0 pointer-events-none transition-opacity duration-300 opacity-60"
         style={{
@@ -292,21 +295,21 @@ export default function HeroScrollMedalThree() {
 
       <div className="absolute inset-0 bg-[radial-gradient(#ffffff08_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none opacity-30" />
 
-      {/* THREE.JS 3D MEDAL CANVAS (Full viewport, Zero-clipping) */}
+      {/* THREE.JS 3D MEDAL CANVAS (Full Viewport, Calibrated Scale) */}
       <div
         ref={canvasMountRef}
         className="absolute inset-0 z-20 w-full h-full pointer-events-none flex items-center justify-center overflow-hidden"
       >
         {/* Ambient Halo Glow */}
-        <div className="absolute w-[450px] sm:w-[680px] h-[450px] sm:h-[680px] rounded-full bg-gradient-to-r from-[#F2C21B]/15 via-white/10 to-[#F2C21B]/15 blur-3xl -z-10 animate-pulse" />
+        <div className="absolute w-[400px] sm:w-[540px] h-[400px] sm:h-[540px] rounded-full bg-gradient-to-r from-[#F2C21B]/15 via-white/10 to-[#F2C21B]/15 blur-3xl -z-10 animate-pulse" />
       </div>
 
-      {/* INITIAL SCROLL HINT (Disappears on scroll) */}
+      {/* INITIAL SCROLL HINT */}
       <div
         ref={hintRef}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2 pointer-events-none transition-opacity duration-300"
       >
-        <span className="text-[11px] font-mono tracking-widest text-[#F2C21B] uppercase bg-black/60 px-3 py-1 rounded-full border border-white/10 backdrop-blur-md">
+        <span className="text-[11px] font-mono tracking-widest text-[#F2C21B] uppercase bg-black/60 px-3.5 py-1 rounded-full border border-white/10 backdrop-blur-md">
           {loading ? "Carregando Medalha 3D…" : "Role para navegar"}
         </span>
         <div className="w-5 h-9 rounded-full border-2 border-white/30 flex items-start justify-center p-1">
