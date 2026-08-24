@@ -97,6 +97,33 @@ export default function RootLayout({
           {children}
           <VisualEditor />
         </RadioProvider>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (typeof window !== 'undefined') {
+                window.addEventListener('error', function(e) {
+                  var msg = (e && e.message) ? e.message : '';
+                  if (msg.indexOf('Loading chunk') !== -1 || msg.indexOf('ChunkLoadError') !== -1 || msg.indexOf('removeChild') !== -1) {
+                    if (!window.__hasAutoReloaded) {
+                      window.__hasAutoReloaded = true;
+                      window.location.reload();
+                    }
+                  }
+                });
+                window.addEventListener('unhandledrejection', function(e) {
+                  var reason = e ? e.reason : '';
+                  var msg = typeof reason === 'string' ? reason : (reason && reason.message ? reason.message : '');
+                  if (msg.indexOf('Loading chunk') !== -1 || msg.indexOf('ChunkLoadError') !== -1 || msg.indexOf('Failed to fetch') !== -1) {
+                    if (!window.__hasAutoReloaded) {
+                      window.__hasAutoReloaded = true;
+                      window.location.reload();
+                    }
+                  }
+                });
+              }
+            `,
+          }}
+        />
       </body>
     </html>
   );

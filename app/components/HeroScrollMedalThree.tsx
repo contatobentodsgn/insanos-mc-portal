@@ -295,8 +295,8 @@ export default function HeroScrollMedalThree() {
       window.removeEventListener("mousemove", handleMouseTilt);
       window.removeEventListener("resize", handleResize);
       ctx.revert();
-      if (renderer.domElement.parentNode) {
-        renderer.domElement.parentNode.removeChild(renderer.domElement.parentNode);
+      if (renderer.domElement && renderer.domElement.parentNode) {
+        renderer.domElement.parentNode.removeChild(renderer.domElement);
       }
       renderer.dispose();
       pmrem.dispose();
