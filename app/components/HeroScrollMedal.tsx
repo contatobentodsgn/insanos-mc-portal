@@ -175,7 +175,7 @@ export default function HeroScrollMedal() {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-screen min-h-[100dvh] overflow-hidden bg-[#0A0A0A] flex items-center justify-center border-b border-white/10"
+      className="relative w-full h-screen overflow-hidden bg-[#0A0A0A] flex items-center justify-center border-b border-white/10"
     >
       {/* Background Video (Muted, Autoplay, Loop) */}
       <div className="absolute inset-0 scale-105 overflow-hidden pointer-events-none">
@@ -272,10 +272,10 @@ export default function HeroScrollMedal() {
           </p>
 
           {/* Action CTAs */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4 pt-2">
+          <div className="flex flex-wrap items-center gap-4 pt-2">
             <a
               href="/faca-parte"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-[#F2C21B] hover:bg-[#ffe066] text-black font-['Anton'] uppercase text-base px-7 py-3.5 rounded-[2px] border-2 border-[#F2C21B] transition-all duration-300 shadow-[0_0_30px_rgba(242,194,27,0.4)] hover:scale-105 active:scale-95"
+              className="inline-flex items-center gap-3 bg-[#F2C21B] hover:bg-[#ffe066] text-black font-bold px-7 py-3.5 rounded-xl transition-all duration-300 shadow-[0_0_30px_rgba(242,194,27,0.4)] hover:scale-105 active:scale-95"
             >
               <IconFire className="w-5 h-5 text-black" />
               <span>Quero Fazer Parte</span>
@@ -283,8 +283,8 @@ export default function HeroScrollMedal() {
             </a>
 
             <a
-              href="/historia"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/20 hover:border-white/40 text-white font-['Anton'] uppercase text-base px-6 py-3.5 rounded-[2px] transition-all duration-300 backdrop-blur-md"
+              href="#historia"
+              className="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/20 hover:border-white/40 text-white font-medium px-6 py-3.5 rounded-xl transition-all duration-300 backdrop-blur-md"
             >
               <span>Conheça Nossa História</span>
             </a>
