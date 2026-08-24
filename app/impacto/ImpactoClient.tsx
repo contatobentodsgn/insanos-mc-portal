@@ -214,18 +214,21 @@ export function ImpactoClient() {
                   </ul>
                 </div>
 
-                <div className="p-6 rounded-[2px] bg-gradient-to-r from-[#17191E] to-[#121316] border border-[#F2C21B]/30 flex flex-wrap items-center justify-between gap-6">
-                  <div>
-                    <span className="text-xs text-[#AAA8A1] uppercase font-bold tracking-wider block">
-                      Resultado Auditado
-                    </span>
-                    <strong className="font-['Anton'] text-2xl sm:text-3xl text-[#F2C21B]">
+                <div className="p-6 sm:p-8 rounded-[2px] bg-gradient-to-r from-[#17191E] via-[#141519] to-[#121316] border border-t-[#F2C21B]/40 border-b-white/5 border-x-white/10 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-6">
+                  <div className="space-y-1.5">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2 h-2 bg-[#F2C21B] rounded-none shrink-0" />
+                      <span className="text-xs font-mono uppercase font-bold tracking-[0.2em] text-[#AAA8A1]">
+                        Resultado Auditado
+                      </span>
+                    </div>
+                    <strong className="block font-['Anton'] text-2xl sm:text-3xl text-[#F2C21B] uppercase tracking-[0.03em] leading-tight">
                       {currentProject.stats}
                     </strong>
                   </div>
                   <Link
                     href="/faca-parte"
-                    className="px-8 py-3.5 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-sm rounded-[2px] border-2 border-[#F2C21B] shadow-lg transition-colors duration-200 hover-lift flex items-center justify-center gap-2 cursor-pointer"
+                    className="shrink-0 px-8 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-[0.08em] uppercase text-sm rounded-[2px] border-2 border-[#F2C21B] shadow-lg transition-colors duration-200 hover-lift inline-flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <span>Quero Participar / Apoiar</span>
                     <IconArrowRight className="w-4 h-4 text-black" strokeWidth={2.5} />
