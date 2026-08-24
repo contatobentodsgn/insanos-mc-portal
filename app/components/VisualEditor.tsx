@@ -15,17 +15,21 @@ export function VisualEditor() {
   useEffect(() => {
     if (typeof window === "undefined") return;
     const urlParams = new URLSearchParams(window.location.search);
-    const hasEditorParam = urlParams.get("editor") === "true";
-    const hasAdminSession = sessionStorage.getItem("insanos_admin_editor") === "true";
+    const isInsideAdminIframe = window.self !== window.top && urlParams.get("admin") === "true";
+    const isOnAdminPage = window.location.pathname.startsWith("/admin");
+    const hasAdmin = isOnAdminPage || isInsideAdminIframe;
+
     const savedNoise = localStorage.getItem("insanos_noise_overlay") === "true";
     setIsNoiseActive(savedNoise);
 
-    if (hasEditorParam) {
-      sessionStorage.setItem("insanos_admin_editor", "true");
+    if (hasAdmin && urlParams.get("editor") === "true") {
       setIsAdminActive(true);
       setIsEditing(true);
-    } else if (hasAdminSession) {
+    } else if (hasAdmin) {
       setIsAdminActive(true);
+    } else {
+      setIsAdminActive(false);
+      setIsEditing(false);
     }
   }, []);
 

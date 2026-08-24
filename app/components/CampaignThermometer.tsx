@@ -99,16 +99,9 @@ export function CampaignThermometer() {
   useEffect(() => {
     try {
       if (typeof window !== "undefined") {
-        const urlParams = new URLSearchParams(window.location.search);
-        const isInsideIframe = window.self !== window.top;
-        const hasAdmin =
-          sessionStorage.getItem("insanos_admin_editor") === "true" ||
-          urlParams.get("admin") === "true" ||
-          urlParams.get("editor") === "true" ||
-          window.location.pathname.startsWith("/admin") ||
-          isInsideIframe ||
-          window.location.hostname === "localhost" ||
-          window.location.hostname.includes("192.168.");
+        const isInsideAdminIframe = window.self !== window.top && window.location.search.includes("admin=true");
+        const isOnAdminPage = window.location.pathname.startsWith("/admin");
+        const hasAdmin = isOnAdminPage || isInsideAdminIframe;
         setIsAdmin(hasAdmin);
       }
       const savedRoad = localStorage.getItem("insanos_road_calib");
@@ -448,31 +441,33 @@ export function CampaignThermometer() {
 
   return (
     <div className="space-y-4 relative">
-      {/* Botão de Calibração ao Vivo no Topo do Card */}
-      <div className="flex flex-wrap items-center justify-between gap-3 px-3 py-2 bg-[#121316] rounded-xl border border-[#F2C21B]/40 shadow-lg">
-        <div className="flex items-center gap-2">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#F2C21B] animate-pulse" />
-          <span className="text-xs font-mono font-bold text-[#F2C21B] uppercase tracking-wider">
-            Ajustes Visuais do Card:
-          </span>
-        </div>
+      {/* Botão de Calibração ao Vivo: APENAS NO PAINEL ADMIN */}
+      {isAdmin && (
+        <div className="flex flex-wrap items-center justify-between gap-3 px-3 py-2 bg-[#121316] rounded-xl border border-[#F2C21B]/40 shadow-lg">
+          <div className="flex items-center gap-2">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#F2C21B] animate-pulse" />
+            <span className="text-xs font-mono font-bold text-[#F2C21B] uppercase tracking-wider">
+              Ajustes Visuais do Card (Painel Admin):
+            </span>
+          </div>
 
-        <button
-          onClick={() => setShowCalibrator(!showCalibrator)}
-          className={`px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold transition-all duration-200 flex items-center gap-2 border ${
-            showCalibrator
-              ? "bg-[#F2C21B] text-black border-[#F2C21B] shadow-[0_0_15px_rgba(242,194,27,0.8)] font-extrabold"
-              : "bg-[#1A1D24] text-[#F2C21B] border-[#F2C21B]/60 hover:bg-[#F2C21B] hover:text-black"
-          }`}
-        >
-          <span>🛠️ {showCalibrator ? "Ocultar Painel de Ajustes" : "Ajustar Pista & Imagem de Fundo"}</span>
-        </button>
-      </div>
+          <button
+            onClick={() => setShowCalibrator(!showCalibrator)}
+            className={`px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold transition-all duration-200 flex items-center gap-2 border ${
+              showCalibrator
+                ? "bg-[#F2C21B] text-black border-[#F2C21B] shadow-[0_0_15px_rgba(242,194,27,0.8)] font-extrabold"
+                : "bg-[#1A1D24] text-[#F2C21B] border-[#F2C21B]/60 hover:bg-[#F2C21B] hover:text-black"
+            }`}
+          >
+            <span>🛠️ {showCalibrator ? "Ocultar Painel de Ajustes" : "Ajustar Pista & Imagem de Fundo"}</span>
+          </button>
+        </div>
+      )}
 
       {/* =========================================================================
-          PAINEL FLUTUANTE DE CALIBRAÇÃO AO VIVO (HUD PROFISSIONAL)
+          PAINEL FLUTUANTE DE CALIBRAÇÃO AO VIVO (HUD PROFISSIONAL - SOMENTE ADMIN)
       ========================================================================= */}
-      {showCalibrator && (
+      {isAdmin && showCalibrator && (
         <div className="p-5 rounded-2xl bg-[#090A0D]/95 border-2 border-[#F2C21B] shadow-[0_10px_40px_rgba(0,0,0,0.95)] backdrop-blur-xl z-50 transition-all animate-fadeIn">
           {/* Header e Abas do Calibrador */}
           <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-white/15 mb-4">
