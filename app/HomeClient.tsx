@@ -570,16 +570,15 @@ export function HomeClient() {
               <div className="flex items-center gap-3 mb-4">
                 <span className="w-8 h-[2px] bg-gradient-to-r from-[#F2C21B] via-[#FFD700] to-[#B88E07] rounded-full shadow-[0_0_8px_rgba(242,194,27,0.4)]" />
                 <p className="text-xs uppercase font-extrabold tracking-[0.2em] text-[#F2C21B]">
-                  Presença Global & Território
+                  Presença Global
                 </p>
               </div>
               <h2 className="font-['Anton'] uppercase text-4xl sm:text-6xl lg:text-7xl leading-tight text-white mb-6 tracking-[-0.015em] sm:tracking-[-0.02em]">
-                Uma irmandade que<br />
-                <span className="text-[#F2C21B]">transforma vidas.</span>
+                Onde estamos —<br />
+                <span className="text-[#F2C21B]">Brasil & Mundo.</span>
               </h2>
               <p className="text-[#D4D1CA] font-medium text-base sm:text-lg leading-relaxed">
-                Nascido em Osasco em 2015, o Insanos Moto Clube rompeu fronteiras territoriais e culturais. Hoje somos milhares de irmãos conectados pelo mesmo estatuto,<br className="hidden sm:inline" />{" "}
-                disciplina rigorosa e compromisso com o próximo.
+                Uma irmandade presente no Brasil e no mundo. Nascido em Osasco em 2015, o Insanos Moto Clube expandiu sua presença para 65 países e mais de 480 capítulos oficiais. Navegue pelo globo ou selecione uma cidade para localizar a sede regional mais próxima.
               </p>
             </div>
 

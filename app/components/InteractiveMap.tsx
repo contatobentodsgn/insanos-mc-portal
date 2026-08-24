@@ -845,18 +845,18 @@ export function InteractiveMap() {
 
   return (
     <div className="bg-[#111215] border border-white/15 rounded-3xl overflow-hidden shadow-2xl">
-      {/* Map Header & Filter Controls */}
-      <div className="p-6 sm:p-8 bg-[#16171B] border-b border-white/10 flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <div className="flex items-center gap-2 mb-1">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#F2C21B] animate-pulse" />
-            <span className="text-xs font-mono text-[#F2C21B] uppercase tracking-wider">
-              Rede Geográfica Global
+      {/* Map Header & Clean Filter Controls */}
+      <div className="p-5 sm:p-7 bg-[#16171B] border-b border-white/10 flex flex-wrap items-center justify-between gap-4">
+        <div className="flex items-center gap-3">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#F2C21B] animate-pulse shrink-0" />
+          <div>
+            <span className="text-[11px] font-mono text-[#F2C21B] uppercase tracking-wider block font-bold">
+              Malha Cartográfica Oficial
             </span>
+            <h3 className="font-['Anton'] text-xl sm:text-2xl uppercase text-white tracking-wide">
+              Sedes Regionais & Pontos de Apoio
+            </h3>
           </div>
-          <h3 className="font-['Anton'] text-2xl sm:text-3xl uppercase text-white">
-            Globo Interativo de Sedes & Facções
-          </h3>
         </div>
 
         {/* Filter Pills */}
@@ -869,7 +869,7 @@ export function InteractiveMap() {
                 : "text-white/60 hover:text-white hover:bg-white/5"
             }`}
           >
-            Sedes em Destaque ({SEDES_DATA.length})
+            Todas as Sedes ({SEDES_DATA.length})
           </button>
           <button
             onClick={() => handleFilterClick("brasil")}
@@ -895,50 +895,18 @@ export function InteractiveMap() {
       </div>
 
       {/* Main Grid: 3D Dotted Canvas Earth + Detail Drawer */}
-      <div className="grid lg:grid-cols-12 min-h-[520px]">
+      <div className="grid lg:grid-cols-12 min-h-[500px]">
         {/* 3D Canvas Earth Container */}
-        <div className="lg:col-span-7 p-4 sm:p-8 bg-[#0C0D0F] relative flex flex-col justify-between overflow-hidden border-b lg:border-b-0 lg:border-r border-white/10">
-          {/* Compass & Coordinates HUD */}
-          <div className="absolute top-6 left-6 z-10 flex items-center gap-2 pointer-events-none select-none">
-            <span className="text-[10px] font-mono text-[#AAA8A1] bg-black/80 px-2.5 py-1 rounded border border-white/10 flex items-center gap-1.5 backdrop-blur-md">
-              <IconGlobe className="w-3 h-3 text-[#F2C21B]" />
-              <span>3D ORTHOGRAPHIC PROJECTION</span>
-            </span>
-          </div>
-
-          {/* Floating Zoom & Rotation Controls HUD */}
-          <div className="absolute top-6 right-6 z-10 flex flex-col gap-2">
-            <button
-              onClick={() => handleZoom(0.5)}
-              title="Aproximar Zoom"
-              className="w-9 h-9 rounded-xl bg-black/80 hover:bg-[#F2C21B] hover:text-black border border-white/20 text-white flex items-center justify-center transition-all shadow-lg active:scale-95"
-            >
-              <IconPlus className="w-4 h-4" />
-            </button>
-            <button
-              onClick={() => handleZoom(-0.5)}
-              title="Afastar Zoom"
-              className="w-9 h-9 rounded-xl bg-black/80 hover:bg-[#F2C21B] hover:text-black border border-white/20 text-white flex items-center justify-center transition-all shadow-lg active:scale-95"
-            >
-              <IconMinus className="w-4 h-4" />
-            </button>
+        <div className="lg:col-span-7 p-4 sm:p-7 bg-[#0C0D0F] relative flex flex-col justify-between overflow-hidden border-b lg:border-b-0 lg:border-r border-white/10">
+          {/* Subtle Reset Button in Corner */}
+          <div className="absolute top-6 right-6 z-10">
             <button
               onClick={handleReset}
               title="Centralizar na Matriz de Osasco/Brasil"
-              className="w-9 h-9 rounded-xl bg-black/80 hover:bg-[#F2C21B] hover:text-black border border-white/20 text-white flex items-center justify-center transition-all shadow-lg active:scale-95"
+              className="px-3.5 py-2 rounded-lg bg-black/80 hover:bg-[#F2C21B] hover:text-black border border-white/20 text-white text-xs font-mono font-bold transition-all shadow-lg active:scale-95 flex items-center gap-2 backdrop-blur-md cursor-pointer"
             >
-              <IconRefresh className="w-4 h-4" />
-            </button>
-            <button
-              onClick={() => setIsAutoRotating(!isAutoRotating)}
-              title={isAutoRotating ? "Pausar Giro Automático" : "Iniciar Giro Automático"}
-              className={`w-9 h-9 rounded-xl border text-xs flex items-center justify-center transition-all shadow-lg active:scale-95 ${
-                isAutoRotating
-                  ? "bg-[#F2C21B] text-black border-[#F2C21B]"
-                  : "bg-black/80 text-white border-white/20 hover:bg-white/20"
-              }`}
-            >
-              {isAutoRotating ? <IconPause className="w-4 h-4" /> : <IconPlay className="w-4 h-4" />}
+              <IconRefresh className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Recentralizar Matriz</span>
             </button>
           </div>
 
@@ -947,13 +915,13 @@ export function InteractiveMap() {
             <div className="absolute inset-0 flex items-center justify-center bg-black/60 z-20">
               <div className="flex items-center gap-3 text-xs font-mono text-[#F2C21B]">
                 <span className="w-3 h-3 rounded-full bg-[#F2C21B] animate-ping" />
-                <span>Carregando malha cartográfica 3D...</span>
+                <span>Carregando mapa 3D...</span>
               </div>
             </div>
           )}
 
           {/* Canvas Container */}
-          <div className="relative w-full h-[380px] sm:h-[460px] rounded-2xl bg-[#08090C] flex items-center justify-center overflow-hidden border border-white/10 shadow-inner">
+          <div className="relative w-full h-[380px] sm:h-[430px] rounded-2xl bg-[#08090C] flex items-center justify-center overflow-hidden border border-white/10 shadow-inner">
             <canvas
               ref={canvasRef}
               className="w-full h-full select-none cursor-grab active:cursor-grabbing"
@@ -961,11 +929,11 @@ export function InteractiveMap() {
             />
           </div>
 
-          {/* Quick-Access Horizontal Sede Carousel for Smartphone Users */}
+          {/* Quick-Access Horizontal Sede Carousel */}
           <div className="mt-3 block">
             <div className="text-[11px] font-mono text-[#AAA8A1] mb-1.5 flex items-center justify-between">
-              <span>SEDES EM DESTAQUE (TOQUE PARA FOCAR):</span>
-              <span className="text-[#F2C21B]">Zoom: {zoomLevel.toFixed(1)}x</span>
+              <span>LOCALIZAR RAPIDAMENTE POR CIDADE:</span>
+              <span className="text-[#F2C21B] font-bold">Arraste para girar</span>
             </div>
             <div className="flex gap-2 overflow-x-auto pb-1.5 scrollbar-none snap-x snap-mandatory">
               {filteredHubs.map((sede) => {
@@ -974,7 +942,7 @@ export function InteractiveMap() {
                   <button
                     key={sede.id}
                     onClick={() => focusOnSede(sede, 2.2)}
-                    className={`flex-shrink-0 snap-start min-h-[38px] px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold transition-all duration-150 flex items-center gap-1.5 border active:scale-95 whitespace-nowrap ${
+                    className={`flex-shrink-0 snap-start min-h-[38px] px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold transition-all duration-150 flex items-center gap-1.5 border active:scale-95 whitespace-nowrap cursor-pointer ${
                       isSelected
                         ? "bg-[#F2C21B] text-black border-[#F2C21B] shadow-[0_0_12px_rgba(242,194,27,0.6)] font-extrabold"
                         : "bg-[#14161D] text-white/80 border-white/10 hover:border-[#F2C21B]/40 hover:text-white"
@@ -993,7 +961,7 @@ export function InteractiveMap() {
         <div className="lg:col-span-5 p-6 sm:p-8 bg-[#141519] flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between gap-3 mb-4">
-              <span className="px-3 py-1 rounded bg-[#F2C21B]/15 text-[#F2C21B] text-xs font-mono font-bold uppercase tracking-wider">
+              <span className="px-3 py-1 rounded bg-[#F2C21B]/15 text-[#F2C21B] text-xs font-mono font-bold uppercase tracking-wider border border-[#F2C21B]/30">
                 {selectedHub.badge}
               </span>
               <span className="text-xs font-mono text-[#AAA8A1]">{selectedHub.country}</span>
@@ -1006,12 +974,12 @@ export function InteractiveMap() {
               Liderança: {selectedHub.leader}
             </p>
 
-            <div className="space-y-4 mb-8">
+            <div className="space-y-3 mb-8">
               <div className="p-4 rounded-xl bg-[#0E0F12] border border-white/10">
                 <span className="text-[11px] text-[#AAA8A1] uppercase font-bold tracking-wider block mb-1">
                   Endereço / Sede Regional
                 </span>
-                <p className="text-xs min-[380px]:text-sm font-semibold text-white whitespace-nowrap overflow-x-auto scrollbar-none">
+                <p className="text-xs sm:text-sm font-semibold text-white">
                   {selectedHub.address}
                 </p>
               </div>
@@ -1023,46 +991,38 @@ export function InteractiveMap() {
                 <p className="text-sm font-semibold text-white">{selectedHub.meetingDay}</p>
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
-                <div className="p-3 sm:p-4 rounded-xl bg-[#0E0F12] border border-white/10 text-center flex flex-col justify-center min-h-[76px]">
-                  <strong className="block font-['Anton'] text-3xl sm:text-4xl text-[#F2C21B] tracking-[0.03em] leading-none mb-1">
-                    {selectedHub.faccoesNum}
-                  </strong>
-                  <span className="text-[10px] sm:text-[11px] text-[#AAA8A1] uppercase font-bold tracking-wider leading-tight">
-                    {selectedHub.faccoesLabel}
-                  </span>
+              <div className="p-3.5 rounded-xl bg-black/40 border border-white/5 space-y-1.5 text-xs text-[#C7C5BF]">
+                <div className="flex items-center gap-2 text-white">
+                  <span className="text-[#F2C21B]">✓</span>
+                  <span>Ponto de apoio e parada de abastecimento de comboios</span>
                 </div>
-                <div className="p-3 sm:p-4 rounded-xl bg-[#0E0F12] border border-white/10 text-center flex flex-col justify-center min-h-[76px]">
-                  <strong className="block font-['Anton'] text-3xl sm:text-4xl text-[#F2C21B] tracking-[0.03em] leading-none mb-1">
-                    {selectedHub.membersNum}
-                  </strong>
-                  <span className="text-[10px] sm:text-[11px] text-[#AAA8A1] uppercase font-bold tracking-wider leading-tight">
-                    {selectedHub.membersLabel}
-                  </span>
+                <div className="flex items-center gap-2 text-white">
+                  <span className="text-[#F2C21B]">✓</span>
+                  <span>Recepção de novos candidatos e visitantes de passagem</span>
                 </div>
               </div>
             </div>
           </div>
 
           <div className="pt-4 border-t border-white/10 grid grid-cols-2 gap-3">
-            <Link
-              href="/faca-parte"
-              className="w-full py-3.5 px-2 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-center text-xs sm:text-sm rounded-xl transition-all duration-200 hover-lift shadow-lg flex items-center justify-center gap-1.5 whitespace-nowrap"
-            >
-              <span>Filiar-se</span>
-              <IconArrowRight className="w-3.5 h-3.5 text-black flex-shrink-0" strokeWidth={2.5} />
-            </Link>
             <a
               href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
                 `Insanos Moto Clube ${selectedHub.address}`
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-3.5 px-2 bg-white/10 hover:bg-white/20 text-white font-['Anton'] tracking-wider uppercase text-center text-xs sm:text-sm rounded-xl transition-colors duration-150 flex items-center justify-center gap-1.5 whitespace-nowrap border border-white/10"
+              className="w-full py-3.5 px-2 bg-white/10 hover:bg-white/20 text-white font-['Anton'] tracking-wider uppercase text-center text-xs sm:text-sm rounded-xl transition-colors duration-150 flex items-center justify-center gap-2 whitespace-nowrap border border-white/10"
             >
-              <IconRoute className="w-3.5 h-3.5 text-[#F2C21B] flex-shrink-0" />
+              <IconRoute className="w-4 h-4 text-[#F2C21B] flex-shrink-0" />
               <span>Traçar Rota</span>
             </a>
+            <Link
+              href="/faca-parte"
+              className="w-full py-3.5 px-2 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-center text-xs sm:text-sm rounded-xl transition-all duration-200 hover-lift shadow-lg flex items-center justify-center gap-1.5 whitespace-nowrap"
+            >
+              <span>Visitar Sede</span>
+              <IconArrowRight className="w-3.5 h-3.5 text-black flex-shrink-0" strokeWidth={2.5} />
+            </Link>
           </div>
         </div>
       </div>
@@ -1071,13 +1031,13 @@ export function InteractiveMap() {
       <div className="p-4 bg-[#0A0A0C] border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#AAA8A1]">
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span>* 13 sedes em destaque de uma malha global com mais de <strong>480 divisões ativas</strong> em <strong>65 países</strong>.</span>
+          <span>13 sedes regionais com ponto de apoio fixo em destaque. Mais de <strong>480 capítulos</strong> presentes em <strong>65 países</strong>.</span>
         </div>
         <Link
           href="/faca-parte"
           className="text-[#F2C21B] font-bold hover:underline whitespace-nowrap"
         >
-          Não encontrou sua cidade? Envie sua ficha de aproximação regional →
+          Não encontrou sua cidade? Encontre seu capítulo regional →
         </Link>
       </div>
     </div>
