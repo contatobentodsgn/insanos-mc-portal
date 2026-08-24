@@ -61,18 +61,28 @@ export function Footer() {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="https://www.instagram.com/insanosmc/"
+                  href="https://www.instagram.com/insanosmc_oficial"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-[#F2C21B] transition-colors flex items-center gap-1.5"
                 >
-                  <span>Instagram (@insanosmc)</span>
+                  <span>Instagram Oficial</span>
                   <span>↗</span>
                 </a>
               </li>
-              <li><Link href="/faca-parte" className="hover:text-[#F2C21B] transition-colors">Processo de PP</Link></li>
+              <li>
+                <a
+                  href="https://www.youtube.com/@InsanosMCOficial"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#F2C21B] transition-colors flex items-center gap-1.5"
+                >
+                  <span>YouTube 18Cast</span>
+                  <span>↗</span>
+                </a>
+              </li>
+              <li><Link href="/faca-parte" className="hover:text-[#F2C21B] transition-colors">Adesão & Recrutamento</Link></li>
               <li><Link href="/ecossistema" className="hover:text-[#F2C21B] transition-colors">Ecossistema Digital</Link></li>
-              <li><Link href="/faca-parte" className="hover:text-[#F2C21B] transition-colors">Diretorias Regionais</Link></li>
             </ul>
           </div>
         </div>
@@ -82,10 +92,19 @@ export function Footer() {
           <div>
             © 2015–2026 Insanos Moto Clube. Todos os direitos reservados.
           </div>
-          <div className="flex gap-6">
+          <div className="flex gap-6 items-center">
             <Link href="/termos" className="text-[#C7C5BF] hover:text-[#F2C21B] transition-colors">Termos de Uso</Link>
             <Link href="/privacidade" className="text-[#C7C5BF] hover:text-[#F2C21B] transition-colors">Política de Privacidade (LGPD)</Link>
-            <a href="#" className="text-[#C7C5BF] hover:text-[#F2C21B] transition-colors">Voltar ao Topo ↑</a>
+            <button
+              onClick={() => {
+                if (typeof window !== "undefined") {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
+              className="text-[#C7C5BF] hover:text-[#F2C21B] transition-colors cursor-pointer"
+            >
+              Voltar ao Topo ↑
+            </button>
           </div>
         </div>
       </div>

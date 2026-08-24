@@ -160,7 +160,7 @@ export function EcossistemaClient() {
                   </p>
                 </div>
                 <a
-                  href="https://www.youtube.com/@18cast"
+                  href="https://www.youtube.com/@InsanosMCOficial"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-8 py-3.5 bg-[#F2C21B] hover:bg-[#ffe053] text-black rounded text-xs font-['Anton'] uppercase tracking-wider inline-flex items-center gap-2 self-start transition-colors duration-200 shadow-md hover-lift"
