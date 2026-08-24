@@ -359,7 +359,7 @@ export function DnaQuiz({ onProceedToForm }: DnaQuizProps = {}) {
                   key={idx}
                   onClick={() => handleSelectOption(idx)}
                   disabled={isAnswered}
-                  className={`w-full text-left p-5 rounded-xl border text-sm sm:text-base font-semibold transition-colors duration-200 flex items-start gap-4 cursor-pointer ${
+                  className={`w-full text-left p-5 rounded-[2px] border-2 text-sm sm:text-base font-semibold transition-colors duration-200 flex items-start gap-4 cursor-pointer ${
                     isSelected
                       ? opt.isCorrect
                         ? "bg-emerald-950/40 border-emerald-500 text-emerald-200"
@@ -378,13 +378,13 @@ export function DnaQuiz({ onProceedToForm }: DnaQuizProps = {}) {
 
           {/* Feedback & Next */}
           {isAnswered && (
-            <div className="p-4 rounded-xl bg-[#0B0C0E] border border-white/10 mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition-opacity duration-300">
+            <div className="p-4 rounded-[2px] bg-[#0B0C0E] border border-white/10 mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition-opacity duration-300">
               <p className="text-xs sm:text-sm text-[#C7C5BF] leading-relaxed">
                 {feedbackText}
               </p>
               <button
                 onClick={handleNext}
-                className="shrink-0 px-6 py-3 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-xs rounded transition-colors duration-200 shadow-md inline-flex items-center gap-2 cursor-pointer"
+                className="shrink-0 px-6 py-3 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-xs rounded-[2px] transition-colors duration-200 shadow-md inline-flex items-center gap-2 cursor-pointer"
               >
                 <span>{currentStep < QUESTIONS.length - 1 ? "Próxima Pergunta" : "Ver Resultado & Certificado"}</span>
                 <IconArrowRight className="w-3.5 h-3.5 text-black" strokeWidth={2.5} />
@@ -395,7 +395,7 @@ export function DnaQuiz({ onProceedToForm }: DnaQuizProps = {}) {
       ) : (
         /* Result Showcase with Gamification Card & 9:16 Export */
         <div className="text-center py-4">
-          <div className="inline-flex items-center justify-center p-4 rounded-full bg-[#F2C21B]/15 text-[#F2C21B] mb-3">
+          <div className="inline-flex items-center justify-center p-4 rounded-[2px] bg-[#F2C21B]/15 text-[#F2C21B] mb-3 border border-[#F2C21B]/30">
             <IconShield className="w-9 h-9 text-[#F2C21B]" />
           </div>
 
@@ -414,17 +414,17 @@ export function DnaQuiz({ onProceedToForm }: DnaQuizProps = {}) {
           </p>
 
           {/* Gamification Preview Badge Card */}
-          <div className="max-w-md mx-auto p-5 rounded-2xl bg-gradient-to-b from-[#1E2026] to-[#0D0E10] border border-[#F2C21B]/40 shadow-2xl mb-8 text-left space-y-3">
+          <div className="max-w-md mx-auto p-5 rounded-[2px] bg-gradient-to-b from-[#1E2026] to-[#0D0E10] border-2 border-[#F2C21B]/40 shadow-2xl mb-8 text-left space-y-3">
             <div className="flex items-center justify-between border-b border-white/10 pb-3">
               <span className="text-[11px] font-mono text-[#F2C21B] uppercase tracking-wider font-bold">
                 Insanos MC · 18 do Forte
               </span>
-              <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-mono text-[10px] font-bold">
+              <span className="px-2.5 py-0.5 rounded-[2px] bg-emerald-500/20 text-emerald-300 font-mono text-[10px] font-bold">
                 VALIDADO
               </span>
             </div>
             <div className="flex items-center gap-4">
-              <div className="w-16 h-16 rounded-full bg-[#F2C21B]/15 border-2 border-[#F2C21B] flex items-center justify-center font-['Anton'] text-2xl text-[#F2C21B] shrink-0">
+              <div className="w-16 h-16 rounded-[2px] bg-[#F2C21B]/15 border-2 border-[#F2C21B] flex items-center justify-center font-['Anton'] text-2xl text-[#F2C21B] shrink-0">
                 {scorePercentage}%
               </div>
               <div>
@@ -446,7 +446,7 @@ export function DnaQuiz({ onProceedToForm }: DnaQuizProps = {}) {
             <button
               onClick={generateStoryCard}
               disabled={isGeneratingCard}
-              className="px-6 py-3.5 bg-gradient-to-r from-yellow-500 to-[#F2C21B] hover:from-yellow-400 hover:to-yellow-300 text-black font-['Anton'] tracking-wider uppercase text-sm rounded-xl shadow-lg inline-flex items-center gap-2.5 cursor-pointer active:scale-95 transition-all"
+              className="px-6 py-3.5 bg-gradient-to-r from-yellow-500 to-[#F2C21B] hover:from-yellow-400 hover:to-yellow-300 text-black font-['Anton'] tracking-wider uppercase text-sm rounded-[2px] border-2 border-[#F2C21B] shadow-lg inline-flex items-center gap-2.5 cursor-pointer active:scale-95 transition-all"
             >
               {isGeneratingCard ? (
                 <span>Gerando Imagem 9:16…</span>
@@ -467,7 +467,7 @@ export function DnaQuiz({ onProceedToForm }: DnaQuizProps = {}) {
               href={`https://api.whatsapp.com/send?text=${whatsappMessage}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-['Anton'] tracking-wider uppercase text-sm rounded-xl shadow-lg inline-flex items-center gap-2 cursor-pointer active:scale-95 transition-all"
+              className="px-6 py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-['Anton'] tracking-wider uppercase text-sm rounded-[2px] border-2 border-emerald-500 shadow-lg inline-flex items-center gap-2 cursor-pointer active:scale-95 transition-all"
             >
               <IconChat className="w-4 h-4 text-white" />
               <span>Conversar com a Regional</span>
@@ -477,7 +477,7 @@ export function DnaQuiz({ onProceedToForm }: DnaQuizProps = {}) {
             {onProceedToForm ? (
               <button
                 onClick={onProceedToForm}
-                className="px-6 py-3.5 bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider rounded-xl border border-white/20 transition-all inline-flex items-center gap-2 cursor-pointer"
+                className="px-6 py-3.5 bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider rounded-[2px] border border-white/20 transition-all inline-flex items-center gap-2 cursor-pointer"
               >
                 <span>Ficha de Ingresso</span>
                 <IconArrowRight className="w-3.5 h-3.5 text-white" />
@@ -485,7 +485,7 @@ export function DnaQuiz({ onProceedToForm }: DnaQuizProps = {}) {
             ) : (
               <Link
                 href="/faca-parte?aba=formulario"
-                className="px-6 py-3.5 bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider rounded-xl border border-white/20 transition-all inline-flex items-center gap-2"
+                className="px-6 py-3.5 bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider rounded-[2px] border border-white/20 transition-all inline-flex items-center gap-2"
               >
                 <span>Ficha de Ingresso</span>
                 <IconArrowRight className="w-3.5 h-3.5 text-white" />

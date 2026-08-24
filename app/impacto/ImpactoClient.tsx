@@ -162,10 +162,10 @@ export function ImpactoClient() {
                   <button
                     key={proj.id}
                     onClick={() => setActiveTab(proj.id)}
-                    className={`px-6 py-3.5 rounded-xl font-['Anton'] text-base sm:text-xl uppercase tracking-wider transition-all duration-200 cursor-pointer ${
+                    className={`px-6 py-3.5 rounded-[2px] font-['Anton'] text-base sm:text-xl uppercase tracking-wider transition-all duration-200 cursor-pointer border-2 ${
                       activeTab === proj.id
-                        ? "bg-gradient-to-b from-[#F2C21B] to-[#D4A50E] text-black shadow-[0_0_20px_rgba(242,194,27,0.4)] border border-[#FFE066] scale-105 font-extrabold"
-                        : "bg-[#141517] text-white/70 hover:text-white hover:bg-[#1C1E23] border border-white/10 hover:border-white/20"
+                        ? "bg-gradient-to-b from-[#F2C21B] to-[#D4A50E] text-black shadow-[0_0_20px_rgba(242,194,27,0.4)] border-[#FFE066] scale-105 font-extrabold"
+                        : "bg-[#141517] text-white/70 hover:text-white hover:bg-[#1C1E23] border-white/10 hover:border-white/20"
                     }`}
                   >
                     {proj.title.split("—")[0].trim()}
@@ -175,14 +175,14 @@ export function ImpactoClient() {
             </div>
 
             {/* Active Project Card Showcase */}
-            <div className="max-w-5xl mx-auto bg-[#141519] border border-t-white/25 border-b-white/5 border-x-white/15 rounded-2xl overflow-hidden shadow-2xl transition-opacity duration-300">
+            <div className="max-w-5xl mx-auto bg-[#141519] border-2 border-t-white/25 border-b-white/5 border-x-white/15 rounded-[2px] overflow-hidden shadow-2xl transition-opacity duration-300">
               <div
                 className="h-64 sm:h-96 bg-cover bg-center relative"
                 style={{
                   backgroundImage: `linear-gradient(180deg, transparent 0%, rgba(20,21,25,0.95) 100%), url(${currentProject.image})`,
                 }}
               >
-                <div className="absolute top-6 left-6 bg-black/70 backdrop-blur-md px-4 py-1.5 rounded border border-white/20 text-xs font-mono text-[#F2C21B] uppercase">
+                <div className="absolute top-6 left-6 bg-black/70 backdrop-blur-md px-4 py-1.5 rounded-[2px] border border-white/20 text-xs font-mono text-[#F2C21B] uppercase">
                   Iniciativa Oficial Insanos MC
                 </div>
               </div>
@@ -199,7 +199,7 @@ export function ImpactoClient() {
                 </p>
 
                 {/* Key Points */}
-                <div className="space-y-3 mb-10 p-6 rounded-xl bg-[#0E0F12] border border-white/10">
+                <div className="space-y-3 mb-10 p-6 rounded-[2px] bg-[#0E0F12] border border-white/10">
                   <h4 className="text-xs uppercase font-bold text-[#F2C21B] tracking-wider mb-3">
                     Como atua na prática:
                   </h4>
@@ -213,7 +213,7 @@ export function ImpactoClient() {
                   </ul>
                 </div>
 
-                <div className="p-6 rounded-xl bg-gradient-to-r from-[#17191E] to-[#121316] border border-[#F2C21B]/30 flex flex-wrap items-center justify-between gap-6">
+                <div className="p-6 rounded-[2px] bg-gradient-to-r from-[#17191E] to-[#121316] border border-[#F2C21B]/30 flex flex-wrap items-center justify-between gap-6">
                   <div>
                     <span className="text-xs text-[#AAA8A1] uppercase font-bold tracking-wider block">
                       Resultado Auditado
@@ -224,7 +224,7 @@ export function ImpactoClient() {
                   </div>
                   <Link
                     href="/faca-parte"
-                    className="px-8 py-3.5 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-sm rounded-xl shadow-lg transition-colors duration-200 hover-lift flex items-center justify-center gap-2"
+                    className="px-8 py-3.5 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-sm rounded-[2px] border-2 border-[#F2C21B] shadow-lg transition-colors duration-200 hover-lift flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <span>Quero Participar / Apoiar</span>
                     <IconArrowRight className="w-4 h-4 text-black" strokeWidth={2.5} />

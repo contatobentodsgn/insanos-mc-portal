@@ -619,10 +619,10 @@ export function HomeClient() {
                         triggerHaptic(10);
                         setActivePillarHover(activePillarHover === idx ? -1 : idx);
                       }}
-                      className={`relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] bg-cover border flex flex-col justify-end p-4 sm:p-5 lg:p-6 focus:outline-none focus:ring-2 focus:ring-[#F2C21B] ${
+                      className={`relative rounded-[2px] overflow-hidden cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] bg-cover border-2 flex flex-col justify-end p-4 sm:p-5 lg:p-6 focus:outline-none focus:ring-2 focus:ring-[#F2C21B] ${
                         isHovered
                           ? "min-h-[290px] sm:min-h-0 sm:flex-[3.2] border-[#F2C21B] shadow-[0_0_30px_rgba(242,194,27,0.25)]"
-                          : "min-h-[145px] sm:min-h-0 sm:flex-1 border-t-white/20 border-b-white/5 border-x-white/10 opacity-85 hover:opacity-100"
+                          : "min-h-[145px] sm:min-h-0 sm:flex-1 border-white/15 opacity-85 hover:opacity-100"
                       }`}
                       style={{
                         backgroundImage: `url(${pillar.image})`,
@@ -641,7 +641,7 @@ export function HomeClient() {
                           <div className="text-[10.5px] min-[380px]:text-[11px] sm:text-xs font-bold uppercase text-[#F2C21B] leading-tight tracking-wide">
                             {pillar.subtitle}
                           </div>
-                          <span className="sm:hidden text-[10px] font-mono text-[#F2C21B]/80 flex items-center gap-1 bg-black/50 px-2 py-0.5 rounded-full border border-white/10">
+                          <span className="sm:hidden text-[10px] font-mono text-[#F2C21B]/80 flex items-center gap-1 bg-black/50 px-2 py-0.5 rounded-[2px] border border-white/10">
                             {isHovered ? "▲" : "▼ Detalhes"}
                           </span>
                         </div>
@@ -666,7 +666,7 @@ export function HomeClient() {
               {/* Right Editorial Text & Banner */}
               <div className="lg:col-span-5 space-y-6">
                 <div className="flex items-center gap-3">
-                  <span className="w-8 h-[2px] bg-gradient-to-r from-[#F2C21B] via-[#FFD700] to-[#B88E07] rounded-full shadow-[0_0_8px_rgba(242,194,27,0.4)]" />
+                  <span className="w-8 h-[2px] bg-[#F2C21B]" />
                   <span className="text-xs uppercase font-extrabold tracking-[0.2em] text-[#AAA8A1]">
                     O Que Nos Move
                   </span>
@@ -686,8 +686,8 @@ export function HomeClient() {
                   <span>04 MOTOCLUBE</span>
                 </div>
 
-                <div className="inline-block w-fit px-6 py-3.5 rounded-xl bg-[#F2C21B] text-black font-['Anton'] text-lg sm:text-2xl uppercase tracking-wider shadow-lg transform -skew-x-3">
-"Colete não cria irmão. Atitude cria."
+                <div className="inline-block w-fit px-6 py-3.5 rounded-[2px] border-2 border-[#F2C21B] bg-[#F2C21B] text-black font-['Anton'] text-lg sm:text-2xl uppercase tracking-wider shadow-lg transform -skew-x-3">
+                  "Colete não cria irmão. Atitude cria."
                 </div>
 
                 <p className="text-sm text-[#D4D1CA] font-medium leading-relaxed">
@@ -698,7 +698,7 @@ export function HomeClient() {
                 <div className="pt-2">
                   <Link
                     href="/historia"
-                    className="px-6 py-3.5 bg-white/10 hover:bg-[#F2C21B] hover:text-black rounded-xl text-xs font-['Anton'] uppercase tracking-wider transition-colors duration-200 inline-flex items-center gap-2"
+                    className="px-6 py-3.5 bg-white/10 hover:bg-[#F2C21B] hover:text-black rounded-[2px] border border-white/20 hover:border-[#F2C21B] text-xs font-['Anton'] uppercase tracking-wider transition-colors duration-200 inline-flex items-center gap-2"
                   >
                     <span>Conheça Nossa Essência</span>
                     <IconArrowRight className="w-3.5 h-3.5 text-inherit" />
@@ -727,7 +727,7 @@ export function HomeClient() {
           <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-8">
             <div className="max-w-3xl mb-14" data-reveal>
               <div className="flex items-center gap-3 mb-4">
-                <span className="w-8 h-[2px] bg-gradient-to-r from-[#F2C21B] via-[#FFD700] to-[#B88E07] rounded-full shadow-[0_0_8px_rgba(242,194,27,0.4)]" />
+                <span className="w-8 h-[2px] bg-[#F2C21B]" />
                 <span className="text-xs uppercase font-extrabold tracking-[0.2em] text-[#F2C21B]">
                   Tradição & Origem · 18 do Forte
                 </span>
@@ -741,14 +741,14 @@ export function HomeClient() {
               </p>
             </div>
 
-            {/* 3 Milestone Bento Cards */}
+            {/* 3 Milestone Bento Cards — Industrial Mechanical */}
             <div className="grid md:grid-cols-3 gap-6 mb-12" data-reveal>
               {/* Milestone 1: 1922 */}
-              <div className="bg-[#121316]/90 border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 p-6 sm:p-8 rounded-2xl transition-all duration-300 backdrop-blur-md flex flex-col justify-between shadow-xl group hover-lift">
+              <div className="bg-[#121316]/90 border-2 border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 p-6 sm:p-8 rounded-[2px] transition-all duration-300 backdrop-blur-md flex flex-col justify-between shadow-xl group hover-lift">
                 <div>
                   <div className="flex items-center justify-between gap-3 mb-4">
                     <span className="font-['Anton'] text-3xl sm:text-4xl text-[#F2C21B]">1922</span>
-                    <span className="px-2.5 py-1 rounded bg-[#F2C21B]/15 text-[#F2C21B] font-mono text-xs uppercase font-bold tracking-wider border border-[#F2C21B]/30">
+                    <span className="px-2.5 py-1 rounded-[2px] bg-[#F2C21B]/15 text-[#F2C21B] font-mono text-xs uppercase font-bold tracking-wider border border-[#F2C21B]/30">
                       Raiz Simbólica
                     </span>
                   </div>
@@ -765,11 +765,11 @@ export function HomeClient() {
               </div>
 
               {/* Milestone 2: 2015 */}
-              <div className="bg-[#121316]/90 border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 p-6 sm:p-8 rounded-2xl transition-all duration-300 backdrop-blur-md flex flex-col justify-between shadow-xl group hover-lift">
+              <div className="bg-[#121316]/90 border-2 border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 p-6 sm:p-8 rounded-[2px] transition-all duration-300 backdrop-blur-md flex flex-col justify-between shadow-xl group hover-lift">
                 <div>
                   <div className="flex items-center justify-between gap-3 mb-4">
                     <span className="font-['Anton'] text-3xl sm:text-4xl text-[#F2C21B]">2015</span>
-                    <span className="px-2.5 py-1 rounded bg-[#F2C21B]/15 text-[#F2C21B] font-mono text-xs uppercase font-bold tracking-wider border border-[#F2C21B]/30">
+                    <span className="px-2.5 py-1 rounded-[2px] bg-[#F2C21B]/15 text-[#F2C21B] font-mono text-xs uppercase font-bold tracking-wider border border-[#F2C21B]/30">
                       Berço de OZ
                     </span>
                   </div>
@@ -786,11 +786,11 @@ export function HomeClient() {
               </div>
 
               {/* Milestone 3: Hoje */}
-              <div className="bg-[#121316]/90 border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 p-6 sm:p-8 rounded-2xl transition-all duration-300 backdrop-blur-md flex flex-col justify-between shadow-xl group hover-lift">
+              <div className="bg-[#121316]/90 border-2 border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 p-6 sm:p-8 rounded-[2px] transition-all duration-300 backdrop-blur-md flex flex-col justify-between shadow-xl group hover-lift">
                 <div>
                   <div className="flex items-center justify-between gap-3 mb-4">
                     <span className="font-['Anton'] text-3xl sm:text-4xl text-[#F2C21B]">Hoje</span>
-                    <span className="px-2.5 py-1 rounded bg-[#F2C21B]/15 text-[#F2C21B] font-mono text-xs uppercase font-bold tracking-wider border border-[#F2C21B]/30">
+                    <span className="px-2.5 py-1 rounded-[2px] bg-[#F2C21B]/15 text-[#F2C21B] font-mono text-xs uppercase font-bold tracking-wider border border-[#F2C21B]/30">
                       Salva de Prata
                     </span>
                   </div>
@@ -811,7 +811,7 @@ export function HomeClient() {
             <div className="text-center pt-2" data-reveal>
               <Link
                 href="/historia"
-                className="px-8 py-4 bg-[#141517] hover:bg-[#F2C21B] hover:text-black border border-white/20 text-white font-['Anton'] tracking-wider uppercase text-base rounded-xl transition-colors duration-200 inline-flex items-center gap-3 hover-lift shadow-xl"
+                className="px-8 py-4 bg-[#141517] hover:bg-[#F2C21B] hover:text-black border-2 border-white/20 text-white font-['Anton'] tracking-wider uppercase text-base rounded-[2px] transition-colors duration-200 inline-flex items-center gap-3 hover-lift shadow-xl"
               >
                 <span>Ler História Completa, Documentos & Fundadores</span>
                 <IconArrowRight className="w-4 h-4 text-inherit" />
@@ -856,7 +856,7 @@ export function HomeClient() {
                 <div className="pt-2">
                   <Link
                     href="/impacto"
-                    className="px-6 py-3.5 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-sm rounded-xl transition-colors duration-200 inline-flex items-center gap-2 hover-lift"
+                    className="px-6 py-3.5 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-sm rounded-[2px] border border-[#F2C21B] transition-colors duration-200 inline-flex items-center gap-2 hover-lift"
                   >
                     <span>Conheça Nossas Ações</span>
                     <IconArrowRight className="w-4 h-4 text-black shrink-0" strokeWidth={2.5} />
@@ -864,21 +864,21 @@ export function HomeClient() {
                 </div>
               </div>
 
-              {/* Center Big Card: Projeto PcD */}
-              <div className="lg:col-span-5 group rounded-2xl overflow-hidden bg-[#1C1F2A] border border-t-white/25 border-b-white/5 border-x-white/15 hover:border-[#F2C21B]/60 shadow-2xl hover:shadow-[0_0_30px_rgba(242,194,27,0.15)] transition-all duration-300 hover-lift">
+              {/* Center Big Card: Projeto PcD — Industrial Mechanical */}
+              <div className="lg:col-span-5 group rounded-[2px] overflow-hidden bg-[#1C1F2A] border border-t-white/25 border-b-white/5 border-x-white/15 hover:border-[#F2C21B]/60 shadow-2xl hover:shadow-[0_0_30px_rgba(242,194,27,0.15)] transition-all duration-300 hover-lift">
                 <div className="h-80 sm:h-96 overflow-hidden relative">
                   <div
                     className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105 filter grayscale-[10%] group-hover:grayscale-0"
                     style={{ backgroundImage: `url(/images/insanos/impact_pcd.webp)` }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1C1F2A] via-transparent to-transparent" />
-                  <div className="absolute top-4 left-4 px-3 py-1 rounded bg-black/70 backdrop-blur-md text-[#F2C21B] font-mono text-xs uppercase font-bold border border-white/10">
+                  <div className="absolute top-4 left-4 px-3 py-1 rounded-[2px] bg-black/70 backdrop-blur-md text-[#F2C21B] font-mono text-xs uppercase font-bold border border-white/10">
                     Iniciativa Humanitária
                   </div>
                 </div>
                 <div className="p-6 sm:p-8">
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="w-3 h-3 bg-[#F2C21B] rounded-sm transition-transform duration-300 group-hover:scale-110" />
+                    <span className="w-3 h-3 bg-[#F2C21B] rounded-none transition-transform duration-300 group-hover:scale-110" />
                     <h3 className="font-['Anton'] text-2xl sm:text-3xl uppercase text-white group-hover:text-[#F2C21B] transition-colors duration-200">
                       Projeto PcD
                     </h3>
@@ -893,15 +893,15 @@ export function HomeClient() {
 
               {/* Right Stacked 2 Cards: Bonde Pela Vida & Combate Insano */}
               <div className="lg:col-span-3 space-y-6">
-                <div className="group p-6 rounded-2xl bg-[#1C1F2A] border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 hover:shadow-[0_0_25px_rgba(242,194,27,0.15)] transition-all duration-300 hover-lift">
-                  <div className="h-32 rounded-xl overflow-hidden mb-4 relative">
+                <div className="group p-6 rounded-[2px] bg-[#1C1F2A] border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 hover:shadow-[0_0_25px_rgba(242,194,27,0.15)] transition-all duration-300 hover-lift">
+                  <div className="h-32 rounded-[2px] overflow-hidden mb-4 relative">
                     <div
                       className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105 filter grayscale-[10%] group-hover:grayscale-0"
                       style={{ backgroundImage: `url(/images/insanos/impact_blood.webp)` }}
                     />
                   </div>
                   <div className="flex items-center gap-2 mb-1.5">
-                    <span className="w-2.5 h-2.5 bg-[#F2C21B] rounded-sm transition-transform duration-300 group-hover:scale-110" />
+                    <span className="w-2.5 h-2.5 bg-[#F2C21B] rounded-none transition-transform duration-300 group-hover:scale-110" />
                     <h4 className="font-['Anton'] text-xl uppercase text-white group-hover:text-[#F2C21B] transition-colors duration-200">
                       Bonde Pela Vida
                     </h4>
@@ -913,15 +913,15 @@ export function HomeClient() {
                   </p>
                 </div>
 
-                <div className="group p-6 rounded-2xl bg-[#1C1F2A] border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 hover:shadow-[0_0_25px_rgba(242,194,27,0.15)] transition-all duration-300 hover-lift">
-                  <div className="h-32 rounded-xl overflow-hidden mb-4 relative">
+                <div className="group p-6 rounded-[2px] bg-[#1C1F2A] border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 hover:shadow-[0_0_25px_rgba(242,194,27,0.15)] transition-all duration-300 hover-lift">
+                  <div className="h-32 rounded-[2px] overflow-hidden mb-4 relative">
                     <div
                       className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105 filter grayscale-[10%] group-hover:grayscale-0"
                       style={{ backgroundImage: `url(/images/insanos/impact_combat.webp)` }}
                     />
                   </div>
                   <div className="flex items-center gap-2 mb-1.5">
-                    <span className="w-2.5 h-2.5 bg-[#F2C21B] rounded-sm transition-transform duration-300 group-hover:scale-110" />
+                    <span className="w-2.5 h-2.5 bg-[#F2C21B] rounded-none transition-transform duration-300 group-hover:scale-110" />
                     <h4 className="font-['Anton'] text-xl uppercase text-white group-hover:text-[#F2C21B] transition-colors duration-200">
                       Combate Insano
                     </h4>
@@ -942,7 +942,7 @@ export function HomeClient() {
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8">
             <div className="max-w-3xl mb-12" data-reveal>
               <div className="flex items-center gap-3 mb-4">
-                <span className="w-8 h-[2px] bg-gradient-to-r from-[#F2C21B] via-[#FFD700] to-[#B88E07] rounded-full shadow-[0_0_8px_rgba(242,194,27,0.4)]" />
+                <span className="w-8 h-[2px] bg-[#F2C21B]" />
                 <p className="text-xs uppercase font-extrabold tracking-[0.2em] text-[#F2C21B]">
                   Liderança & Legado
                 </p>
@@ -991,7 +991,7 @@ export function HomeClient() {
                 {LEADERSHIP_MEMBERS.map((item, i) => (
                   <div
                     key={i}
-                    className="group relative rounded-2xl bg-[#121316] border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/70 hover:shadow-[0_0_35px_rgba(242,194,27,0.2)] transition-all duration-300 overflow-hidden flex flex-col justify-between shadow-2xl hover-lift"
+                    className="group relative rounded-[2px] bg-[#121316] border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/70 hover:shadow-[0_0_35px_rgba(242,194,27,0.2)] transition-all duration-300 overflow-hidden flex flex-col justify-between shadow-2xl hover-lift"
                   >
                     {/* Leader Portrait Image with Full Face Alignment */}
                     <div className="relative h-72 sm:h-80 w-full overflow-hidden bg-[#0A0A0C]">
@@ -1006,7 +1006,7 @@ export function HomeClient() {
                       
                       {/* Location Badge */}
                       <div className="absolute top-3 left-3">
-                        <span className="px-3 py-1 rounded bg-black/85 backdrop-blur-md border border-[#F2C21B]/40 text-[#F2C21B] font-mono text-[10px] font-bold uppercase tracking-wider shadow-lg">
+                        <span className="px-3 py-1 rounded-[2px] bg-black/85 backdrop-blur-md border border-[#F2C21B]/40 text-[#F2C21B] font-mono text-[10px] font-bold uppercase tracking-wider shadow-lg">
                           {item.loc}
                         </span>
                       </div>
@@ -1037,7 +1037,7 @@ export function HomeClient() {
             ) : (
               <div className="space-y-10" data-reveal>
                 {/* Memorial Hero Card */}
-                <div className="p-8 sm:p-12 rounded-2xl bg-[#111215] border border-t-white/25 border-b-white/5 border-x-white/15 text-center max-w-4xl mx-auto shadow-2xl relative overflow-hidden">
+                <div className="p-8 sm:p-12 rounded-[2px] bg-[#111215] border border-t-white/25 border-b-white/5 border-x-white/15 text-center max-w-4xl mx-auto shadow-2xl relative overflow-hidden">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(242,194,27,0.08),transparent_70%)] pointer-events-none" />
                   <span className="font-['Anton'] text-4xl sm:text-6xl text-[#F2C21B] mb-2 block tracking-tight">
                     HONRA ETERNA
@@ -1048,7 +1048,7 @@ export function HomeClient() {
                   <p className="text-[#D4D1CA] font-medium text-sm sm:text-base leading-relaxed mb-8 max-w-2xl mx-auto">
                     A história do Insanos Moto Clube é sustentada pela coragem dos irmãos pioneiros que ergueram este escudo e daqueles que continuam acelerando na estrada celestial. A memória e o legado de cada irmão jamais serão esquecidos.
                   </p>
-                  <div className="inline-block px-6 py-2 rounded-full border border-[#F2C21B]/40 bg-[#F2C21B]/10 text-[#F2C21B] font-mono text-xs uppercase tracking-widest shadow-inner">
+                  <div className="inline-block px-6 py-2 rounded-[2px] border border-[#F2C21B]/40 bg-[#F2C21B]/10 text-[#F2C21B] font-mono text-xs uppercase tracking-widest shadow-inner">
                     Insanos Sempre, Sempre Insano · In Memoriam
                   </div>
                 </div>
@@ -1058,7 +1058,7 @@ export function HomeClient() {
                   {MEMORIAL_MEMBERS.map((mem, idx) => (
                     <div
                       key={idx}
-                      className="group relative rounded-2xl bg-[#121316] border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/50 transition-all duration-300 overflow-hidden shadow-xl"
+                      className="group relative rounded-[2px] bg-[#121316] border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/50 transition-all duration-300 overflow-hidden shadow-xl"
                     >
                       <div
                         className="h-64 bg-cover bg-[center_top] transition-transform duration-500 group-hover:scale-105 filter grayscale contrast-125 relative"
@@ -1066,7 +1066,7 @@ export function HomeClient() {
                       >
                         <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-black/40 to-transparent" />
                         <div className="absolute top-3 left-3">
-                          <span className="px-2.5 py-1 rounded bg-black/80 text-[#F2C21B] font-mono text-[9px] font-bold uppercase tracking-wider border border-white/10">
+                          <span className="px-2.5 py-1 rounded-[2px] bg-black/80 text-[#F2C21B] font-mono text-[9px] font-bold uppercase tracking-wider border border-white/10">
                             {mem.badge}
                           </span>
                         </div>
@@ -1094,7 +1094,7 @@ export function HomeClient() {
         <section id="noticias" className="py-24 sm:py-32 bg-[#0B0C0E] border-b border-white/10 relative">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8 space-y-16">
             <div className="max-w-3xl" data-reveal>
-              <span className="px-2.5 sm:px-3 py-1 rounded bg-[#F2C21B]/15 text-[#F2C21B] text-[9.5px] min-[360px]:text-[10.5px] sm:text-xs font-mono font-bold uppercase tracking-wider block w-fit mb-3 whitespace-nowrap border border-[#F2C21B]/30">
+              <span className="px-2.5 sm:px-3 py-1 rounded-[2px] bg-[#F2C21B]/15 text-[#F2C21B] text-[9.5px] min-[360px]:text-[10.5px] sm:text-xs font-mono font-bold uppercase tracking-wider block w-fit mb-3 whitespace-nowrap border border-[#F2C21B]/30">
                 (07) Content Hub — Notícias, Eventos e Conteúdos
               </span>
               <h2 className="font-['Anton'] uppercase text-4xl sm:text-6xl lg:text-7xl leading-tight text-white mb-2">
@@ -1109,12 +1109,12 @@ export function HomeClient() {
 
             <div className="grid lg:grid-cols-12 gap-8 items-start" data-reveal>
               {/* Left Big Highlight Story */}
-              <div className="lg:col-span-5 bg-[#121316] border border-white/15 rounded-2xl overflow-hidden shadow-2xl">
+              <div className="lg:col-span-5 bg-[#121316] border border-white/15 rounded-[2px] overflow-hidden shadow-2xl">
                 <div
                   className="h-64 sm:h-80 bg-cover bg-center relative"
                   style={{ backgroundImage: `url(/images/insanos/news_featured_aniversario.webp)` }}
                 >
-                  <div className="absolute top-4 left-4 px-3 py-1 rounded bg-[#F2C21B] text-black font-extrabold text-xs uppercase flex items-center gap-1.5">
+                  <div className="absolute top-4 left-4 px-3 py-1 rounded-[2px] bg-[#F2C21B] text-black font-extrabold text-xs uppercase flex items-center gap-1.5">
                     <IconStar className="w-3.5 h-3.5 fill-black" />
                     <span>Reportagem em Destaque</span>
                   </div>
@@ -1129,7 +1129,7 @@ export function HomeClient() {
                   </p>
                   <Link
                     href="/18news"
-                    className="px-6 py-3 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-xs rounded-xl transition-colors inline-flex items-center gap-2"
+                    className="px-6 py-3 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-xs rounded-[2px] border border-[#F2C21B] transition-colors inline-flex items-center gap-2"
                   >
                     <span>Todas as Notícias</span>
                     <IconArrowRight className="w-3.5 h-3.5 text-black" strokeWidth={2.5} />
@@ -1138,13 +1138,13 @@ export function HomeClient() {
               </div>
 
               {/* Center Column: Upcoming Events Agenda */}
-              <div className="lg:col-span-4 p-8 rounded-2xl bg-[#121316] border border-white/15 space-y-6">
+              <div className="lg:col-span-4 p-8 rounded-[2px] bg-[#121316] border border-white/15 space-y-6">
                 <div className="flex items-center justify-between pb-4 border-b border-white/10">
                   <div className="flex items-center gap-2.5">
                     <IconCalendar className="w-5 h-5 text-[#F2C21B]" />
                     <h4 className="font-['Anton'] text-2xl uppercase text-white">Próximos Eventos</h4>
                   </div>
-                  <span className="text-[10px] font-mono text-[#F2C21B] font-bold uppercase px-2 py-0.5 rounded bg-[#F2C21B]/15">
+                  <span className="text-[10px] font-mono text-[#F2C21B] font-bold uppercase px-2 py-0.5 rounded-[2px] bg-[#F2C21B]/15">
                     2026
                   </span>
                 </div>
@@ -1159,13 +1159,13 @@ export function HomeClient() {
                     <Link
                       key={idx}
                       href="/eventos"
-                      className="p-3.5 rounded-xl bg-[#090A0B] border border-white/10 hover:border-[#F2C21B]/60 flex items-center justify-between transition-all group/item block"
+                      className="p-3.5 rounded-[2px] bg-[#090A0B] border border-white/10 hover:border-[#F2C21B]/60 flex items-center justify-between transition-all group/item block"
                     >
                       <div>
                         <h5 className="font-bold text-xs text-white group-hover/item:text-[#F2C21B] transition-colors mb-0.5">{evt.title}</h5>
                         <span className="text-[10px] text-[#AAA8A1] font-mono">{evt.desc}</span>
                       </div>
-                      <span className="text-[10px] font-mono text-[#F2C21B] bg-[#F2C21B]/10 px-2 py-1 rounded shrink-0">
+                      <span className="text-[10px] font-mono text-[#F2C21B] bg-[#F2C21B]/10 px-2 py-1 rounded-[2px] shrink-0">
                         {evt.date}
                       </span>
                     </Link>
@@ -1175,7 +1175,7 @@ export function HomeClient() {
                 <div className="pt-2">
                   <Link
                     href="/eventos"
-                    className="w-full py-3 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-bold text-xs uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-2 text-center shadow-md hover-lift font-mono"
+                    className="w-full py-3 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-bold text-xs uppercase tracking-wider rounded-[2px] border border-[#F2C21B] transition-all flex items-center justify-center gap-2 text-center shadow-md hover-lift font-mono"
                   >
                     <span>Ver Agenda Completa & Sincronizar</span>
                     <IconArrowRight className="w-3.5 h-3.5 text-black" />
@@ -1186,7 +1186,7 @@ export function HomeClient() {
               {/* Right Stacked 3 Mini-Cards: Expeditions, Live Radio, Podcast */}
               <div className="lg:col-span-3 space-y-4">
                 {/* Expeditions */}
-                <div className="p-5 rounded-xl bg-[#121316] border border-white/10">
+                <div className="p-5 rounded-[2px] bg-[#121316] border border-white/10">
                   <span className="text-[10px] font-mono uppercase font-bold text-[#F2C21B] flex items-center gap-1 mb-1">
                     <IconPin className="w-3 h-3 text-[#F2C21B]" />
                     <span>Expedições</span>
@@ -1200,7 +1200,7 @@ export function HomeClient() {
                 </div>
 
                 {/* Radio Live */}
-                <div className="p-5 rounded-xl bg-gradient-to-r from-[#17191E] to-[#121316] border border-[#F2C21B]/40">
+                <div className="p-5 rounded-[2px] bg-gradient-to-r from-[#17191E] to-[#121316] border border-[#F2C21B]/40">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-[10px] font-mono uppercase font-bold text-[#F2C21B]">((•)) Rádio 24h</span>
                     <span className={`w-2 h-2 rounded-full ${isPlayingRadio ? "bg-emerald-400 animate-ping" : "bg-emerald-500"}`} />
@@ -1208,7 +1208,7 @@ export function HomeClient() {
                   <h5 className="font-['Anton'] text-lg uppercase text-white mb-2">A Voz da Irmandade</h5>
                   <button
                     onClick={toggleRadio}
-                    className="w-full py-2.5 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] uppercase text-xs rounded-xl transition-colors flex items-center justify-center gap-2 shadow-md hover-lift"
+                    className="w-full py-2.5 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] uppercase text-xs rounded-[2px] border border-[#F2C21B] transition-colors flex items-center justify-center gap-2 shadow-md hover-lift"
                   >
                     <span>{isPlayingRadio ? "Pausar" : "Ouvir Ao Vivo"}</span>
                     {isPlayingRadio ? <IconPause className="w-3.5 h-3.5" /> : <IconPlay className="w-3.5 h-3.5" />}
@@ -1216,7 +1216,7 @@ export function HomeClient() {
                 </div>
 
                 {/* Podcast */}
-                <div className="p-5 rounded-xl bg-[#121316] border border-white/10 flex flex-col justify-between">
+                <div className="p-5 rounded-[2px] bg-[#121316] border border-white/10 flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between mb-1">
                       <span className="text-[10px] font-mono uppercase font-bold text-[#F2C21B] flex items-center gap-1">
@@ -1232,7 +1232,7 @@ export function HomeClient() {
                     href="https://www.youtube.com/@InsanosMCOficial"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-2.5 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] uppercase text-xs rounded-xl transition-colors flex items-center justify-center gap-2 shadow-md hover-lift"
+                    className="w-full py-2.5 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] uppercase text-xs rounded-[2px] border border-[#F2C21B] transition-colors flex items-center justify-center gap-2 shadow-md hover-lift"
                   >
                     <span>Acessar</span>
                     <span>↗</span>
@@ -1265,10 +1265,10 @@ export function HomeClient() {
               </p>
 
               {/* Tab Selector: Direct vs Quiz */}
-              <div className="inline-flex bg-[#141519] p-1.5 rounded-xl border border-white/10 mb-8">
+              <div className="inline-flex bg-[#141519] p-1.5 rounded-[2px] border border-white/10 mb-8">
                 <button
                   onClick={() => setActiveAdmissionTab("direto")}
-                  className={`px-6 py-2.5 rounded-lg font-['Anton'] uppercase text-sm tracking-wider transition-colors duration-150 ${
+                  className={`px-6 py-2.5 rounded-[2px] font-['Anton'] uppercase text-sm tracking-wider transition-colors duration-150 ${
                     activeAdmissionTab === "direto" ? "bg-[#F2C21B] text-black" : "text-white/60 hover:text-white"
                   }`}
                 >
@@ -1276,7 +1276,7 @@ export function HomeClient() {
                 </button>
                 <button
                   onClick={() => setActiveAdmissionTab("simulador")}
-                  className={`px-6 py-2.5 rounded-lg font-['Anton'] uppercase text-sm tracking-wider transition-colors duration-150 flex items-center gap-2 ${
+                  className={`px-6 py-2.5 rounded-[2px] font-['Anton'] uppercase text-sm tracking-wider transition-colors duration-150 flex items-center gap-2 ${
                     activeAdmissionTab === "simulador" ? "bg-[#F2C21B] text-black" : "text-white/60 hover:text-white"
                   }`}
                 >
@@ -1289,7 +1289,7 @@ export function HomeClient() {
             {activeAdmissionTab === "simulador" ? (
               <DnaQuiz />
             ) : (
-              <div className="p-8 sm:p-12 rounded-2xl bg-[#121316] border border-white/15 text-center shadow-2xl">
+              <div className="p-8 sm:p-12 rounded-[2px] bg-[#121316] border border-white/15 text-center shadow-2xl">
                 <h3 className="font-['Anton'] text-2xl sm:text-4xl uppercase text-white mb-4">
                   Portal Oficial de Ingresso
                 </h3>
@@ -1300,14 +1300,14 @@ export function HomeClient() {
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                   <Link
                     href="/faca-parte"
-                    className="w-full sm:w-auto px-6 sm:px-10 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-base sm:text-lg rounded shadow-xl inline-flex items-center justify-center gap-2.5 transition-colors duration-200 hover-lift whitespace-nowrap"
+                    className="w-full sm:w-auto px-6 sm:px-10 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-base sm:text-lg rounded-[2px] border-2 border-[#F2C21B] shadow-xl inline-flex items-center justify-center gap-2.5 transition-colors duration-200 hover-lift whitespace-nowrap"
                   >
                     <span>Acessar Ficha de Cadastro</span>
                     <IconArrowRight className="w-5 h-5 text-black shrink-0" strokeWidth={2.5} />
                   </Link>
                   <Link
                     href="/ecossistema"
-                    className="w-full sm:w-auto px-6 sm:px-8 py-4 bg-[#141517] hover:border-[#F2C21B] border border-white/20 text-white font-bold uppercase text-xs sm:text-sm rounded transition-colors duration-200 inline-flex items-center justify-center whitespace-nowrap"
+                    className="w-full sm:w-auto px-6 sm:px-8 py-4 bg-[#141517] hover:border-[#F2C21B] border border-white/20 text-white font-bold uppercase text-xs sm:text-sm rounded-[2px] transition-colors duration-200 inline-flex items-center justify-center whitespace-nowrap"
                   >
                     Conhecer Ecossistema 18
                   </Link>

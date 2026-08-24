@@ -54,7 +54,7 @@ export default async function ArticlePage({ params }: PageProps) {
           {/* Article Header */}
           <div className="mb-10">
             <div className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1 bg-[#F2C21B] text-black font-extrabold text-xs uppercase rounded">
+              <span className="px-3 py-1 bg-[#F2C21B] text-black font-extrabold text-xs uppercase rounded-[2px]">
                 {article.tag}
               </span>
               <span className="text-xs text-[#AAA8A1] font-mono">{article.date} · {article.readTime}</span>
@@ -73,7 +73,7 @@ export default async function ArticlePage({ params }: PageProps) {
           </div>
 
           {/* Featured Image */}
-          <div className="rounded-2xl overflow-hidden mb-12 border border-white/10 shadow-2xl">
+          <div className="rounded-[2px] overflow-hidden mb-12 border-2 border-white/10 shadow-2xl">
             <img
               src={article.image}
               alt={article.title}
@@ -91,13 +91,13 @@ export default async function ArticlePage({ params }: PageProps) {
           </div>
 
           {/* Social Share Bar Bottom */}
-          <div className="p-6 rounded-2xl bg-[#121316] border border-white/10 mb-12 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="p-6 rounded-[2px] bg-[#121316] border-2 border-white/10 mb-12 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <span className="font-['Anton'] text-lg uppercase text-white">Gostou deste relato?</span>
             <ShareButtons title={article.title} url={articleUrl} />
           </div>
 
           {/* Author Box */}
-          <div className="p-8 rounded-2xl bg-[#121316] border border-white/10 flex items-center justify-between gap-6 mb-16">
+          <div className="p-8 rounded-[2px] bg-[#121316] border-2 border-white/10 flex items-center justify-between gap-6 mb-16">
             <div>
               <span className="text-xs font-mono text-[#F2C21B] uppercase tracking-wider block mb-1">
                 Publicação Oficial
@@ -107,7 +107,7 @@ export default async function ArticlePage({ params }: PageProps) {
             </div>
             <Link
               href="/18news"
-              className="px-5 py-2.5 bg-white/10 hover:bg-[#F2C21B] hover:text-black rounded-xl text-xs uppercase font-bold tracking-wider transition-colors duration-200"
+              className="px-5 py-2.5 bg-white/10 hover:bg-[#F2C21B] hover:text-black rounded-[2px] border border-white/20 text-xs uppercase font-bold tracking-wider transition-colors duration-200"
             >
               Voltar ao 18News ←
             </Link>
@@ -121,7 +121,7 @@ export default async function ArticlePage({ params }: PageProps) {
                 <Link
                   key={rel.slug}
                   href={`/18news/${rel.slug}`}
-                  className="p-6 rounded-2xl bg-[#121316] border border-white/10 hover:border-[#F2C21B]/50 transition-colors duration-200 group block hover-lift shadow-lg"
+                  className="p-6 rounded-[2px] bg-[#121316] border-2 border-white/10 hover:border-[#F2C21B]/50 transition-colors duration-200 group block hover-lift shadow-lg"
                 >
                   <span className="text-xs uppercase font-bold text-[#F2C21B] block mb-2">{rel.tag}</span>
                   <h4 className="font-['Anton'] text-xl uppercase text-white group-hover:text-[#F2C21B] transition-colors mb-2">

@@ -161,7 +161,7 @@ export function HistoriaClient() {
             </div>
 
             {/* Documentary Historical Foundation Banner */}
-            <div className="mb-14 rounded-3xl overflow-hidden border border-white/15 relative group shadow-2xl">
+            <div className="mb-14 rounded-[2px] overflow-hidden border-2 border-white/15 relative group shadow-2xl">
               <div
                 className="h-64 sm:h-96 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 filter grayscale-[20%] group-hover:grayscale-0"
                 style={{ backgroundImage: `url('/images/insanos/memorial_fundadores_oz.webp')` }}
@@ -169,7 +169,7 @@ export function HistoriaClient() {
               <div className="absolute inset-0 bg-gradient-to-t from-[#0C0D0F] via-[#0C0D0F]/40 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
                 <div>
-                  <span className="px-3 py-1 rounded bg-[#F2C21B] text-black font-mono text-xs font-extrabold uppercase tracking-wider mb-2 inline-block shadow-md">
+                  <span className="px-3 py-1 rounded-[2px] bg-[#F2C21B] text-black font-mono text-xs font-extrabold uppercase tracking-wider mb-2 inline-block shadow-md">
                     Registro de Fundação
                   </span>
                   <h3 className="font-['Anton'] text-xl sm:text-3xl uppercase text-white drop-shadow-md">
@@ -179,7 +179,7 @@ export function HistoriaClient() {
                     Reunião inaugural que consolidou o estatuto social, o símbolo dos 18 do Forte e o compromisso permanente de fazer o bem.
                   </p>
                 </div>
-                <div className="shrink-0 text-right font-mono text-xs text-[#F2C21B] bg-black/70 px-4 py-2 rounded-xl border border-white/10 backdrop-blur-md">
+                <div className="shrink-0 text-right font-mono text-xs text-[#F2C21B] bg-black/70 px-4 py-2 rounded-[2px] border border-white/10 backdrop-blur-md">
                   03.12.2015 · Fundação Oficial
                 </div>
               </div>
@@ -188,14 +188,14 @@ export function HistoriaClient() {
             {/* 4 Founders Photographic Cards */}
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {/* Jonatas Kiss */}
-              <div className="bg-[#121316] border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 rounded-2xl overflow-hidden transition-all duration-300 group hover-lift shadow-xl flex flex-col justify-between">
+              <div className="bg-[#121316] border-2 border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 rounded-[2px] overflow-hidden transition-all duration-300 group hover-lift shadow-xl flex flex-col justify-between">
                 <div>
                   <div
                     className="h-64 bg-cover bg-[center_top] relative transition-transform duration-500 group-hover:scale-105 filter grayscale-[15%] group-hover:grayscale-0"
                     style={{ backgroundImage: `url('/images/insanos/leader_presidencia.webp')` }}
                   >
                     <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-transparent to-transparent" />
-                    <span className="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/75 text-[#F2C21B] font-mono text-[9.5px] font-bold uppercase tracking-wider border border-white/10">
+                    <span className="absolute top-3 left-3 px-2.5 py-1 rounded-[2px] bg-black/75 text-[#F2C21B] font-mono text-[9.5px] font-bold uppercase tracking-wider border border-white/10">
                       Fundador & Presidência
                     </span>
                   </div>
@@ -210,14 +210,14 @@ export function HistoriaClient() {
               </div>
 
               {/* Bugdam Alves Nunes */}
-              <div className="bg-[#121316] border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 rounded-2xl overflow-hidden transition-all duration-300 group hover-lift shadow-xl flex flex-col justify-between">
+              <div className="bg-[#121316] border-2 border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 rounded-[2px] overflow-hidden transition-all duration-300 group hover-lift shadow-xl flex flex-col justify-between">
                 <div>
                   <div
                     className="h-64 bg-cover bg-[center_top] relative transition-transform duration-500 group-hover:scale-105 filter grayscale-[15%] group-hover:grayscale-0"
                     style={{ backgroundImage: `url('/images/insanos/leader_executiva.webp')` }}
                   >
                     <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-transparent to-transparent" />
-                    <span className="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/75 text-[#F2C21B] font-mono text-[9.5px] font-bold uppercase tracking-wider border border-white/10">
+                    <span className="absolute top-3 left-3 px-2.5 py-1 rounded-[2px] bg-black/75 text-[#F2C21B] font-mono text-[9.5px] font-bold uppercase tracking-wider border border-white/10">
                       Cofundador & Vice-Presidência
                     </span>
                   </div>
@@ -232,14 +232,14 @@ export function HistoriaClient() {
               </div>
 
               {/* Edson Lopes (Memorial) */}
-              <div className="bg-[#15161A] border border-t-[#F2C21B]/50 border-b-white/5 border-x-white/15 rounded-2xl overflow-hidden transition-all duration-300 group hover-lift shadow-2xl flex flex-col justify-between relative">
+              <div className="bg-[#15161A] border-2 border-t-[#F2C21B]/50 border-b-white/5 border-x-white/15 rounded-[2px] overflow-hidden transition-all duration-300 group hover-lift shadow-2xl flex flex-col justify-between relative">
                 <div>
                   <div
                     className="h-64 bg-cover bg-[center_top] relative transition-transform duration-500 group-hover:scale-105 filter grayscale contrast-125"
                     style={{ backgroundImage: `url('/images/insanos/memorial_edson_lopes.webp')` }}
                   >
                     <div className="absolute inset-0 bg-gradient-to-t from-[#15161A] via-black/40 to-transparent" />
-                    <span className="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/90 text-[#F2C21B] font-mono text-[9.5px] font-bold uppercase tracking-wider border border-[#F2C21B]/40 shadow-lg">
+                    <span className="absolute top-3 left-3 px-2.5 py-1 rounded-[2px] bg-black/90 text-[#F2C21B] font-mono text-[9.5px] font-bold uppercase tracking-wider border border-[#F2C21B]/40 shadow-lg">
                       Pioneiro · In Memoriam
                     </span>
                   </div>
@@ -254,14 +254,14 @@ export function HistoriaClient() {
               </div>
 
               {/* Bin */}
-              <div className="bg-[#121316] border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 rounded-2xl overflow-hidden transition-all duration-300 group hover-lift shadow-xl flex flex-col justify-between">
+              <div className="bg-[#121316] border-2 border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 rounded-[2px] overflow-hidden transition-all duration-300 group hover-lift shadow-xl flex flex-col justify-between">
                 <div>
                   <div
                     className="h-64 bg-cover bg-center relative transition-transform duration-500 group-hover:scale-105 filter grayscale-[15%] group-hover:grayscale-0"
                     style={{ backgroundImage: `url('/images/insanos/leader_midia.webp')` }}
                   >
                     <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-transparent to-transparent" />
-                    <span className="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/75 text-[#F2C21B] font-mono text-[9.5px] font-bold uppercase tracking-wider border border-white/10">
+                    <span className="absolute top-3 left-3 px-2.5 py-1 rounded-[2px] bg-black/75 text-[#F2C21B] font-mono text-[9.5px] font-bold uppercase tracking-wider border border-white/10">
                       Cofundador & Identidade
                     </span>
                   </div>
@@ -295,7 +295,7 @@ export function HistoriaClient() {
                 <p className="text-sm sm:text-base text-[#D4D1CA] font-medium leading-relaxed mb-8">
                   Para o Insanos MC, essa memória sintetiza a nossa própria jornada: <strong>a coragem de um grupo pequeno que, unido pela fé e pela fraternidade, enfrenta forças e desafios muito maiores sem jamais deixar um irmão para trás.</strong>
                 </p>
-                <div className="p-6 bg-[#17181C] border-l-4 border-[#F2C21B] rounded-r-lg shadow-inner">
+                <div className="p-6 bg-[#17181C] border-l-4 border-[#F2C21B] rounded-[2px] shadow-inner">
                   <p className="font-['Anton'] text-xl uppercase text-white tracking-wide">
                     "Colete não cria irmão. Atitude cria."
                   </p>
@@ -303,7 +303,7 @@ export function HistoriaClient() {
               </div>
 
               <div className="lg:col-span-6">
-                <div className="p-8 sm:p-12 rounded-2xl bg-[#16171B] border border-t-white/20 border-b-white/5 border-x-white/10 border-t-[#F2C21B]/40 text-center shadow-2xl relative min-h-[440px] sm:min-h-[500px] flex flex-col items-center justify-center overflow-hidden group">
+                <div className="p-8 sm:p-12 rounded-[2px] bg-[#16171B] border-2 border-t-white/20 border-b-white/5 border-x-white/10 border-t-[#F2C21B]/40 text-center shadow-2xl relative min-h-[440px] sm:min-h-[500px] flex flex-col items-center justify-center overflow-hidden group">
                   {/* Subtle Ambient Glow */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent pointer-events-none" />
                   <div className="absolute w-[300px] h-[300px] rounded-full bg-[#F2C21B]/10 blur-3xl -z-0 pointer-events-none" />
@@ -338,11 +338,11 @@ export function HistoriaClient() {
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8">
             <div className="text-center max-w-2xl mx-auto mb-16">
               <div className="flex items-center justify-center gap-3 mb-2">
-                <span className="w-8 h-[2px] bg-gradient-to-r from-[#F2C21B] via-[#FFD700] to-[#B88E07] rounded-full shadow-[0_0_8px_rgba(242,194,27,0.4)]" />
+                <span className="w-8 h-[2px] bg-[#F2C21B]" />
                 <span className="text-xs uppercase font-extrabold tracking-[0.2em] text-[#F2C21B]">
                   Linha do Tempo Documentada
                 </span>
-                <span className="w-8 h-[2px] bg-gradient-to-r from-[#B88E07] via-[#FFD700] to-[#F2C21B] rounded-full shadow-[0_0_8px_rgba(242,194,27,0.4)]" />
+                <span className="w-8 h-[2px] bg-[#F2C21B]" />
               </div>
               <h2 className="font-['Anton'] uppercase text-3xl sm:text-5xl text-white tracking-[-0.015em]">
                 Os Marcos da Nossa Conquista
@@ -358,10 +358,10 @@ export function HistoriaClient() {
                 <button
                   key={item.year + item.title}
                   onClick={() => setSelectedMilestone(idx)}
-                  className={`px-6 py-3 rounded-xl font-['Anton'] text-base sm:text-xl uppercase tracking-wider transition-all duration-200 cursor-pointer ${
+                  className={`px-6 py-3 rounded-[2px] font-['Anton'] text-base sm:text-xl uppercase tracking-wider transition-all duration-200 cursor-pointer border-2 ${
                     selectedMilestone === idx
-                      ? "bg-gradient-to-b from-[#F2C21B] to-[#D4A50E] text-black shadow-[0_0_20px_rgba(242,194,27,0.4)] border border-[#FFE066] scale-105 font-extrabold"
-                      : "bg-[#141517] text-white/70 hover:text-white hover:bg-[#1C1E23] border border-white/10 hover:border-white/20"
+                      ? "bg-gradient-to-b from-[#F2C21B] to-[#D4A50E] text-black shadow-[0_0_20px_rgba(242,194,27,0.4)] border-[#FFE066] scale-105 font-extrabold"
+                      : "bg-[#141517] text-white/70 hover:text-white hover:bg-[#1C1E23] border-white/10 hover:border-white/20"
                   }`}
                 >
                   {item.year}
@@ -373,16 +373,16 @@ export function HistoriaClient() {
             {(() => {
               const current = TIMELINE_EXPANDED[selectedMilestone];
               return (
-                <div className="max-w-4xl mx-auto p-8 sm:p-12 rounded-2xl bg-[#141518] border border-t-white/25 border-b-white/5 border-x-white/15 border-t-[#F2C21B]/40 shadow-2xl transition-opacity duration-300">
+                <div className="max-w-4xl mx-auto p-8 sm:p-12 rounded-[2px] bg-[#141518] border-2 border-t-white/25 border-b-white/5 border-x-white/15 border-t-[#F2C21B]/40 shadow-2xl transition-opacity duration-300">
                   <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
                     <div className="flex items-center gap-3">
                       <span className="font-['Anton'] text-5xl text-[#F2C21B] drop-shadow-md">{current.year}</span>
                       {current.dateBadge && (
-                        <span className="px-3 py-1 bg-white/10 text-white text-xs font-mono rounded border border-white/10">
+                        <span className="px-3 py-1 bg-white/10 text-white text-xs font-mono rounded-[2px] border border-white/10">
                           {current.dateBadge}
                         </span>
                       )}
-                      <span className="px-3 py-1 bg-[#F2C21B]/15 text-[#F2C21B] text-xs font-mono font-bold uppercase rounded border border-[#F2C21B]/30">
+                      <span className="px-3 py-1 bg-[#F2C21B]/15 text-[#F2C21B] text-xs font-mono font-bold uppercase rounded-[2px] border border-[#F2C21B]/30">
                         {current.badge}
                       </span>
                     </div>
@@ -409,7 +409,7 @@ export function HistoriaClient() {
             </p>
             <Link
               href="/faca-parte"
-              className="px-8 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-lg rounded-xl shadow-xl inline-flex items-center gap-2.5 transition-colors duration-200 hover-lift whitespace-nowrap"
+              className="px-8 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-lg rounded-[2px] border-2 border-[#F2C21B] shadow-xl inline-flex items-center gap-2.5 transition-colors duration-200 hover-lift whitespace-nowrap cursor-pointer"
             >
               <span>Solicitar Ingresso</span>
               <IconArrowRight className="w-4 h-4 text-black" strokeWidth={2.5} />

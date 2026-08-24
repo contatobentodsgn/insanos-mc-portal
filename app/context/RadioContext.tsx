@@ -16,7 +16,7 @@ interface RadioContextType {
 
 const RadioContext = createContext<RadioContextType | undefined>(undefined);
 
-// 24h High-Fidelity Rock Stream (Primary & Backup Streams)
+// High-Fidelity 24h Rock Stream URLs
 const PRIMARY_STREAM_URL = "https://stream.radioparadise.com/rock-128";
 const BACKUP_STREAM_URL = "https://stream.zeno.fm/k22222xsyreuv";
 
@@ -27,38 +27,21 @@ export function RadioProvider({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  // Initialize persistent single audio instance
+  // Restore state on mount if user had active session
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    if (!audioRef.current) {
-      const audio = new Audio(PRIMARY_STREAM_URL);
-      audio.preload = "none";
-      audioRef.current = audio;
-
-      audio.addEventListener("waiting", () => setIsLoading(true));
-      audio.addEventListener("playing", () => setIsLoading(false));
-      audio.addEventListener("canplay", () => setIsLoading(false));
-      audio.addEventListener("error", (e) => {
-        console.warn("Primary radio stream failed, switching to backup stream...", e);
-        audio.src = BACKUP_STREAM_URL;
-        audio.play().catch(() => {});
-      });
-    }
-
-    // Restore user preference if previously playing in this session
     const savedPlayState = sessionStorage.getItem("insanos_radio_playing");
-    if (savedPlayState === "true") {
+    if (savedPlayState === "true" && audioRef.current) {
       setIsPlaying(true);
       audioRef.current.play().catch(() => {
-        // Autoplay may require user gesture
         setIsPlaying(false);
         sessionStorage.removeItem("insanos_radio_playing");
       });
     }
   }, []);
 
-  // Update volume on audio instance
+  // Sync volume with audio element
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.volume = isMuted ? 0 : volume / 100;
@@ -75,7 +58,6 @@ export function RadioProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
-  // Handle Play / Pause
   const playRadio = () => {
     if (!audioRef.current) return;
     triggerHaptic(15);
@@ -89,7 +71,7 @@ export function RadioProvider({ children }: { children: React.ReactNode }) {
         setIsLoading(false);
       })
       .catch((err) => {
-        console.log("Audio play error:", err);
+        console.warn("Audio play blocked or stream unavailable:", err);
         setIsLoading(false);
       });
   };
@@ -137,6 +119,23 @@ export function RadioProvider({ children }: { children: React.ReactNode }) {
         setVolume,
       }}
     >
+      {/* Explicit native <audio> element rendered in DOM for accessibility, media controls and live stream playback */}
+      <audio
+        ref={audioRef}
+        id="insanos-radio-live"
+        src={PRIMARY_STREAM_URL}
+        preload="none"
+        onWaiting={() => setIsLoading(true)}
+        onPlaying={() => setIsLoading(false)}
+        onCanPlay={() => setIsLoading(false)}
+        onError={(e) => {
+          console.warn("Primary radio stream fallback triggered...", e);
+          if (audioRef.current && audioRef.current.src !== BACKUP_STREAM_URL) {
+            audioRef.current.src = BACKUP_STREAM_URL;
+            audioRef.current.play().catch(() => {});
+          }
+        }}
+      />
       {children}
     </RadioContext.Provider>
   );

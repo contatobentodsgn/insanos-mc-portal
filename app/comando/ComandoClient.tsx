@@ -149,7 +149,7 @@ export function ComandoClient() {
                   {COMMAND_ROLES.map((item, idx) => (
                     <div
                       key={idx}
-                      className="group relative rounded-2xl bg-[#121316] border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/70 hover:shadow-[0_0_35px_rgba(242,194,27,0.2)] transition-all duration-300 overflow-hidden flex flex-col justify-between shadow-2xl hover-lift"
+                      className="group relative rounded-[2px] bg-[#121316] border-2 border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/70 hover:shadow-[0_0_35px_rgba(242,194,27,0.2)] transition-all duration-300 overflow-hidden flex flex-col justify-between shadow-2xl hover-lift"
                     >
                       <div className="relative h-72 sm:h-80 w-full overflow-hidden bg-[#0A0A0C]">
                         <div
@@ -161,7 +161,7 @@ export function ComandoClient() {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-[#121316]/20 to-transparent" />
                         <div className="absolute top-3 left-3">
-                          <span className="px-2.5 py-1 rounded bg-black/85 backdrop-blur-md border border-[#F2C21B]/40 text-[#F2C21B] font-mono text-[9px] font-bold uppercase tracking-wider">
+                          <span className="px-2.5 py-1 rounded-[2px] bg-black/85 backdrop-blur-md border border-[#F2C21B]/40 text-[#F2C21B] font-mono text-[9px] font-bold uppercase tracking-wider">
                             {item.division}
                           </span>
                         </div>
@@ -189,7 +189,7 @@ export function ComandoClient() {
               </div>
             ) : (
               <div className="max-w-4xl mx-auto space-y-12">
-                <div className="p-10 sm:p-14 rounded-2xl bg-[#121316] border border-[#F2C21B]/40 text-center shadow-2xl">
+                <div className="p-10 sm:p-14 rounded-[2px] bg-[#121316] border-2 border-[#F2C21B]/40 text-center shadow-2xl">
                   <span className="font-['Anton'] text-6xl text-[#F2C21B] mb-2 block">IN MEMORIAM</span>
                   <h2 className="font-['Anton'] text-3xl sm:text-4xl uppercase text-white mb-6">
                     Aos Irmãos Que Pilotam na Estrada Celestial
@@ -197,13 +197,13 @@ export function ComandoClient() {
                   <p className="text-base text-[#C7C5BF] leading-relaxed max-w-2xl mx-auto mb-8">
                     Prestamos tributo e solene gratidão aos irmãos que dedicaram suas vidas à construção, fortalecimento e honra do Insanos Moto Clube. Em especial ao nosso irmão e cofundador <strong>Edson Lopes</strong>, cuja conduta, bravura e espírito de fraternidade permanecem gravados para sempre em nossos corações.
                   </p>
-                  <div className="inline-block px-8 py-3 rounded-full border border-[#F2C21B] bg-[#F2C21B]/10 text-[#F2C21B] font-mono text-xs uppercase tracking-widest">
+                  <div className="inline-block px-8 py-3 rounded-[2px] border border-[#F2C21B] bg-[#F2C21B]/10 text-[#F2C21B] font-mono text-xs uppercase tracking-widest">
                     "Insanos Sempre, Sempre Insano. Ninguém Fica Para Trás."
                   </div>
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-6">
-                  <div className="group rounded-2xl bg-[#121316] border border-white/10 overflow-hidden shadow-xl">
+                  <div className="group rounded-[2px] bg-[#121316] border-2 border-white/10 overflow-hidden shadow-xl">
                     <div
                       className="h-60 bg-cover bg-center filter grayscale contrast-125 transition-transform duration-500 group-hover:scale-105"
                       style={{ backgroundImage: `url(/images/insanos/memorial_edson_lopes.webp)` }}
@@ -222,7 +222,7 @@ export function ComandoClient() {
                     </div>
                   </div>
 
-                  <div className="group rounded-2xl bg-[#121316] border border-white/10 overflow-hidden shadow-xl">
+                  <div className="group rounded-[2px] bg-[#121316] border-2 border-white/10 overflow-hidden shadow-xl">
                     <div
                       className="h-60 bg-cover bg-center filter grayscale contrast-125 transition-transform duration-500 group-hover:scale-105"
                       style={{ backgroundImage: `url(/images/insanos/memorial_fundadores_oz.webp)` }}

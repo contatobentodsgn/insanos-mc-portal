@@ -354,10 +354,10 @@ export function CampaignThermometer() {
                   <button
                     key={st}
                     onClick={() => setSelectedFilter(st)}
-                    className={`min-h-[42px] px-4 sm:px-5 py-2 rounded-xl text-xs font-mono font-bold uppercase transition-all duration-150 whitespace-nowrap active:scale-95 flex items-center justify-center cursor-pointer ${
+                    className={`min-h-[40px] px-4 sm:px-5 py-2 rounded-[2px] text-xs font-mono font-bold uppercase transition-all duration-150 whitespace-nowrap active:scale-95 flex items-center justify-center cursor-pointer border ${
                       selectedFilter === st
-                        ? "bg-[#F2C21B] text-black shadow-md font-extrabold"
-                        : "bg-[#14161D]/90 backdrop-blur-md text-white/75 hover:text-white border border-white/10"
+                        ? "bg-[#F2C21B] text-black border-[#F2C21B] shadow-md font-extrabold"
+                        : "bg-[#14161D]/90 backdrop-blur-md text-white/75 hover:text-white border-white/10"
                     }`}
                   >
                     {st === "" ? "Todos" : st}
@@ -366,12 +366,12 @@ export function CampaignThermometer() {
               </div>
             </div>
 
-            {/* Drop Points Cards */}
+            {/* Drop Points Cards — Industrial Mechanical */}
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
               {filteredPoints.map((dp, i) => (
                 <div
                   key={i}
-                  className="p-5 rounded-2xl bg-[#0D0F14]/90 backdrop-blur-md border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 transition-all duration-200 group hover-lift shadow-xl"
+                  className="p-5 rounded-[2px] bg-[#0D0F14]/90 backdrop-blur-md border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 transition-all duration-200 group hover-lift shadow-xl"
                 >
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2">
@@ -389,7 +389,7 @@ export function CampaignThermometer() {
             {/* Bottom Slogan & Textured Gold WhatsApp CTA */}
             <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6">
               <div className="flex items-center gap-3">
-                <span className="w-8 h-[2px] bg-gradient-to-r from-[#F2C21B] via-[#FFD700] to-[#B88E07] rounded-full shadow-[0_0_8px_rgba(242,194,27,0.4)]" />
+                <span className="w-8 h-[2px] bg-[#F2C21B]" />
                 <span className="font-['Anton'] uppercase text-base sm:text-xl text-[#F2C21B] tracking-wider drop-shadow-md">
                   Ninguém enfrenta o frio sozinho.
                 </span>
@@ -399,7 +399,7 @@ export function CampaignThermometer() {
                 href="https://wa.me/5511988881818?text=Ola%2C%20gostaria%20de%20entregar%20uma%20doacao%20para%20a%20Campanha%20Insanos%20MC"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto px-8 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider text-sm sm:text-base uppercase rounded-xl transition-all shadow-[0_0_25px_rgba(242,194,27,0.5)] hover:shadow-[0_0_40px_rgba(242,194,27,0.8)] flex items-center justify-center gap-3 hover-lift"
+                className="w-full sm:w-auto px-8 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider text-sm sm:text-base uppercase rounded-[2px] border-2 border-[#F2C21B] transition-all shadow-[0_2px_15px_rgba(242,194,27,0.4)] hover:shadow-[0_4px_25px_rgba(242,194,27,0.7)] flex items-center justify-center gap-3 hover-lift cursor-pointer"
               >
                 <IconChat className="w-5 h-5 text-black" />
                 <span>Entregar Doação via WhatsApp</span>

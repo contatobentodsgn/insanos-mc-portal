@@ -111,7 +111,7 @@ export function Footer() {
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }
               }}
-              className="text-[#D4D1CA] hover:text-[#F2C21B] hover:bg-white/5 px-3 py-1.5 rounded-lg border border-white/10 transition-colors cursor-pointer flex items-center gap-1.5 font-bold"
+              className="text-[#D4D1CA] hover:text-[#F2C21B] hover:bg-white/5 px-3 py-1.5 rounded-[2px] border border-white/10 transition-colors cursor-pointer flex items-center gap-1.5 font-bold"
             >
               <span>Voltar ao Topo</span>
               <span className="text-[#F2C21B]">↑</span>

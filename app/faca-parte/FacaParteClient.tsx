@@ -189,7 +189,7 @@ export function FacaParteClient() {
               {ADMISSION_STEPS.map((step) => (
                 <div
                   key={step.step}
-                  className="p-8 rounded-xl bg-[#151619] border border-white/10 flex flex-col justify-between"
+                  className="p-8 rounded-[2px] bg-[#151619] border-2 border-white/10 flex flex-col justify-between"
                 >
                   <div>
                     <span className="font-['Anton'] text-4xl text-[#F2C21B] block mb-4">{step.step}</span>
@@ -210,19 +210,19 @@ export function FacaParteClient() {
           <div className="max-w-[1000px] mx-auto px-4 sm:px-8">
             {/* Tab Selector */}
             <div className="flex justify-center mb-10">
-              <div className="inline-flex bg-[#141519] p-1.5 rounded-xl border border-white/10">
+              <div className="inline-flex bg-[#141519] p-1.5 rounded-[2px] border border-white/10">
                 <button
                   onClick={() => setCurrentTab("formulario")}
-                  className={`px-6 py-2.5 rounded-lg font-['Anton'] uppercase text-sm tracking-wider transition-colors duration-150 ${
-                    currentTab === "formulario" ? "bg-[#F2C21B] text-black" : "text-white/60 hover:text-white"
+                  className={`px-6 py-2.5 rounded-[2px] font-['Anton'] uppercase text-sm tracking-wider transition-colors duration-150 cursor-pointer ${
+                    currentTab === "formulario" ? "bg-[#F2C21B] text-black font-extrabold" : "text-white/60 hover:text-white"
                   }`}
                 >
                   Ficha de Inscrição Oficial
                 </button>
                 <button
                   onClick={() => setCurrentTab("simulador")}
-                  className={`px-6 py-2.5 rounded-lg font-['Anton'] uppercase text-sm tracking-wider transition-colors duration-150 flex items-center gap-2 ${
-                    currentTab === "simulador" ? "bg-[#F2C21B] text-black" : "text-white/60 hover:text-white"
+                  className={`px-6 py-2.5 rounded-[2px] font-['Anton'] uppercase text-sm tracking-wider transition-colors duration-150 flex items-center gap-2 cursor-pointer ${
+                    currentTab === "simulador" ? "bg-[#F2C21B] text-black font-extrabold" : "text-white/60 hover:text-white"
                   }`}
                 >
                   <IconShield className="w-4 h-4 text-inherit" />
@@ -234,10 +234,10 @@ export function FacaParteClient() {
             {currentTab === "simulador" ? (
               <DnaQuiz onProceedToForm={handleSwitchToForm} />
             ) : (
-              <div ref={formContainerRef} className="bg-[#121316] border border-white/15 rounded-2xl p-8 sm:p-14 shadow-2xl scroll-mt-28">
+              <div ref={formContainerRef} className="bg-[#121316] border-2 border-white/15 rounded-[2px] p-8 sm:p-14 shadow-2xl scroll-mt-28">
                 {formSubmitted ? (
                   <div className="text-center py-12 space-y-6">
-                    <div className="w-20 h-20 rounded-full bg-[#F2C21B] text-black flex items-center justify-center font-bold text-4xl mx-auto shadow-[0_0_30px_rgba(242,194,27,0.4)]">
+                    <div className="w-20 h-20 rounded-[2px] bg-[#F2C21B] text-black flex items-center justify-center font-bold text-4xl mx-auto shadow-[0_0_30px_rgba(242,194,27,0.4)]">
                       <IconCheck className="w-10 h-10 text-black" />
                     </div>
                     <h2 className="font-['Anton'] text-3xl sm:text-5xl uppercase text-white">
@@ -247,7 +247,7 @@ export function FacaParteClient() {
                     Obrigado, <strong>{formData.name}</strong>! Seus dados foram encaminhados para a <strong>Diretoria Regional de {formData.state || "seu estado"}</strong>.
                     Um diretor entrará em contato via WhatsApp no número <strong>{formData.phone}</strong> para agendar sua primeira visita.
                   </p>
-                  <div className="p-4 bg-[#0A0A0B] rounded-lg border border-white/10 text-xs text-[#F2C21B] font-mono inline-block">
+                  <div className="p-4 bg-[#0A0A0B] rounded-[2px] border border-white/10 text-xs text-[#F2C21B] font-mono inline-block">
                     Protocolo Oficial: #{protocol} · Status: Em Análise Regional
                   </div>
                   <div>
@@ -256,7 +256,7 @@ export function FacaParteClient() {
                         setFormSubmitted(false);
                         setFormStep(1);
                       }}
-                      className="px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded-xl text-xs uppercase font-bold tracking-wider transition-all"
+                      className="px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded-[2px] text-xs uppercase font-bold tracking-wider transition-all cursor-pointer"
                     >
                       Preencher Novo Formulário
                     </button>
@@ -265,7 +265,7 @@ export function FacaParteClient() {
               ) : (
                 <form onSubmit={handleFormSubmit} className="space-y-6">
                   {/* Progress Bar Indicator */}
-                  <div className="w-full bg-white/10 rounded-full h-1.5 overflow-hidden">
+                  <div className="w-full bg-white/10 rounded-none h-1.5 overflow-hidden">
                     <div
                       className="bg-[#F2C21B] h-full transition-all duration-300 shadow-[0_0_8px_#F2C21B]"
                       style={{ width: formStep === 1 ? "50%" : "100%" }}
@@ -287,7 +287,7 @@ export function FacaParteClient() {
                   </div>
 
                   {formError && (
-                    <div className="p-3.5 bg-red-950/60 border border-red-500 text-red-200 text-xs rounded">
+                    <div className="p-3.5 bg-red-950/60 border border-red-500 text-red-200 text-xs rounded-[2px]">
                       {formError}
                     </div>
                   )}
@@ -308,7 +308,7 @@ export function FacaParteClient() {
                           placeholder="Seu nome completo"
                           value={formData.name}
                           onChange={handleFormChange}
-                          className="w-full bg-[#090A0B] border border-white/20 rounded-xl px-4 py-3 text-base sm:text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#F2C21B]"
+                          className="w-full bg-[#090A0B] border border-white/20 rounded-[2px] px-4 py-3 text-base sm:text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#F2C21B]"
                         />
                       </div>
 
@@ -326,7 +326,7 @@ export function FacaParteClient() {
                             placeholder="Ex: SP, RJ, MG ou Portugal"
                             value={formData.state}
                             onChange={handleFormChange}
-                            className="w-full bg-[#090A0B] border border-white/20 rounded-xl px-4 py-3 text-base sm:text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#F2C21B]"
+                            className="w-full bg-[#090A0B] border border-white/20 rounded-[2px] px-4 py-3 text-base sm:text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#F2C21B]"
                           />
                         </div>
                         <div>
@@ -342,7 +342,7 @@ export function FacaParteClient() {
                             placeholder="Ex: Osasco, Santos, Curitiba"
                             value={formData.city}
                             onChange={handleFormChange}
-                            className="w-full bg-[#090A0B] border border-white/20 rounded-xl px-4 py-3 text-base sm:text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#F2C21B]"
+                            className="w-full bg-[#090A0B] border border-white/20 rounded-[2px] px-4 py-3 text-base sm:text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#F2C21B]"
                           />
                         </div>
                       </div>
@@ -361,7 +361,7 @@ export function FacaParteClient() {
                             placeholder="(11) 99999-9999"
                             value={formData.phone}
                             onChange={handleFormChange}
-                            className="w-full bg-[#090A0B] border border-white/20 rounded-xl px-4 py-3 text-base sm:text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#F2C21B]"
+                            className="w-full bg-[#090A0B] border border-white/20 rounded-[2px] px-4 py-3 text-base sm:text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#F2C21B]"
                           />
                         </div>
                         <div>
@@ -377,7 +377,7 @@ export function FacaParteClient() {
                             placeholder="seuemail@dominio.com"
                             value={formData.email}
                             onChange={handleFormChange}
-                            className="w-full bg-[#090A0B] border border-white/20 rounded-xl px-4 py-3 text-base sm:text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#F2C21B]"
+                            className="w-full bg-[#090A0B] border border-white/20 rounded-[2px] px-4 py-3 text-base sm:text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#F2C21B]"
                           />
                         </div>
                       </div>
@@ -394,7 +394,7 @@ export function FacaParteClient() {
                           setFormError("");
                           setFormStep(2);
                         }}
-                        className="w-full py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-base rounded-xl transition-colors duration-200 hover-lift mt-4 flex items-center justify-center gap-2.5 active:scale-[0.98] cursor-pointer"
+                        className="w-full py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-base rounded-[2px] border-2 border-[#F2C21B] transition-colors duration-200 hover-lift mt-4 flex items-center justify-center gap-2.5 active:scale-[0.98] cursor-pointer"
                       >
                         <span>Avançar para Perfil & Moto</span>
                         <IconArrowRight className="w-4 h-4 text-black" strokeWidth={2.5} />
@@ -412,7 +412,7 @@ export function FacaParteClient() {
                             name="hasBike"
                             value={formData.hasBike}
                             onChange={handleFormChange}
-                            className="w-full bg-[#090A0B] border border-white/20 rounded-xl px-4 py-3 text-base sm:text-sm text-white focus:outline-none focus:border-[#F2C21B] focus-visible:ring-2 focus-visible:ring-[#F2C21B]"
+                            className="w-full bg-[#090A0B] border border-white/20 rounded-[2px] px-4 py-3 text-base sm:text-sm text-white focus:outline-none focus:border-[#F2C21B] focus-visible:ring-2 focus-visible:ring-[#F2C21B]"
                           >
                             <option value="sim">Sim, possuo moto própria</option>
                             <option value="pretendo">Não, pretendo adquirir em breve</option>
@@ -430,7 +430,7 @@ export function FacaParteClient() {
                             placeholder="Ex: Shadow 750, Tiger 900, Harley"
                             value={formData.bikeModel}
                             onChange={handleFormChange}
-                            className="w-full bg-[#090A0B] border border-white/20 rounded-xl px-4 py-3 text-base sm:text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#F2C21B] focus-visible:ring-2 focus-visible:ring-[#F2C21B]"
+                            className="w-full bg-[#090A0B] border border-white/20 rounded-[2px] px-4 py-3 text-base sm:text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#F2C21B] focus-visible:ring-2 focus-visible:ring-[#F2C21B]"
                           />
                         </div>
                       </div>
@@ -445,7 +445,7 @@ export function FacaParteClient() {
                             name="cnhCategory"
                             value={formData.cnhCategory}
                             onChange={handleFormChange}
-                            className="w-full bg-[#090A0B] border border-white/20 rounded-xl px-4 py-3 text-base sm:text-sm text-white focus:outline-none focus:border-[#F2C21B] focus-visible:ring-2 focus-visible:ring-[#F2C21B]"
+                            className="w-full bg-[#090A0B] border border-white/20 rounded-[2px] px-4 py-3 text-base sm:text-sm text-white focus:outline-none focus:border-[#F2C21B] focus-visible:ring-2 focus-visible:ring-[#F2C21B]"
                           >
                             <option value="A">Categoria A (Moto)</option>
                             <option value="AB">Categoria AB (Carro e Moto)</option>
@@ -461,7 +461,7 @@ export function FacaParteClient() {
                             name="ridingExperience"
                             value={formData.ridingExperience}
                             onChange={handleFormChange}
-                            className="w-full bg-[#090A0B] border border-white/20 rounded-xl px-4 py-3 text-base sm:text-sm text-white focus:outline-none focus:border-[#F2C21B] focus-visible:ring-2 focus-visible:ring-[#F2C21B]"
+                            className="w-full bg-[#090A0B] border border-white/20 rounded-[2px] px-4 py-3 text-base sm:text-sm text-white focus:outline-none focus:border-[#F2C21B] focus-visible:ring-2 focus-visible:ring-[#F2C21B]"
                           >
                             <option value="Iniciante">Menos de 1 ano</option>
                             <option value="1 a 3 anos">1 a 3 anos</option>
@@ -472,7 +472,7 @@ export function FacaParteClient() {
                       </div>
 
                       {/* LGPD Compliance Notice Box */}
-                      <div className="p-3.5 rounded-xl bg-black/40 border border-[#F2C21B]/30 flex items-start gap-3 text-xs text-[#D4D1CA]">
+                      <div className="p-3.5 rounded-[2px] bg-black/40 border border-[#F2C21B]/30 flex items-start gap-3 text-xs text-[#D4D1CA]">
                         <span className="text-[#F2C21B] text-base shrink-0 mt-0.5">🔒</span>
                         <p className="leading-relaxed text-[11.5px]">
                           <strong>Aviso de Privacidade & LGPD:</strong> Seus dados serão utilizados exclusivamente para analisar sua solicitação de ingresso e encaminhá-la à diretoria regional responsável pela sua cidade. Consulte nossa{" "}
@@ -493,7 +493,7 @@ export function FacaParteClient() {
                             name="socialInterest"
                             checked={formData.socialInterest}
                             onChange={handleFormChange}
-                            className="mt-0.5 w-4 h-4 accent-[#F2C21B] rounded cursor-pointer"
+                            className="mt-0.5 w-4 h-4 accent-[#F2C21B] rounded-[2px] cursor-pointer"
                           />
                           <span>
                             Tenho total interesse em participar voluntariamente das campanhas sociais e doações do clube.
@@ -507,7 +507,7 @@ export function FacaParteClient() {
                             required
                             checked={formData.agreedTerms}
                             onChange={handleFormChange}
-                            className="mt-0.5 w-4 h-4 accent-[#F2C21B] rounded cursor-pointer"
+                            className="mt-0.5 w-4 h-4 accent-[#F2C21B] rounded-[2px] cursor-pointer"
                           />
                           <span>
                             Declaro estar ciente do regimento, disciplina, respeito aos 4 Pilares e autorizo o contato da diretoria conforme os{" "}
@@ -529,14 +529,14 @@ export function FacaParteClient() {
                             triggerHaptic(12);
                             setFormStep(1);
                           }}
-                          className="px-6 py-4 bg-white/10 hover:bg-white/20 text-white rounded-xl font-bold text-xs uppercase tracking-wider transition-colors duration-150 active:scale-[0.98] cursor-pointer"
+                          className="px-6 py-4 bg-white/10 hover:bg-white/20 text-white rounded-[2px] border border-white/20 font-bold text-xs uppercase tracking-wider transition-colors duration-150 active:scale-[0.98] cursor-pointer"
                         >
                           Voltar
                         </button>
                         <button
                           type="submit"
                           disabled={isSubmitting}
-                          className="flex-1 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-base rounded-xl transition-colors duration-200 hover-lift shadow-lg disabled:opacity-50 flex items-center justify-center gap-2.5"
+                          className="flex-1 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-base rounded-[2px] border-2 border-[#F2C21B] transition-colors duration-200 hover-lift shadow-lg disabled:opacity-50 flex items-center justify-center gap-2.5 cursor-pointer"
                         >
                           <span>{isSubmitting ? "Registrando..." : "Concluir e Enviar Solicitação"}</span>
                           {!isSubmitting && <IconArrowRight className="w-4 h-4 text-black" strokeWidth={2.5} />}

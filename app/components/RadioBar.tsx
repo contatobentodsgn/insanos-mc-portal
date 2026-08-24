@@ -42,7 +42,7 @@ export function RadioBar() {
           {/* Mobile Mute Toggle */}
           <button
             onClick={toggleMute}
-            className="min-w-[44px] min-h-[44px] p-2.5 rounded-xl bg-white/10 text-white hover:text-[#F2C21B] transition-all flex items-center justify-center active:scale-95"
+            className="min-w-[44px] min-h-[44px] p-2.5 rounded-[2px] bg-white/10 border border-white/20 text-white hover:text-[#F2C21B] transition-all flex items-center justify-center active:scale-95 cursor-pointer"
             title={isMuted ? "Desmutar rádio" : "Mutar rádio"}
             aria-label={isMuted ? "Desmutar áudio" : "Mutar áudio"}
           >
@@ -55,7 +55,7 @@ export function RadioBar() {
 
           <button
             onClick={pauseRadio}
-            className="min-h-[44px] px-4 py-2 bg-[#F2C21B] hover:bg-[#ffe053] text-black rounded-xl text-xs font-['Anton'] tracking-wider uppercase transition-all focus:outline-none flex items-center gap-1.5 shadow-md active:scale-95 font-extrabold"
+            className="min-h-[44px] px-4 py-2 bg-[#F2C21B] hover:bg-[#ffe053] text-black rounded-[2px] border border-[#F2C21B] text-xs font-['Anton'] tracking-wider uppercase transition-all focus:outline-none flex items-center gap-1.5 shadow-md active:scale-95 font-extrabold cursor-pointer"
             aria-label="Pausar rádio"
           >
             <span>Pausar</span>

@@ -340,7 +340,7 @@ export function Navbar({}: NavbarProps) {
 
                 <button
                   onClick={pauseRadio}
-                  className="px-3 py-1 bg-[#F2C21B] hover:bg-[#ffe053] text-black rounded text-[10.5px] font-['Anton'] tracking-wider uppercase transition-all flex items-center gap-1.5 shadow-md hover-lift"
+                  className="px-3 py-1 bg-[#F2C21B] hover:bg-[#ffe053] text-black rounded-[2px] text-[10.5px] font-['Anton'] tracking-wider uppercase transition-all flex items-center gap-1.5 shadow-md hover-lift cursor-pointer"
                   aria-label="Pausar rádio"
                 >
                   <span>Pausar</span>
@@ -361,7 +361,7 @@ export function Navbar({}: NavbarProps) {
                   toggleRadio();
                   setMenuOpen(false);
                 }}
-                className="w-full min-h-[48px] py-3 px-4 rounded-xl bg-[#141518] border border-[#F2C21B]/40 text-[#F2C21B] flex items-center justify-between font-mono text-xs mb-2 active:scale-[0.98] transition-transform"
+                className="w-full min-h-[48px] py-3 px-4 rounded-[2px] bg-[#141518] border border-[#F2C21B]/40 text-[#F2C21B] flex items-center justify-between font-mono text-xs mb-2 active:scale-[0.98] transition-transform cursor-pointer"
               >
                 <div className="flex items-center gap-2">
                   <IconRadio className="w-4 h-4" />
@@ -389,7 +389,7 @@ export function Navbar({}: NavbarProps) {
                     key={link.href}
                     href={link.href}
                     onClick={(e) => handleMobileNavClick(e, link.href)}
-                    className={`min-h-[46px] flex items-center justify-between px-3.5 py-2.5 rounded-xl transition-all duration-150 active:scale-[0.98] ${
+                    className={`min-h-[46px] flex items-center justify-between px-3.5 py-2.5 rounded-[2px] transition-all duration-150 active:scale-[0.98] ${
                       isActive
                         ? "bg-[#F2C21B]/15 text-[#F2C21B] border border-[#F2C21B]/30 font-extrabold"
                         : "text-[#E0DDD8] hover:text-[#F2C21B] hover:bg-white/5 border border-transparent"
@@ -404,7 +404,7 @@ export function Navbar({}: NavbarProps) {
               <Link
                 href="/faca-parte"
                 onClick={() => setMenuOpen(false)}
-                className="mt-3 min-h-[50px] text-center py-3.5 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider rounded-xl uppercase shadow-lg flex items-center justify-center gap-2 active:scale-[0.98] transition-transform"
+                className="mt-3 min-h-[50px] text-center py-3.5 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider rounded-[2px] uppercase shadow-lg flex items-center justify-center gap-2 active:scale-[0.98] transition-transform border border-[#F2C21B]"
               >
                 <span>Faça Parte Agora</span>
                 <IconArrowRight className="w-4 h-4 text-black" strokeWidth={2.5} />
