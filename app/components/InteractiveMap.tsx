@@ -1200,7 +1200,7 @@ export function InteractiveMap() {
       </div>
 
       {/* Network Coverage Footnote */}
-      <div className="p-4 sm:p-5 bg-[#0A0A0C] border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-[#AAA8A1]">
+      <div className="p-5 sm:p-6 bg-[#0A0A0C] border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-[#AAA8A1]">
         <div className="flex items-start sm:items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0 mt-1 sm:mt-0" />
           <span className="leading-relaxed">

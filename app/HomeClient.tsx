@@ -1096,8 +1096,8 @@ export function HomeClient() {
         <section id="noticias" className="py-24 sm:py-32 bg-[#0B0C0E] border-b border-white/10 relative">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8 space-y-16">
             <div className="max-w-3xl" data-reveal>
-              <span className="px-2.5 sm:px-3 py-1 rounded-[2px] bg-[#F2C21B]/15 text-[#F2C21B] text-xs font-mono font-bold uppercase tracking-wider block w-fit mb-3 whitespace-nowrap border border-[#F2C21B]/30">
-                (07) Content Hub — Notícias, Eventos e Conteúdos
+              <span className="px-2.5 sm:px-3 py-1 rounded-[2px] bg-[#F2C21B]/15 text-[#F2C21B] text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider block w-fit mb-3 border border-[#F2C21B]/30">
+                Content Hub · Notícias & Eventos
               </span>
               <h2 className="font-['Anton'] uppercase text-4xl sm:text-6xl lg:text-7xl leading-tight text-white mb-2">
                 <span className="text-[#F2C21B]">18NEWS.</span><br />
@@ -1114,7 +1114,7 @@ export function HomeClient() {
               <div className="lg:col-span-5 bg-[#121316] border border-white/15 rounded-[2px] overflow-hidden shadow-2xl flex flex-col justify-between h-full group hover-lift">
                 <div className="flex flex-col flex-1">
                   <div
-                    className="h-64 sm:h-72 bg-cover bg-center relative shrink-0"
+                    className="h-60 sm:h-72 bg-cover bg-center relative shrink-0"
                     style={{ backgroundImage: `url(/images/insanos/motos_lancamentos_showcase.jpg)` }}
                   >
                     <div className="absolute top-4 left-4 px-3 py-1 rounded-[2px] bg-[#F2C21B] text-black font-extrabold text-xs uppercase flex items-center gap-1.5 shadow-md">
@@ -1122,9 +1122,9 @@ export function HomeClient() {
                       <span>Reportagem em Destaque</span>
                     </div>
                   </div>
-                  <div className="p-8 pb-4 flex flex-col justify-between flex-1">
+                  <div className="p-5 sm:p-8 pb-4 flex flex-col justify-between flex-1">
                     <div>
-                      <h3 className="font-['Anton'] text-2xl sm:text-3xl uppercase text-white mb-3 leading-tight group-hover:text-[#F2C21B] transition-colors">
+                      <h3 className="font-['Anton'] text-2xl sm:text-3xl uppercase text-white mb-2.5 leading-tight group-hover:text-[#F2C21B] transition-colors">
                         Nosso combustível é a irmandade & a estrada.
                       </h3>
                       <p className="text-xs sm:text-sm text-[#AAA8A1] leading-relaxed mb-4">
@@ -1133,10 +1133,10 @@ export function HomeClient() {
                     </div>
                   </div>
                 </div>
-                <div className="p-8 pt-0">
+                <div className="p-5 sm:p-8 pt-0">
                   <Link
                     href="/18news"
-                    className="px-6 py-3 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-xs rounded-[2px] border border-[#F2C21B] transition-colors inline-flex items-center gap-2"
+                    className="w-full sm:w-auto px-6 py-3 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-xs rounded-[2px] border border-[#F2C21B] transition-colors inline-flex items-center justify-center gap-2"
                   >
                     <span>Todas as Notícias</span>
                     <IconArrowRight className="w-3.5 h-3.5 text-black" strokeWidth={2.5} />
@@ -1145,7 +1145,7 @@ export function HomeClient() {
               </div>
 
               {/* Center Column: Upcoming Events Agenda — Equal Height */}
-              <div className="lg:col-span-4 p-8 rounded-[2px] bg-[#121316] border border-white/15 flex flex-col justify-between h-full shadow-2xl">
+              <div className="lg:col-span-4 p-5 sm:p-8 rounded-[2px] bg-[#121316] border border-white/15 flex flex-col justify-between h-full shadow-2xl">
                 <div>
                   <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-4">
                     <div className="flex items-center gap-2.5">
