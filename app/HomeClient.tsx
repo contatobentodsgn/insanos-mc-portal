@@ -737,7 +737,7 @@ export function HomeClient() {
                 <span className="text-[#F2C21B]">Osasco / SP.</span>
               </h2>
               <p className="text-[#D4D1CA] font-medium text-base sm:text-lg leading-relaxed">
-                Fundado em <strong>03 de dezembro de {INSTITUTIONAL_METRICS.foundingYear}</strong> em Osasco/SP (Original de OZ), o Insanos Moto Clube nasceu da união de motociclistas comprometidos com o companheirismo na estrada, o respeito à família, a dedicação ao trabalho e a ajuda solidária à comunidade:
+                Fundado em <strong>03 de dezembro de {INSTITUTIONAL_METRICS.foundingYear}</strong> em Osasco/SP (Original de OZ), o Insanos MC nasceu da união de motociclistas comprometidos com o companheirismo na estrada, o respeito à família, a dedicação ao trabalho e o auxílio comunitário:
               </p>
             </div>
 
@@ -756,7 +756,7 @@ export function HomeClient() {
                     A Bravura dos 18 do Forte
                   </h3>
                   <p className="text-xs sm:text-sm text-[#AAA8A1] leading-relaxed">
-                    A referência ao numeral <strong>18</strong> remete ao episódio histórico de 1922 em Copacabana: o valor inegociável de manter a união, a palavra e a fidelidade aos irmãos diante de grandes desafios.
+                    A referência ao numeral <strong>18</strong> remete ao episódio histórico de 1922 em Copacabana: o valor inegociável de manter a palavra, a união e a fidelidade aos irmãos diante de grandes desafios.
                   </p>
                 </div>
                 <div className="pt-4 mt-4 border-t border-white/5 text-xs font-mono text-[#F2C21B]">
@@ -777,7 +777,7 @@ export function HomeClient() {
                     Fundação Oficial em Osasco
                   </h3>
                   <p className="text-xs sm:text-sm text-[#AAA8A1] leading-relaxed">
-                    Em 03 de dezembro de 2015, motociclistas experientes fundaram o Insanos MC sobre quatro pilares fundamentais: Deus, Família, Trabalho e Motoclube.
+                    Em 03 de dezembro de 2015, motociclistas experientes fundaram o Insanos MC sobre quatro pilares sagrados: Deus, Família, Trabalho e Motoclube.
                   </p>
                 </div>
                 <div className="pt-4 mt-4 border-t border-white/5 text-xs font-mono text-[#F2C21B]">

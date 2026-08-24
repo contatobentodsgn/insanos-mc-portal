@@ -721,9 +721,8 @@ export function Hero3dClient() {
                 <span className="text-[#F2C21B]">Forjado no asfalto.</span>
               </h2>
               <p className="text-[#C7C5BF] text-base sm:text-lg leading-relaxed">
-                Em <strong>03 de dezembro de 2015</strong>, na cidade de Osasco/SP, motociclistas experientes decidiram criar algo novo.<br className="hidden sm:inline" />{" "}
-                Um motoclube com disciplina inegociável, respeito sagrado à família, amor ao trabalho e<br className="hidden sm:inline" />{" "}
-                uma vocação inabalável para fazer o bem a quem mais precisa.
+                Em <strong>03 de dezembro de 2015</strong> em Osasco/SP, motociclistas experientes fundaram uma irmandade com disciplina inegociável,<br className="hidden sm:inline" />{" "}
+                respeito sagrado à família, trabalho digno e uma vocação inabalável para fazer o bem a quem mais precisa.
               </p>
             </div>
 

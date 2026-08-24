@@ -47,12 +47,12 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Typography Balancing to avoid orphan words on all resolutions */
-  h1, h2, h3, h4 {
+  /* Typography Balancing to avoid orphan words and ensure harmonized block lines */
+  h1, h2, h3, h4, h5, h6 {
     text-wrap: balance;
   }
 
-  p {
+  p, blockquote, li, span.balanced {
     text-wrap: pretty;
   }
 

@@ -13,22 +13,22 @@ const ADMISSION_STEPS = [
   {
     step: "01",
     title: "Inscrição & Contato Regional",
-    desc: "Preenchimento do formulário oficial. Seus dados são direcionados ao Diretor Regional do seu estado ou país para agendamento de uma primeira conversa pessoal.",
+    desc: "Preenchimento do formulário oficial. Seus dados são enviados ao Diretor Regional do seu estado para agendamento de uma conversa pessoal.",
   },
   {
     step: "02",
     title: "Apresentação na Sede Regional",
-    desc: "Visita à sede regional para conhecer os integrantes do capítulo, compreender os 4 Pilares (Deus, Família, Trabalho e Motoclube) e tirar dúvidas sobre a rotina do motoclube.",
+    desc: "Visita à sede regional para conhecer os integrantes do capítulo, compreender os 4 Pilares sagrados e entender a rotina do motoclube.",
   },
   {
     step: "03",
     title: "Período de Pré-Postulante (PP)",
-    desc: "Fase de vivência e conhecimento mútuo. O candidato acompanha encontros semanais, viagens em comboio e participa das ações sociais do clube.",
+    desc: "Fase de vivência e convivência contínua. O postulante acompanha reuniões semanais, viagens em comboio e participa das ações sociais.",
   },
   {
     step: "04",
     title: "Ingresso & Colete Oficial",
-    desc: "Avaliação pela diretoria regional e pelos integrantes do capítulo. O ingresso oficial com o colete ocorre por conduta na estrada, companheirismo e dedicação.",
+    desc: "Avaliação final pelo conselho e pelos irmãos do capítulo. O colete oficial é conquistado por postura, disciplina e companheirismo.",
   },
 ];
 

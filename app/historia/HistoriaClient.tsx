@@ -29,7 +29,7 @@ const TIMELINE_EXPANDED: Array<{
     subtitle: "Raiz Simbólica de Resistência & União",
     text: (
       <>
-        A referência ao numeral <strong>18</strong> remete ao episódio histórico da Revolta dos 18 do Forte de Copacabana, em julho de 1922. Para o Insanos MC, a memória desse acontecimento simboliza a união e a fidelidade de um grupo que permaneceu leal aos seus companheiros mesmo em momentos de grande adversidade.
+        A referência ao numeral <strong>18</strong> remete ao episódio histórico da Revolta dos 18 do Forte de Copacabana, em julho de 1922. Para o Insanos MC, essa memória simboliza a união e a fidelidade de um grupo que permaneceu leal aos seus irmãos mesmo diante de grandes adversidades.
       </>
     ),
     badge: "Raiz Histórica",
@@ -53,7 +53,7 @@ const TIMELINE_EXPANDED: Array<{
     subtitle: "Do Interior Paulista ao Nordeste",
     text: (
       <>
-        Em menos de dois anos, a irmandade ultrapassou a Grande São Paulo. Divisões históricas foram inauguradas em Cotia, ABC, Campinas, Sorocaba, Litoral Sul e Alta Floresta/MT, além da chegada ao Rio Grande do Norte. As ações sociais regulares de arrecadação de alimentos e roupas consolidaram-se como o verdadeiro combustível da entidade.
+        Em menos de dois anos, a irmandade expandiu além da Grande São Paulo. Divisões históricas foram criadas em Cotia, ABC, Campinas, Sorocaba, Litoral Sul, Alta Floresta/MT e no Rio Grande do Norte. Ações sociais contínuas consolidaram-se como o combustível da entidade.
       </>
     ),
     badge: "Expansão Regional",
@@ -65,7 +65,7 @@ const TIMELINE_EXPANDED: Array<{
     subtitle: "Constituição da Associação Civil (CNPJ 32.197.906/0001-34)",
     text: (
       <>
-        Em 21 de setembro de 2018, a irmandade formalizou seus atos constitutivos com a fundação jurídica da <strong>Associação de Motociclistas Insanos Moto Clube</strong>, registrando em ata que a entidade já existia de fato desde 03 de dezembro de 2015. Em janeiro de 2019, a Prefeitura de Osasco publicou o Decreto nº 11.931 autorizando o uso da área municipal na Praça Laurindo de Camargo, em Presidente Altino, selando o marco de sede <em>Original de OZ</em>.
+        Em 21 de setembro de 2018, formalizou seus atos com a fundação da <strong>Associação de Motociclistas Insanos Moto Clube</strong>. Em 2019, o Decreto nº 11.931 de Osasco autorizou o uso do espaço na Praça Laurindo de Camargo, selando a sede <em>Original de OZ</em>.
       </>
     ),
     badge: "Marco Jurídico & Sede OZ",
@@ -77,7 +77,7 @@ const TIMELINE_EXPANDED: Array<{
     subtitle: "Campanhas Mundiais e Presença Internacional",
     text: (
       <>
-        A bandeira do Insanos cruzou oceanos com capítulos oficiais em Portugal, Espanha, Estados Unidos, Argentina, Paraguai e diversos outros países. O clube institucionalizou a <strong>Mega Ação Mundial de Doação de Sangue</strong> e o monumental <strong>Bonde Pela Vida</strong> (em apoio ao Setembro Amarelo e à saúde mental), reunindo milhares de motociclistas em comboios organizados com apoio de concessionárias e policiamento rodoviário.
+        O Insanos alcançou capítulos oficiais em Portugal, Espanha, Estados Unidos, Argentina, Paraguai e outros países. O clube consolidou a <strong>Mega Ação Mundial de Doação de Sangue</strong> e o <strong>Bonde Pela Vida</strong> em apoio à saúde mental em todo o país.
       </>
     ),
     badge: "Internacionalização & Saúde",
@@ -89,7 +89,7 @@ const TIMELINE_EXPANDED: Array<{
     subtitle: "Ninguém Fica Para Trás",
     text: (
       <>
-        Consolidação do <strong>Projeto PcD</strong> com o 2º Encontro no Parque da Uva em Jundiaí, adaptando motos e triciclos para pessoas com deficiência. Documentos públicos registram cerca de <strong>14 mil ações sociais</strong> realizadas no ano. Em <strong>09 de novembro de 2024</strong>, o clube prestou homenagem solene e despedida ao cofundador e ícone da Disciplina <strong>Edson Lopes (1965–2024)</strong>, cujo legado permanece vivo em cada divisão.
+        Consolidação do <strong>Projeto PcD</strong> com encontros no Parque da Uva em Jundiaí e adaptação de motos. Registradas <strong>14 mil ações sociais</strong> no ano. Em novembro de 2024, o clube prestou honras solenes à despedida do cofundador <strong>Edson Lopes (1965–2024)</strong>.
       </>
     ),
     badge: "Inclusão & Legado",
@@ -101,7 +101,7 @@ const TIMELINE_EXPANDED: Array<{
     subtitle: "Salva de Prata e Presença Global",
     text: (
       <>
-        Homenageado pela Câmara Municipal de São Paulo com a <strong>Salva de Prata</strong> por sua relevante atuação humanitária, o Insanos MC reúne mais de {INSTITUTIONAL_METRICS.members} integrantes e presença consolidada em {INSTITUTIONAL_METRICS.countries} países. Uma irmandade unida pelo respeito à família, pela disciplina na estrada e pelo lema de que colete não cria irmão: atitude cria.
+        Homenageado pela Câmara de São Paulo com a <strong>Salva de Prata</strong> por sua atuação humanitária, o Insanos MC reúne mais de {INSTITUTIONAL_METRICS.members} integrantes em {INSTITUTIONAL_METRICS.countries} países, guiados por respeito à família, disciplina de estrada e caridade.
       </>
     ),
     badge: "Consolidação Global",
