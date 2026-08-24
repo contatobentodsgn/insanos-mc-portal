@@ -883,10 +883,8 @@ export function HomeClient() {
                       Projeto PcD
                     </h3>
                   </div>
-                  <p className="text-sm text-[#F4F1E8] font-medium leading-relaxed">
-                    Apoiamos e promovemos inclusão, mobilidade<br className="hidden sm:inline" />{" "}
-                    e respeito no motociclismo. Porque liberdade<br className="hidden sm:inline" />{" "}
-                    também é poder ir e vir sobre duas ou três rodas.
+                  <p className="text-xs sm:text-sm text-[#F4F1E8] font-medium leading-relaxed">
+                    Apoiamos e promovemos inclusão, mobilidade e respeito no motociclismo. Porque liberdade também é poder ir e vir sobre duas ou três rodas.
                   </p>
                 </div>
               </div>
