@@ -224,7 +224,7 @@ export function ImpactoClient() {
                   </div>
                   <Link
                     href="/faca-parte"
-                    className="px-8 py-3.5 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-sm rounded shadow-lg transition-colors duration-200 hover-lift flex items-center justify-center gap-2"
+                    className="px-8 py-3.5 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-sm rounded-xl shadow-lg transition-colors duration-200 hover-lift flex items-center justify-center gap-2"
                   >
                     <span>Quero Participar / Apoiar</span>
                     <IconArrowRight className="w-4 h-4 text-black" strokeWidth={2.5} />

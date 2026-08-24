@@ -101,7 +101,7 @@ export default function TermosPage() {
               </Link>
               <Link
                 href="/"
-                className="px-6 py-2.5 bg-[#F2C21B] text-black font-['Anton'] uppercase text-xs tracking-wider rounded hover:bg-[#ffe053] transition-colors"
+                className="px-6 py-2.5 bg-[#F2C21B] text-black font-['Anton'] uppercase text-xs tracking-wider rounded-xl hover:bg-[#ffe053] transition-colors"
               >
                 Voltar à Página Principal
               </Link>

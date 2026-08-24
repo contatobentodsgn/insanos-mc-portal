@@ -4,6 +4,7 @@
   :root {
     --ink: #0a0a0a;
     --surface: #121316;
+    --surface-card: #141518;
     --paper: #f4f1e8;
     --muted: #aaa8a1;
     --yellow: #f2c21b;
@@ -11,6 +12,19 @@
     --red: #c92b31;
     --line: rgba(255, 255, 255, 0.12);
     --ease-out-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+
+    /* Semantic Radius Tokens */
+    --radius-xs: 4px;   /* Badges, tags, chips, small counters */
+    --radius-sm: 8px;   /* Form inputs, selects, search bars */
+    --radius-md: 12px;  /* Buttons, primary CTAs, compact cards */
+    --radius-lg: 16px;  /* Structural cards, bento grid items */
+    --radius-xl: 24px;  /* Mega panels, feature hero blocks, dialogs */
+    --radius-full: 9999px; /* Status indicators, round buttons, avatars */
+
+    /* Semantic Container Widths */
+    --container-wide: 1400px;
+    --container-focus: 1000px;
+    --container-reading: 760px;
   }
 
   * {

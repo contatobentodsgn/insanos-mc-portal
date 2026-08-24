@@ -124,7 +124,7 @@ export function NewsClient() {
                 <Link
                   key={art.slug}
                   href={`/18news/${art.slug}`}
-                  className="bg-[#121316] border border-white/10 rounded-xl overflow-hidden hover:border-[#F2C21B]/50 transition-all flex flex-col justify-between group transform hover:-translate-y-1 shadow-lg"
+                  className="bg-[#121316] border border-white/10 rounded-2xl overflow-hidden hover:border-[#F2C21B]/50 transition-all flex flex-col justify-between group transform hover:-translate-y-1 shadow-lg"
                 >
                   <div>
                     <div
@@ -164,7 +164,7 @@ export function NewsClient() {
                   setSearchQuery("");
                   setSelectedTag("Todas");
                 }}
-                className="px-6 py-2.5 bg-[#F2C21B] text-black font-bold uppercase text-xs rounded"
+                className="px-6 py-2.5 bg-[#F2C21B] text-black font-bold uppercase text-xs rounded-xl"
               >
                 Limpar Filtros
               </button>

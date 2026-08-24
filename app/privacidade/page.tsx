@@ -145,7 +145,7 @@ export default function PrivacidadePage() {
               </Link>
               <Link
                 href="/faca-parte"
-                className="px-6 py-2.5 bg-[#F2C21B] text-black font-['Anton'] uppercase text-xs tracking-wider rounded hover:bg-[#ffe053] transition-colors"
+                className="px-6 py-2.5 bg-[#F2C21B] text-black font-['Anton'] uppercase text-xs tracking-wider rounded-xl hover:bg-[#ffe053] transition-colors"
               >
                 Voltar à Ficha de Ingresso
               </Link>

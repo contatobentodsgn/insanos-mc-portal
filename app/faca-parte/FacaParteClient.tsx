@@ -256,7 +256,7 @@ export function FacaParteClient() {
                         setFormSubmitted(false);
                         setFormStep(1);
                       }}
-                      className="px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded text-xs uppercase font-bold tracking-wider transition-all"
+                      className="px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded-xl text-xs uppercase font-bold tracking-wider transition-all"
                     >
                       Preencher Novo Formulário
                     </button>
@@ -394,7 +394,7 @@ export function FacaParteClient() {
                           setFormError("");
                           setFormStep(2);
                         }}
-                        className="w-full py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-base rounded transition-colors duration-200 hover-lift mt-4 flex items-center justify-center gap-2.5 active:scale-[0.98] cursor-pointer"
+                        className="w-full py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-base rounded-xl transition-colors duration-200 hover-lift mt-4 flex items-center justify-center gap-2.5 active:scale-[0.98] cursor-pointer"
                       >
                         <span>Avançar para Perfil & Moto</span>
                         <IconArrowRight className="w-4 h-4 text-black" strokeWidth={2.5} />
@@ -529,14 +529,14 @@ export function FacaParteClient() {
                             triggerHaptic(12);
                             setFormStep(1);
                           }}
-                          className="px-6 py-4 bg-white/10 hover:bg-white/20 text-white rounded font-bold text-xs uppercase tracking-wider transition-colors duration-150 active:scale-[0.98] cursor-pointer"
+                          className="px-6 py-4 bg-white/10 hover:bg-white/20 text-white rounded-xl font-bold text-xs uppercase tracking-wider transition-colors duration-150 active:scale-[0.98] cursor-pointer"
                         >
                           Voltar
                         </button>
                         <button
                           type="submit"
                           disabled={isSubmitting}
-                          className="flex-1 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-base rounded transition-colors duration-200 hover-lift shadow-lg disabled:opacity-50 flex items-center justify-center gap-2.5"
+                          className="flex-1 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-base rounded-xl transition-colors duration-200 hover-lift shadow-lg disabled:opacity-50 flex items-center justify-center gap-2.5"
                         >
                           <span>{isSubmitting ? "Registrando..." : "Concluir e Enviar Solicitação"}</span>
                           {!isSubmitting && <IconArrowRight className="w-4 h-4 text-black" strokeWidth={2.5} />}

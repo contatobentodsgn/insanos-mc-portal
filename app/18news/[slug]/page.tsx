@@ -49,7 +49,7 @@ export default async function ArticlePage({ params }: PageProps) {
       <Navbar />
 
       <main className="py-24 sm:py-32">
-        <div className="max-w-4xl mx-auto px-4 sm:px-8">
+        <div className="max-w-[780px] mx-auto px-4 sm:px-8">
 
           {/* Article Header */}
           <div className="mb-10">
@@ -91,13 +91,13 @@ export default async function ArticlePage({ params }: PageProps) {
           </div>
 
           {/* Social Share Bar Bottom */}
-          <div className="p-6 rounded-xl bg-[#121316] border border-white/10 mb-12 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="p-6 rounded-2xl bg-[#121316] border border-white/10 mb-12 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <span className="font-['Anton'] text-lg uppercase text-white">Gostou deste relato?</span>
             <ShareButtons title={article.title} url={articleUrl} />
           </div>
 
           {/* Author Box */}
-          <div className="p-8 rounded-xl bg-[#121316] border border-white/10 flex items-center justify-between gap-6 mb-16">
+          <div className="p-8 rounded-2xl bg-[#121316] border border-white/10 flex items-center justify-between gap-6 mb-16">
             <div>
               <span className="text-xs font-mono text-[#F2C21B] uppercase tracking-wider block mb-1">
                 Publicação Oficial
@@ -107,7 +107,7 @@ export default async function ArticlePage({ params }: PageProps) {
             </div>
             <Link
               href="/18news"
-              className="px-5 py-2.5 bg-white/10 hover:bg-[#F2C21B] hover:text-black rounded text-xs uppercase font-bold tracking-wider transition-colors duration-200"
+              className="px-5 py-2.5 bg-white/10 hover:bg-[#F2C21B] hover:text-black rounded-xl text-xs uppercase font-bold tracking-wider transition-colors duration-200"
             >
               Voltar ao 18News ←
             </Link>
@@ -121,7 +121,7 @@ export default async function ArticlePage({ params }: PageProps) {
                 <Link
                   key={rel.slug}
                   href={`/18news/${rel.slug}`}
-                  className="p-6 rounded-xl bg-[#121316] border border-white/10 hover:border-[#F2C21B]/50 transition-colors duration-200 group block hover-lift shadow-lg"
+                  className="p-6 rounded-2xl bg-[#121316] border border-white/10 hover:border-[#F2C21B]/50 transition-colors duration-200 group block hover-lift shadow-lg"
                 >
                   <span className="text-xs uppercase font-bold text-[#F2C21B] block mb-2">{rel.tag}</span>
                   <h4 className="font-['Anton'] text-xl uppercase text-white group-hover:text-[#F2C21B] transition-colors mb-2">

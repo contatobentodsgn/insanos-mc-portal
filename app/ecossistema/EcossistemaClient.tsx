@@ -61,7 +61,7 @@ export function EcossistemaClient() {
                     href="https://www.18store.com.br"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-8 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-base rounded shadow-lg transition-colors duration-200 hover-lift inline-flex items-center gap-3"
+                    className="px-8 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-base rounded-xl shadow-lg transition-colors duration-200 hover-lift inline-flex items-center gap-3"
                   >
                     <span>Acessar 18Store.com.br</span>
                     <span>↗</span>
@@ -99,7 +99,7 @@ export function EcossistemaClient() {
                 <div className="flex flex-wrap items-center gap-4">
                   <button
                     onClick={toggleRadio}
-                    className="px-8 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-base rounded shadow-lg transition-colors duration-200 hover-lift flex items-center gap-3"
+                    className="px-8 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-base rounded-xl shadow-lg transition-colors duration-200 hover-lift flex items-center gap-3"
                   >
                     <span>{isPlayingRadio ? "Pausar Rádio" : "Ouvir Ao Vivo Agora"}</span>
                     <span>{isPlayingRadio ? "⏸" : "▶"}</span>
@@ -158,7 +158,7 @@ export function EcossistemaClient() {
                     href="https://alamo.org.br"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-8 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-base rounded shadow-lg transition-colors duration-200 hover-lift inline-flex items-center gap-3"
+                    className="px-8 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-base rounded-xl shadow-lg transition-colors duration-200 hover-lift inline-flex items-center gap-3"
                   >
                     <span>Conhecer Benefícios ALAMO</span>
                     <span>↗</span>

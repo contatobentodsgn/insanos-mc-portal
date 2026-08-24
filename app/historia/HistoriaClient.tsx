@@ -334,7 +334,7 @@ export function HistoriaClient() {
             </p>
             <Link
               href="/faca-parte"
-              className="px-8 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-lg rounded shadow-xl inline-flex items-center gap-2.5 transition-colors duration-200 hover-lift whitespace-nowrap"
+              className="px-8 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-lg rounded-xl shadow-xl inline-flex items-center gap-2.5 transition-colors duration-200 hover-lift whitespace-nowrap"
             >
               <span>Solicitar Ingresso</span>
               <IconArrowRight className="w-4 h-4 text-black" strokeWidth={2.5} />

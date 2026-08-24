@@ -720,7 +720,7 @@ export function HomeClient() {
                 <div className="pt-2">
                   <Link
                     href="/historia"
-                    className="px-6 py-3.5 bg-white/10 hover:bg-[#F2C21B] hover:text-black rounded text-xs font-['Anton'] uppercase tracking-wider transition-colors duration-200 inline-flex items-center gap-2"
+                    className="px-6 py-3.5 bg-white/10 hover:bg-[#F2C21B] hover:text-black rounded-xl text-xs font-['Anton'] uppercase tracking-wider transition-colors duration-200 inline-flex items-center gap-2"
                   >
                     <span>Conheça Nossa Essência</span>
                     <IconArrowRight className="w-3.5 h-3.5 text-inherit" />
@@ -854,7 +854,7 @@ export function HomeClient() {
             <div className="mt-16 text-center" data-reveal>
               <Link
                 href="/historia"
-                className="px-8 py-4 bg-[#141517] hover:bg-[#F2C21B] hover:text-black border border-white/20 text-white font-['Anton'] tracking-wider uppercase text-base rounded transition-colors duration-200 inline-flex items-center gap-3 hover-lift"
+                className="px-8 py-4 bg-[#141517] hover:bg-[#F2C21B] hover:text-black border border-white/20 text-white font-['Anton'] tracking-wider uppercase text-base rounded-xl transition-colors duration-200 inline-flex items-center gap-3 hover-lift"
               >
                 <span>Ler História Completa & Documentos</span>
                 <IconArrowRight className="w-4 h-4 text-inherit" />
@@ -899,7 +899,7 @@ export function HomeClient() {
                 <div className="pt-2">
                   <Link
                     href="/impacto"
-                    className="px-6 py-3.5 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-sm rounded transition-colors duration-200 inline-flex items-center gap-2 hover-lift"
+                    className="px-6 py-3.5 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-sm rounded-xl transition-colors duration-200 inline-flex items-center gap-2 hover-lift"
                   >
                     <span>Conheça Nossas Ações</span>
                     <IconArrowRight className="w-4 h-4 text-black shrink-0" strokeWidth={2.5} />
@@ -1172,7 +1172,7 @@ export function HomeClient() {
                   </p>
                   <Link
                     href="/18news"
-                    className="px-6 py-3 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-xs rounded transition-colors inline-flex items-center gap-2"
+                    className="px-6 py-3 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-xs rounded-xl transition-colors inline-flex items-center gap-2"
                   >
                     <span>Todas as Notícias</span>
                     <IconArrowRight className="w-3.5 h-3.5 text-black" strokeWidth={2.5} />
@@ -1218,7 +1218,7 @@ export function HomeClient() {
                 <div className="pt-2">
                   <Link
                     href="/eventos"
-                    className="w-full py-3 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-bold text-xs uppercase tracking-wider rounded transition-all flex items-center justify-center gap-2 text-center shadow-md hover-lift font-mono"
+                    className="w-full py-3 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-bold text-xs uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-2 text-center shadow-md hover-lift font-mono"
                   >
                     <span>Ver Agenda Completa & Sincronizar</span>
                     <IconArrowRight className="w-3.5 h-3.5 text-black" />
@@ -1251,7 +1251,7 @@ export function HomeClient() {
                   <h5 className="font-['Anton'] text-lg uppercase text-white mb-2">A Voz da Irmandade</h5>
                   <button
                     onClick={toggleRadio}
-                    className="w-full py-2.5 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] uppercase text-xs rounded transition-colors flex items-center justify-center gap-2 shadow-md hover-lift"
+                    className="w-full py-2.5 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] uppercase text-xs rounded-xl transition-colors flex items-center justify-center gap-2 shadow-md hover-lift"
                   >
                     <span>{isPlayingRadio ? "Pausar" : "Ouvir Ao Vivo"}</span>
                     {isPlayingRadio ? <IconPause className="w-3.5 h-3.5" /> : <IconPlay className="w-3.5 h-3.5" />}
@@ -1275,7 +1275,7 @@ export function HomeClient() {
                     href="https://www.youtube.com/@InsanosMCOficial"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-2.5 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] uppercase text-xs rounded transition-colors flex items-center justify-center gap-2 shadow-md hover-lift"
+                    className="w-full py-2.5 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] uppercase text-xs rounded-xl transition-colors flex items-center justify-center gap-2 shadow-md hover-lift"
                   >
                     <span>Acessar</span>
                     <span>↗</span>
