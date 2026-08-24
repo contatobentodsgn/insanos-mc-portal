@@ -77,7 +77,7 @@ export function ComandoClient() {
     <div className="min-h-screen bg-[#0A0A0A] text-[#F4F1E8] font-sans">
       <Navbar />
 
-      <main>
+      <main id="conteudo">
         {/* Hero */}
         <section className="relative py-24 sm:py-32 bg-[#0E0F12] border-b border-white/10 overflow-hidden">
           <div

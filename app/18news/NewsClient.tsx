@@ -44,7 +44,7 @@ export function NewsClient() {
     <div className="min-h-screen bg-[#0A0A0A] text-[#F4F1E8] font-sans">
       <Navbar />
 
-      <main className="py-24 sm:py-32">
+      <main id="conteudo" className="py-24 sm:py-32">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-8">
           {/* Header */}
           <div className="max-w-3xl mb-12">

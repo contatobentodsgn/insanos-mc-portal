@@ -151,7 +151,7 @@ export function FacaParteClient() {
     <div className="min-h-screen bg-[#0A0A0A] text-[#F4F1E8] font-sans">
       <Navbar />
 
-      <main>
+      <main id="conteudo">
         {/* Hero */}
         <section className="py-20 sm:py-28 bg-[#0E0F12] border-b border-white/10">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8">

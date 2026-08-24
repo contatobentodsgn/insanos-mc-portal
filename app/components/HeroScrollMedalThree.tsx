@@ -358,7 +358,7 @@ export default function HeroScrollMedalThree() {
     <div
       ref={containerRef}
       onMouseMove={handleMouseMoveGlow}
-      className="hero-section relative h-screen w-full overflow-hidden bg-[#0A0A0A] flex items-center border-b border-white/10"
+      className="hero-section relative h-screen min-h-[100dvh] w-full overflow-hidden bg-[#0A0A0A] flex items-center border-b border-white/10"
     >
       {/* Background Video with bleed to prevent any border gap */}
       <div className="absolute -top-10 -bottom-10 -left-6 -right-6 scale-105 overflow-hidden pointer-events-none">

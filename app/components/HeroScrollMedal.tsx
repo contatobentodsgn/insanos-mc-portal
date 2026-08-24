@@ -175,7 +175,7 @@ export default function HeroScrollMedal() {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-screen overflow-hidden bg-[#0A0A0A] flex items-center justify-center border-b border-white/10"
+      className="relative w-full h-screen min-h-[100dvh] overflow-hidden bg-[#0A0A0A] flex items-center justify-center border-b border-white/10"
     >
       {/* Background Video (Muted, Autoplay, Loop) */}
       <div className="absolute inset-0 scale-105 overflow-hidden pointer-events-none">
