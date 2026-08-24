@@ -1182,37 +1182,46 @@ export function HomeClient() {
 
               {/* Center Column: Upcoming Events Agenda */}
               <div className="lg:col-span-4 p-8 rounded-2xl bg-[#121316] border border-white/15 space-y-6">
-                <div className="flex items-center gap-2.5 pb-4 border-b border-white/10">
-                  <IconCalendar className="w-5 h-5 text-[#F2C21B]" />
-                  <h4 className="font-['Anton'] text-2xl uppercase text-white">Próximos Eventos</h4>
+                <div className="flex items-center justify-between pb-4 border-b border-white/10">
+                  <div className="flex items-center gap-2.5">
+                    <IconCalendar className="w-5 h-5 text-[#F2C21B]" />
+                    <h4 className="font-['Anton'] text-2xl uppercase text-white">Próximos Eventos</h4>
+                  </div>
+                  <span className="text-[10px] font-mono text-[#F2C21B] font-bold uppercase px-2 py-0.5 rounded bg-[#F2C21B]/15">
+                    2026
+                  </span>
                 </div>
 
-                <div className="space-y-4">
+                <div className="space-y-3">
                   {[
-                    { title: "Encontro Nacional em Osasco", date: "Julho 2026", desc: "Berço Oficial de OZ" },
-                    { title: "Bonde Pela Vida — Etapa Inverno", date: "Agosto 2026", desc: "Hemocentros Nacionais" },
-                    { title: "Expedição Serra do Rio do Rastro", date: "Setembro 2026", desc: "Santa Catarina" },
-                    { title: "Aniversário Oficial de Fundação", date: "Novembro 2026", desc: "Mega Celebração" },
+                    { title: "Encontro Nacional em Osasco", date: "Julho 2026", desc: "Berço Oficial de OZ · 3 Dias" },
+                    { title: "Bonde Pela Vida — Etapa Inverno", date: "Agosto 2026", desc: "Mega Coleta de Sangue Nacional" },
+                    { title: "Expedição Serra do Rio do Rastro", date: "Setembro 2026", desc: "Travessia Alpinas Santa Catarina" },
+                    { title: "Aniversário Oficial de Fundação", date: "Novembro 2026", desc: "Mega Celebração Magna" },
                   ].map((evt, idx) => (
-                    <div key={idx} className="p-3.5 rounded-xl bg-[#090A0B] border border-white/10 flex items-center justify-between">
+                    <Link
+                      key={idx}
+                      href="/eventos"
+                      className="p-3.5 rounded-xl bg-[#090A0B] border border-white/10 hover:border-[#F2C21B]/60 flex items-center justify-between transition-all group/item block"
+                    >
                       <div>
-                        <h5 className="font-bold text-xs text-white mb-0.5">{evt.title}</h5>
+                        <h5 className="font-bold text-xs text-white group-hover/item:text-[#F2C21B] transition-colors mb-0.5">{evt.title}</h5>
                         <span className="text-[10px] text-[#AAA8A1] font-mono">{evt.desc}</span>
                       </div>
-                      <span className="text-[10px] font-mono text-[#F2C21B] bg-[#F2C21B]/10 px-2 py-1 rounded">
+                      <span className="text-[10px] font-mono text-[#F2C21B] bg-[#F2C21B]/10 px-2 py-1 rounded shrink-0">
                         {evt.date}
                       </span>
-                    </div>
+                    </Link>
                   ))}
                 </div>
 
                 <div className="pt-2">
                   <Link
-                    href="/18news"
-                    className="w-full py-3 bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider rounded transition-colors flex items-center justify-center gap-2 text-center"
+                    href="/eventos"
+                    className="w-full py-3 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-bold text-xs uppercase tracking-wider rounded transition-all flex items-center justify-center gap-2 text-center shadow-md hover-lift font-mono"
                   >
-                    <span>Ver Agenda Completa</span>
-                    <IconArrowRight className="w-3.5 h-3.5 text-white" />
+                    <span>Ver Agenda Completa & Sincronizar</span>
+                    <IconArrowRight className="w-3.5 h-3.5 text-black" />
                   </Link>
                 </div>
               </div>

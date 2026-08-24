@@ -780,7 +780,7 @@ export function HomeV2Client() {
 
                 <div className="pt-2">
                   <Link
-                    href="/18news"
+                    href="/eventos"
                     className="w-full py-3 bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider rounded transition-colors block text-center"
                   >
                     Ver Agenda Completa →

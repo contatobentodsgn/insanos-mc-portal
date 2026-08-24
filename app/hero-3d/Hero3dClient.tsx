@@ -1165,7 +1165,7 @@ export function Hero3dClient() {
 
                 <div className="pt-2">
                   <Link
-                    href="/18news"
+                    href="/eventos"
                     className="w-full py-3 bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider rounded transition-colors flex items-center justify-center gap-2 text-center"
                   >
                     <span>Ver Agenda Completa</span>

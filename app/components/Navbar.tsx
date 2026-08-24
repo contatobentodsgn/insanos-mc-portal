@@ -19,9 +19,9 @@ const navLinks = [
   { label: "Início", href: "/" },
   { label: "História", href: "/historia" },
   { label: "Escala", href: "/#escala" },
-  { label: "Pilares", href: "/#pilares" },
   { label: "Impacto", href: "/impacto" },
   { label: "Comando", href: "/comando" },
+  { label: "Eventos", href: "/eventos" },
   { label: "18News", href: "/18news" },
   { label: "Ecossistema", href: "/ecossistema" },
 ];

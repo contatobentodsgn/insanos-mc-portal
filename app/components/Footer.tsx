@@ -41,6 +41,7 @@ export function Footer() {
               <li><Link href="/historia" className="text-[#D4D1CA] hover:text-[#F2C21B] transition-colors py-1 inline-block">História & 18 do Forte</Link></li>
               <li><Link href="/impacto" className="text-[#D4D1CA] hover:text-[#F2C21B] transition-colors py-1 inline-block">Ações Sociais & PcD</Link></li>
               <li><Link href="/comando" className="text-[#D4D1CA] hover:text-[#F2C21B] transition-colors py-1 inline-block">Liderança & Memorial</Link></li>
+              <li><Link href="/eventos" className="text-[#D4D1CA] hover:text-[#F2C21B] transition-colors py-1 inline-block">Agenda & Eventos</Link></li>
               <li><Link href="/18news" className="text-[#D4D1CA] hover:text-[#F2C21B] transition-colors py-1 inline-block">18News & Revista</Link></li>
               <li><Link href="/faca-parte" className="text-[#D4D1CA] hover:text-[#F2C21B] transition-colors py-1 inline-block">Adesão & Ingresso</Link></li>
             </ul>
