@@ -441,12 +441,12 @@ export function DnaQuiz({ onProceedToForm }: DnaQuizProps = {}) {
           </div>
 
           {/* Action Buttons: Download Story 9:16 + WhatsApp Regional + Form */}
-          <div className="flex flex-wrap justify-center items-center gap-3.5">
+          <div className="flex flex-col sm:flex-row flex-wrap justify-center items-stretch sm:items-center gap-3.5">
             {/* Download Story Card 9:16 */}
             <button
               onClick={generateStoryCard}
               disabled={isGeneratingCard}
-              className="px-6 py-3.5 bg-gradient-to-r from-yellow-500 to-[#F2C21B] hover:from-yellow-400 hover:to-yellow-300 text-black font-['Anton'] tracking-wider uppercase text-sm rounded-[2px] border-2 border-[#F2C21B] shadow-lg inline-flex items-center gap-2.5 cursor-pointer active:scale-95 transition-all"
+              className="w-full sm:w-auto px-6 py-4 bg-gradient-to-r from-yellow-500 to-[#F2C21B] hover:from-yellow-400 hover:to-yellow-300 text-black font-['Anton'] tracking-wider uppercase text-sm rounded-[2px] border-2 border-[#F2C21B] shadow-lg inline-flex items-center justify-center gap-2.5 cursor-pointer active:scale-95 transition-all"
             >
               {isGeneratingCard ? (
                 <span>Gerando Imagem 9:16…</span>
@@ -467,7 +467,7 @@ export function DnaQuiz({ onProceedToForm }: DnaQuizProps = {}) {
               href={`https://api.whatsapp.com/send?text=${whatsappMessage}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-['Anton'] tracking-wider uppercase text-sm rounded-[2px] border-2 border-emerald-500 shadow-lg inline-flex items-center gap-2 cursor-pointer active:scale-95 transition-all"
+              className="w-full sm:w-auto px-6 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-['Anton'] tracking-wider uppercase text-sm rounded-[2px] border-2 border-emerald-500 shadow-lg inline-flex items-center justify-center gap-2 cursor-pointer active:scale-95 transition-all"
             >
               <IconChat className="w-4 h-4 text-white" />
               <span>Conversar com a Regional</span>
@@ -477,7 +477,7 @@ export function DnaQuiz({ onProceedToForm }: DnaQuizProps = {}) {
             {onProceedToForm ? (
               <button
                 onClick={onProceedToForm}
-                className="px-6 py-3.5 bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider rounded-[2px] border border-white/20 transition-all inline-flex items-center gap-2 cursor-pointer"
+                className="w-full sm:w-auto px-6 py-4 bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider rounded-[2px] border border-white/20 transition-all inline-flex items-center justify-center gap-2 cursor-pointer"
               >
                 <span>Ficha de Ingresso</span>
                 <IconArrowRight className="w-3.5 h-3.5 text-white" />
@@ -485,7 +485,7 @@ export function DnaQuiz({ onProceedToForm }: DnaQuizProps = {}) {
             ) : (
               <Link
                 href="/faca-parte?aba=formulario"
-                className="px-6 py-3.5 bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider rounded-[2px] border border-white/20 transition-all inline-flex items-center gap-2"
+                className="w-full sm:w-auto px-6 py-4 bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider rounded-[2px] border border-white/20 transition-all inline-flex items-center justify-center gap-2"
               >
                 <span>Ficha de Ingresso</span>
                 <IconArrowRight className="w-3.5 h-3.5 text-white" />
@@ -495,7 +495,7 @@ export function DnaQuiz({ onProceedToForm }: DnaQuizProps = {}) {
             {/* Reset */}
             <button
               onClick={handleReset}
-              className="px-4 py-3.5 text-[#AAA8A1] hover:text-white text-xs font-bold uppercase tracking-wider transition-colors inline-flex items-center gap-1.5 cursor-pointer"
+              className="w-full sm:w-auto px-4 py-3.5 text-[#AAA8A1] hover:text-white text-xs font-bold uppercase tracking-wider transition-colors inline-flex items-center justify-center gap-1.5 cursor-pointer"
             >
               <IconRefresh className="w-3.5 h-3.5 text-inherit" />
               <span>Refazer</span>

@@ -956,11 +956,11 @@ export function InteractiveMap() {
         </div>
 
         {/* Filter Pills */}
-        <div className="flex bg-[#0A0A0B] p-1.5 rounded-[2px] border border-white/15 shadow-inner" role="group" aria-label="Filtrar sedes por região">
+        <div className="flex flex-nowrap overflow-x-auto bg-[#0A0A0B] p-1.5 rounded-[2px] border border-white/15 shadow-inner max-w-full" role="group" aria-label="Filtrar sedes por região">
           <button
             onClick={() => handleFilterClick("todos")}
             aria-pressed={activeFilter === "todos"}
-            className={`px-4 py-2 rounded-[2px] text-xs font-bold uppercase transition-all duration-200 cursor-pointer ${
+            className={`px-3.5 sm:px-4 py-2 rounded-[2px] text-xs font-bold uppercase transition-all duration-200 cursor-pointer whitespace-nowrap ${
               activeFilter === "todos"
                 ? "bg-[#F2C21B] text-black shadow-[0_0_15px_rgba(242,194,27,0.3)] font-extrabold scale-[1.02]"
                 : "text-white/60 hover:text-white hover:bg-white/5"
@@ -971,7 +971,7 @@ export function InteractiveMap() {
           <button
             onClick={() => handleFilterClick("brasil")}
             aria-pressed={activeFilter === "brasil"}
-            className={`px-4 py-2 rounded-[2px] text-xs font-bold uppercase transition-all duration-200 cursor-pointer ${
+            className={`px-3.5 sm:px-4 py-2 rounded-[2px] text-xs font-bold uppercase transition-all duration-200 cursor-pointer whitespace-nowrap ${
               activeFilter === "brasil"
                 ? "bg-[#F2C21B] text-black shadow-[0_0_15px_rgba(242,194,27,0.3)] font-extrabold scale-[1.02]"
                 : "text-white/60 hover:text-white hover:bg-white/5"
@@ -982,7 +982,7 @@ export function InteractiveMap() {
           <button
             onClick={() => handleFilterClick("internacional")}
             aria-pressed={activeFilter === "internacional"}
-            className={`px-4 py-2 rounded-[2px] text-xs font-bold uppercase transition-all duration-200 cursor-pointer ${
+            className={`px-3.5 sm:px-4 py-2 rounded-[2px] text-xs font-bold uppercase transition-all duration-200 cursor-pointer whitespace-nowrap ${
               activeFilter === "internacional"
                 ? "bg-[#F2C21B] text-black shadow-[0_0_15px_rgba(242,194,27,0.3)] font-extrabold scale-[1.02]"
                 : "text-white/60 hover:text-white hover:bg-white/5"
@@ -1183,14 +1183,14 @@ export function InteractiveMap() {
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-3.5 px-2 bg-white/10 hover:bg-white/20 text-white font-['Anton'] tracking-wider uppercase text-center text-xs sm:text-sm rounded-xl transition-colors duration-150 flex items-center justify-center gap-2 whitespace-nowrap border border-white/10"
+              className="w-full py-3.5 px-2 bg-white/10 hover:bg-white/20 text-white font-['Anton'] tracking-wider uppercase text-center text-xs sm:text-sm rounded-[2px] transition-colors duration-150 flex items-center justify-center gap-2 whitespace-nowrap border border-white/10"
             >
               <IconRoute className="w-4 h-4 text-[#F2C21B] flex-shrink-0" />
               <span>Traçar Rota</span>
             </a>
             <Link
               href="/faca-parte"
-              className="w-full py-3.5 px-2 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-center text-xs sm:text-sm rounded-xl transition-all duration-200 hover-lift shadow-lg flex items-center justify-center gap-1.5 whitespace-nowrap"
+              className="w-full py-3.5 px-2 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-center text-xs sm:text-sm rounded-[2px] transition-all duration-200 hover-lift shadow-lg flex items-center justify-center gap-1.5 whitespace-nowrap"
             >
               <span>Visitar Sede</span>
               <IconArrowRight className="w-3.5 h-3.5 text-black flex-shrink-0" strokeWidth={2.5} />

@@ -243,7 +243,7 @@ export function ExpeditionsGallery() {
           onClick={() => setSelectedExpedition(null)}
         >
           <div
-            className="bg-[#121316] border border-[#F2C21B]/50 rounded-[2px] max-w-4xl w-full overflow-hidden shadow-2xl relative"
+            className="bg-[#121316] border border-[#F2C21B]/50 rounded-[2px] max-w-4xl w-[95%] sm:w-full max-h-[90vh] overflow-y-auto shadow-2xl relative custom-scrollbar"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Image Header */}
