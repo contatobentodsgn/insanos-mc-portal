@@ -12,7 +12,6 @@ import { DnaQuiz } from "./components/DnaQuiz";
 import { CampaignThermometer } from "./components/CampaignThermometer";
 import { useRadio } from "./context/RadioContext";
 import { ExpeditionsGallery } from "./components/ExpeditionsGallery";
-import { TireTrackTimelineLine } from "./components/TireTrackTimelineLine";
 import HeroScrollMedalThree from "./components/HeroScrollMedalThree";
 import { INSTITUTIONAL_METRICS } from "./data/institutional";
 import {
@@ -386,7 +385,6 @@ const SOCIAL_PROJECTS = [
 export function HomeClient() {
   const root = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
-  const timelineContainerRef = useRef<HTMLDivElement>(null);
   const { isPlaying: isPlayingRadio, toggleRadio } = useRadio();
   const [activePillar, setActivePillar] = useState(0);
   const [activePillarHover, setActivePillarHover] = useState<number | null>(0);
@@ -475,25 +473,6 @@ export function HomeClient() {
           start: "top top",
           end: "bottom top",
           scrub: 0.6,
-        },
-      });
-
-      // History Progress Line: reveals gold tire track progressively via clip-path (zero distortion)
-      gsap.to(".timeline-track-gold", {
-        clipPath: "inset(0% 0% 0% 0%)",
-        ease: "none",
-        scrollTrigger: {
-          trigger: timelineContainerRef.current,
-          start: "top 70%",
-          end: "bottom 30%",
-          scrub: 0.8,
-          onUpdate: (self) => {
-            const progress = self.progress;
-            const line = document.getElementById("timeline-progress-line");
-            if (line) {
-              line.style.height = `${progress * 100}%`;
-            }
-          },
         },
       });
     }, root);
@@ -732,131 +711,110 @@ export function HomeClient() {
         </section>
 
         {/* =========================================================================
-            CAPÍTULO 04: HISTÓRIA, 18 DO FORTE & ORIGEM EM OSASCO
+            CAPÍTULO 04: TRADIÇÃO & HISTÓRIA (FUSÃO DE ALTO IMPACTO)
         ========================================================================= */}
-        <section id="origem" className="py-24 sm:py-32 bg-[#090A0C] border-b border-white/10 relative overflow-hidden">
+        <section id="historia" className="scroll-mt-20 py-24 sm:py-32 bg-[#090A0C] border-b border-white/10 relative overflow-hidden">
           {/* Background Image: bordado.webp */}
           <div
-            className="absolute inset-0 bg-cover bg-right sm:bg-center bg-no-repeat pointer-events-none opacity-60"
+            className="absolute inset-0 bg-cover bg-right sm:bg-center bg-no-repeat pointer-events-none opacity-40"
             style={{ backgroundImage: `url('/images/insanos/bordado.webp')` }}
           />
 
           {/* Gradients & Vignettes for contrast & text readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#090A0C] via-[#090A0C]/80 sm:via-[#090A0C]/70 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#090A0C] via-[#090A0C]/85 sm:via-[#090A0C]/75 to-[#090A0C]/40 pointer-events-none" />
           <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#090A0C] to-transparent pointer-events-none" />
           <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#090A0C] to-transparent pointer-events-none" />
 
           <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-8">
-            <div className="max-w-3xl mb-12" data-reveal>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#F2C21B]/15 text-[#F2C21B] text-xs font-mono font-bold uppercase tracking-wider mb-4 border border-[#F2C21B]/30 backdrop-blur-sm">
-                <span>Tradição & Origem · 18 do Forte</span>
-              </div>
-              <h2 className="font-['Anton'] uppercase text-3xl sm:text-6xl text-white leading-tight mb-4 drop-shadow-md">
-                Nascido em Osasco.<br />
-                <span className="text-[#F2C21B]">Forjado no asfalto.</span>
-              </h2>
-              <p className="text-[#C7C5BF] text-base sm:text-lg leading-relaxed">
-                Em <strong>03 de dezembro de 2015</strong>, na cidade de Osasco/SP, motociclistas experientes decidiram criar algo novo.<br className="hidden sm:inline" />{" "}
-                Um motoclube com disciplina inegociável, respeito sagrado à família, amor ao trabalho e<br className="hidden sm:inline" />{" "}
-                uma vocação inabalável para fazer o bem a quem mais precisa.
-              </p>
-            </div>
-
-            {/* Historical Origin Bento Grid */}
-            <div className="grid md:grid-cols-3 gap-6" data-reveal>
-              {MEMORIAL_MEMBERS.map((item) => (
-                <div
-                  key={item.name}
-                  className="bg-[#121316]/80 border border-white/10 hover:border-[#F2C21B]/50 rounded-2xl overflow-hidden group transition-all duration-300 backdrop-blur-sm"
-                >
-                  <div
-                    className="h-48 bg-cover bg-center relative"
-                    style={{ backgroundImage: `url(${item.image})` }}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-transparent to-transparent" />
-                    <span className="absolute top-4 left-4 px-2.5 py-1 rounded bg-black/70 border border-[#F2C21B]/40 text-[#F2C21B] text-[10px] font-mono font-bold uppercase">
-                      {item.badge}
-                    </span>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="font-['Anton'] text-xl uppercase text-white mb-1">{item.name}</h3>
-                    <p className="text-xs font-bold uppercase text-[#F2C21B] mb-3">{item.role}</p>
-                    <p className="text-xs text-[#AAA8A1] leading-relaxed">{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* =========================================================================
-            CAPÍTULO 04: LINHA DO TEMPO (HISTÓRICO)
-        ========================================================================= */}
-        <section id="historia" className="history-section py-24 sm:py-32 bg-[#0A0A0B] border-b border-white/10 relative overflow-hidden">
-          <div className="max-w-[1400px] mx-auto px-4 sm:px-8">
-            <div className="max-w-3xl mb-20" data-reveal>
+            <div className="max-w-3xl mb-14" data-reveal>
               <div className="flex items-center gap-3 mb-4">
                 <span className="w-8 h-[2px] bg-gradient-to-r from-[#F2C21B] via-[#FFD700] to-[#B88E07] rounded-full shadow-[0_0_8px_rgba(242,194,27,0.4)]" />
-                <p className="text-xs uppercase font-extrabold tracking-[0.2em] text-[#F2C21B]">
-                  História & Tradição
-                </p>
+                <span className="text-xs uppercase font-extrabold tracking-[0.2em] text-[#F2C21B]">
+                  Tradição & Origem · 18 do Forte
+                </span>
               </div>
               <h2 className="font-['Anton'] uppercase text-4xl sm:text-6xl lg:text-7xl leading-tight text-white mb-6 tracking-[-0.015em] sm:tracking-[-0.02em]">
-                Rompendo<br />
-                paradigmas<br />
-                <span className="text-[#F2C21B]">desde 2015.</span>
+                Nossa história começou em<br />
+                <span className="text-[#F2C21B]">Osasco / SP.</span>
               </h2>
               <p className="text-[#D4D1CA] font-medium text-base sm:text-lg leading-relaxed">
-                Nossa história foi escrita no asfalto com<br className="sm:hidden" /> coragem, união e compromisso irrevogável.<br className="hidden sm:inline" />{" "}
-                Da bravura histórica de 1922 à fundação<br className="sm:hidden" /> em Osasco e à consagração como<br className="sm:hidden" />{" "}
-                o maior motoclube do planeta.
+                Nascido em <strong>03 de dezembro de {INSTITUTIONAL_METRICS.foundingYear}</strong> em Osasco/SP (Original de OZ), o Insanos Moto Clube surgiu da união de homens com disciplina militar, lealdade inegociável e uma vocação inabalável para fazer o bem. Conheça os três marcos fundamentais da nossa jornada:
               </p>
             </div>
 
-            <div ref={timelineContainerRef} className="timeline-container relative space-y-12 sm:space-y-16">
-              {/* Continuous Tire Track from Dot 0 Center (top: 28px) down to Last Dot Center (lastItem.offsetTop) */}
-              <TireTrackTimelineLine containerRef={timelineContainerRef} />
-
-              {TIMELINE_DATA.map((item, idx) => (
-                <div
-                  key={item.year}
-                  className="timeline-item relative pl-10 sm:pl-14 group"
-                  data-reveal
-                >
-                  {/* Timeline Pin Dot: 100% centered on vertical axis, sits above track with z-10 */}
-                  <div
-                    className={`timeline-dot absolute left-3 sm:left-4 top-4 w-6 h-6 -translate-x-1/2 rounded-full bg-[#0A0A0B] border-4 border-[#F2C21B] z-10 transition-transform duration-200 ease-out group-hover:scale-110 ${
-                      idx === 0
-                        ? "shadow-[0_0_20px_rgba(242,194,27,0.9)] ring-2 ring-[#F2C21B]/40 ring-offset-2 ring-offset-[#0A0A0A]"
-                        : "shadow-[0_0_12px_rgba(242,194,27,0.5)]"
-                    }`}
-                  />
-
-                  <div className="bg-[#141517] border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 p-6 sm:p-8 rounded-xl transition-colors duration-200 max-w-4xl shadow-lg">
-                    <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-                      <div className="flex items-center gap-3">
-                        <span className="font-['Anton'] text-3xl sm:text-4xl text-[#F2C21B]">{item.year}</span>
-                        <span className="text-xs uppercase font-extrabold px-3 py-1 bg-white/10 rounded text-white tracking-wider">
-                          {item.badge}
-                        </span>
-                      </div>
-                      <span className="text-xs font-mono text-[#F2C21B] bg-[#F2C21B]/10 px-3 py-1 rounded border border-[#F2C21B]/20">
-                        {item.highlight}
-                      </span>
-                    </div>
-                    <h3 className="font-['Anton'] text-2xl sm:text-3xl uppercase text-white mb-3">{item.title}</h3>
-                    <p className="text-sm sm:text-base text-[#D4D1CA] font-medium leading-relaxed">{item.desc}</p>
+            {/* 3 Milestone Bento Cards */}
+            <div className="grid md:grid-cols-3 gap-6 mb-12" data-reveal>
+              {/* Milestone 1: 1922 */}
+              <div className="bg-[#121316]/90 border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 p-6 sm:p-8 rounded-2xl transition-all duration-300 backdrop-blur-md flex flex-col justify-between shadow-xl group hover-lift">
+                <div>
+                  <div className="flex items-center justify-between gap-3 mb-4">
+                    <span className="font-['Anton'] text-3xl sm:text-4xl text-[#F2C21B]">1922</span>
+                    <span className="px-2.5 py-1 rounded bg-[#F2C21B]/15 text-[#F2C21B] font-mono text-xs uppercase font-bold tracking-wider border border-[#F2C21B]/30">
+                      Raiz Simbólica
+                    </span>
                   </div>
+                  <h3 className="font-['Anton'] text-xl sm:text-2xl uppercase text-white mb-3">
+                    A Bravura dos 18 do Forte
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[#AAA8A1] leading-relaxed">
+                    A referência ao numeral <strong>18</strong> remete ao episódio histórico de 1922 em Copacabana: a decisão inegociável de manter-se unido, leal e firme em seus valores diante de qualquer adversidade.
+                  </p>
                 </div>
-              ))}
+                <div className="pt-4 mt-4 border-t border-white/5 text-[11px] font-mono text-[#F2C21B]">
+                  Copacabana / RJ · 05 de Julho
+                </div>
+              </div>
+
+              {/* Milestone 2: 2015 */}
+              <div className="bg-[#121316]/90 border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 p-6 sm:p-8 rounded-2xl transition-all duration-300 backdrop-blur-md flex flex-col justify-between shadow-xl group hover-lift">
+                <div>
+                  <div className="flex items-center justify-between gap-3 mb-4">
+                    <span className="font-['Anton'] text-3xl sm:text-4xl text-[#F2C21B]">2015</span>
+                    <span className="px-2.5 py-1 rounded bg-[#F2C21B]/15 text-[#F2C21B] font-mono text-xs uppercase font-bold tracking-wider border border-[#F2C21B]/30">
+                      Berço de OZ
+                    </span>
+                  </div>
+                  <h3 className="font-['Anton'] text-xl sm:text-2xl uppercase text-white mb-3">
+                    Fundação Oficial em Osasco
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[#AAA8A1] leading-relaxed">
+                    Em 03 de dezembro de 2015, motociclistas experientes romperam paradigmas do motociclismo tradicional, fundando o Insanos MC com quatro pilares sagrados: Deus, Família, Trabalho e Motoclube.
+                  </p>
+                </div>
+                <div className="pt-4 mt-4 border-t border-white/5 text-[11px] font-mono text-[#F2C21B]">
+                  Osasco / SP · 03 de Dezembro
+                </div>
+              </div>
+
+              {/* Milestone 3: Hoje */}
+              <div className="bg-[#121316]/90 border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 p-6 sm:p-8 rounded-2xl transition-all duration-300 backdrop-blur-md flex flex-col justify-between shadow-xl group hover-lift">
+                <div>
+                  <div className="flex items-center justify-between gap-3 mb-4">
+                    <span className="font-['Anton'] text-3xl sm:text-4xl text-[#F2C21B]">Hoje</span>
+                    <span className="px-2.5 py-1 rounded bg-[#F2C21B]/15 text-[#F2C21B] font-mono text-xs uppercase font-bold tracking-wider border border-[#F2C21B]/30">
+                      Salva de Prata
+                    </span>
+                  </div>
+                  <h3 className="font-['Anton'] text-xl sm:text-2xl uppercase text-white mb-3">
+                    Consolidação & Salva de Prata
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[#AAA8A1] leading-relaxed">
+                    Homenageado pela Câmara Municipal de SP por sua atuação humanitária, o clube reúne mais de {INSTITUTIONAL_METRICS.members} integrantes em {INSTITUTIONAL_METRICS.countries} países e {INSTITUTIONAL_METRICS.chapters} capítulos oficiais.
+                  </p>
+                </div>
+                <div className="pt-4 mt-4 border-t border-white/5 text-[11px] font-mono text-[#F2C21B]">
+                  Reconhecimento Oficial · Presença Global
+                </div>
+              </div>
             </div>
 
-            <div className="mt-16 text-center" data-reveal>
+            {/* Link CTA to full documentation */}
+            <div className="text-center pt-2" data-reveal>
               <Link
                 href="/historia"
-                className="px-8 py-4 bg-[#141517] hover:bg-[#F2C21B] hover:text-black border border-white/20 text-white font-['Anton'] tracking-wider uppercase text-base rounded-xl transition-colors duration-200 inline-flex items-center gap-3 hover-lift"
+                className="px-8 py-4 bg-[#141517] hover:bg-[#F2C21B] hover:text-black border border-white/20 text-white font-['Anton'] tracking-wider uppercase text-base rounded-xl transition-colors duration-200 inline-flex items-center gap-3 hover-lift shadow-xl"
               >
-                <span>Ler História Completa & Documentos</span>
+                <span>Ler História Completa, Documentos & Fundadores</span>
                 <IconArrowRight className="w-4 h-4 text-inherit" />
               </Link>
             </div>
