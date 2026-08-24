@@ -243,7 +243,7 @@ export function CampaignThermometer() {
 
           {/* Mobile Road View */}
           <div className="block sm:hidden relative w-full my-1 overflow-visible">
-            <div className="w-full relative" style={{ transform: "translateY(-32px)" }}>
+            <div className="w-full relative" style={{ transform: "translateY(18px)" }}>
               <svg
                 viewBox="176 277 935 80"
                 className="w-full h-auto overflow-visible select-none"
@@ -267,7 +267,7 @@ export function CampaignThermometer() {
                     <rect width="3" height="3" fill="#FFFFFF" />
                     <rect x="3" width="3" height="3" fill="#111111" />
                     <rect y="3" width="3" height="3" fill="#111111" />
-                    <rect x="3" y="3" width="3" height="3" fill="#FFFFFF" />
+                    <rect x="3" width="3" height="3" fill="#FFFFFF" />
                   </pattern>
                 </defs>
 
@@ -390,12 +390,12 @@ export function CampaignThermometer() {
                   key={i}
                   className="p-5 rounded-[2px] bg-[#0D0F14]/90 backdrop-blur-md border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 transition-all duration-200 group hover-lift shadow-xl"
                 >
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="flex items-center gap-2">
-                      <IconPin className="w-4 h-4 text-[#F2C21B] group-hover:scale-110 transition-transform" />
-                      <span className="text-xs font-mono font-bold text-[#F2C21B]">[{dp.state}] {dp.city}</span>
+                  <div className="flex items-center justify-between gap-2 mb-2">
+                    <div className="flex items-center gap-2 min-w-0 flex-1">
+                      <IconPin className="w-4 h-4 text-[#F2C21B] group-hover:scale-110 transition-transform shrink-0" />
+                      <span className="text-xs font-mono font-bold text-[#F2C21B] truncate">[{dp.state}] {dp.city}</span>
                     </div>
-                    <span className="text-xs font-mono text-white/70">{dp.phone}</span>
+                    <span className="text-xs font-mono text-white/70 whitespace-nowrap shrink-0 ml-2">{dp.phone}</span>
                   </div>
                   <p className="text-xs sm:text-sm font-semibold text-white mb-1.5 leading-snug">{dp.location}</p>
                   <p className="text-xs text-[#AAA8A1]">{dp.responsible}</p>
