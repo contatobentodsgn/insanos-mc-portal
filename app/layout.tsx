@@ -5,6 +5,7 @@ import { RadioProvider } from "./context/RadioContext";
 import { RadioBar } from "./components/RadioBar";
 import { ScrollProgressBar } from "./components/ScrollProgressBar";
 import { NoiseOverlay } from "./components/NoiseOverlay";
+import { ScrollToTopOnNav } from "./components/ScrollToTopOnNav";
 
 export const viewport: Viewport = {
   themeColor: "#0A0A0A",
@@ -90,6 +91,7 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-[#0A0A0A] text-[#F4F1E8] antialiased selection:bg-[#F2C21B] selection:text-black">
+        <ScrollToTopOnNav />
         <NoiseOverlay />
         <ScrollProgressBar />
         <RadioProvider>

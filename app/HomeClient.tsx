@@ -421,11 +421,20 @@ export function HomeClient() {
         const hash = window.location.hash;
         if (hash) {
           const id = hash.replace("#", "");
-          const el = document.getElementById(id);
-          if (el) {
-            setTimeout(() => {
-              el.scrollIntoView({ behavior: "smooth", block: "start" });
-            }, 300);
+          if (id === "escala") {
+            const mapEl = document.getElementById("escala-mapa") || document.getElementById("escala");
+            if (mapEl) {
+              setTimeout(() => {
+                mapEl.scrollIntoView({ behavior: "smooth", block: "center" });
+              }, 350);
+            }
+          } else {
+            const el = document.getElementById(id);
+            if (el) {
+              setTimeout(() => {
+                el.scrollIntoView({ behavior: "smooth", block: "start" });
+              }, 350);
+            }
           }
         }
       };
@@ -584,7 +593,7 @@ export function HomeClient() {
             </div>
 
             {/* Interactive Vector Map Hub */}
-            <div className="mb-16" data-reveal>
+            <div id="escala-mapa" className="mb-16 scroll-mt-28" data-reveal>
               <InteractiveMap />
             </div>
 

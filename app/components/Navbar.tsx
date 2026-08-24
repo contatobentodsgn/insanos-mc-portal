@@ -61,13 +61,26 @@ export function Navbar({}: NavbarProps) {
   }, [menuOpen]);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href === "/") {
+      if (pathname === "/") {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        if (window.location.hash) {
+          window.history.pushState(null, "", "/");
+        }
+      }
+      return;
+    }
+
     if (href.startsWith("/#")) {
       const targetId = href.replace("/#", "");
       if (pathname === "/") {
         e.preventDefault();
-        const el = document.getElementById(targetId);
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        const mapTarget = targetId === "escala" 
+          ? (document.getElementById("escala-mapa") || document.getElementById("escala")) 
+          : document.getElementById(targetId);
+        if (mapTarget) {
+          mapTarget.scrollIntoView({ behavior: "smooth", block: targetId === "escala" ? "center" : "start" });
           window.history.pushState(null, "", `#${targetId}`);
         }
       }
@@ -76,14 +89,27 @@ export function Navbar({}: NavbarProps) {
 
   const handleMobileNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     setMenuOpen(false);
+    if (href === "/") {
+      if (pathname === "/") {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        if (window.location.hash) {
+          window.history.pushState(null, "", "/");
+        }
+      }
+      return;
+    }
+
     if (href.startsWith("/#")) {
       const targetId = href.replace("/#", "");
       if (pathname === "/") {
         e.preventDefault();
         setTimeout(() => {
-          const el = document.getElementById(targetId);
-          if (el) {
-            el.scrollIntoView({ behavior: "smooth", block: "start" });
+          const mapTarget = targetId === "escala" 
+            ? (document.getElementById("escala-mapa") || document.getElementById("escala")) 
+            : document.getElementById(targetId);
+          if (mapTarget) {
+            mapTarget.scrollIntoView({ behavior: "smooth", block: targetId === "escala" ? "center" : "start" });
             window.history.pushState(null, "", `#${targetId}`);
           }
         }, 100);
@@ -174,6 +200,7 @@ export function Navbar({}: NavbarProps) {
           {/* Logo Solo Oficial (Alinhado ao tamanho do botão Rádio 24h) */}
           <Link
             href="/"
+            onClick={(e) => handleNavClick(e, "/")}
             className="flex items-center group focus:outline-none shrink-0"
             aria-label="Insanos MC — Início"
           >
