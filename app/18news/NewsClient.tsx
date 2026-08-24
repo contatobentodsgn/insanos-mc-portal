@@ -13,6 +13,7 @@ export function NewsClient() {
 
   const categories = [
     "Todas",
+    "Motos & Lançamentos",
     "Eventos",
     "Expedições",
     "Ação Social",
@@ -57,7 +58,7 @@ export function NewsClient() {
               18<span className="text-[#F2C21B]">News.</span>
             </h1>
             <p className="text-base sm:text-xl text-[#D4D1CA] font-medium leading-relaxed">
-              Cobertura jornalística das ações sociais, expedições internacionais, bastidores do 18Cast e comunicados oficiais do Insanos Moto Clube.
+              Lançamentos e novidades do mundo das duas rodas, grandes eventos no asfalto, expedições internacionais, bastidores do 18Cast e comunicados oficiais.
             </p>
           </div>
 
