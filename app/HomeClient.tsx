@@ -865,8 +865,8 @@ export function HomeClient() {
               </div>
 
               {/* Center Big Card: Projeto PcD — Industrial Mechanical */}
-              <div className="lg:col-span-5 group rounded-[2px] overflow-hidden bg-[#1C1F2A] border border-t-white/25 border-b-white/5 border-x-white/15 hover:border-[#F2C21B]/60 shadow-2xl hover:shadow-[0_0_30px_rgba(242,194,27,0.15)] transition-all duration-300 hover-lift">
-                <div className="h-80 sm:h-96 overflow-hidden relative">
+              <div className="lg:col-span-5 group rounded-[2px] overflow-hidden bg-[#1C1F2A] border border-t-white/25 border-b-white/5 border-x-white/15 hover:border-[#F2C21B]/60 shadow-2xl hover:shadow-[0_0_30px_rgba(242,194,27,0.15)] transition-all duration-300 hover-lift flex flex-col justify-between h-full">
+                <div className="h-80 sm:h-96 overflow-hidden relative flex-1 min-h-[300px]">
                   <div
                     className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105 filter grayscale-[10%] group-hover:grayscale-0"
                     style={{ backgroundImage: `url(/images/insanos/impact_pcd.webp)` }}
@@ -876,7 +876,7 @@ export function HomeClient() {
                     Iniciativa Humanitária
                   </div>
                 </div>
-                <div className="p-6 sm:p-8">
+                <div className="p-6 sm:p-8 bg-[#1C1F2A]">
                   <div className="flex items-center gap-2 mb-2">
                     <span className="w-3 h-3 bg-[#F2C21B] rounded-none transition-transform duration-300 group-hover:scale-110" />
                     <h3 className="font-['Anton'] text-2xl sm:text-3xl uppercase text-white group-hover:text-[#F2C21B] transition-colors duration-200">
@@ -892,43 +892,45 @@ export function HomeClient() {
               </div>
 
               {/* Right Stacked 2 Cards: Bonde Pela Vida & Combate Insano */}
-              <div className="lg:col-span-3 space-y-6">
-                <div className="group p-6 rounded-[2px] bg-[#1C1F2A] border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 hover:shadow-[0_0_25px_rgba(242,194,27,0.15)] transition-all duration-300 hover-lift">
-                  <div className="h-32 rounded-[2px] overflow-hidden mb-4 relative">
-                    <div
-                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105 filter grayscale-[10%] group-hover:grayscale-0"
-                      style={{ backgroundImage: `url(/images/insanos/impact_blood.webp)` }}
-                    />
+              <div className="lg:col-span-3 flex flex-col justify-between gap-6 h-full">
+                <div className="flex-1 flex flex-col justify-between group p-6 rounded-[2px] bg-[#1C1F2A] border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 hover:shadow-[0_0_25px_rgba(242,194,27,0.15)] transition-all duration-300 hover-lift">
+                  <div>
+                    <div className="h-32 sm:h-36 rounded-[2px] overflow-hidden mb-4 relative">
+                      <div
+                        className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105 filter grayscale-[10%] group-hover:grayscale-0"
+                        style={{ backgroundImage: `url(/images/insanos/impact_blood.webp)` }}
+                      />
+                    </div>
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <span className="w-2.5 h-2.5 bg-[#F2C21B] rounded-none transition-transform duration-300 group-hover:scale-110" />
+                      <h4 className="font-['Anton'] text-xl uppercase text-white group-hover:text-[#F2C21B] transition-colors duration-200">
+                        Bonde Pela Vida
+                      </h4>
+                    </div>
+                    <p className="text-xs text-[#D4D1CA] font-medium leading-relaxed">
+                      Conscientização no trânsito, doação de sangue e responsabilidade social em todo o país.
+                    </p>
                   </div>
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <span className="w-2.5 h-2.5 bg-[#F2C21B] rounded-none transition-transform duration-300 group-hover:scale-110" />
-                    <h4 className="font-['Anton'] text-xl uppercase text-white group-hover:text-[#F2C21B] transition-colors duration-200">
-                      Bonde Pela Vida
-                    </h4>
-                  </div>
-                  <p className="text-xs text-[#D4D1CA] font-medium leading-relaxed">
-                    Conscientização no trânsito, doação<br className="hidden sm:inline" />{" "}
-                    de sangue e responsabilidade social<br className="hidden sm:inline" />{" "}
-                    em todo o país.
-                  </p>
                 </div>
 
-                <div className="group p-6 rounded-[2px] bg-[#1C1F2A] border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 hover:shadow-[0_0_25px_rgba(242,194,27,0.15)] transition-all duration-300 hover-lift">
-                  <div className="h-32 rounded-[2px] overflow-hidden mb-4 relative">
-                    <div
-                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105 filter grayscale-[10%] group-hover:grayscale-0"
-                      style={{ backgroundImage: `url(/images/insanos/impact_combat.webp)` }}
-                    />
+                <div className="flex-1 flex flex-col justify-between group p-6 rounded-[2px] bg-[#1C1F2A] border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 hover:shadow-[0_0_25px_rgba(242,194,27,0.15)] transition-all duration-300 hover-lift">
+                  <div>
+                    <div className="h-32 sm:h-36 rounded-[2px] overflow-hidden mb-4 relative">
+                      <div
+                        className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105 filter grayscale-[10%] group-hover:grayscale-0"
+                        style={{ backgroundImage: `url(/images/insanos/impact_combat.webp)` }}
+                      />
+                    </div>
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <span className="w-2.5 h-2.5 bg-[#F2C21B] rounded-none transition-transform duration-300 group-hover:scale-110" />
+                      <h4 className="font-['Anton'] text-xl uppercase text-white group-hover:text-[#F2C21B] transition-colors duration-200">
+                        Combate Insano
+                      </h4>
+                    </div>
+                    <p className="text-xs text-[#D4D1CA] font-medium leading-relaxed">
+                      Ações de inclusão através de artes marciais para jovens em áreas de vulnerabilidade.
+                    </p>
                   </div>
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <span className="w-2.5 h-2.5 bg-[#F2C21B] rounded-none transition-transform duration-300 group-hover:scale-110" />
-                    <h4 className="font-['Anton'] text-xl uppercase text-white group-hover:text-[#F2C21B] transition-colors duration-200">
-                      Combate Insano
-                    </h4>
-                  </div>
-                  <p className="text-xs text-[#D4D1CA] font-medium leading-relaxed">
-                    Ações de inclusão através de artes marciais para jovens em áreas de vulnerabilidade.
-                  </p>
                 </div>
               </div>
             </div>
@@ -1107,26 +1109,31 @@ export function HomeClient() {
               </p>
             </div>
 
-            <div className="grid lg:grid-cols-12 gap-8 items-start" data-reveal>
-              {/* Left Big Highlight Story */}
-              <div className="lg:col-span-5 bg-[#121316] border border-white/15 rounded-[2px] overflow-hidden shadow-2xl">
-                <div
-                  className="h-64 sm:h-80 bg-cover bg-center relative"
-                  style={{ backgroundImage: `url(/images/insanos/news_featured_aniversario.webp)` }}
-                >
-                  <div className="absolute top-4 left-4 px-3 py-1 rounded-[2px] bg-[#F2C21B] text-black font-extrabold text-xs uppercase flex items-center gap-1.5">
-                    <IconStar className="w-3.5 h-3.5 fill-black" />
-                    <span>Reportagem em Destaque</span>
+            <div className="grid lg:grid-cols-12 gap-6 items-stretch" data-reveal>
+              {/* Left Big Highlight Story — Equal Height to Events */}
+              <div className="lg:col-span-5 bg-[#121316] border border-white/15 rounded-[2px] overflow-hidden shadow-2xl flex flex-col justify-between h-full group hover-lift">
+                <div className="flex flex-col flex-1">
+                  <div
+                    className="h-64 sm:h-72 bg-cover bg-center relative shrink-0"
+                    style={{ backgroundImage: `url(/images/insanos/motos_lancamentos_showcase.jpg)` }}
+                  >
+                    <div className="absolute top-4 left-4 px-3 py-1 rounded-[2px] bg-[#F2C21B] text-black font-extrabold text-xs uppercase flex items-center gap-1.5 shadow-md">
+                      <IconStar className="w-3.5 h-3.5 fill-black" />
+                      <span>Reportagem em Destaque</span>
+                    </div>
+                  </div>
+                  <div className="p-8 pb-4 flex flex-col justify-between flex-1">
+                    <div>
+                      <h3 className="font-['Anton'] text-2xl sm:text-3xl uppercase text-white mb-3 leading-tight group-hover:text-[#F2C21B] transition-colors">
+                        Nosso combustível é a irmandade & a estrada.
+                      </h3>
+                      <p className="text-xs sm:text-sm text-[#AAA8A1] leading-relaxed mb-4">
+                        Uma reportagem sobre lançamentos, novas máquinas e o que nos move todos os dias: propósito, lealdade e atitudes que transformam.
+                      </p>
+                    </div>
                   </div>
                 </div>
-                <div className="p-8">
-                  <h3 className="font-['Anton'] text-2xl sm:text-3xl uppercase text-white mb-3">
-                    Nosso combustível é a irmandade.
-                  </h3>
-                  <p className="text-xs sm:text-sm text-[#AAA8A1] leading-relaxed mb-6">
-                    Uma reportagem sobre o que nos move todos os dias:<br className="hidden sm:inline" />{" "}
-                    propósito, lealdade e atitudes que transformam.
-                  </p>
+                <div className="p-8 pt-0">
                   <Link
                     href="/18news"
                     className="px-6 py-3 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-xs rounded-[2px] border border-[#F2C21B] transition-colors inline-flex items-center gap-2"
@@ -1137,42 +1144,44 @@ export function HomeClient() {
                 </div>
               </div>
 
-              {/* Center Column: Upcoming Events Agenda */}
-              <div className="lg:col-span-4 p-8 rounded-[2px] bg-[#121316] border border-white/15 space-y-6">
-                <div className="flex items-center justify-between pb-4 border-b border-white/10">
-                  <div className="flex items-center gap-2.5">
-                    <IconCalendar className="w-5 h-5 text-[#F2C21B]" />
-                    <h4 className="font-['Anton'] text-2xl uppercase text-white">Próximos Eventos</h4>
+              {/* Center Column: Upcoming Events Agenda — Equal Height */}
+              <div className="lg:col-span-4 p-8 rounded-[2px] bg-[#121316] border border-white/15 flex flex-col justify-between h-full shadow-2xl">
+                <div>
+                  <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-4">
+                    <div className="flex items-center gap-2.5">
+                      <IconCalendar className="w-5 h-5 text-[#F2C21B]" />
+                      <h4 className="font-['Anton'] text-2xl uppercase text-white">Próximos Eventos</h4>
+                    </div>
+                    <span className="text-xs font-mono text-[#F2C21B] font-bold uppercase px-2 py-0.5 rounded-[2px] bg-[#F2C21B]/15">
+                      2026
+                    </span>
                   </div>
-                  <span className="text-xs font-mono text-[#F2C21B] font-bold uppercase px-2 py-0.5 rounded-[2px] bg-[#F2C21B]/15">
-                    2026
-                  </span>
+
+                  <div className="space-y-3">
+                    {[
+                      { title: "Encontro Nacional em Osasco", date: "Julho 2026", desc: "Berço Oficial de OZ · 3 Dias" },
+                      { title: "Bonde Pela Vida — Etapa Inverno", date: "Agosto 2026", desc: "Mega Coleta de Sangue Nacional" },
+                      { title: "Expedição Serra do Rio do Rastro", date: "Setembro 2026", desc: "Travessia Alpinas Santa Catarina" },
+                      { title: "Aniversário Oficial de Fundação", date: "Novembro 2026", desc: "Mega Celebração Magna" },
+                    ].map((evt, idx) => (
+                      <Link
+                        key={idx}
+                        href="/eventos"
+                        className="p-3.5 rounded-[2px] bg-[#090A0B] border border-white/10 hover:border-[#F2C21B]/60 flex items-center justify-between transition-all group/item block"
+                      >
+                        <div>
+                          <h5 className="font-bold text-xs text-white group-hover/item:text-[#F2C21B] transition-colors mb-0.5">{evt.title}</h5>
+                          <span className="text-xs text-[#AAA8A1] font-mono">{evt.desc}</span>
+                        </div>
+                        <span className="text-xs font-mono text-[#F2C21B] bg-[#F2C21B]/10 px-2 py-1 rounded-[2px] shrink-0">
+                          {evt.date}
+                        </span>
+                      </Link>
+                    ))}
+                  </div>
                 </div>
 
-                <div className="space-y-3">
-                  {[
-                    { title: "Encontro Nacional em Osasco", date: "Julho 2026", desc: "Berço Oficial de OZ · 3 Dias" },
-                    { title: "Bonde Pela Vida — Etapa Inverno", date: "Agosto 2026", desc: "Mega Coleta de Sangue Nacional" },
-                    { title: "Expedição Serra do Rio do Rastro", date: "Setembro 2026", desc: "Travessia Alpinas Santa Catarina" },
-                    { title: "Aniversário Oficial de Fundação", date: "Novembro 2026", desc: "Mega Celebração Magna" },
-                  ].map((evt, idx) => (
-                    <Link
-                      key={idx}
-                      href="/eventos"
-                      className="p-3.5 rounded-[2px] bg-[#090A0B] border border-white/10 hover:border-[#F2C21B]/60 flex items-center justify-between transition-all group/item block"
-                    >
-                      <div>
-                        <h5 className="font-bold text-xs text-white group-hover/item:text-[#F2C21B] transition-colors mb-0.5">{evt.title}</h5>
-                        <span className="text-xs text-[#AAA8A1] font-mono">{evt.desc}</span>
-                      </div>
-                      <span className="text-xs font-mono text-[#F2C21B] bg-[#F2C21B]/10 px-2 py-1 rounded-[2px] shrink-0">
-                        {evt.date}
-                      </span>
-                    </Link>
-                  ))}
-                </div>
-
-                <div className="pt-2">
+                <div className="pt-4">
                   <Link
                     href="/eventos"
                     className="w-full py-3 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-bold text-xs uppercase tracking-wider rounded-[2px] border border-[#F2C21B] transition-all flex items-center justify-center gap-2 text-center shadow-md hover-lift font-mono"
@@ -1183,40 +1192,49 @@ export function HomeClient() {
                 </div>
               </div>
 
-              {/* Right Stacked 3 Mini-Cards: Expeditions, Live Radio, Podcast */}
-              <div className="lg:col-span-3 space-y-4">
+              {/* Right Stacked 3 Mini-Cards: Expeditions, Live Radio, Podcast — Balanced Spacing and Aligned Bottom */}
+              <div className="lg:col-span-3 flex flex-col justify-between gap-4 h-full">
                 {/* Expeditions */}
-                <div className="p-5 rounded-[2px] bg-[#121316] border border-white/10">
-                  <span className="text-xs font-mono uppercase font-bold text-[#F2C21B] flex items-center gap-1 mb-1">
-                    <IconPin className="w-3 h-3 text-[#F2C21B]" />
-                    <span>Expedições</span>
-                  </span>
-                  <h5 className="font-['Anton'] text-lg uppercase text-white mb-1">Estradas & Destinos</h5>
-                  <p className="text-xs text-[#AAA8A1] mb-3">Grandes travessias documentadas pelos pilotos.</p>
-                  <Link href="/18news" className="text-xs font-bold text-[#F2C21B] hover:underline inline-flex items-center gap-1.5">
-                    <span>Ver Expedições</span>
-                    <IconArrowRight className="w-3 h-3 text-[#F2C21B]" />
-                  </Link>
+                <div className="flex-1 flex flex-col justify-between p-5 rounded-[2px] bg-[#121316] border border-white/10 hover:border-[#F2C21B]/40 transition-colors shadow-lg">
+                  <div>
+                    <span className="text-xs font-mono uppercase font-bold text-[#F2C21B] flex items-center gap-1 mb-1">
+                      <IconPin className="w-3 h-3 text-[#F2C21B]" />
+                      <span>Expedições</span>
+                    </span>
+                    <h5 className="font-['Anton'] text-lg uppercase text-white mb-1">Estradas & Destinos</h5>
+                    <p className="text-xs text-[#AAA8A1]">Grandes travessias documentadas pelos pilotos.</p>
+                  </div>
+                  <div className="pt-2">
+                    <Link href="/18news" className="text-xs font-bold text-[#F2C21B] hover:underline inline-flex items-center gap-1.5">
+                      <span>Ver Expedições</span>
+                      <IconArrowRight className="w-3 h-3 text-[#F2C21B]" />
+                    </Link>
+                  </div>
                 </div>
 
                 {/* Radio Live */}
-                <div className="p-5 rounded-[2px] bg-gradient-to-r from-[#17191E] to-[#121316] border border-[#F2C21B]/40">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-mono uppercase font-bold text-[#F2C21B]">((•)) Rádio 24h</span>
-                    <span className={`w-2 h-2 rounded-full ${isPlayingRadio ? "bg-emerald-400 animate-ping" : "bg-emerald-500"}`} />
+                <div className="flex-1 flex flex-col justify-between p-5 rounded-[2px] bg-gradient-to-r from-[#17191E] to-[#121316] border border-[#F2C21B]/40 shadow-lg">
+                  <div>
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-xs font-mono uppercase font-bold text-[#F2C21B]">((•)) Rádio 24h</span>
+                      <span className={`w-2 h-2 rounded-full ${isPlayingRadio ? "bg-emerald-400 animate-ping" : "bg-emerald-500"}`} />
+                    </div>
+                    <h5 className="font-['Anton'] text-lg uppercase text-white mb-1">A Voz da Irmandade</h5>
+                    <p className="text-xs text-[#AAA8A1]">Transmissão contínua de rock e notícias da estrada.</p>
                   </div>
-                  <h5 className="font-['Anton'] text-lg uppercase text-white mb-2">A Voz da Irmandade</h5>
-                  <button
-                    onClick={toggleRadio}
-                    className="w-full py-2.5 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] uppercase text-xs rounded-[2px] border border-[#F2C21B] transition-colors flex items-center justify-center gap-2 shadow-md hover-lift"
-                  >
-                    <span>{isPlayingRadio ? "Pausar" : "Ouvir Ao Vivo"}</span>
-                    {isPlayingRadio ? <IconPause className="w-3.5 h-3.5" /> : <IconPlay className="w-3.5 h-3.5" />}
-                  </button>
+                  <div className="pt-2">
+                    <button
+                      onClick={toggleRadio}
+                      className="w-full py-2.5 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] uppercase text-xs rounded-[2px] border border-[#F2C21B] transition-colors flex items-center justify-center gap-2 shadow-md hover-lift cursor-pointer"
+                    >
+                      <span>{isPlayingRadio ? "Pausar" : "Ouvir Ao Vivo"}</span>
+                      {isPlayingRadio ? <IconPause className="w-3.5 h-3.5" /> : <IconPlay className="w-3.5 h-3.5" />}
+                    </button>
+                  </div>
                 </div>
 
                 {/* Podcast */}
-                <div className="p-5 rounded-[2px] bg-[#121316] border border-white/10 flex flex-col justify-between">
+                <div className="flex-1 flex flex-col justify-between p-5 rounded-[2px] bg-[#121316] border border-white/10 hover:border-[#F2C21B]/40 transition-colors shadow-lg">
                   <div>
                     <div className="flex items-center justify-between mb-1">
                       <span className="text-xs font-mono uppercase font-bold text-[#F2C21B] flex items-center gap-1">
@@ -1226,17 +1244,19 @@ export function HomeClient() {
                       <span className="text-xs font-mono text-red-400 uppercase font-bold tracking-wider">YouTube</span>
                     </div>
                     <h5 className="font-['Anton'] text-lg uppercase text-white mb-1">Falando de Irmandade</h5>
-                    <p className="text-xs text-[#AAA8A1] mb-3">Relatos de veteranos e conduta na estrada.</p>
+                    <p className="text-xs text-[#AAA8A1]">Relatos de veteranos e conduta na estrada.</p>
                   </div>
-                  <a
-                    href="https://www.youtube.com/@InsanosMC"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full py-2.5 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] uppercase text-xs rounded-[2px] border border-[#F2C21B] transition-colors flex items-center justify-center gap-2 shadow-md hover-lift"
-                  >
-                    <span>Acessar</span>
-                    <span>↗</span>
-                  </a>
+                  <div className="pt-2">
+                    <a
+                      href="https://www.youtube.com/@InsanosMC"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full py-2.5 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] uppercase text-xs rounded-[2px] border border-[#F2C21B] transition-colors flex items-center justify-center gap-2 shadow-md hover-lift cursor-pointer"
+                    >
+                      <span>Acessar</span>
+                      <span>↗</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
