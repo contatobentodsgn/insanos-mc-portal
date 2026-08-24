@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { IconArrowRight, IconCheck } from "../components/ui/Icons";
-import { SITE_TEXT_CATALOG, TextItem } from "../data/siteTexts";
+import { SITE_TEXT_CATALOG } from "../data/siteTexts";
 import customTextsData from "../data/customContent.json";
 
 export function AdminClient() {
@@ -15,13 +15,11 @@ export function AdminClient() {
   const [editingKey, setEditingKey] = useState<string | null>(null);
   const [editValue, setEditValue] = useState("");
   const [lastSyncTime, setLastSyncTime] = useState<string | null>(null);
-  const [isNoiseActive, setIsNoiseActive] = useState(false);
 
   // Mobile Simulator States
   const [activeTab, setActiveTab] = useState<"dashboard" | "simulator">("dashboard");
   const [simulatorPage, setSimulatorPage] = useState("/");
   const [simulatorMode, setSimulatorMode] = useState<"preview" | "editor">("editor");
-  const [browserChrome, setBrowserChrome] = useState<"safari" | "fullscreen">("safari");
   const [simulatorDevice, setSimulatorDevice] = useState<"iphone15" | "iphone14" | "iphonese" | "galaxy">("iphone15");
   const [simulatorScale, setSimulatorScale] = useState(0.85);
   const [iframeReloadKey, setIframeReloadKey] = useState(1);
@@ -51,7 +49,6 @@ export function AdminClient() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       sessionStorage.setItem("insanos_admin_active", "true");
-      setIsNoiseActive(localStorage.getItem("insanos_noise_overlay") === "true");
 
       const local = localStorage.getItem("insanos_custom_texts");
       const localSync = localStorage.getItem("insanos_last_sync");
@@ -121,6 +118,27 @@ export function AdminClient() {
     }
   };
 
+  const handleResetToClean = async () => {
+    if (window.confirm("Deseja ZERAR todas as alterações e restaurar os textos originais do código?")) {
+      localStorage.removeItem("insanos_custom_texts");
+      localStorage.removeItem("insanos_last_sync");
+      setTexts({});
+      setLastSyncTime(null);
+
+      try {
+        await fetch("/api/save-content", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({}),
+        });
+      } catch {
+        // ignore
+      }
+
+      alert("Todas as alterações foram zeradas com sucesso! O portal voltou ao padrão original.");
+    }
+  };
+
   const handleCopyJSON = () => {
     navigator.clipboard.writeText(JSON.stringify(texts, null, 2));
     setCopied(true);
@@ -167,15 +185,6 @@ export function AdminClient() {
       }
     };
     reader.readAsText(file);
-  };
-
-  const handleToggleNoise = () => {
-    const next = !isNoiseActive;
-    setIsNoiseActive(next);
-    localStorage.setItem("insanos_noise_overlay", String(next));
-    window.dispatchEvent(
-      new CustomEvent("insanos_noise_change", { detail: { enabled: next } })
-    );
   };
 
   // Section categories
@@ -244,6 +253,14 @@ export function AdminClient() {
             >
               <span>✏️ Abrir Editor na Home ↗</span>
             </a>
+
+            <button
+              onClick={handleResetToClean}
+              className="px-3 py-1.5 rounded-lg bg-red-500/20 hover:bg-red-500/30 border border-red-500/40 text-red-300 text-xs font-mono transition-colors cursor-pointer flex items-center gap-1"
+              title="Zerar todas as alterações e restaurar padrão do código"
+            >
+              <span>🗑️ Zerar Alterações</span>
+            </button>
 
             <Link
               href="/"
@@ -503,6 +520,13 @@ export function AdminClient() {
                     className="px-4 py-2 bg-white/10 hover:bg-white/20 text-white font-mono text-xs rounded-lg transition-colors flex items-center gap-2 cursor-pointer"
                   >
                     <span>📥 Baixar Backup</span>
+                  </button>
+
+                  <button
+                    onClick={handleResetToClean}
+                    className="px-3.5 py-2 bg-red-500/20 hover:bg-red-500/30 text-red-300 border border-red-500/40 font-mono text-xs rounded-lg transition-colors cursor-pointer flex items-center gap-1.5"
+                  >
+                    <span>🗑️ Zerar Alterações</span>
                   </button>
 
                   <label className="px-4 py-2 bg-[#F2C21B]/15 hover:bg-[#F2C21B]/25 text-[#F2C21B] border border-[#F2C21B]/40 font-mono text-xs rounded-lg transition-colors flex items-center gap-2 cursor-pointer">

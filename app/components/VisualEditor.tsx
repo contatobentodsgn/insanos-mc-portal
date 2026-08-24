@@ -75,13 +75,13 @@ export function VisualEditor() {
       modifiedMapRef.current = stored;
 
       const keys = Object.keys(stored);
-      if (keys.length > 0) {
-        setChangeCount(keys.length);
-        setHasChanges(true);
+      setChangeCount(keys.length);
+      setHasChanges(keys.length > 0);
 
+      if (keys.length > 0) {
         // Apply to current page elements
         const candidateElements = document.querySelectorAll(
-          "h1, h2, h3, h4, h5, h6, p, blockquote, [data-editable]"
+          "h1, h2, h3, h4, h5, h6, p, blockquote, span, strong, b, em, li, label, [data-editable]"
         );
 
         candidateElements.forEach((node) => {
@@ -116,26 +116,12 @@ export function VisualEditor() {
       });
   }, [applyStoredTexts]);
 
-  // Keyboard shortcut Ctrl+E or Cmd+E to toggle edit mode
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.ctrlKey || e.metaKey) && (e.key === "e" || e.key === "E")) {
-        e.preventDefault();
-        setIsAdminActive(true);
-        sessionStorage.setItem("insanos_admin_active", "true");
-        setIsEditing((prev) => !prev);
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
-
-  // Enable / disable contentEditable on page elements
+  // Enable / disable contentEditable on ALL text-bearing page elements
   useEffect(() => {
     if (!isAdminActive) return;
 
     const candidateElements = document.querySelectorAll(
-      "h1, h2, h3, h4, h5, h6, p, blockquote, [data-editable]"
+      "h1, h2, h3, h4, h5, h6, p, blockquote, span, strong, b, em, li, label, [data-editable]"
     );
 
     const handleInput = (e: Event) => {
@@ -150,18 +136,28 @@ export function VisualEditor() {
 
     candidateElements.forEach((node) => {
       const el = node as HTMLElement;
-      if (el.closest("#insanos-visual-editor-toolbar") || el.closest("nav") || el.closest("button")) {
+      // Skip toolbar, nav items, buttons, or purely empty icon wrappers
+      if (
+        el.closest("#insanos-visual-editor-toolbar") ||
+        el.closest("nav") ||
+        el.closest("button") ||
+        el.closest("svg") ||
+        (el.children.length > 0 && !el.innerText.trim())
+      ) {
         return;
       }
 
-      if (isEditing) {
-        el.setAttribute("contenteditable", "true");
-        el.classList.add("insanos-editable-element");
-        el.addEventListener("input", handleInput);
-      } else {
-        el.removeAttribute("contenteditable");
-        el.classList.remove("insanos-editable-element");
-        el.removeEventListener("input", handleInput);
+      // If it has actual text content
+      if (el.innerText && el.innerText.trim().length > 0) {
+        if (isEditing) {
+          el.setAttribute("contenteditable", "true");
+          el.classList.add("insanos-editable-element");
+          el.addEventListener("input", handleInput);
+        } else {
+          el.removeAttribute("contenteditable");
+          el.classList.remove("insanos-editable-element");
+          el.removeEventListener("input", handleInput);
+        }
       }
     });
 
@@ -204,6 +200,33 @@ export function VisualEditor() {
     }
   };
 
+  // Reset to original defaults and wipe cache/server overrides
+  const handleResetToClean = async () => {
+    if (window.confirm("Deseja ZERAR todas as alterações e restaurar os textos originais do código?")) {
+      setIsSaving(true);
+      localStorage.removeItem("insanos_custom_texts");
+      localStorage.removeItem("insanos_last_sync");
+      modifiedMapRef.current = {};
+      setHasChanges(false);
+      setChangeCount(0);
+
+      try {
+        await fetch("/api/save-content", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({}),
+        });
+      } catch {
+        // ignore
+      }
+
+      showToast("🗑️ Alterações zeradas! Recarregando página...");
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+    }
+  };
+
   // Download JSON file directly
   const handleDownloadJSON = () => {
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(modifiedMapRef.current, null, 2));
@@ -221,17 +244,6 @@ export function VisualEditor() {
     const textData = JSON.stringify(modifiedMapRef.current, null, 2);
     navigator.clipboard.writeText(textData);
     showToast("📋 Textos copiados para a área de transferência!");
-  };
-
-  // Reset to original defaults
-  const handleReset = () => {
-    if (window.confirm("Deseja realmente restaurar todos os textos para o padrão original?")) {
-      localStorage.removeItem("insanos_custom_texts");
-      modifiedMapRef.current = {};
-      setHasChanges(false);
-      setChangeCount(0);
-      window.location.reload();
-    }
   };
 
   const handleExitAdmin = () => {
@@ -257,11 +269,11 @@ export function VisualEditor() {
         }
         .insanos-editable-element:hover {
           outline: 2px dashed #F2C21B !important;
-          background: rgba(242, 194, 27, 0.1) !important;
+          background: rgba(242, 194, 27, 0.12) !important;
         }
         .insanos-editable-element:focus {
           outline: 2px solid #F2C21B !important;
-          background: rgba(242, 194, 27, 0.15) !important;
+          background: rgba(242, 194, 27, 0.2) !important;
         }
       `}</style>
 
@@ -292,11 +304,9 @@ export function VisualEditor() {
               </div>
             </div>
 
-            {changeCount > 0 && (
-              <span className="px-2.5 py-1 rounded bg-[#F2C21B]/15 text-[#F2C21B] font-mono text-xs font-bold shrink-0">
-                {changeCount} alteraç{changeCount > 1 ? "ões" : "ão"}
-              </span>
-            )}
+            <span className="px-2.5 py-1 rounded bg-[#F2C21B]/15 text-[#F2C21B] font-mono text-xs font-bold shrink-0">
+              {changeCount} alteraç{changeCount === 1 ? "ão" : "ões"}
+            </span>
 
             <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto justify-end">
               <button
@@ -323,28 +333,18 @@ export function VisualEditor() {
               <button
                 onClick={handleCopyJSON}
                 className="px-3 py-2 bg-white/10 hover:bg-white/20 text-white font-mono text-xs rounded transition-colors cursor-pointer"
-                title="Copiar JSON das alterações para a área de transferência"
+                title="Copiar JSON das alterações"
               >
                 📋 Copiar
               </button>
 
               <button
-                onClick={handleDownloadJSON}
-                className="px-3 py-2 bg-white/10 hover:bg-white/20 text-white font-mono text-xs rounded transition-colors cursor-pointer"
-                title="Baixar arquivo JSON com os textos"
+                onClick={handleResetToClean}
+                className="px-3 py-2 bg-red-500/20 hover:bg-red-500/30 text-red-300 border border-red-500/40 font-mono text-xs rounded transition-colors cursor-pointer flex items-center gap-1"
+                title="Zerar todas as alterações e restaurar padrão do código"
               >
-                📥 Baixar
+                <span>🗑️ Zerar</span>
               </button>
-
-              {hasChanges && (
-                <button
-                  onClick={handleReset}
-                  className="px-2.5 py-2 bg-red-500/20 hover:bg-red-500/30 text-red-400 font-mono text-xs rounded transition-colors cursor-pointer"
-                  title="Restaurar padrão original"
-                >
-                  🔄
-                </button>
-              )}
 
               <a
                 href="/admin"
@@ -356,7 +356,7 @@ export function VisualEditor() {
 
               <button
                 onClick={handleExitAdmin}
-                className="px-3 py-2 bg-red-500/20 hover:bg-red-500/30 text-red-300 font-mono text-xs rounded transition-colors cursor-pointer"
+                className="px-3 py-2 bg-white/10 hover:bg-red-500/30 text-[#AAA8A1] hover:text-red-300 font-mono text-xs rounded transition-colors cursor-pointer"
                 title="Sair do Modo de Edição"
               >
                 🚪 Sair
@@ -366,21 +366,6 @@ export function VisualEditor() {
         ) : (
           /* Floating Toggle Buttons */
           <div className="flex items-center gap-2">
-            <button
-              onClick={handleToggleNoise}
-              className={`px-3.5 py-3 rounded-full shadow-2xl backdrop-blur-md flex items-center gap-2 transition-all duration-200 border cursor-pointer ${
-                isNoiseActive
-                  ? "bg-[#F2C21B] text-black border-[#F2C21B] font-bold"
-                  : "bg-[#121316]/90 hover:bg-[#1A1C22] text-white/80 hover:text-white border-white/15"
-              }`}
-              title="Ativar/Desativar efeito Film Grain"
-            >
-              <span>🎞️</span>
-              <span className="font-mono text-xs font-bold uppercase">
-                Grain: {isNoiseActive ? "ON" : "OFF"}
-              </span>
-            </button>
-
             <button
               onClick={() => setIsEditing(true)}
               className="group px-4 py-3 bg-[#121316]/90 hover:bg-[#1A1C22] border border-[#F2C21B]/40 hover:border-[#F2C21B] text-white rounded-full shadow-2xl backdrop-blur-md flex items-center gap-2.5 transition-all duration-200 hover:scale-105 cursor-pointer"
