@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
+import { INSTITUTIONAL_METRICS } from "../data/institutional";
 
 export const metadata: Metadata = {
   title: "Política de Privacidade (LGPD)",
@@ -43,7 +44,7 @@ export default function PrivacidadePage() {
                 1. Identificação do Controlador
               </h2>
               <p>
-                O <strong>Insanos Moto Clube Mundial</strong> (“Insanos MC”), organização fundada em 2015 com sede de origem em Osasco/SP e presença internacional em mais de 65 países, atua como <strong>Controlador</strong> dos dados pessoais coletados por meio do portal oficial (<code className="text-[#F2C21B] bg-black/40 px-2 py-0.5 rounded">https://insanosmc.vercel.app</code>) e de seus canais digitais autorizados.
+                O <strong>Insanos Moto Clube Mundial</strong> (“Insanos MC”), organização fundada em {INSTITUTIONAL_METRICS.foundingYear} com sede de origem em {INSTITUTIONAL_METRICS.foundingCity} e presença internacional em {INSTITUTIONAL_METRICS.countries} países, atua como <strong>Controlador</strong> dos dados pessoais coletados por meio do portal oficial (<code className="text-[#F2C21B] bg-black/40 px-2 py-0.5 rounded">https://insanosmc.vercel.app</code>) e de seus canais digitais autorizados.
               </p>
             </section>
 

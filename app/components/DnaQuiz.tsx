@@ -3,6 +3,7 @@
 import React, { useState, useRef } from "react";
 import Link from "next/link";
 import { IconShield, IconArrowRight, IconRefresh, IconChat, IconCheck } from "./ui/Icons";
+import { INSTITUTIONAL_METRICS } from "../data/institutional";
 
 interface Question {
   id: number;
@@ -51,7 +52,7 @@ const QUESTIONS: Question[] = [
       {
         text: "Participação ativa e voluntária contínua nas doações de sangue, alimentos e auxílio aos necessitados.",
         isCorrect: true,
-        feedback: "Exato! Nosso destino é fazer o bem. A ação social é o coração pulsante do Insanos MC em mais de 70 países.",
+        feedback: `Exato! Nosso destino é fazer o bem. A ação social é o coração pulsante do Insanos MC em ${INSTITUTIONAL_METRICS.countries} países.`,
       },
       {
         text: "Apenas pagar mensalidade e não participar de nenhuma ação com a comunidade.",

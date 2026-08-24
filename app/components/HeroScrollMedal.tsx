@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { IconArrowRight, IconFire } from "./ui/Icons";
+import { INSTITUTIONAL_METRICS } from "../data/institutional";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -264,8 +265,8 @@ export default function HeroScrollMedal() {
 
           {/* Subtitle / Pitch */}
           <p className="text-base sm:text-lg text-[#E0DDD8] leading-relaxed max-w-2xl font-light">
-            O maior motoclube do Brasil e do mundo. Mais de 12.000 integrantes unidos pela honra,
-            disciplina e o compromisso real com a caridade em mais de 70 países.
+            O maior motoclube do Brasil e do mundo. Mais de {INSTITUTIONAL_METRICS.members} integrantes unidos pela honra,
+            disciplina e o compromisso real com a caridade em {INSTITUTIONAL_METRICS.countries} países.
           </p>
 
           {/* Action CTAs */}

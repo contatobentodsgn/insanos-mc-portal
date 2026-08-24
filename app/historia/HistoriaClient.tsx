@@ -6,6 +6,7 @@ import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { RadioBar } from "../components/RadioBar";
 import { IconArrowRight } from "../components/ui/Icons";
+import { INSTITUTIONAL_METRICS } from "../data/institutional";
 
 const ASSETS = {
   heroBg: "/images/insanos/hero_biker.webp",
@@ -96,11 +97,11 @@ const TIMELINE_EXPANDED: Array<{
   {
     year: "2026",
     dateBadge: "Presente",
-    title: "Reconhecimento Oficial & Mais de 70 Países",
+    title: `Reconhecimento Oficial & ${INSTITUTIONAL_METRICS.countries} Países`,
     subtitle: "Salva de Prata e Presença Global",
     text: (
       <>
-        Homenageado pela Câmara Municipal de São Paulo com a <strong>Salva de Prata</strong> por sua extraordinária contribuição humanitária, o Insanos MC reúne dezenas de milhares de integrantes e presença consolidada em mais de 70 países. Uma só irmandade movida pela disciplina, pela família e pela certeza inabalável de que colete não cria irmão: atitude cria.
+        Homenageado pela Câmara Municipal de São Paulo com a <strong>Salva de Prata</strong> por sua extraordinária contribuição humanitária, o Insanos MC reúne mais de {INSTITUTIONAL_METRICS.members} integrantes e presença consolidada em {INSTITUTIONAL_METRICS.countries} países. Uma só irmandade movida pela disciplina, pela família e pela certeza inabalável de que colete não cria irmão: atitude cria.
       </>
     ),
     badge: "Consolidação Global",
@@ -155,7 +156,7 @@ export function HistoriaClient() {
                 Os Pioneiros do Asfalto
               </h2>
               <p className="text-sm sm:text-base text-[#D4D1CA] font-medium leading-relaxed">
-                A história do Insanos MC foi forjada pela coragem de romper paradigmas. Liderados por um núcleo histórico de comando, estes pioneiros estabeleceram os alicerces de honra, conduta e fraternidade que hoje unem milhares de irmãos em mais de 70 países.
+                A história do Insanos MC foi forjada pela coragem de romper paradigmas. Liderados por um núcleo histórico de comando, estes pioneiros estabeleceram os alicerces de honra, conduta e fraternidade que hoje unem milhares de irmãos em {INSTITUTIONAL_METRICS.countries} países.
               </p>
             </div>
 

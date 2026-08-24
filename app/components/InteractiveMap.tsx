@@ -14,6 +14,7 @@ import {
   IconRoute,
   IconPin,
 } from "./ui/Icons";
+import { INSTITUTIONAL_METRICS } from "../data/institutional";
 
 interface SedeHub {
   id: string;
@@ -1031,7 +1032,7 @@ export function InteractiveMap() {
       <div className="p-4 bg-[#0A0A0C] border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#AAA8A1]">
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span>13 sedes regionais com ponto de apoio fixo em destaque. Mais de <strong>480 capítulos</strong> presentes em <strong>65 países</strong>.</span>
+          <span>13 sedes regionais com ponto de apoio fixo em destaque. Mais de <strong>{INSTITUTIONAL_METRICS.chapters} capítulos</strong> presentes em <strong>{INSTITUTIONAL_METRICS.countries} países</strong>.</span>
         </div>
         <Link
           href="/faca-parte"

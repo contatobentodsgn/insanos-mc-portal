@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { IconRadio, IconArrowRight, IconPlay, IconPause, IconVolumeUp, IconVolumeMute, IconClose } from "./ui/Icons";
 import { useRadio } from "../context/RadioContext";
+import { INSTITUTIONAL_METRICS } from "../data/institutional";
 
 const ASSETS = {
   logo: "/images/insanos/insanos_mc_logo.svg",
@@ -146,16 +147,16 @@ export function Navbar({}: NavbarProps) {
             <div className="flex items-center gap-2 shrink-0">
               <span className="w-2 h-2 rounded-full bg-[#F2C21B] animate-pulse shrink-0" />
               <span>
-                Presença Global: <strong className="text-white">+12.000 Integrantes</strong> · <strong className="text-white">65 Países</strong> · <strong className="text-white">480+ Capítulos</strong>
+                Presença Global: <strong className="text-white">{INSTITUTIONAL_METRICS.members} Integrantes</strong> · <strong className="text-white">{INSTITUTIONAL_METRICS.countries} Países</strong> · <strong className="text-white">{INSTITUTIONAL_METRICS.chapters} Capítulos</strong>
               </span>
             </div>
             <span className="text-[#F2C21B]">•</span>
-            <span className="font-mono text-[#F2C21B] shrink-0">#SomosDeVerdade</span>
+            <span className="font-mono text-[#F2C21B] shrink-0">{INSTITUTIONAL_METRICS.slogan}</span>
             <span className="text-[#F2C21B]">•</span>
             <div className="flex items-center gap-2 shrink-0">
               <span className="w-2 h-2 rounded-full bg-[#F2C21B] animate-pulse shrink-0" />
               <span>
-                Original de OZ · <strong className="text-white">Desde 2015</strong> · 18 do Forte
+                Original de OZ · <strong className="text-white">Desde {INSTITUTIONAL_METRICS.foundingYear}</strong> · 18 do Forte
               </span>
             </div>
             <span className="text-[#F2C21B]">•</span>
@@ -166,13 +167,13 @@ export function Navbar({}: NavbarProps) {
         <div className="hidden md:flex items-center gap-2 truncate">
           <span className="w-2 h-2 rounded-full bg-[#F2C21B] animate-pulse shrink-0" />
           <span className="truncate">
-            Presença Global: <strong>+12.000 Integrantes</strong> · <strong>65 Países</strong> · <strong>480+ Capítulos</strong>
+            Presença Global: <strong>{INSTITUTIONAL_METRICS.members} Integrantes</strong> · <strong>{INSTITUTIONAL_METRICS.countries} Países</strong> · <strong>{INSTITUTIONAL_METRICS.chapters} Capítulos</strong>
           </span>
         </div>
         <div className="hidden md:flex items-center gap-6 shrink-0">
           <button
             onClick={toggleRadio}
-            className="hover:text-[#F2C21B] transition-colors flex items-center gap-1.5 text-xs font-semibold focus:outline-none"
+            className="hover:text-[#F2C21B] transition-colors flex items-center gap-1.5 text-xs font-semibold focus:outline-none cursor-pointer"
           >
             <IconRadio className={`w-3.5 h-3.5 ${isPlayingRadio ? "text-[#F2C21B] animate-pulse" : "text-[#AAA8A1]"}`} />
             <span className={isPlayingRadio ? "text-[#F2C21B]" : "text-[#AAA8A1]"}>
@@ -180,7 +181,7 @@ export function Navbar({}: NavbarProps) {
             </span>
           </button>
           <span className="text-white/20">|</span>
-          <span className="font-mono text-[11px] text-[#F2C21B]">#SomosDeVerdade</span>
+          <span className="font-mono text-[11px] text-[#F2C21B]">{INSTITUTIONAL_METRICS.slogan}</span>
         </div>
       </div>
 

@@ -14,6 +14,7 @@ import { useRadio } from "../context/RadioContext";
 import { ExpeditionsGallery } from "../components/ExpeditionsGallery";
 import { TireTrackTimelineLine } from "../components/TireTrackTimelineLine";
 import HeroScrollMedalThree from "../components/HeroScrollMedalThree";
+import { INSTITUTIONAL_METRICS } from "../data/institutional";
 import {
   IconStar,
   IconCalendar,
@@ -325,12 +326,12 @@ const TIMELINE_DATA: Array<{
   },
   {
     year: "Hoje",
-    badge: "Mais de 70 Países",
+    badge: `${INSTITUTIONAL_METRICS.countries} Países`,
     title: "Presença Global & Salva de Prata",
     desc: (
       <>
-        Reconhecido pela Câmara de SP com a Salva de Prata, o Insanos MC reúne dezenas de milhares de integrantes,<br className="hidden sm:inline" />{" "}
-        centenas de divisões e mais de 14 mil ações sociais anuais.
+        Reconhecido pela Câmara de SP com a Salva de Prata, o Insanos MC reúne mais de {INSTITUTIONAL_METRICS.members} integrantes,<br className="hidden sm:inline" />{" "}
+        {INSTITUTIONAL_METRICS.chapters} capítulos e ações sociais contínuas em todo o planeta.
       </>
     ),
     highlight: (

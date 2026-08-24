@@ -14,6 +14,7 @@ import { useRadio } from "./context/RadioContext";
 import { ExpeditionsGallery } from "./components/ExpeditionsGallery";
 import { TireTrackTimelineLine } from "./components/TireTrackTimelineLine";
 import HeroScrollMedalThree from "./components/HeroScrollMedalThree";
+import { INSTITUTIONAL_METRICS } from "./data/institutional";
 import {
   IconStar,
   IconCalendar,
@@ -325,12 +326,12 @@ const TIMELINE_DATA: Array<{
   },
   {
     year: "Hoje",
-    badge: "Mais de 70 Países",
+    badge: `${INSTITUTIONAL_METRICS.countries} Países`,
     title: "Presença Global & Salva de Prata",
     desc: (
       <>
-        Reconhecido pela Câmara de SP com a Salva de Prata, o Insanos MC reúne dezenas de milhares de integrantes,<br className="hidden sm:inline" />{" "}
-        centenas de divisões e mais de 14 mil ações sociais anuais.
+        Reconhecido pela Câmara de SP com a Salva de Prata, o Insanos MC reúne mais de {INSTITUTIONAL_METRICS.members} integrantes,<br className="hidden sm:inline" />{" "}
+        {INSTITUTIONAL_METRICS.chapters} capítulos e ações sociais contínuas em todo o planeta.
       </>
     ),
     highlight: (
@@ -578,7 +579,7 @@ export function HomeClient() {
                 <span className="text-[#F2C21B]">Brasil & Mundo.</span>
               </h2>
               <p className="text-[#D4D1CA] font-medium text-base sm:text-lg leading-relaxed">
-                Uma irmandade presente no Brasil e no mundo. Nascido em Osasco em 2015, o Insanos Moto Clube expandiu sua presença para 65 países e mais de 480 capítulos oficiais. Navegue pelo globo ou selecione uma cidade para localizar a sede regional mais próxima.
+                Uma irmandade presente no Brasil e no mundo. Nascido em Osasco em {INSTITUTIONAL_METRICS.foundingYear}, o Insanos Moto Clube expandiu sua presença para {INSTITUTIONAL_METRICS.countries} países e mais de {INSTITUTIONAL_METRICS.chapters} capítulos oficiais. Navegue pelo globo ou selecione uma cidade para localizar a sede regional mais próxima.
               </p>
             </div>
 
@@ -590,20 +591,20 @@ export function HomeClient() {
             {/* Global Stats Grid */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 pt-10 border-t border-white/10" data-reveal>
               <div>
-                <strong className="block font-['Anton'] text-3xl sm:text-6xl text-[#F2C21B] tracking-[0.04em]">+12.000</strong>
-                <span className="text-[11px] sm:text-xs text-[#AAA8A1] uppercase font-bold tracking-wider">Integrantes Ativos</span>
+                <strong className="block font-['Anton'] text-3xl sm:text-6xl text-[#F2C21B] tracking-[0.04em]">{INSTITUTIONAL_METRICS.members}</strong>
+                <span className="text-[11px] sm:text-xs text-[#AAA8A1] uppercase font-bold tracking-wider">{INSTITUTIONAL_METRICS.membersLabel}</span>
               </div>
               <div>
-                <strong className="block font-['Anton'] text-3xl sm:text-6xl text-[#F2C21B] tracking-[0.04em]">65</strong>
-                <span className="text-[11px] sm:text-xs text-[#AAA8A1] uppercase font-bold tracking-wider">Países Presentes</span>
+                <strong className="block font-['Anton'] text-3xl sm:text-6xl text-[#F2C21B] tracking-[0.04em]">{INSTITUTIONAL_METRICS.countries}</strong>
+                <span className="text-[11px] sm:text-xs text-[#AAA8A1] uppercase font-bold tracking-wider">{INSTITUTIONAL_METRICS.countriesLabel}</span>
               </div>
               <div>
-                <strong className="block font-['Anton'] text-3xl sm:text-6xl text-[#F2C21B] tracking-[0.04em]">+10.000</strong>
-                <span className="text-[11px] sm:text-xs text-[#AAA8A1] uppercase font-bold tracking-wider">Famílias Atendidas</span>
+                <strong className="block font-['Anton'] text-3xl sm:text-6xl text-[#F2C21B] tracking-[0.04em]">{INSTITUTIONAL_METRICS.familiesAssisted}</strong>
+                <span className="text-[11px] sm:text-xs text-[#AAA8A1] uppercase font-bold tracking-wider">{INSTITUTIONAL_METRICS.familiesAssistedLabel}</span>
               </div>
               <div>
-                <strong className="block font-['Anton'] text-3xl sm:text-6xl text-[#F2C21B] tracking-[0.04em]">480+</strong>
-                <span className="text-[11px] sm:text-xs text-[#AAA8A1] uppercase font-bold tracking-wider">Capítulos & Facções</span>
+                <strong className="block font-['Anton'] text-3xl sm:text-6xl text-[#F2C21B] tracking-[0.04em]">{INSTITUTIONAL_METRICS.chapters}</strong>
+                <span className="text-[11px] sm:text-xs text-[#AAA8A1] uppercase font-bold tracking-wider">{INSTITUTIONAL_METRICS.chaptersLabel}</span>
               </div>
             </div>
           </div>
