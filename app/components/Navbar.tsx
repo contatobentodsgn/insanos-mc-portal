@@ -187,12 +187,12 @@ export function Navbar({}: NavbarProps) {
 
       {/* Main Navbar */}
       <header
-        className={`sticky top-0 z-50 bg-[#0A0A0A]/95 backdrop-blur-md border-b transition-all duration-300 ${
-          scrolled ? "border-[#F2C21B]/30 shadow-2xl py-2.5" : "border-white/10 py-3.5"
+        className={`sticky top-0 z-50 bg-[#0A0A0A]/95 backdrop-blur-md border-b transition-all duration-300 w-full overflow-hidden ${
+          scrolled ? "border-[#F2C21B]/30 shadow-2xl py-2" : "border-white/10 py-3"
         }`}
       >
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-8 flex items-center justify-between">
-          {/* Logo Solo Oficial (Alinhado ao tamanho do botão Rádio 24h) */}
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-8 flex items-center justify-between gap-2">
+          {/* Logo Solo Oficial */}
           <Link
             href="/"
             onClick={(e) => handleNavClick(e, "/")}
@@ -202,9 +202,9 @@ export function Navbar({}: NavbarProps) {
             <img
               src={ASSETS.logo}
               alt="Insanos Moto Clube"
-              width={160}
-              height={28}
-              className="h-[25px] sm:h-[28px] w-auto object-contain transition-transform duration-300 group-hover:scale-105 group-hover:drop-shadow-[0_0_14px_rgba(242,194,27,0.35)]"
+              width={140}
+              height={26}
+              className="h-[22px] sm:h-[28px] w-auto object-contain transition-transform duration-300 group-hover:scale-105 group-hover:drop-shadow-[0_0_14px_rgba(242,194,27,0.35)]"
             />
           </Link>
 
@@ -234,7 +234,7 @@ export function Navbar({}: NavbarProps) {
           </nav>
 
           {/* Header Action Buttons */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             {/* Tactical Radio Button (Industrial Mechanical Placa de Aço) */}
             <button
               onClick={toggleRadio}
@@ -262,7 +262,7 @@ export function Navbar({}: NavbarProps) {
             {/* CTA Faça Parte (Industrial Mechanical Placa de Aço) */}
             <Link
               href="/faca-parte"
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-[2px] border border-[#F2C21B] bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider text-xs sm:text-sm uppercase transition-all shadow-[0_2px_12px_rgba(242,194,27,0.35)] hover:shadow-[0_4px_20px_rgba(242,194,27,0.6)] transform hover:-translate-y-0.5 whitespace-nowrap shrink-0"
+              className="inline-flex items-center gap-1.5 px-3.5 sm:px-5 py-2 rounded-[2px] border border-[#F2C21B] bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider text-xs sm:text-sm uppercase transition-all shadow-[0_2px_12px_rgba(242,194,27,0.35)] hover:shadow-[0_4px_20px_rgba(242,194,27,0.6)] transform hover:-translate-y-0.5 whitespace-nowrap shrink-0"
             >
               <span>Faça Parte</span>
               <IconArrowRight className="w-3.5 h-3.5 text-black" strokeWidth={2.5} />
@@ -271,11 +271,11 @@ export function Navbar({}: NavbarProps) {
             {/* Mobile Hamburger Button */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="lg:hidden min-w-[44px] min-h-[44px] p-2.5 rounded-[2px] border border-white/20 bg-[#121314] text-white hover:border-[#F2C21B] focus:outline-none flex items-center justify-center active:scale-95 transition-transform"
+              className="lg:hidden w-10 h-10 sm:min-w-[44px] sm:min-h-[44px] p-2 rounded-[2px] border border-white/20 bg-[#121314] text-white hover:border-[#F2C21B] focus:outline-none flex items-center justify-center active:scale-95 transition-transform shrink-0"
               aria-label={menuOpen ? "Fechar menu de navegação" : "Abrir menu de navegação"}
               aria-expanded={menuOpen}
             >
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 {menuOpen ? (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 ) : (
