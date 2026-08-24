@@ -13,6 +13,8 @@ import {
   IconPlay,
   IconRoute,
   IconPin,
+  IconChevronLeft,
+  IconChevronRight,
 } from "./ui/Icons";
 import { INSTITUTIONAL_METRICS } from "../data/institutional";
 
@@ -243,6 +245,15 @@ export function InteractiveMap() {
   const [zoomLevel, setZoomLevel] = useState(1);
   const [hoveredHub, setHoveredHub] = useState<SedeHub | null>(null);
 
+  // Carousel Drag & Scroll Controls
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [isMouseDragging, setIsMouseDragging] = useState(false);
+  const mouseStartXRef = useRef(0);
+  const mouseScrollLeftRef = useRef(0);
+  const hasMovedRef = useRef(false);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
   // Sync ref for smooth animation loop without tearing down canvas
   useEffect(() => {
     isAutoRotatingRef.current = isAutoRotating;
@@ -283,6 +294,14 @@ export function InteractiveMap() {
     if (baseRadiusRef.current) {
       targetScaleRef.current = baseRadiusRef.current * targetZoom;
     }
+
+    // Auto-scroll sede button into view in the carousel
+    if (carouselRef.current) {
+      const targetBtn = carouselRef.current.querySelector<HTMLButtonElement>(`[data-sede-id="${sede.id}"]`);
+      if (targetBtn) {
+        targetBtn.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+      }
+    }
   }, []);
 
   const handleZoom = (delta: number) => {
@@ -318,6 +337,67 @@ export function InteractiveMap() {
     if (activeFilter === "internacional") return s.country !== "Brasil";
     return true;
   });
+
+  // Check carousel scrollability
+  const checkScrollability = useCallback(() => {
+    if (!carouselRef.current) return;
+    const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
+    setCanScrollLeft(scrollLeft > 4);
+    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 4);
+  }, []);
+
+  useEffect(() => {
+    checkScrollability();
+    const el = carouselRef.current;
+    if (!el) return;
+    el.addEventListener("scroll", checkScrollability, { passive: true });
+    window.addEventListener("resize", checkScrollability);
+    return () => {
+      el.removeEventListener("scroll", checkScrollability);
+      window.removeEventListener("resize", checkScrollability);
+    };
+  }, [checkScrollability, filteredHubs]);
+
+  const scrollCarousel = (direction: "left" | "right") => {
+    if (!carouselRef.current) return;
+    const distance = 260;
+    carouselRef.current.scrollBy({
+      left: direction === "left" ? -distance : distance,
+      behavior: "smooth",
+    });
+  };
+
+  const handleCarouselMouseDown = (e: React.MouseEvent) => {
+    if (!carouselRef.current) return;
+    setIsMouseDragging(true);
+    mouseStartXRef.current = e.pageX - carouselRef.current.offsetLeft;
+    mouseScrollLeftRef.current = carouselRef.current.scrollLeft;
+    hasMovedRef.current = false;
+  };
+
+  const handleCarouselMouseMove = (e: React.MouseEvent) => {
+    if (!isMouseDragging || !carouselRef.current) return;
+    const x = e.pageX - carouselRef.current.offsetLeft;
+    const walk = (x - mouseStartXRef.current) * 1.5;
+    if (Math.abs(walk) > 4) {
+      hasMovedRef.current = true;
+    }
+    carouselRef.current.scrollLeft = mouseScrollLeftRef.current - walk;
+  };
+
+  const handleCarouselMouseUpOrLeave = () => {
+    setIsMouseDragging(false);
+    setTimeout(() => {
+      hasMovedRef.current = false;
+    }, 50);
+  };
+
+  const handleCarouselWheel = (e: React.WheelEvent) => {
+    if (!carouselRef.current) return;
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+      carouselRef.current.scrollLeft += e.deltaY;
+    }
+  };
 
   useEffect(() => {
     if (!canvasRef.current) return;
@@ -936,32 +1016,100 @@ export function InteractiveMap() {
             />
           </div>
 
-          {/* Quick-Access Horizontal Sede Carousel */}
+          {/* Quick-Access Horizontal Sede Carousel with Drag, Mousewheel & Arrow Controls */}
           <div className="mt-3 block">
-            <div className="text-xs font-mono text-[#AAA8A1] mb-1.5 flex items-center justify-between">
-              <span>LOCALIZAR RAPIDAMENTE POR CIDADE:</span>
-              <span className="text-[#F2C21B] font-bold">Arraste para girar</span>
+            <div className="text-xs font-mono text-[#AAA8A1] mb-2 flex items-center justify-between">
+              <span className="font-bold text-[#E0DDD8] flex items-center gap-1.5">
+                <IconPin className="w-3.5 h-3.5 text-[#F2C21B]" />
+                LOCALIZAR RAPIDAMENTE POR CIDADE:
+              </span>
+              <div className="flex items-center gap-1.5">
+                <span className="hidden sm:inline text-xs text-[#AAA8A1] font-mono mr-1">
+                  ({filteredHubs.length} sedes)
+                </span>
+                <button
+                  type="button"
+                  onClick={() => scrollCarousel("left")}
+                  disabled={!canScrollLeft}
+                  title="Rolar sedes para a esquerda"
+                  aria-label="Rolar sedes para a esquerda"
+                  className={`min-w-[32px] min-h-[32px] rounded-[2px] border flex items-center justify-center transition-all ${
+                    canScrollLeft
+                      ? "bg-[#14161D] border-white/20 text-[#F2C21B] hover:bg-[#F2C21B] hover:text-black active:scale-95 cursor-pointer shadow-md"
+                      : "bg-[#0E0F12] border-white/5 text-white/20 cursor-not-allowed opacity-40"
+                  }`}
+                >
+                  <IconChevronLeft className="w-4 h-4" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollCarousel("right")}
+                  disabled={!canScrollRight}
+                  title="Rolar sedes para a direita"
+                  aria-label="Rolar sedes para a direita"
+                  className={`min-w-[32px] min-h-[32px] rounded-[2px] border flex items-center justify-center transition-all ${
+                    canScrollRight
+                      ? "bg-[#14161D] border-white/20 text-[#F2C21B] hover:bg-[#F2C21B] hover:text-black active:scale-95 cursor-pointer shadow-md"
+                      : "bg-[#0E0F12] border-white/5 text-white/20 cursor-not-allowed opacity-40"
+                  }`}
+                >
+                  <IconChevronRight className="w-4 h-4" />
+                </button>
+              </div>
             </div>
-            <div className="flex gap-2 overflow-x-auto pb-1.5 scrollbar-none snap-x snap-mandatory" role="group" aria-label="Sedes em destaque para navegação rápida">
-              {filteredHubs.map((sede) => {
-                const isSelected = selectedHub.id === sede.id;
-                return (
-                  <button
-                    key={sede.id}
-                    onClick={() => focusOnSede(sede, 2.2)}
-                    aria-pressed={isSelected}
-                    aria-label={`Visualizar ${sede.name} em ${sede.state}`}
-                    className={`flex-shrink-0 snap-start min-h-[38px] px-3.5 py-1.5 rounded-[2px] text-xs font-mono font-bold transition-all duration-150 flex items-center gap-1.5 border active:scale-95 whitespace-nowrap cursor-pointer ${
-                      isSelected
-                        ? "bg-[#F2C21B] text-black border-[#F2C21B] shadow-[0_0_12px_rgba(242,194,27,0.6)] font-extrabold"
-                        : "bg-[#14161D] text-white/80 border-white/10 hover:border-[#F2C21B]/40 hover:text-white"
-                    }`}
-                  >
-                    <IconPin className={`w-3.5 h-3.5 flex-shrink-0 ${isSelected ? "text-black" : "text-[#F2C21B]"}`} />
-                    <span>[{sede.state}] {sede.name.split("—")[0].trim()}</span>
-                  </button>
-                );
-              })}
+
+            {/* Scrollable & Draggable container */}
+            <div className="relative group/carousel">
+              {/* Left Shadow Fade when scrolled */}
+              {canScrollLeft && (
+                <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-[#0C0D0F] to-transparent pointer-events-none z-10" />
+              )}
+              {/* Right Shadow Fade when scrollable */}
+              {canScrollRight && (
+                <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-[#0C0D0F] to-transparent pointer-events-none z-10" />
+              )}
+
+              <div
+                ref={carouselRef}
+                onMouseDown={handleCarouselMouseDown}
+                onMouseMove={handleCarouselMouseMove}
+                onMouseUp={handleCarouselMouseUpOrLeave}
+                onMouseLeave={handleCarouselMouseUpOrLeave}
+                onWheel={handleCarouselWheel}
+                className={`flex gap-2 overflow-x-auto pb-2 scroll-smooth select-none ${
+                  isMouseDragging ? "cursor-grabbing" : "cursor-grab"
+                }`}
+                role="group"
+                aria-label="Sedes em destaque para navegação rápida"
+                style={{
+                  scrollbarWidth: "thin",
+                  scrollbarColor: "rgba(242, 194, 27, 0.4) rgba(255, 255, 255, 0.05)",
+                }}
+              >
+                {filteredHubs.map((sede) => {
+                  const isSelected = selectedHub.id === sede.id;
+                  return (
+                    <button
+                      key={sede.id}
+                      data-sede-id={sede.id}
+                      onClick={() => {
+                        if (hasMovedRef.current) return;
+                        focusOnSede(sede, 2.2);
+                      }}
+                      aria-pressed={isSelected}
+                      aria-label={`Visualizar ${sede.name} em ${sede.state}`}
+                      className={`flex-shrink-0 min-h-[38px] px-3.5 py-1.5 rounded-[2px] text-xs font-mono font-bold transition-all duration-150 flex items-center gap-1.5 border active:scale-95 whitespace-nowrap cursor-pointer ${
+                        isSelected
+                          ? "bg-[#F2C21B] text-black border-[#F2C21B] shadow-[0_0_12px_rgba(242,194,27,0.6)] font-extrabold"
+                          : "bg-[#14161D] text-white/80 border-white/10 hover:border-[#F2C21B]/40 hover:text-white"
+                      }`}
+                    >
+                      <IconPin className={`w-3.5 h-3.5 flex-shrink-0 ${isSelected ? "text-black" : "text-[#F2C21B]"}`} />
+                      <span>[{sede.state}] {sede.name.split("—")[0].trim()}</span>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
