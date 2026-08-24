@@ -549,7 +549,7 @@ export function HomeClient() {
   }, []);
 
   return (
-    <div ref={root} className="min-h-screen bg-[#0A0A0A] text-[#F4F1E8] overflow-x-hidden font-sans">
+    <div ref={root} className="min-h-screen bg-[#0A0A0A] text-[#F4F1E8] overflow-x-clip font-sans">
       <Navbar />
 
 

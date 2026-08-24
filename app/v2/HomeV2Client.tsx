@@ -165,7 +165,7 @@ export function HomeV2Client() {
   };
 
   return (
-    <div ref={root} className="min-h-screen bg-[#080809] text-[#F4F1E8] overflow-x-hidden font-sans selection:bg-[#F2C21B] selection:text-black">
+    <div ref={root} className="min-h-screen bg-[#080809] text-[#F4F1E8] overflow-x-clip font-sans selection:bg-[#F2C21B] selection:text-black">
       {/* Version Switcher Sticky Pill */}
       <div className="fixed top-4 right-4 z-50 flex items-center gap-1.5 p-1 rounded-full bg-black/80 backdrop-blur-md border border-[#F2C21B]/40 shadow-2xl">
         <Link
