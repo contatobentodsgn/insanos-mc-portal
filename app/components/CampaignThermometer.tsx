@@ -58,6 +58,21 @@ const DROP_POINTS: DropPoint[] = [
 
 export function CampaignThermometer() {
   const [selectedFilter, setSelectedFilter] = useState("");
+  const [mobileTranslateY, setMobileTranslateY] = useState<number>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("campaign_mobile_translate_y");
+      if (saved) return parseInt(saved, 10);
+    }
+    return -14;
+  });
+  const [showCalibrator, setShowCalibrator] = useState(true);
+
+  const updateTranslateY = (val: number) => {
+    setMobileTranslateY(val);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("campaign_mobile_translate_y", String(val));
+    }
+  };
 
   const goalTotal = 50000;
   const currentTotal = 42850;
@@ -69,6 +84,73 @@ export function CampaignThermometer() {
 
   return (
     <div className="space-y-4 relative">
+      {/* Painel de Ajuste Manual da Linha Mobile */}
+      {showCalibrator && (
+        <div className="p-3.5 bg-[#12141A]/95 border-2 border-[#F2C21B] rounded-[2px] shadow-[0_0_30px_rgba(242,194,27,0.35)] flex flex-col gap-2.5 z-30">
+          <div className="flex items-center justify-between">
+            <span className="font-mono text-xs text-[#F2C21B] font-bold uppercase tracking-wider flex items-center gap-1.5">
+              <span>🛠️ Ajuste Manual da Pista:</span>
+              <span className="text-white font-['Anton'] text-lg px-2 py-0.5 bg-black border border-[#F2C21B]/40 rounded-[2px]">
+                {mobileTranslateY}px
+              </span>
+            </span>
+            <button
+              onClick={() => setShowCalibrator(false)}
+              className="text-xs text-white/70 hover:text-white px-2.5 py-1 bg-white/10 hover:bg-white/20 border border-white/20 rounded-[2px] cursor-pointer"
+            >
+              Fechar Painel ✕
+            </button>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <input
+              type="range"
+              min="-60"
+              max="40"
+              value={mobileTranslateY}
+              onChange={(e) => updateTranslateY(parseInt(e.target.value, 10))}
+              className="w-full accent-[#F2C21B] cursor-pointer h-2 bg-black rounded-[2px]"
+            />
+          </div>
+
+          <div className="flex flex-wrap items-center gap-2 pt-1">
+            <button
+              onClick={() => updateTranslateY(mobileTranslateY - 5)}
+              className="px-3 py-1.5 bg-white/10 hover:bg-white/20 text-xs font-mono font-bold text-white rounded-[2px] border border-white/20 active:scale-95 cursor-pointer"
+            >
+              -5px
+            </button>
+            <button
+              onClick={() => updateTranslateY(mobileTranslateY - 1)}
+              className="px-3 py-1.5 bg-white/10 hover:bg-white/20 text-xs font-mono font-bold text-white rounded-[2px] border border-white/20 active:scale-95 cursor-pointer"
+            >
+              -1px
+            </button>
+            <button
+              onClick={() => updateTranslateY(mobileTranslateY + 1)}
+              className="px-3 py-1.5 bg-white/10 hover:bg-white/20 text-xs font-mono font-bold text-white rounded-[2px] border border-white/20 active:scale-95 cursor-pointer"
+            >
+              +1px
+            </button>
+            <button
+              onClick={() => updateTranslateY(mobileTranslateY + 5)}
+              className="px-3 py-1.5 bg-white/10 hover:bg-white/20 text-xs font-mono font-bold text-white rounded-[2px] border border-white/20 active:scale-95 cursor-pointer"
+            >
+              +5px
+            </button>
+            <button
+              onClick={() => updateTranslateY(-14)}
+              className="px-3 py-1.5 bg-[#F2C21B]/20 hover:bg-[#F2C21B]/30 text-xs font-mono font-bold text-[#F2C21B] rounded-[2px] border border-[#F2C21B]/50 active:scale-95 cursor-pointer"
+            >
+              Padrão (-14px)
+            </button>
+            <span className="text-xs font-mono text-emerald-400 ml-auto font-bold">
+              ✓ Valor Salvo: {mobileTranslateY}px
+            </span>
+          </div>
+        </div>
+      )}
+
       {/* =========================================================================
           ESTRUTURA OFICIAL: CINEMATOGRÁFICA (ESTRADA REAL)
       ========================================================================= */}
@@ -243,7 +325,7 @@ export function CampaignThermometer() {
 
           {/* Mobile Road View */}
           <div className="block sm:hidden relative w-full my-1 overflow-visible">
-            <div className="w-full relative" style={{ transform: "translateY(-11px)" }}>
+            <div className="w-full relative" style={{ transform: `translateY(${mobileTranslateY}px)` }}>
               <svg
                 viewBox="176 277 935 80"
                 className="w-full h-auto overflow-visible select-none"
@@ -371,11 +453,10 @@ export function CampaignThermometer() {
                     key={st}
                     onClick={() => setSelectedFilter(st)}
                     aria-pressed={selectedFilter === st}
-                    className={`min-h-[40px] px-4 sm:px-5 py-2 rounded-[2px] text-xs font-mono font-bold uppercase transition-all duration-150 whitespace-nowrap active:scale-95 flex items-center justify-center cursor-pointer border ${
-                      selectedFilter === st
+                    className={`min-h-[40px] px-4 sm:px-5 py-2 rounded-[2px] text-xs font-mono font-bold uppercase transition-all duration-150 whitespace-nowrap active:scale-95 flex items-center justify-center cursor-pointer border ${selectedFilter === st
                         ? "bg-[#F2C21B] text-black border-[#F2C21B] shadow-md font-extrabold"
                         : "bg-[#14161D]/90 backdrop-blur-md text-white/75 hover:text-white border-white/10"
-                    }`}
+                      }`}
                   >
                     {st === "" ? "Todos" : st}
                   </button>
