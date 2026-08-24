@@ -410,6 +410,8 @@ export default function HeroScrollMedalThree() {
               ref={fallbackCanvasRef}
               width={540}
               height={540}
+              role="img"
+              aria-label="Medalha tridimensional oficial do Insanos Moto Clube com acabamento em ouro e relevo dos 18 do Forte"
               className="w-full h-full object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.9)]"
             />
           </div>
@@ -421,7 +423,7 @@ export default function HeroScrollMedalThree() {
         ref={hintRef}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2 pointer-events-none transition-opacity duration-300"
       >
-        <span className="text-[11px] font-mono tracking-widest text-[#F2C21B] uppercase bg-black/60 px-3.5 py-1 rounded-full border border-white/10 backdrop-blur-md">
+        <span className="text-xs font-mono tracking-widest text-[#F2C21B] uppercase bg-black/60 px-3.5 py-1 rounded-full border border-white/10 backdrop-blur-md">
           {loading ? "Carregando Medalha 3D…" : "Role para navegar"}
         </span>
         <div className="w-5 h-9 rounded-full border-2 border-white/30 flex items-start justify-center p-1">
@@ -482,7 +484,7 @@ export default function HeroScrollMedalThree() {
       </div>
 
       {/* Right Vertical Scroll Label */}
-      <div className="absolute right-8 bottom-8 hidden lg:flex flex-col items-center gap-2 text-[10px] uppercase font-bold tracking-[0.2em] text-[#AAA8A1] z-30 pointer-events-none">
+      <div className="absolute right-8 bottom-8 hidden lg:flex flex-col items-center gap-2 text-xs uppercase font-bold tracking-[0.2em] text-[#AAA8A1] z-30 pointer-events-none">
         <span className="writing-mode-vertical">Rolar Para Conhecer</span>
         <span className="text-[#F2C21B] text-lg animate-bounce">↓</span>
       </div>

@@ -265,12 +265,12 @@ export function HomeV2Client() {
                 <div className="flex items-center gap-8 pt-4">
                   <div>
                     <strong className="block font-['Anton'] text-4xl sm:text-5xl text-white">12 MIL+</strong>
-                    <span className="text-[10px] text-[#AAA8A1] uppercase font-bold tracking-widest">Integrantes</span>
+                    <span className="text-xs text-[#AAA8A1] uppercase font-bold tracking-widest">Integrantes</span>
                   </div>
                   <div className="w-[1px] h-12 bg-white/20" />
                   <div>
                     <strong className="block font-['Anton'] text-4xl sm:text-5xl text-[#F2C21B]">65</strong>
-                    <span className="text-[10px] text-[#AAA8A1] uppercase font-bold tracking-widest">Países</span>
+                    <span className="text-xs text-[#AAA8A1] uppercase font-bold tracking-widest">Países</span>
                   </div>
                 </div>
 
@@ -342,7 +342,7 @@ export function HomeV2Client() {
                           <IconPin className="w-3 h-3 text-[#F2C21B]" />
                           <span>{face.country}</span>
                         </div>
-                        <span className="text-[10px] text-[#AAA8A1] block font-mono leading-tight">
+                        <span className="text-xs text-[#AAA8A1] block font-mono leading-tight">
                           {face.role}
                         </span>
                       </div>
@@ -412,7 +412,7 @@ export function HomeV2Client() {
                   <span className="text-[#F2C21B]">Uma Só Irmandade.</span>
                 </h2>
 
-                <div className="flex items-center justify-between text-[9.5px] min-[370px]:text-[11px] sm:text-xs font-mono font-bold text-white/80 py-2 border-y border-white/10 whitespace-nowrap">
+                <div className="flex items-center justify-between text-xs font-mono font-bold text-white/80 py-2 border-y border-white/10 whitespace-nowrap">
                   <span>01 DEUS</span>
                   <span className="text-[#F2C21B]">•</span>
                   <span>02 FAMÍLIA</span>
@@ -492,7 +492,7 @@ export function HomeV2Client() {
                       className="h-52 rounded-xl bg-cover bg-center mb-4 border border-white/10 relative overflow-hidden"
                       style={{ backgroundImage: `url(${card.image})` }}
                     >
-                      <div className="absolute bottom-2 left-2 px-2.5 py-0.5 rounded bg-black/80 text-[10px] font-mono text-[#F2C21B] uppercase font-bold">
+                      <div className="absolute bottom-2 left-2 px-2.5 py-0.5 rounded bg-black/80 text-xs font-mono text-[#F2C21B] uppercase font-bold">
                         {card.tag}
                       </div>
                     </div>
@@ -503,7 +503,7 @@ export function HomeV2Client() {
                     </p>
                   </div>
 
-                  <div className="pt-3 border-t border-white/10 text-[11px] font-mono text-white/40">
+                  <div className="pt-3 border-t border-white/10 text-xs font-mono text-white/40">
                     Acervo Histórico Insanos MC
                   </div>
                 </div>
@@ -653,13 +653,13 @@ export function HomeV2Client() {
                         className="h-60 rounded-xl bg-cover bg-center mb-4 border border-white/10 relative overflow-hidden"
                         style={{ backgroundImage: `url(${ldr.image})` }}
                       >
-                        <div className="absolute bottom-2 left-2 right-2 px-2 py-1 rounded bg-black/80 text-[10px] font-mono text-[#F2C21B] font-bold text-center">
+                        <div className="absolute bottom-2 left-2 right-2 px-2 py-1 rounded bg-black/80 text-xs font-mono text-[#F2C21B] font-bold text-center">
                           {ldr.patch}
                         </div>
                       </div>
                       <div>
                         <h4 className="font-['Anton'] text-xl uppercase text-white mb-1">{ldr.name}</h4>
-                        <span className="text-[11px] text-[#AAA8A1] uppercase font-mono block">{ldr.role}</span>
+                        <span className="text-xs text-[#AAA8A1] uppercase font-mono block">{ldr.role}</span>
                       </div>
                     </div>
                   ))}
@@ -676,12 +676,12 @@ export function HomeV2Client() {
                     className="h-60 rounded-xl bg-cover bg-center mb-4 grayscale border border-white/20 relative"
                     style={{ backgroundImage: `url(${ASSETS_V2.memorialLeader.image})` }}
                   >
-                    <div className="absolute top-2 right-2 px-2.5 py-0.5 rounded bg-black/80 text-[10px] font-mono text-[#F2C21B] font-bold">
+                    <div className="absolute top-2 right-2 px-2.5 py-0.5 rounded bg-black/80 text-xs font-mono text-[#F2C21B] font-bold">
                       IN MEMORIAM
                     </div>
                   </div>
                   <div>
-                    <span className="text-[10px] font-mono text-[#F2C21B] uppercase tracking-widest block mb-1">
+                    <span className="text-xs font-mono text-[#F2C21B] uppercase tracking-widest block mb-1">
                       {ASSETS_V2.memorialLeader.tag}
                     </span>
                     <h4 className="font-['Anton'] text-2xl uppercase text-white mb-1">
@@ -710,7 +710,7 @@ export function HomeV2Client() {
         <section className="py-24 sm:py-32 bg-[#0B0C0E] border-b border-white/10 relative">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8">
             <div className="max-w-3xl mb-12" data-reveal>
-              <span className="px-2.5 sm:px-3 py-1 rounded bg-[#F2C21B]/15 text-[#F2C21B] text-[9.5px] min-[360px]:text-[10.5px] sm:text-xs font-mono font-bold uppercase tracking-wider block w-fit mb-3 whitespace-nowrap border border-[#F2C21B]/30">
+              <span className="px-2.5 sm:px-3 py-1 rounded bg-[#F2C21B]/15 text-[#F2C21B] text-xs font-mono font-bold uppercase tracking-wider block w-fit mb-3 whitespace-nowrap border border-[#F2C21B]/30">
                 (07) Content Hub — Notícias, Eventos e Conteúdos
               </span>
               <h2 className="font-['Anton'] uppercase text-4xl sm:text-6xl lg:text-7xl leading-tight text-white mb-2">
@@ -769,9 +769,9 @@ export function HomeV2Client() {
                     <div key={idx} className="p-3.5 rounded-xl bg-[#090A0B] border border-white/10 flex items-center justify-between">
                       <div>
                         <h5 className="font-bold text-xs text-white mb-0.5">{evt.title}</h5>
-                        <span className="text-[10px] text-[#AAA8A1] font-mono">{evt.desc}</span>
+                        <span className="text-xs text-[#AAA8A1] font-mono">{evt.desc}</span>
                       </div>
-                      <span className="text-[10px] font-mono text-[#F2C21B] bg-[#F2C21B]/10 px-2 py-1 rounded">
+                      <span className="text-xs font-mono text-[#F2C21B] bg-[#F2C21B]/10 px-2 py-1 rounded">
                         {evt.date}
                       </span>
                     </div>
@@ -792,19 +792,19 @@ export function HomeV2Client() {
               <div className="lg:col-span-3 space-y-4">
                 {/* Expeditions */}
                 <div className="p-5 rounded-xl bg-[#121316] border border-white/10">
-                  <span className="text-[10px] font-mono uppercase font-bold text-[#F2C21B] flex items-center gap-1 mb-1">
+                  <span className="text-xs font-mono uppercase font-bold text-[#F2C21B] flex items-center gap-1 mb-1">
                     <IconPin className="w-3 h-3 text-[#F2C21B]" />
                     <span>Expedições</span>
                   </span>
                   <h5 className="font-['Anton'] text-lg uppercase text-white mb-1">Estradas & Destinos</h5>
-                  <p className="text-[11px] text-[#AAA8A1] mb-3">Grandes travessias documentadas pelos pilotos.</p>
+                  <p className="text-xs text-[#AAA8A1] mb-3">Grandes travessias documentadas pelos pilotos.</p>
                   <Link href="/18news" className="text-xs font-bold text-[#F2C21B] hover:underline">Ver Expedições →</Link>
                 </div>
 
                 {/* Radio Live */}
                 <div className="p-5 rounded-xl bg-gradient-to-r from-[#17191E] to-[#121316] border border-[#F2C21B]/40">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-[10px] font-mono uppercase font-bold text-[#F2C21B]">((•)) Rádio 24h</span>
+                    <span className="text-xs font-mono uppercase font-bold text-[#F2C21B]">((•)) Rádio 24h</span>
                     <span className={`w-2 h-2 rounded-full ${isPlayingRadio ? "bg-emerald-400 animate-ping" : "bg-emerald-500"}`} />
                   </div>
                   <h5 className="font-['Anton'] text-lg uppercase text-white mb-2">A Voz da Irmandade</h5>
@@ -821,14 +821,14 @@ export function HomeV2Client() {
                 <div className="p-5 rounded-xl bg-[#121316] border border-white/10 flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between mb-1">
-                      <span className="text-[10px] font-mono uppercase font-bold text-[#F2C21B] flex items-center gap-1">
+                      <span className="text-xs font-mono uppercase font-bold text-[#F2C21B] flex items-center gap-1">
                         <IconPodcast className="w-3.5 h-3.5 text-[#F2C21B]" />
                         <span>Podcast 18Cast</span>
                       </span>
-                      <span className="text-[9px] font-mono text-red-400 uppercase font-bold tracking-wider">YouTube</span>
+                      <span className="text-xs font-mono text-red-400 uppercase font-bold tracking-wider">YouTube</span>
                     </div>
                     <h5 className="font-['Anton'] text-lg uppercase text-white mb-1">Falando de Irmandade</h5>
-                    <p className="text-[11px] text-[#AAA8A1] mb-3">Relatos de veteranos e conduta na estrada.</p>
+                    <p className="text-xs text-[#AAA8A1] mb-3">Relatos de veteranos e conduta na estrada.</p>
                   </div>
                   <a
                     href="https://www.youtube.com/@18cast"
@@ -848,59 +848,60 @@ export function HomeV2Client() {
         {/* =========================================================================
             SEÇÃO 08: A ESTRADA COMEÇA AQUI (PÔR DO SOL + FORMULÁRIO EM LINHA + SELO)
         ========================================================================= */}
-        <section
-          className="py-24 sm:py-36 bg-cover bg-center relative overflow-hidden text-center"
-          style={{
-            backgroundImage: `linear-gradient(180deg, rgba(8,8,9,0.9) 0%, rgba(8,8,9,0.7) 50%, rgba(8,8,9,0.95) 100%), url(${ASSETS_V2.sunsetBg})`,
-          }}
-        >
-          <div className="max-w-4xl mx-auto px-4 sm:px-8 relative z-10" data-reveal>
-            <span className="text-xs uppercase font-extrabold tracking-[0.25em] text-[#F2C21B] block mb-3">
-              Insanos MC Sempre, Sempre, Sempre
+        <section className="py-24 sm:py-32 bg-[#08090B] border-b border-white/10 relative overflow-hidden">
+          <div className="max-w-4xl mx-auto px-4 sm:px-8 text-center relative z-10">
+            <span className="px-3 py-1 rounded bg-[#F2C21B]/15 text-[#F2C21B] text-xs font-mono font-bold uppercase tracking-wider inline-block mb-4 border border-[#F2C21B]/30">
+              Adesão & Ingresso Oficial
             </span>
-            <h2 className="font-['Anton'] uppercase text-5xl sm:text-8xl text-white leading-tight mb-4">
-              A estrada começa aqui.<br />
-              <span className="text-[#F2C21B]">Faça parte.</span>
+            <h2 className="font-['Anton'] uppercase text-4xl sm:text-6xl text-white mb-4">
+              A estrada começa aqui.
             </h2>
-            <p className="text-sm sm:text-lg text-[#C7C5BF] max-w-xl mx-auto leading-relaxed mb-10 font-normal">
-              Diga onde você está. Nós conectamos você ao capítulo mais próximo.
+            <p className="text-[#AAA8A1] text-sm sm:text-base max-w-xl mx-auto mb-10 leading-relaxed">
+              O Insanos MC não recruta membros por conveniência.<br />
+              Nós forjamos irmãos por afinidade de caráter, lealdade e atitude.
             </p>
 
             {fastFormSent ? (
-              <div className="p-8 rounded-2xl bg-black/80 backdrop-blur-md border border-[#F2C21B] max-w-lg mx-auto text-center space-y-4">
-                <div className="w-16 h-16 rounded-full bg-[#F2C21B] text-black font-bold text-2xl flex items-center justify-center mx-auto">
-                  <IconCheck className="w-8 h-8 text-black" />
+              <div className="p-8 rounded-2xl bg-[#121316] border border-[#F2C21B] text-center max-w-md mx-auto animate-in zoom-in-95">
+                <div className="w-14 h-14 rounded-full bg-[#F2C21B]/20 text-[#F2C21B] flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                  ✓
                 </div>
-                <h3 className="font-['Anton'] text-2xl uppercase text-white">Solicitação Recebida!</h3>
-                <p className="text-xs text-[#AAA8A1]">
-                  A diretoria regional entrará em contato via WhatsApp para orientar sobre o primeiro encontro.
+                <h3 className="font-['Anton'] text-2xl uppercase text-white mb-2">Solicitação Recebida</h3>
+                <p className="text-xs text-[#AAA8A1] leading-relaxed mb-6">
+                  Seus dados foram encaminhados à diretoria regional. Aguarde o contato da facção mais próxima.
                 </p>
                 <button
                   onClick={() => setFastFormSent(false)}
-                  className="text-xs text-[#F2C21B] underline hover:text-white"
+                  className="px-6 py-2.5 bg-white/10 hover:bg-white/20 text-white rounded text-xs font-mono transition-colors"
                 >
                   Enviar outra mensagem
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleFastFormSubmit} className="max-w-2xl mx-auto space-y-4">
+              <form onSubmit={handleFastFormSubmit} className="max-w-2xl mx-auto space-y-4 text-left">
                 <div className="grid sm:grid-cols-2 gap-3">
-                  <input
-                    type="text"
-                    required
-                    placeholder="Cidade / Estado ou País"
-                    value={fastFormData.cityState}
-                    onChange={(e) => setFastFormData({ ...fastFormData, cityState: e.target.value })}
-                    className="w-full bg-black/70 backdrop-blur-md border border-white/25 rounded-xl px-4 py-4 text-sm text-white placeholder-white/50 focus:outline-none focus:border-[#F2C21B]"
-                  />
-                  <input
-                    type="text"
-                    required
-                    placeholder="WhatsApp ou E-mail"
-                    value={fastFormData.contact}
-                    onChange={(e) => setFastFormData({ ...fastFormData, contact: e.target.value })}
-                    className="w-full bg-black/70 backdrop-blur-md border border-white/25 rounded-xl px-4 py-4 text-sm text-white placeholder-white/50 focus:outline-none focus:border-[#F2C21B]"
-                  />
+                  <div>
+                    <label className="block text-xs font-mono uppercase text-[#AAA8A1] mb-1.5 font-bold">Cidade / Estado ou País</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="Ex: Osasco - SP"
+                      value={fastFormData.cityState}
+                      onChange={(e) => setFastFormData({ ...fastFormData, cityState: e.target.value })}
+                      className="w-full bg-[#121316] border border-white/15 rounded-xl px-4 py-3 text-xs text-white placeholder-white/30 focus:outline-none focus:border-[#F2C21B]"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-mono uppercase text-[#AAA8A1] mb-1.5 font-bold">WhatsApp ou E-mail</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="(11) 99999-9999"
+                      value={fastFormData.contact}
+                      onChange={(e) => setFastFormData({ ...fastFormData, contact: e.target.value })}
+                      className="w-full bg-[#121316] border border-white/15 rounded-xl px-4 py-3 text-xs text-white placeholder-white/30 focus:outline-none focus:border-[#F2C21B]"
+                    />
+                  </div>
                 </div>
 
                 <div className="flex items-center justify-center gap-2 text-xs text-[#AAA8A1]">
@@ -917,16 +918,16 @@ export function HomeV2Client() {
                   </label>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                <div className="pt-2 flex flex-col sm:flex-row gap-3">
                   <button
                     type="submit"
-                    className="flex-1 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-base rounded-xl transition-colors duration-200 hover-lift shadow-xl flex items-center justify-center gap-2"
+                    className="flex-1 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-sm rounded-xl transition-colors duration-200 shadow-xl hover-lift flex items-center justify-center gap-2"
                   >
-                    <span>Faça Parte</span>
-                    <IconArrowRight className="w-4 h-4 text-black" strokeWidth={2.5} />
+                    <span>Quero Fazer Parte do Insanos MC</span>
+                    <span>→</span>
                   </button>
                   <a
-                    href="https://wa.me/5511988881818?text=Ola%2C%20gostaria%20de%20saber%20como%20ingressar%20no%20Insanos%20MC"
+                    href="https://wa.me/5511986421818"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-colors flex items-center justify-center gap-2"
@@ -936,7 +937,7 @@ export function HomeV2Client() {
                   </a>
                 </div>
 
-                <p className="text-[11px] text-white/50 pt-2 flex items-center justify-center gap-1.5">
+                <p className="text-xs text-white/50 pt-2 flex items-center justify-center gap-1.5">
                   <IconLock className="w-3.5 h-3.5 text-[#AAA8A1]" />
                   <span>Você saberá o próximo passo antes de enviar.</span>
                 </p>
@@ -947,7 +948,7 @@ export function HomeV2Client() {
             <div className="mt-16 flex justify-center">
               <div className="relative w-28 h-28 rounded-full border border-white/20 flex items-center justify-center p-2 group">
                 <div className="w-full h-full rounded-full border border-dashed border-[#F2C21B]/60 animate-spin [animation-duration:20s]" />
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-[8px] font-mono uppercase font-bold text-[#F2C21B] tracking-tighter text-center">
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-xs font-mono uppercase font-bold text-[#F2C21B] tracking-tighter text-center">
                   <span>RESERVE</span>
                   <span className="font-['Anton'] text-xs text-white">OFICIAL</span>
                   <span>18 DO FORTE</span>

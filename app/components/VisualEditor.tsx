@@ -277,21 +277,21 @@ export function VisualEditor() {
 
         {/* Edit Mode Active Control Bar */}
         {isEditing ? (
-          <div className="bg-[#121316]/95 backdrop-blur-xl border border-[#F2C21B] shadow-2xl rounded-2xl p-4 flex flex-col sm:flex-row items-center gap-3 sm:gap-4 max-w-xl text-white">
+          <div className="bg-[#121316]/95 backdrop-blur-xl border border-[#F2C21B] shadow-2xl rounded-[2px] p-4 flex flex-col sm:flex-row items-center gap-3 sm:gap-4 max-w-xl text-white">
             <div className="flex items-center gap-2.5">
               <span className="w-2.5 h-2.5 rounded-full bg-[#F2C21B] animate-pulse" />
               <div>
                 <p className="font-['Anton'] uppercase text-sm tracking-wide text-white">
                   Modo Edição Visual Ativo
                 </p>
-                <p className="text-[10px] text-[#AAA8A1] font-mono">
+                <p className="text-xs text-[#AAA8A1] font-mono">
                   Clique em qualquer texto na tela para editar
                 </p>
               </div>
             </div>
 
             {changeCount > 0 && (
-              <span className="px-2.5 py-1 rounded bg-[#F2C21B]/15 text-[#F2C21B] font-mono text-[10px] font-bold">
+              <span className="px-2.5 py-1 rounded-[2px] bg-[#F2C21B]/15 text-[#F2C21B] font-mono text-xs font-bold">
                 {changeCount} alteração{changeCount > 1 ? "ões" : ""}
               </span>
             )}

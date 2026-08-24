@@ -165,7 +165,7 @@ export function PodcastFeed18Cast() {
 
           {/* Episode Description */}
           <div className="p-5 rounded-[2px] bg-[#0C0E12] border border-white/10 text-xs text-[#D4D1CA] leading-relaxed">
-            <strong className="text-white font-mono block mb-1 uppercase tracking-wider text-[11px]">Sinopse Oficial:</strong>
+            <strong className="text-white font-mono block mb-1 uppercase tracking-wider text-xs">Sinopse Oficial:</strong>
             {selectedEpisode.desc}
           </div>
         </div>
@@ -176,10 +176,10 @@ export function PodcastFeed18Cast() {
             <span className="text-xs font-mono font-bold uppercase text-white">
               Episódios em Destaque
             </span>
-            <span className="text-[11px] font-mono text-[#F2C21B] font-bold">Temporada 2026</span>
+            <span className="text-xs font-mono text-[#F2C21B] font-bold">Temporada 2026</span>
           </div>
 
-          <div className="space-y-3 max-h-[580px] overflow-y-auto pr-1">
+          <div className="space-y-3 max-h-[580px] overflow-y-auto pr-1" role="group" aria-label="Lista de episódios do 18Cast">
             {EPISODES_18CAST.map((ep) => {
               const isCurrent = selectedEpisode.id === ep.id;
               return (
@@ -187,6 +187,7 @@ export function PodcastFeed18Cast() {
                   key={ep.id}
                   onClick={() => setSelectedEpisode(ep)}
                   role="button"
+                  aria-pressed={isCurrent}
                   tabIndex={0}
                   className={`p-4 rounded-[2px] border-2 transition-all duration-200 cursor-pointer flex gap-3.5 items-center group hover-lift ${
                     isCurrent
@@ -210,15 +211,15 @@ export function PodcastFeed18Cast() {
                   {/* Info */}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between gap-2 mb-1">
-                      <span className="text-[10px] font-mono font-bold text-[#F2C21B] px-2 py-0.5 rounded-[2px] bg-[#F2C21B]/15">
+                      <span className="text-xs font-mono font-bold text-[#F2C21B] px-2 py-0.5 rounded-[2px] bg-[#F2C21B]/15">
                         {ep.number}
                       </span>
-                      <span className="text-[10px] font-mono text-white/50">{ep.duration}</span>
+                      <span className="text-xs font-mono text-white/50">{ep.duration}</span>
                     </div>
                     <h5 className="font-['Anton'] text-base uppercase text-white truncate leading-tight group-hover:text-[#F2C21B] transition-colors">
                       {ep.title}
                     </h5>
-                    <p className="text-[11px] text-[#AAA8A1] truncate mt-0.5 font-mono">
+                    <p className="text-xs text-[#AAA8A1] truncate mt-0.5 font-mono">
                       {ep.guest}
                     </p>
                   </div>

@@ -123,7 +123,7 @@ export function Navbar({}: NavbarProps) {
       </a>
 
       {/* Top Banner / Ticker */}
-      <div className="bg-[#0E0F11] border-b border-white/5 py-1.5 px-4 sm:px-8 text-[10.5px] sm:text-[11px] text-[#AAA8A1] flex justify-between items-center select-none overflow-hidden relative">
+      <div className="bg-[#0E0F11] border-b border-white/5 py-1.5 px-4 sm:px-8 text-xs text-[#AAA8A1] flex justify-between items-center select-none overflow-hidden relative">
         {/* Mobile Horizontal Auto-scrolling Marquee */}
         <div className="md:hidden flex overflow-hidden w-full">
           <div className="animate-marquee-track flex items-center gap-6 text-[#AAA8A1]">
@@ -181,7 +181,7 @@ export function Navbar({}: NavbarProps) {
             </span>
           </button>
           <span className="text-white/20">|</span>
-          <span className="font-mono text-[11px] text-[#F2C21B]">{INSTITUTIONAL_METRICS.slogan}</span>
+          <span className="font-mono text-xs text-[#F2C21B]">{INSTITUTIONAL_METRICS.slogan}</span>
         </div>
       </div>
 
@@ -210,7 +210,7 @@ export function Navbar({}: NavbarProps) {
 
           {/* Desktop Navigation */}
           <nav
-            className="hidden lg:flex items-center gap-6 xl:gap-8 text-[11.5px] uppercase font-bold tracking-[0.14em]"
+            className="hidden lg:flex items-center gap-6 xl:gap-8 text-xs uppercase font-bold tracking-[0.14em]"
             aria-label="Menu Principal"
           >
             {navLinks.map((link) => {
@@ -254,7 +254,7 @@ export function Navbar({}: NavbarProps) {
               ) : (
                 <span className="w-1.5 h-1.5 bg-[#F2C21B] shrink-0 rounded-none" />
               )}
-              <span className="font-mono text-[11px] tracking-wider uppercase whitespace-nowrap">
+              <span className="font-mono text-xs tracking-wider uppercase whitespace-nowrap">
                 {isPlayingRadio ? "NO AR" : "RÁDIO 24H"}
               </span>
             </button>
@@ -299,7 +299,7 @@ export function Navbar({}: NavbarProps) {
                   <span className="w-0.5 bg-[#F2C21B] h-1/2 animate-[bounce_1.3s_infinite] rounded-t-sm" />
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="font-mono text-[#F2C21B] font-bold uppercase tracking-wider text-[11px] flex items-center gap-1.5">
+                  <span className="font-mono text-[#F2C21B] font-bold uppercase tracking-wider text-xs flex items-center gap-1.5">
                     <span className="w-2 h-2 rounded-full bg-red-500 animate-ping inline-block" />
                     RÁDIO AO VIVO:
                   </span>
@@ -333,14 +333,14 @@ export function Navbar({}: NavbarProps) {
                     className="w-20 lg:w-28 accent-[#F2C21B] h-1 bg-white/20 rounded cursor-pointer focus:outline-none"
                     aria-label="Controle de volume da rádio"
                   />
-                  <span className="text-[10px] font-mono text-[#AAA8A1] w-7 text-right">
+                  <span className="text-xs font-mono text-[#AAA8A1] w-7 text-right">
                     {currentVolume}%
                   </span>
                 </div>
 
                 <button
                   onClick={pauseRadio}
-                  className="px-3 py-1 bg-[#F2C21B] hover:bg-[#ffe053] text-black rounded-[2px] text-[10.5px] font-['Anton'] tracking-wider uppercase transition-all flex items-center gap-1.5 shadow-md hover-lift cursor-pointer"
+                  className="px-3 py-1 bg-[#F2C21B] hover:bg-[#ffe053] text-black rounded-[2px] text-xs font-['Anton'] tracking-wider uppercase transition-all flex items-center gap-1.5 shadow-md hover-lift cursor-pointer"
                   aria-label="Pausar rádio"
                 >
                   <span>Pausar</span>

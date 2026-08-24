@@ -195,7 +195,7 @@ export function HistoriaClient() {
                     style={{ backgroundImage: `url('/images/insanos/leader_presidencia.webp')` }}
                   >
                     <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-transparent to-transparent" />
-                    <span className="absolute top-3 left-3 px-2.5 py-1 rounded-[2px] bg-black/75 text-[#F2C21B] font-mono text-[9.5px] font-bold uppercase tracking-wider border border-white/10">
+                    <span className="absolute top-3 left-3 px-2.5 py-1 rounded-[2px] bg-black/75 text-[#F2C21B] font-mono text-xs font-bold uppercase tracking-wider border border-white/10">
                       Fundador & Presidência
                     </span>
                   </div>
@@ -217,7 +217,7 @@ export function HistoriaClient() {
                     style={{ backgroundImage: `url('/images/insanos/leader_executiva.webp')` }}
                   >
                     <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-transparent to-transparent" />
-                    <span className="absolute top-3 left-3 px-2.5 py-1 rounded-[2px] bg-black/75 text-[#F2C21B] font-mono text-[9.5px] font-bold uppercase tracking-wider border border-white/10">
+                    <span className="absolute top-3 left-3 px-2.5 py-1 rounded-[2px] bg-black/75 text-[#F2C21B] font-mono text-xs font-bold uppercase tracking-wider border border-white/10">
                       Cofundador & Vice-Presidência
                     </span>
                   </div>
@@ -239,7 +239,7 @@ export function HistoriaClient() {
                     style={{ backgroundImage: `url('/images/insanos/memorial_edson_lopes.webp')` }}
                   >
                     <div className="absolute inset-0 bg-gradient-to-t from-[#15161A] via-black/40 to-transparent" />
-                    <span className="absolute top-3 left-3 px-2.5 py-1 rounded-[2px] bg-black/90 text-[#F2C21B] font-mono text-[9.5px] font-bold uppercase tracking-wider border border-[#F2C21B]/40 shadow-lg">
+                    <span className="absolute top-3 left-3 px-2.5 py-1 rounded-[2px] bg-black/90 text-[#F2C21B] font-mono text-xs font-bold uppercase tracking-wider border border-[#F2C21B]/40 shadow-lg">
                       Pioneiro · In Memoriam
                     </span>
                   </div>
@@ -261,7 +261,7 @@ export function HistoriaClient() {
                     style={{ backgroundImage: `url('/images/insanos/leader_midia.webp')` }}
                   >
                     <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-transparent to-transparent" />
-                    <span className="absolute top-3 left-3 px-2.5 py-1 rounded-[2px] bg-black/75 text-[#F2C21B] font-mono text-[9.5px] font-bold uppercase tracking-wider border border-white/10">
+                    <span className="absolute top-3 left-3 px-2.5 py-1 rounded-[2px] bg-black/75 text-[#F2C21B] font-mono text-xs font-bold uppercase tracking-wider border border-white/10">
                       Cofundador & Identidade
                     </span>
                   </div>
@@ -353,11 +353,12 @@ export function HistoriaClient() {
             </div>
 
             {/* Timeline Milestones Navigation (Metallic Badge Buttons) */}
-            <div className="flex flex-wrap justify-center gap-3 mb-12">
+            <div className="flex flex-wrap justify-center gap-3 mb-12" role="group" aria-label="Selecione um marco histórico">
               {TIMELINE_EXPANDED.map((item, idx) => (
                 <button
                   key={item.year + item.title}
                   onClick={() => setSelectedMilestone(idx)}
+                  aria-pressed={selectedMilestone === idx}
                   className={`px-6 py-3 rounded-[2px] font-['Anton'] text-base sm:text-xl uppercase tracking-wider transition-all duration-200 cursor-pointer border-2 ${
                     selectedMilestone === idx
                       ? "bg-gradient-to-b from-[#F2C21B] to-[#D4A50E] text-black shadow-[0_0_20px_rgba(242,194,27,0.4)] border-[#FFE066] scale-105 font-extrabold"

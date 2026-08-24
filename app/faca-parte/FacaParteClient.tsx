@@ -196,7 +196,7 @@ export function FacaParteClient() {
                     <h3 className="font-['Anton'] text-2xl uppercase text-white mb-3">{step.title}</h3>
                     <p className="text-xs text-[#AAA8A1] leading-relaxed">{step.desc}</p>
                   </div>
-                  <div className="mt-6 pt-4 border-t border-white/5 text-[10px] uppercase font-mono text-[#F2C21B]">
+                  <div className="mt-6 pt-4 border-t border-white/5 text-xs uppercase font-mono text-[#F2C21B]">
                     Fase Obrigatória
                   </div>
                 </div>
@@ -210,9 +210,10 @@ export function FacaParteClient() {
           <div className="max-w-[1000px] mx-auto px-4 sm:px-8">
             {/* Tab Selector */}
             <div className="flex justify-center mb-10">
-              <div className="inline-flex bg-[#141519] p-1.5 rounded-[2px] border border-white/10">
+              <div className="inline-flex bg-[#141519] p-1.5 rounded-[2px] border border-white/10" role="group" aria-label="Selecione o modo de inscrição ou avaliação">
                 <button
                   onClick={() => setCurrentTab("formulario")}
+                  aria-pressed={currentTab === "formulario"}
                   className={`px-6 py-2.5 rounded-[2px] font-['Anton'] uppercase text-sm tracking-wider transition-colors duration-150 cursor-pointer ${
                     currentTab === "formulario" ? "bg-[#F2C21B] text-black font-extrabold" : "text-white/60 hover:text-white"
                   }`}
@@ -221,6 +222,7 @@ export function FacaParteClient() {
                 </button>
                 <button
                   onClick={() => setCurrentTab("simulador")}
+                  aria-pressed={currentTab === "simulador"}
                   className={`px-6 py-2.5 rounded-[2px] font-['Anton'] uppercase text-sm tracking-wider transition-colors duration-150 flex items-center gap-2 cursor-pointer ${
                     currentTab === "simulador" ? "bg-[#F2C21B] text-black font-extrabold" : "text-white/60 hover:text-white"
                   }`}
@@ -474,7 +476,7 @@ export function FacaParteClient() {
                       {/* LGPD Compliance Notice Box */}
                       <div className="p-3.5 rounded-[2px] bg-black/40 border border-[#F2C21B]/30 flex items-start gap-3 text-xs text-[#D4D1CA]">
                         <span className="text-[#F2C21B] text-base shrink-0 mt-0.5">🔒</span>
-                        <p className="leading-relaxed text-[11.5px]">
+                        <p className="leading-relaxed text-xs">
                           <strong>Aviso de Privacidade & LGPD:</strong> Seus dados serão utilizados exclusivamente para analisar sua solicitação de ingresso e encaminhá-la à diretoria regional responsável pela sua cidade. Consulte nossa{" "}
                           <Link href="/privacidade" target="_blank" className="text-[#F2C21B] underline hover:text-[#ffe053]">
                             Política de Privacidade

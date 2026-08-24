@@ -416,10 +416,10 @@ export function DnaQuiz({ onProceedToForm }: DnaQuizProps = {}) {
           {/* Gamification Preview Badge Card */}
           <div className="max-w-md mx-auto p-5 rounded-[2px] bg-gradient-to-b from-[#1E2026] to-[#0D0E10] border-2 border-[#F2C21B]/40 shadow-2xl mb-8 text-left space-y-3">
             <div className="flex items-center justify-between border-b border-white/10 pb-3">
-              <span className="text-[11px] font-mono text-[#F2C21B] uppercase tracking-wider font-bold">
+              <span className="text-xs font-mono text-[#F2C21B] uppercase tracking-wider font-bold">
                 Insanos MC · 18 do Forte
               </span>
-              <span className="px-2.5 py-0.5 rounded-[2px] bg-emerald-500/20 text-emerald-300 font-mono text-[10px] font-bold">
+              <span className="px-2.5 py-0.5 rounded-[2px] bg-emerald-500/20 text-emerald-300 font-mono text-xs font-bold">
                 VALIDADO
               </span>
             </div>
@@ -434,7 +434,7 @@ export function DnaQuiz({ onProceedToForm }: DnaQuizProps = {}) {
                 <p className="text-xs text-[#AAA8A1]">Perfil: Disciplina, Fé & Ação Social</p>
               </div>
             </div>
-            <div className="text-[11px] text-[#88857E] font-mono pt-2 border-t border-white/5 flex justify-between">
+            <div className="text-xs text-[#88857E] font-mono pt-2 border-t border-white/5 flex justify-between">
               <span>#SomosDeVerdade</span>
               <span>Padronizado para Stories (9:16)</span>
             </div>

@@ -27,7 +27,7 @@ export function RadioBar() {
             <span className="w-1 bg-[#F2C21B] h-1/2 animate-[bounce_1.3s_infinite] rounded-t-sm" />
           </div>
           <div className="truncate flex items-center gap-2 min-w-0">
-            <span className="text-[#F2C21B] font-bold uppercase tracking-wider text-[10.5px] shrink-0 flex items-center gap-1.5 font-mono">
+            <span className="text-[#F2C21B] font-bold uppercase tracking-wider text-xs shrink-0 flex items-center gap-1.5 font-mono">
               <span className="w-2 h-2 rounded-full bg-red-500 animate-ping inline-block" />
               AO VIVO:
             </span>

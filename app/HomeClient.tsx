@@ -571,19 +571,19 @@ export function HomeClient() {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 pt-10 border-t border-white/10" data-reveal>
               <div>
                 <strong className="block font-['Anton'] text-3xl sm:text-6xl text-[#F2C21B] tracking-[0.04em]">{INSTITUTIONAL_METRICS.members}</strong>
-                <span className="text-[11px] sm:text-xs text-[#AAA8A1] uppercase font-bold tracking-wider">{INSTITUTIONAL_METRICS.membersLabel}</span>
+                <span className="text-xs text-[#AAA8A1] uppercase font-bold tracking-wider">{INSTITUTIONAL_METRICS.membersLabel}</span>
               </div>
               <div>
                 <strong className="block font-['Anton'] text-3xl sm:text-6xl text-[#F2C21B] tracking-[0.04em]">{INSTITUTIONAL_METRICS.countries}</strong>
-                <span className="text-[11px] sm:text-xs text-[#AAA8A1] uppercase font-bold tracking-wider">{INSTITUTIONAL_METRICS.countriesLabel}</span>
+                <span className="text-xs text-[#AAA8A1] uppercase font-bold tracking-wider">{INSTITUTIONAL_METRICS.countriesLabel}</span>
               </div>
               <div>
                 <strong className="block font-['Anton'] text-3xl sm:text-6xl text-[#F2C21B] tracking-[0.04em]">{INSTITUTIONAL_METRICS.familiesAssisted}</strong>
-                <span className="text-[11px] sm:text-xs text-[#AAA8A1] uppercase font-bold tracking-wider">{INSTITUTIONAL_METRICS.familiesAssistedLabel}</span>
+                <span className="text-xs text-[#AAA8A1] uppercase font-bold tracking-wider">{INSTITUTIONAL_METRICS.familiesAssistedLabel}</span>
               </div>
               <div>
                 <strong className="block font-['Anton'] text-3xl sm:text-6xl text-[#F2C21B] tracking-[0.04em]">{INSTITUTIONAL_METRICS.chapters}</strong>
-                <span className="text-[11px] sm:text-xs text-[#AAA8A1] uppercase font-bold tracking-wider">{INSTITUTIONAL_METRICS.chaptersLabel}</span>
+                <span className="text-xs text-[#AAA8A1] uppercase font-bold tracking-wider">{INSTITUTIONAL_METRICS.chaptersLabel}</span>
               </div>
             </div>
           </div>
@@ -638,10 +638,10 @@ export function HomeClient() {
                           {pillar.title}
                         </h3>
                         <div className="flex items-end justify-between mb-2">
-                          <div className="text-[10.5px] min-[380px]:text-[11px] sm:text-xs font-bold uppercase text-[#F2C21B] leading-tight tracking-wide">
+                          <div className="text-xs font-bold uppercase text-[#F2C21B] leading-tight tracking-wide">
                             {pillar.subtitle}
                           </div>
-                          <span className="sm:hidden text-[10px] font-mono text-[#F2C21B]/80 flex items-center gap-1 bg-black/50 px-2 py-0.5 rounded-[2px] border border-white/10">
+                          <span className="sm:hidden text-xs font-mono text-[#F2C21B]/80 flex items-center gap-1 bg-black/50 px-2 py-0.5 rounded-[2px] border border-white/10">
                             {isHovered ? "▲" : "▼ Detalhes"}
                           </span>
                         </div>
@@ -653,7 +653,7 @@ export function HomeClient() {
                               : "max-h-0 opacity-0 translate-y-2 pointer-events-none"
                           }`}
                         >
-                          <div className="text-[12px] sm:text-[12.5px] lg:text-[13px] text-[#F4F1E8] font-medium leading-tight sm:leading-snug border-l-2 border-[#F2C21B] pl-2.5">
+                          <div className="text-xs sm:text-[13px] text-[#F4F1E8] font-medium leading-tight sm:leading-snug border-l-2 border-[#F2C21B] pl-2.5">
                             {pillar.desc}
                           </div>
                         </div>
@@ -676,7 +676,7 @@ export function HomeClient() {
                   <span className="text-[#F2C21B]">Uma Só Irmandade.</span>
                 </h2>
 
-                <div className="flex items-center justify-between text-[9.5px] min-[370px]:text-[11px] sm:text-xs font-mono font-bold text-white/90 py-2 border-y border-white/10 whitespace-nowrap">
+                <div className="flex items-center justify-between text-xs font-mono font-bold text-white/90 py-2 border-y border-white/10 whitespace-nowrap">
                   <span>01 DEUS</span>
                   <span className="text-[#F2C21B]">•</span>
                   <span>02 FAMÍLIA</span>
@@ -759,7 +759,7 @@ export function HomeClient() {
                     A referência ao numeral <strong>18</strong> remete ao episódio histórico de 1922 em Copacabana: o valor inegociável de manter a união, a palavra e a fidelidade aos irmãos diante de grandes desafios.
                   </p>
                 </div>
-                <div className="pt-4 mt-4 border-t border-white/5 text-[11px] font-mono text-[#F2C21B]">
+                <div className="pt-4 mt-4 border-t border-white/5 text-xs font-mono text-[#F2C21B]">
                   Copacabana / RJ · 05 de Julho
                 </div>
               </div>
@@ -780,7 +780,7 @@ export function HomeClient() {
                     Em 03 de dezembro de 2015, motociclistas experientes fundaram o Insanos MC sobre quatro pilares fundamentais: Deus, Família, Trabalho e Motoclube.
                   </p>
                 </div>
-                <div className="pt-4 mt-4 border-t border-white/5 text-[11px] font-mono text-[#F2C21B]">
+                <div className="pt-4 mt-4 border-t border-white/5 text-xs font-mono text-[#F2C21B]">
                   Osasco / SP · 03 de Dezembro
                 </div>
               </div>
@@ -801,7 +801,7 @@ export function HomeClient() {
                     Homenageado pela Câmara Municipal de SP por sua atuação humanitária, o clube reúne mais de {INSTITUTIONAL_METRICS.members} integrantes em {INSTITUTIONAL_METRICS.countries} países e {INSTITUTIONAL_METRICS.chapters} capítulos oficiais.
                   </p>
                 </div>
-                <div className="pt-4 mt-4 border-t border-white/5 text-[11px] font-mono text-[#F2C21B]">
+                <div className="pt-4 mt-4 border-t border-white/5 text-xs font-mono text-[#F2C21B]">
                   Reconhecimento Oficial · Presença Global
                 </div>
               </div>
@@ -1006,7 +1006,7 @@ export function HomeClient() {
                       
                       {/* Location Badge */}
                       <div className="absolute top-3 left-3">
-                        <span className="px-3 py-1 rounded-[2px] bg-black/85 backdrop-blur-md border border-[#F2C21B]/40 text-[#F2C21B] font-mono text-[10px] font-bold uppercase tracking-wider shadow-lg">
+                        <span className="px-3 py-1 rounded-[2px] bg-black/85 backdrop-blur-md border border-[#F2C21B]/40 text-[#F2C21B] font-mono text-xs font-bold uppercase tracking-wider shadow-lg">
                           {item.loc}
                         </span>
                       </div>
@@ -1015,7 +1015,7 @@ export function HomeClient() {
                     {/* Content Body */}
                     <div className="p-6 pt-3 flex flex-col justify-between flex-1">
                       <div>
-                        <span className="text-[10px] font-mono uppercase font-bold text-[#AAA8A1] block mb-1">
+                        <span className="text-xs font-mono uppercase font-bold text-[#AAA8A1] block mb-1">
                           {item.name}
                         </span>
                         <h3 className="font-['Anton'] text-2xl uppercase text-white mb-2 leading-tight group-hover:text-[#F2C21B] transition-colors">
@@ -1026,7 +1026,7 @@ export function HomeClient() {
                         </p>
                       </div>
 
-                      <div className="pt-4 border-t border-white/5 flex items-center justify-between text-[11px] text-[#AAA8A1]">
+                      <div className="pt-4 border-t border-white/5 flex items-center justify-between text-xs text-[#AAA8A1]">
                         <span className="font-mono">{item.tag}</span>
                         <span className="text-[#F2C21B] font-bold uppercase">Corpo Diretivo</span>
                       </div>
@@ -1066,7 +1066,7 @@ export function HomeClient() {
                       >
                         <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-black/40 to-transparent" />
                         <div className="absolute top-3 left-3">
-                          <span className="px-2.5 py-1 rounded-[2px] bg-black/80 text-[#F2C21B] font-mono text-[9px] font-bold uppercase tracking-wider border border-white/10">
+                          <span className="px-2.5 py-1 rounded-[2px] bg-black/80 text-[#F2C21B] font-mono text-xs font-bold uppercase tracking-wider border border-white/10">
                             {mem.badge}
                           </span>
                         </div>
@@ -1094,7 +1094,7 @@ export function HomeClient() {
         <section id="noticias" className="py-24 sm:py-32 bg-[#0B0C0E] border-b border-white/10 relative">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8 space-y-16">
             <div className="max-w-3xl" data-reveal>
-              <span className="px-2.5 sm:px-3 py-1 rounded-[2px] bg-[#F2C21B]/15 text-[#F2C21B] text-[9.5px] min-[360px]:text-[10.5px] sm:text-xs font-mono font-bold uppercase tracking-wider block w-fit mb-3 whitespace-nowrap border border-[#F2C21B]/30">
+              <span className="px-2.5 sm:px-3 py-1 rounded-[2px] bg-[#F2C21B]/15 text-[#F2C21B] text-xs font-mono font-bold uppercase tracking-wider block w-fit mb-3 whitespace-nowrap border border-[#F2C21B]/30">
                 (07) Content Hub — Notícias, Eventos e Conteúdos
               </span>
               <h2 className="font-['Anton'] uppercase text-4xl sm:text-6xl lg:text-7xl leading-tight text-white mb-2">
@@ -1144,7 +1144,7 @@ export function HomeClient() {
                     <IconCalendar className="w-5 h-5 text-[#F2C21B]" />
                     <h4 className="font-['Anton'] text-2xl uppercase text-white">Próximos Eventos</h4>
                   </div>
-                  <span className="text-[10px] font-mono text-[#F2C21B] font-bold uppercase px-2 py-0.5 rounded-[2px] bg-[#F2C21B]/15">
+                  <span className="text-xs font-mono text-[#F2C21B] font-bold uppercase px-2 py-0.5 rounded-[2px] bg-[#F2C21B]/15">
                     2026
                   </span>
                 </div>
@@ -1163,9 +1163,9 @@ export function HomeClient() {
                     >
                       <div>
                         <h5 className="font-bold text-xs text-white group-hover/item:text-[#F2C21B] transition-colors mb-0.5">{evt.title}</h5>
-                        <span className="text-[10px] text-[#AAA8A1] font-mono">{evt.desc}</span>
+                        <span className="text-xs text-[#AAA8A1] font-mono">{evt.desc}</span>
                       </div>
-                      <span className="text-[10px] font-mono text-[#F2C21B] bg-[#F2C21B]/10 px-2 py-1 rounded-[2px] shrink-0">
+                      <span className="text-xs font-mono text-[#F2C21B] bg-[#F2C21B]/10 px-2 py-1 rounded-[2px] shrink-0">
                         {evt.date}
                       </span>
                     </Link>
@@ -1187,12 +1187,12 @@ export function HomeClient() {
               <div className="lg:col-span-3 space-y-4">
                 {/* Expeditions */}
                 <div className="p-5 rounded-[2px] bg-[#121316] border border-white/10">
-                  <span className="text-[10px] font-mono uppercase font-bold text-[#F2C21B] flex items-center gap-1 mb-1">
+                  <span className="text-xs font-mono uppercase font-bold text-[#F2C21B] flex items-center gap-1 mb-1">
                     <IconPin className="w-3 h-3 text-[#F2C21B]" />
                     <span>Expedições</span>
                   </span>
                   <h5 className="font-['Anton'] text-lg uppercase text-white mb-1">Estradas & Destinos</h5>
-                  <p className="text-[11px] text-[#AAA8A1] mb-3">Grandes travessias documentadas pelos pilotos.</p>
+                  <p className="text-xs text-[#AAA8A1] mb-3">Grandes travessias documentadas pelos pilotos.</p>
                   <Link href="/18news" className="text-xs font-bold text-[#F2C21B] hover:underline inline-flex items-center gap-1.5">
                     <span>Ver Expedições</span>
                     <IconArrowRight className="w-3 h-3 text-[#F2C21B]" />
@@ -1202,7 +1202,7 @@ export function HomeClient() {
                 {/* Radio Live */}
                 <div className="p-5 rounded-[2px] bg-gradient-to-r from-[#17191E] to-[#121316] border border-[#F2C21B]/40">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-[10px] font-mono uppercase font-bold text-[#F2C21B]">((•)) Rádio 24h</span>
+                    <span className="text-xs font-mono uppercase font-bold text-[#F2C21B]">((•)) Rádio 24h</span>
                     <span className={`w-2 h-2 rounded-full ${isPlayingRadio ? "bg-emerald-400 animate-ping" : "bg-emerald-500"}`} />
                   </div>
                   <h5 className="font-['Anton'] text-lg uppercase text-white mb-2">A Voz da Irmandade</h5>
@@ -1219,14 +1219,14 @@ export function HomeClient() {
                 <div className="p-5 rounded-[2px] bg-[#121316] border border-white/10 flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between mb-1">
-                      <span className="text-[10px] font-mono uppercase font-bold text-[#F2C21B] flex items-center gap-1">
+                      <span className="text-xs font-mono uppercase font-bold text-[#F2C21B] flex items-center gap-1">
                         <IconPodcast className="w-3.5 h-3.5 text-[#F2C21B]" />
                         <span>Podcast 18Cast</span>
                       </span>
-                      <span className="text-[9px] font-mono text-red-400 uppercase font-bold tracking-wider">YouTube</span>
+                      <span className="text-xs font-mono text-red-400 uppercase font-bold tracking-wider">YouTube</span>
                     </div>
                     <h5 className="font-['Anton'] text-lg uppercase text-white mb-1">Falando de Irmandade</h5>
-                    <p className="text-[11px] text-[#AAA8A1] mb-3">Relatos de veteranos e conduta na estrada.</p>
+                    <p className="text-xs text-[#AAA8A1] mb-3">Relatos de veteranos e conduta na estrada.</p>
                   </div>
                   <a
                     href="https://www.youtube.com/@InsanosMCOficial"

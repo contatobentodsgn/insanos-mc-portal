@@ -25,7 +25,7 @@ export function Footer() {
               O maior motoclube do Brasil e do mundo. Unidos por Deus, Família, Trabalho e Motoclube.
               Rompendo paradigmas do motociclismo com honra, disciplina e ajuda humanitária.
             </p>
-            <div className="text-[11px] font-mono text-[#F2C21B] font-bold">
+            <div className="text-xs font-mono text-[#F2C21B] font-bold">
               #SomosDeVerdade · #InsanosMC · #OriginalDeOZ
             </div>
           </div>

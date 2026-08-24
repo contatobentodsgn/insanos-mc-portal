@@ -845,13 +845,13 @@ export function InteractiveMap() {
   }, [focusOnSede]);
 
   return (
-    <div className="bg-[#111215] border border-white/15 rounded-3xl overflow-hidden shadow-2xl">
+    <div className="bg-[#111215] border border-white/15 rounded-[2px] overflow-hidden shadow-2xl">
       {/* Map Header & Clean Filter Controls */}
       <div className="p-5 sm:p-7 bg-[#16171B] border-b border-white/10 flex flex-wrap items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <span className="w-2.5 h-2.5 rounded-full bg-[#F2C21B] animate-pulse shrink-0" />
           <div>
-            <span className="text-[11px] font-mono text-[#F2C21B] uppercase tracking-wider block font-bold">
+            <span className="text-xs font-mono text-[#F2C21B] uppercase tracking-wider block font-bold">
               Malha Cartográfica Oficial
             </span>
             <h3 className="font-['Anton'] text-xl sm:text-2xl uppercase text-white tracking-wide">
@@ -861,10 +861,11 @@ export function InteractiveMap() {
         </div>
 
         {/* Filter Pills */}
-        <div className="flex bg-[#0A0A0B] p-1.5 rounded-xl border border-white/15 shadow-inner">
+        <div className="flex bg-[#0A0A0B] p-1.5 rounded-[2px] border border-white/15 shadow-inner" role="group" aria-label="Filtrar sedes por região">
           <button
             onClick={() => handleFilterClick("todos")}
-            className={`px-4 py-2 rounded-lg text-xs font-bold uppercase transition-all duration-200 cursor-pointer ${
+            aria-pressed={activeFilter === "todos"}
+            className={`px-4 py-2 rounded-[2px] text-xs font-bold uppercase transition-all duration-200 cursor-pointer ${
               activeFilter === "todos"
                 ? "bg-[#F2C21B] text-black shadow-[0_0_15px_rgba(242,194,27,0.3)] font-extrabold scale-[1.02]"
                 : "text-white/60 hover:text-white hover:bg-white/5"
@@ -874,7 +875,8 @@ export function InteractiveMap() {
           </button>
           <button
             onClick={() => handleFilterClick("brasil")}
-            className={`px-4 py-2 rounded-lg text-xs font-bold uppercase transition-all duration-200 cursor-pointer ${
+            aria-pressed={activeFilter === "brasil"}
+            className={`px-4 py-2 rounded-[2px] text-xs font-bold uppercase transition-all duration-200 cursor-pointer ${
               activeFilter === "brasil"
                 ? "bg-[#F2C21B] text-black shadow-[0_0_15px_rgba(242,194,27,0.3)] font-extrabold scale-[1.02]"
                 : "text-white/60 hover:text-white hover:bg-white/5"
@@ -884,7 +886,8 @@ export function InteractiveMap() {
           </button>
           <button
             onClick={() => handleFilterClick("internacional")}
-            className={`px-4 py-2 rounded-lg text-xs font-bold uppercase transition-all duration-200 cursor-pointer ${
+            aria-pressed={activeFilter === "internacional"}
+            className={`px-4 py-2 rounded-[2px] text-xs font-bold uppercase transition-all duration-200 cursor-pointer ${
               activeFilter === "internacional"
                 ? "bg-[#F2C21B] text-black shadow-[0_0_15px_rgba(242,194,27,0.3)] font-extrabold scale-[1.02]"
                 : "text-white/60 hover:text-white hover:bg-white/5"
@@ -904,7 +907,8 @@ export function InteractiveMap() {
             <button
               onClick={handleReset}
               title="Centralizar na Matriz de Osasco/Brasil"
-              className="px-3.5 py-2 rounded-lg bg-black/80 hover:bg-[#F2C21B] hover:text-black border border-white/20 text-white text-xs font-mono font-bold transition-all shadow-lg active:scale-95 flex items-center gap-2 backdrop-blur-md cursor-pointer"
+              aria-label="Centralizar na Matriz de Osasco, Brasil"
+              className="px-3.5 py-2 rounded-[2px] bg-black/80 hover:bg-[#F2C21B] hover:text-black border border-white/20 text-white text-xs font-mono font-bold transition-all shadow-lg active:scale-95 flex items-center gap-2 backdrop-blur-md cursor-pointer"
             >
               <IconRefresh className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">Recentralizar Matriz</span>
@@ -922,9 +926,11 @@ export function InteractiveMap() {
           )}
 
           {/* Canvas Container */}
-          <div className="relative w-full h-[380px] sm:h-[430px] rounded-2xl bg-[#08090C] flex items-center justify-center overflow-hidden border border-white/10 shadow-inner">
+          <div className="relative w-full h-[380px] sm:h-[430px] rounded-[2px] bg-[#08090C] flex items-center justify-center overflow-hidden border border-white/10 shadow-inner">
             <canvas
               ref={canvasRef}
+              role="img"
+              aria-label="Mapa tridimensional interativo das unidades e sedes regionais do Insanos Moto Clube"
               className="w-full h-full select-none cursor-grab active:cursor-grabbing"
               style={{ touchAction: "none" }}
             />
@@ -932,18 +938,20 @@ export function InteractiveMap() {
 
           {/* Quick-Access Horizontal Sede Carousel */}
           <div className="mt-3 block">
-            <div className="text-[11px] font-mono text-[#AAA8A1] mb-1.5 flex items-center justify-between">
+            <div className="text-xs font-mono text-[#AAA8A1] mb-1.5 flex items-center justify-between">
               <span>LOCALIZAR RAPIDAMENTE POR CIDADE:</span>
               <span className="text-[#F2C21B] font-bold">Arraste para girar</span>
             </div>
-            <div className="flex gap-2 overflow-x-auto pb-1.5 scrollbar-none snap-x snap-mandatory">
+            <div className="flex gap-2 overflow-x-auto pb-1.5 scrollbar-none snap-x snap-mandatory" role="group" aria-label="Sedes em destaque para navegação rápida">
               {filteredHubs.map((sede) => {
                 const isSelected = selectedHub.id === sede.id;
                 return (
                   <button
                     key={sede.id}
                     onClick={() => focusOnSede(sede, 2.2)}
-                    className={`flex-shrink-0 snap-start min-h-[38px] px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold transition-all duration-150 flex items-center gap-1.5 border active:scale-95 whitespace-nowrap cursor-pointer ${
+                    aria-pressed={isSelected}
+                    aria-label={`Visualizar ${sede.name} em ${sede.state}`}
+                    className={`flex-shrink-0 snap-start min-h-[38px] px-3.5 py-1.5 rounded-[2px] text-xs font-mono font-bold transition-all duration-150 flex items-center gap-1.5 border active:scale-95 whitespace-nowrap cursor-pointer ${
                       isSelected
                         ? "bg-[#F2C21B] text-black border-[#F2C21B] shadow-[0_0_12px_rgba(242,194,27,0.6)] font-extrabold"
                         : "bg-[#14161D] text-white/80 border-white/10 hover:border-[#F2C21B]/40 hover:text-white"
@@ -962,7 +970,7 @@ export function InteractiveMap() {
         <div className="lg:col-span-5 p-6 sm:p-8 bg-[#141519] flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between gap-3 mb-4">
-              <span className="px-3 py-1 rounded bg-[#F2C21B]/15 text-[#F2C21B] text-xs font-mono font-bold uppercase tracking-wider border border-[#F2C21B]/30">
+              <span className="px-3 py-1 rounded-[2px] bg-[#F2C21B]/15 text-[#F2C21B] text-xs font-mono font-bold uppercase tracking-wider border border-[#F2C21B]/30">
                 {selectedHub.badge}
               </span>
               <span className="text-xs font-mono text-[#AAA8A1]">{selectedHub.country}</span>
@@ -976,8 +984,8 @@ export function InteractiveMap() {
             </p>
 
             <div className="space-y-3 mb-8">
-              <div className="p-4 rounded-xl bg-[#0E0F12] border border-white/10">
-                <span className="text-[11px] text-[#AAA8A1] uppercase font-bold tracking-wider block mb-1">
+              <div className="p-4 rounded-[2px] bg-[#0E0F12] border border-white/10">
+                <span className="text-xs text-[#AAA8A1] uppercase font-bold tracking-wider block mb-1">
                   Endereço / Sede Regional
                 </span>
                 <p className="text-xs sm:text-sm font-semibold text-white">
@@ -985,14 +993,14 @@ export function InteractiveMap() {
                 </p>
               </div>
 
-              <div className="p-4 rounded-xl bg-[#0E0F12] border border-white/10">
-                <span className="text-[11px] text-[#AAA8A1] uppercase font-bold tracking-wider block mb-1">
+              <div className="p-4 rounded-[2px] bg-[#0E0F12] border border-white/10">
+                <span className="text-xs text-[#AAA8A1] uppercase font-bold tracking-wider block mb-1">
                   Encontros & Reuniões de Comboio
                 </span>
                 <p className="text-sm font-semibold text-white">{selectedHub.meetingDay}</p>
               </div>
 
-              <div className="p-3.5 rounded-xl bg-black/40 border border-white/5 space-y-1.5 text-xs text-[#C7C5BF]">
+              <div className="p-3.5 rounded-[2px] bg-black/40 border border-white/5 space-y-1.5 text-xs text-[#C7C5BF]">
                 <div className="flex items-center gap-2 text-white">
                   <span className="text-[#F2C21B]">✓</span>
                   <span>Ponto de apoio e parada de abastecimento de comboios</span>

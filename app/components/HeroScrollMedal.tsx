@@ -218,6 +218,8 @@ export default function HeroScrollMedal() {
             ref={canvasRef}
             width={480}
             height={480}
+            role="img"
+            aria-label="Medalha tridimensional com acabamento em relevo e brasão dos 18 do Forte"
             className="w-full h-full object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.9)]"
           />
         </div>
@@ -228,7 +230,7 @@ export default function HeroScrollMedal() {
         ref={hintRef}
         className="absolute bottom-10 z-30 flex flex-col items-center gap-2 pointer-events-none transition-opacity duration-300"
       >
-        <span className="text-[11px] font-mono tracking-widest text-[#F2C21B] uppercase bg-black/60 px-3 py-1 rounded-full border border-white/10 backdrop-blur-md">
+        <span className="text-xs font-mono tracking-widest text-[#F2C21B] uppercase bg-black/60 px-3 py-1 rounded-full border border-white/10 backdrop-blur-md">
           Role para navegar
         </span>
         <div className="w-5 h-9 rounded-full border-2 border-white/30 flex items-start justify-center p-1">

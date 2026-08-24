@@ -64,11 +64,12 @@ export function NewsClient() {
           {/* Search & Categories Filter Bar */}
           <div className="flex flex-col lg:flex-row gap-4 items-start lg:items-center justify-between pb-8 mb-12 border-b border-white/10">
             {/* Categories */}
-            <div className="flex flex-wrap gap-2 w-full lg:w-auto">
+            <div className="flex flex-wrap gap-2 w-full lg:w-auto" role="group" aria-label="Filtrar por categoria editorial">
               {categories.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setSelectedTag(cat)}
+                  aria-pressed={selectedTag === cat}
                   className={`px-4 py-2 rounded-[2px] text-xs uppercase font-bold tracking-wider transition-all duration-200 cursor-pointer border ${
                     selectedTag === cat
                       ? "bg-[#F2C21B] text-black border-[#FFE066] shadow-[0_0_15px_rgba(242,194,27,0.3)] font-extrabold scale-105"
@@ -86,6 +87,7 @@ export function NewsClient() {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
+                aria-label="Buscar notícias, expedições ou tags"
                 placeholder="Buscar notícias, expedições ou tags..."
                 className="w-full bg-[#121316] border border-white/10 rounded-[2px] pl-10 pr-4 py-2.5 text-xs text-white placeholder:text-white/40 focus:border-[#F2C21B] focus:outline-none transition-colors"
               />
@@ -108,7 +110,7 @@ export function NewsClient() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#111215] via-black/20 to-transparent lg:hidden" />
                     <div className="absolute top-4 left-4 flex items-center gap-2">
-                      <span className="px-3 py-1 rounded-[2px] bg-[#F2C21B] text-black text-[10px] font-mono font-extrabold uppercase tracking-wider shadow-lg">
+                      <span className="px-3 py-1 rounded-[2px] bg-[#F2C21B] text-black text-xs font-mono font-extrabold uppercase tracking-wider shadow-lg">
                         Reportagem de Capa
                       </span>
                     </div>
@@ -177,14 +179,14 @@ export function NewsClient() {
                         style={{ backgroundImage: `url(${art.image})` }}
                       />
                       <div className="absolute top-3 left-3">
-                        <span className="px-2.5 py-1 rounded-[2px] bg-black/75 text-[#F2C21B] font-mono text-[10px] font-bold uppercase tracking-wider border border-white/10">
+                        <span className="px-2.5 py-1 rounded-[2px] bg-black/75 text-[#F2C21B] font-mono text-xs font-bold uppercase tracking-wider border border-white/10">
                           {art.tag}
                         </span>
                       </div>
                     </div>
 
                     <div className="p-6">
-                      <div className="flex items-center justify-between gap-2 mb-3 text-[11px] font-mono text-[#AAA8A1]">
+                      <div className="flex items-center justify-between gap-2 mb-3 text-xs font-mono text-[#AAA8A1]">
                         <span>{art.date}</span>
                         <span>{art.readTime}</span>
                       </div>
@@ -200,7 +202,7 @@ export function NewsClient() {
                   </div>
 
                   <div className="px-6 pb-6 pt-3 border-t border-white/5 flex items-center justify-between text-xs text-[#AAA8A1]">
-                    <span className="text-[11px] font-mono">Por {art.author}</span>
+                    <span className="text-xs font-mono">Por {art.author}</span>
                     <span className="text-[#F2C21B] font-bold uppercase tracking-wider inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
                       <span>Ler Matéria</span>
                       <IconArrowRight className="w-3.5 h-3.5 text-[#F2C21B]" />

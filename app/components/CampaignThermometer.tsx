@@ -102,7 +102,7 @@ export function CampaignThermometer() {
           {/* 1. TOP HEADER (Título + Missão + 86%) */}
           <div className="flex flex-col sm:flex-row items-start justify-between gap-6 mb-4 sm:mb-6">
             <div className="max-w-xl">
-              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 rounded bg-black/70 border border-[#F2C21B]/40 text-[#F2C21B] text-[10.5px] min-[380px]:text-xs font-mono font-bold uppercase tracking-wider mb-3 backdrop-blur-sm shadow-md whitespace-nowrap">
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 rounded bg-black/70 border border-[#F2C21B]/40 text-[#F2C21B] text-xs font-mono font-bold uppercase tracking-wider mb-3 backdrop-blur-sm shadow-md whitespace-nowrap">
                 <IconFire className="w-3.5 h-3.5 text-[#F2C21B] shrink-0" />
                 <span>Campanha Nacional Ativa · Inverno 2026</span>
               </div>
@@ -120,7 +120,7 @@ export function CampaignThermometer() {
               <span className="font-['Anton'] text-6xl sm:text-8xl lg:text-9xl text-[#F2C21B] drop-shadow-[0_0_35px_rgba(242,194,27,0.5)] leading-none">
                 {percentage}%
               </span>
-              <span className="text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[#F2C21B] block mt-1 drop-shadow-md">
+              <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#F2C21B] block mt-1 drop-shadow-md">
                 Meta Consolidada
               </span>
               <span className="text-xs sm:text-sm font-mono text-white/90 drop-shadow-md">
@@ -349,11 +349,12 @@ export function CampaignThermometer() {
                   Entregue diretamente na sede mais próxima da sua cidade
                 </p>
               </div>
-              <div className="w-full sm:w-auto flex items-center gap-2 overflow-x-auto scrollbar-none pb-2 sm:pb-0 pt-1 -mx-1 px-1">
+              <div className="w-full sm:w-auto flex items-center gap-2 overflow-x-auto scrollbar-none pb-2 sm:pb-0 pt-1 -mx-1 px-1" role="group" aria-label="Filtrar pontos de coleta por estado">
                 {["", "SP", "RJ", "MG", "PR", "BA"].map((st) => (
                   <button
                     key={st}
                     onClick={() => setSelectedFilter(st)}
+                    aria-pressed={selectedFilter === st}
                     className={`min-h-[40px] px-4 sm:px-5 py-2 rounded-[2px] text-xs font-mono font-bold uppercase transition-all duration-150 whitespace-nowrap active:scale-95 flex items-center justify-center cursor-pointer border ${
                       selectedFilter === st
                         ? "bg-[#F2C21B] text-black border-[#F2C21B] shadow-md font-extrabold"
@@ -378,7 +379,7 @@ export function CampaignThermometer() {
                       <IconPin className="w-4 h-4 text-[#F2C21B] group-hover:scale-110 transition-transform" />
                       <span className="text-xs font-mono font-bold text-[#F2C21B]">[{dp.state}] {dp.city}</span>
                     </div>
-                    <span className="text-[11px] font-mono text-white/70">{dp.phone}</span>
+                    <span className="text-xs font-mono text-white/70">{dp.phone}</span>
                   </div>
                   <p className="text-xs sm:text-sm font-semibold text-white mb-1.5 leading-snug">{dp.location}</p>
                   <p className="text-xs text-[#AAA8A1]">{dp.responsible}</p>

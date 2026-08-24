@@ -155,16 +155,16 @@ function TiltExpeditionCard({
         style={{ backgroundImage: `url(${exp.image})` }}
       >
         <div className="absolute inset-0 bg-gradient-to-t from-[#131417] via-transparent to-transparent opacity-80" />
-        <span className="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/70 backdrop-blur-md border border-white/20 text-[#F2C21B] font-mono text-[10px] uppercase font-bold">
+        <span className="absolute top-3 left-3 px-2.5 py-1 rounded-[2px] bg-black/70 backdrop-blur-md border border-white/20 text-[#F2C21B] font-mono text-xs uppercase font-bold">
           {exp.tag}
         </span>
-        <span className="absolute bottom-3 right-3 px-2.5 py-1 rounded bg-[#F2C21B] text-black font-mono text-[10px] font-extrabold">
+        <span className="absolute bottom-3 right-3 px-2.5 py-1 rounded-[2px] bg-[#F2C21B] text-black font-mono text-xs font-extrabold">
           {exp.distance}
         </span>
       </div>
 
       <div className="p-6 relative z-10">
-        <span className="text-[11px] font-mono text-[#AAA8A1] block mb-1">{exp.year}</span>
+        <span className="text-xs font-mono text-[#AAA8A1] block mb-1">{exp.year}</span>
         <h4 className="font-['Anton'] text-xl uppercase text-white group-hover:text-[#F2C21B] transition-colors duration-200 mb-2">
           {exp.title}
         </h4>
@@ -243,7 +243,7 @@ export function ExpeditionsGallery() {
           onClick={() => setSelectedExpedition(null)}
         >
           <div
-            className="bg-[#121316] border border-[#F2C21B]/50 rounded-2xl max-w-4xl w-full overflow-hidden shadow-2xl relative"
+            className="bg-[#121316] border border-[#F2C21B]/50 rounded-[2px] max-w-4xl w-full overflow-hidden shadow-2xl relative"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Image Header */}
@@ -255,13 +255,13 @@ export function ExpeditionsGallery() {
               <button
                 onClick={() => setSelectedExpedition(null)}
                 aria-label="Fechar visualizador de expedição"
-                className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/80 text-white hover:text-[#F2C21B] border border-white/20 flex items-center justify-center font-bold text-lg transition-colors"
+                className="absolute top-4 right-4 w-10 h-10 rounded-[2px] bg-black/80 text-white hover:text-[#F2C21B] border border-white/20 flex items-center justify-center font-bold text-lg transition-colors"
               >
                 ✕
               </button>
               <div className="absolute bottom-6 left-6 right-6 flex flex-wrap items-end justify-between gap-4">
                 <div>
-                  <span className="px-3 py-1 bg-[#F2C21B] text-black font-extrabold text-xs uppercase rounded mb-2 inline-block">
+                  <span className="px-3 py-1 bg-[#F2C21B] text-black font-extrabold text-xs uppercase rounded-[2px] mb-2 inline-block">
                     {selectedExpedition.tag} · {selectedExpedition.year}
                   </span>
                   <h3 className="font-['Anton'] text-3xl sm:text-5xl uppercase text-white">
@@ -273,21 +273,21 @@ export function ExpeditionsGallery() {
 
             {/* Modal Content */}
             <div className="p-6 sm:p-10">
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6 p-4 rounded-xl bg-[#090A0B] border border-white/10 text-center">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6 p-4 rounded-[2px] bg-[#090A0B] border border-white/10 text-center">
                 <div>
-                  <span className="text-[10px] uppercase font-bold text-[#AAA8A1] block">Distância Total</span>
+                  <span className="text-xs uppercase font-bold text-[#AAA8A1] block">Distância Total</span>
                   <strong className="font-['Anton'] text-xl sm:text-2xl text-[#F2C21B]">
                     {selectedExpedition.distance}
                   </strong>
                 </div>
                 <div>
-                  <span className="text-[10px] uppercase font-bold text-[#AAA8A1] block">Destino Final</span>
+                  <span className="text-xs uppercase font-bold text-[#AAA8A1] block">Destino Final</span>
                   <strong className="text-xs sm:text-sm font-bold text-white block mt-1">
                     {selectedExpedition.destination.split("—")[0]}
                   </strong>
                 </div>
                 <div className="col-span-2 sm:col-span-1">
-                  <span className="text-[10px] uppercase font-bold text-[#AAA8A1] block">Comboio</span>
+                  <span className="text-xs uppercase font-bold text-[#AAA8A1] block">Comboio</span>
                   <strong className="text-xs sm:text-sm font-bold text-white block mt-1">
                     {selectedExpedition.participants}
                   </strong>

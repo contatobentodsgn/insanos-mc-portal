@@ -314,7 +314,7 @@ export default function RotatingEarth({
   return (
     <div className={`relative ${className}`}>
       {isLoading && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm rounded-2xl z-20">
+        <div className="absolute inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm rounded-[2px] z-20">
           <div className="flex items-center gap-3 text-xs font-mono text-[#F2C21B]">
             <span className="w-3 h-3 rounded-full bg-[#F2C21B] animate-ping" />
             <span>Mapeando malha global de sedes...</span>
@@ -323,10 +323,12 @@ export default function RotatingEarth({
       )}
       <canvas
         ref={canvasRef}
-        className="w-full h-auto rounded-2xl cursor-grab active:cursor-grabbing"
+        role="img"
+        aria-label="Globo tridimensional interativo ilustrando a presença global do Insanos Moto Clube em 65 países e mais de 480 facções"
+        className="w-full h-auto rounded-[2px] cursor-grab active:cursor-grabbing"
         style={{ maxWidth: "100%", height: "auto" }}
       />
-      <div className="absolute bottom-4 left-4 text-[10px] text-[#AAA8A1] font-mono px-3 py-1.5 rounded-lg bg-black/80 backdrop-blur-md border border-white/15">
+      <div className="absolute bottom-4 left-4 text-xs text-[#AAA8A1] font-mono px-3 py-1.5 rounded-[2px] bg-black/80 backdrop-blur-md border border-white/15">
         Arraste para girar em 360° · Scroll para zoom nas cidades
       </div>
     </div>

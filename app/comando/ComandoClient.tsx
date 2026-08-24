@@ -106,9 +106,10 @@ export function ComandoClient() {
         {/* Tab Switcher */}
         <section className="py-12 bg-[#111215] border-b border-white/10">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8">
-            <div className="flex gap-6">
+            <div className="flex gap-6" role="group" aria-label="Selecione o painel de liderança">
               <button
                 onClick={() => setActiveTab("comando")}
+                aria-pressed={activeTab === "comando"}
                 className={`pb-3 text-lg sm:text-2xl font-['Anton'] uppercase tracking-wider transition-colors duration-200 border-b-2 text-left sm:text-center whitespace-nowrap cursor-pointer ${
                   activeTab === "comando"
                     ? "border-[#F2C21B] text-[#F2C21B]"
@@ -119,6 +120,7 @@ export function ComandoClient() {
               </button>
               <button
                 onClick={() => setActiveTab("memorial")}
+                aria-pressed={activeTab === "memorial"}
                 className={`pb-3 text-lg sm:text-2xl font-['Anton'] uppercase tracking-wider transition-colors duration-200 border-b-2 text-left sm:text-center whitespace-normal sm:whitespace-nowrap cursor-pointer ${
                   activeTab === "memorial"
                     ? "border-[#F2C21B] text-[#F2C21B]"
@@ -161,7 +163,7 @@ export function ComandoClient() {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-[#121316]/20 to-transparent" />
                         <div className="absolute top-3 left-3">
-                          <span className="px-2.5 py-1 rounded-[2px] bg-black/85 backdrop-blur-md border border-[#F2C21B]/40 text-[#F2C21B] font-mono text-[9px] font-bold uppercase tracking-wider">
+                          <span className="px-2.5 py-1 rounded-[2px] bg-black/85 backdrop-blur-md border border-[#F2C21B]/40 text-[#F2C21B] font-mono text-xs font-bold uppercase tracking-wider">
                             {item.division}
                           </span>
                         </div>
@@ -169,7 +171,7 @@ export function ComandoClient() {
 
                       <div className="p-5 flex flex-col justify-between flex-1">
                         <div>
-                          <span className="text-[10px] font-mono uppercase font-bold text-[#AAA8A1] block mb-1">
+                          <span className="text-xs font-mono uppercase font-bold text-[#AAA8A1] block mb-1">
                             {item.name}
                           </span>
                           <h3 className="font-['Anton'] text-xl uppercase text-white mb-2 leading-tight group-hover:text-[#F2C21B] transition-colors">
@@ -179,7 +181,7 @@ export function ComandoClient() {
                             {item.responsibilities}
                           </p>
                         </div>
-                        <div className="pt-3 border-t border-white/5 text-[10px] font-mono text-white/40 uppercase">
+                        <div className="pt-3 border-t border-white/5 text-xs font-mono text-white/40 uppercase">
                           Corpo Diretivo Oficial
                         </div>
                       </div>

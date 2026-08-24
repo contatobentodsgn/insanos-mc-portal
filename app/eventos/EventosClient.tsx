@@ -410,15 +410,15 @@ export function EventosClient() {
             {/* Quick Metrics Bar — Verified & Clean */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-8 pt-6 border-t border-white/10 max-w-2xl">
               <div className="p-4 rounded-[2px] bg-[#0A0A0C] border border-white/10">
-                <span className="text-[10px] font-mono uppercase text-[#AAA8A1] block font-bold">Calendário Oficial</span>
+                <span className="text-xs font-mono uppercase text-[#AAA8A1] block font-bold">Calendário Oficial</span>
                 <span className="font-['Anton'] text-2xl sm:text-3xl text-[#F2C21B]">7 Encontros</span>
               </div>
               <div className="p-4 rounded-[2px] bg-[#0A0A0C] border border-white/10">
-                <span className="text-[10px] font-mono uppercase text-[#AAA8A1] block font-bold">Presença Oficial</span>
+                <span className="text-xs font-mono uppercase text-[#AAA8A1] block font-bold">Presença Oficial</span>
                 <span className="font-['Anton'] text-2xl sm:text-3xl text-white">{INSTITUTIONAL_METRICS.countries} Países</span>
               </div>
               <div className="p-4 rounded-[2px] bg-[#0A0A0C] border border-white/10 col-span-2 sm:col-span-1">
-                <span className="text-[10px] font-mono uppercase text-[#AAA8A1] block font-bold">Sincronização</span>
+                <span className="text-xs font-mono uppercase text-[#AAA8A1] block font-bold">Sincronização</span>
                 <span className="font-['Anton'] text-2xl sm:text-3xl text-white">Google & .ICS</span>
               </div>
             </div>
@@ -430,9 +430,10 @@ export function EventosClient() {
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8 space-y-4">
             {/* Top Row: Timeline Tabs (Próximos vs Realizados) */}
             <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2" role="group" aria-label="Filtrar eventos por período">
                 <button
                   onClick={() => setTimelineTab("upcoming")}
+                  aria-pressed={timelineTab === "upcoming"}
                   className={`px-5 py-2.5 rounded-[2px] text-xs font-mono font-bold uppercase transition-all duration-150 border flex items-center gap-2 cursor-pointer ${
                     timelineTab === "upcoming"
                       ? "bg-[#F2C21B] text-black border-[#F2C21B] font-extrabold shadow-[0_2px_10px_rgba(242,194,27,0.3)]"
@@ -445,6 +446,7 @@ export function EventosClient() {
 
                 <button
                   onClick={() => setTimelineTab("past")}
+                  aria-pressed={timelineTab === "past"}
                   className={`px-5 py-2.5 rounded-[2px] text-xs font-mono font-bold uppercase transition-all duration-150 border flex items-center gap-2 cursor-pointer ${
                     timelineTab === "past"
                       ? "bg-[#F2C21B] text-black border-[#F2C21B] font-extrabold shadow-[0_2px_10px_rgba(242,194,27,0.3)]"
@@ -467,7 +469,7 @@ export function EventosClient() {
             {/* Bottom Row: Category Pills + Region Filter + Search */}
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
               {/* Category Pills — Clean SVGs (No Emojis) */}
-              <div className="flex items-center gap-2 overflow-x-auto scrollbar-none pb-2 lg:pb-0 -mx-2 px-2">
+              <div className="flex items-center gap-2 overflow-x-auto scrollbar-none pb-2 lg:pb-0 -mx-2 px-2" role="group" aria-label="Filtrar por categoria">
                 {[
                   { key: "all", label: "Todos os Tipos" },
                   { key: "nacional", label: "Encontros Oficiais" },
@@ -477,6 +479,7 @@ export function EventosClient() {
                   <button
                     key={tab.key}
                     onClick={() => setCategoryFilter(tab.key)}
+                    aria-pressed={categoryFilter === tab.key}
                     className={`min-h-[38px] px-4 py-2 rounded-[2px] text-xs font-mono font-bold uppercase transition-all duration-150 whitespace-nowrap active:scale-95 cursor-pointer border ${
                       categoryFilter === tab.key
                         ? "bg-white text-black border-white font-extrabold"
@@ -491,16 +494,23 @@ export function EventosClient() {
               {/* Search and Region Select */}
               <div className="flex flex-wrap sm:flex-nowrap items-center gap-3">
                 {/* Region Filter */}
-                <select
-                  value={regionFilter}
-                  onChange={(e) => setRegionFilter(e.target.value)}
-                  className="px-3.5 py-2 rounded-[2px] bg-[#16181F] border border-white/15 text-xs font-mono text-white focus:outline-none focus:border-[#F2C21B] cursor-pointer"
-                >
-                  <option value="all">Todas as Regiões</option>
-                  <option value="sudeste">Região Sudeste</option>
-                  <option value="sul">Região Sul</option>
-                  <option value="internacional">Internacional</option>
-                </select>
+                <div className="relative">
+                  <label htmlFor="regiao-eventos" className="sr-only">
+                    Filtrar por região
+                  </label>
+                  <select
+                    id="regiao-eventos"
+                    aria-label="Filtrar eventos por região"
+                    value={regionFilter}
+                    onChange={(e) => setRegionFilter(e.target.value)}
+                    className="px-3.5 py-2 rounded-[2px] bg-[#16181F] border border-white/15 text-xs font-mono text-white focus:outline-none focus:border-[#F2C21B] cursor-pointer"
+                  >
+                    <option value="all">Todas as Regiões</option>
+                    <option value="sudeste">Região Sudeste</option>
+                    <option value="sul">Região Sul</option>
+                    <option value="internacional">Internacional</option>
+                  </select>
+                </div>
 
                 {/* Live Search Input */}
                 <div className="relative flex-1 sm:w-64">
@@ -509,12 +519,14 @@ export function EventosClient() {
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
+                    aria-label="Buscar eventos por cidade, mês ou título"
                     placeholder="Buscar por cidade, mês..."
                     className="w-full pl-9 pr-3.5 py-2 rounded-[2px] bg-[#16181F] border border-white/15 text-xs font-mono text-white placeholder-white/40 focus:outline-none focus:border-[#F2C21B]"
                   />
                   {searchQuery && (
                     <button
                       onClick={() => setSearchQuery("")}
+                      aria-label="Limpar busca de eventos"
                       className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white"
                     >
                       <IconClose className="w-3.5 h-3.5" />
@@ -569,7 +581,7 @@ export function EventosClient() {
                           }`}
                         >
                           <span
-                            className={`text-[11px] font-mono font-black uppercase tracking-wider ${
+                            className={`text-xs font-mono font-black uppercase tracking-wider ${
                               event.isPast ? "text-white/60" : "text-[#F2C21B]"
                             }`}
                           >
@@ -578,14 +590,14 @@ export function EventosClient() {
                           <span className="font-['Anton'] text-3xl sm:text-4xl text-white leading-none my-0.5">
                             {event.dateDisplay.day}
                           </span>
-                          <span className="text-[10px] font-mono text-white/50 font-bold">
+                          <span className="text-xs font-mono text-white/50 font-bold">
                             {event.dateDisplay.year}
                           </span>
                         </div>
 
                         <div>
                           <div
-                            className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[2px] font-mono text-[10px] uppercase font-bold tracking-wider border mb-1 ${
+                            className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[2px] font-mono text-xs uppercase font-bold tracking-wider border mb-1 ${
                               event.isPast
                                 ? "bg-white/10 text-white/80 border-white/20"
                                 : "bg-[#F2C21B]/15 text-[#F2C21B] border-[#F2C21B]/40"
@@ -676,7 +688,7 @@ export function EventosClient() {
                               href={getWhatsAppShareUrl(event)}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="w-full px-4 py-2 rounded-[2px] bg-[#25D366]/15 hover:bg-[#25D366]/30 text-[#25D366] font-mono text-[11px] font-bold uppercase transition-all flex items-center justify-center gap-2 border border-[#25D366]/30 cursor-pointer"
+                              className="w-full px-4 py-2 rounded-[2px] bg-[#25D366]/15 hover:bg-[#25D366]/30 text-[#25D366] font-mono text-xs font-bold uppercase transition-all flex items-center justify-center gap-2 border border-[#25D366]/30 cursor-pointer"
                             >
                               <IconChat className="w-3.5 h-3.5" />
                               <span>Convidar no WhatsApp</span>
@@ -686,7 +698,7 @@ export function EventosClient() {
                           <>
                             {/* Past: Coverage in 18News */}
                             <div className="p-3 bg-black/40 rounded-[2px] border border-white/10 text-center">
-                              <span className="text-[10px] font-mono text-white/50 uppercase block font-bold mb-1">
+                              <span className="text-xs font-mono text-white/50 uppercase block font-bold mb-1">
                                 Status da Edição
                               </span>
                               <span className="text-xs font-mono text-emerald-400 font-bold flex items-center justify-center gap-1">
@@ -705,7 +717,7 @@ export function EventosClient() {
 
                             <Link
                               href="/impacto"
-                              className="w-full px-4 py-2.5 rounded-[2px] bg-white/5 hover:bg-white/10 text-[#AAA8A1] hover:text-white font-mono text-[11px] uppercase font-bold transition-all text-center border border-white/10"
+                              className="w-full px-4 py-2.5 rounded-[2px] bg-white/5 hover:bg-white/10 text-[#AAA8A1] hover:text-white font-mono text-xs uppercase font-bold transition-all text-center border border-white/10"
                             >
                               Ver Galeria de Ações
                             </Link>

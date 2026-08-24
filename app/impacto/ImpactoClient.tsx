@@ -157,11 +157,12 @@ export function ImpactoClient() {
                 </h2>
               </div>
 
-              <div className="flex flex-wrap justify-center gap-3 mb-16">
+              <div className="flex flex-wrap justify-center gap-3 mb-16" role="group" aria-label="Selecione um projeto social para detalhes">
                 {PROJECTS.map((proj) => (
                   <button
                     key={proj.id}
                     onClick={() => setActiveTab(proj.id)}
+                    aria-pressed={activeTab === proj.id}
                     className={`px-6 py-3.5 rounded-[2px] font-['Anton'] text-base sm:text-xl uppercase tracking-wider transition-all duration-200 cursor-pointer border-2 ${
                       activeTab === proj.id
                         ? "bg-gradient-to-b from-[#F2C21B] to-[#D4A50E] text-black shadow-[0_0_20px_rgba(242,194,27,0.4)] border-[#FFE066] scale-105 font-extrabold"
