@@ -964,7 +964,7 @@ export function Hero3dClient() {
             <div className="flex flex-wrap sm:flex-nowrap gap-4 sm:gap-6 mb-10 border-b border-white/10 pb-4 items-end" data-reveal>
               <button
                 onClick={() => setActiveLeaderTab("comando")}
-                className={`pb-2 text-sm sm:text-base font-['Anton'] uppercase tracking-wider transition-colors duration-200 border-b-2 text-left sm:text-center ${
+                className={`pb-2 text-sm sm:text-base font-['Anton'] uppercase tracking-wider transition-colors duration-200 border-b-2 text-left sm:text-center whitespace-nowrap cursor-pointer ${
                   activeLeaderTab === "comando"
                     ? "border-[#F2C21B] text-[#F2C21B]"
                     : "border-transparent text-white/50 hover:text-white"
@@ -974,14 +974,13 @@ export function Hero3dClient() {
               </button>
               <button
                 onClick={() => setActiveLeaderTab("memorial")}
-                className={`pb-2 text-sm sm:text-base font-['Anton'] uppercase tracking-wider transition-colors duration-200 border-b-2 text-left sm:text-center leading-tight ${
+                className={`pb-2 text-sm sm:text-base font-['Anton'] uppercase tracking-wider transition-colors duration-200 border-b-2 text-left sm:text-center whitespace-normal sm:whitespace-nowrap cursor-pointer ${
                   activeLeaderTab === "memorial"
                     ? "border-[#F2C21B] text-[#F2C21B]"
                     : "border-transparent text-white/50 hover:text-white"
                 }`}
               >
-                Fundadores, Legado<br />
-                & In Memoriam
+                Fundadores, Legado & In Memoriam
               </button>
             </div>
 

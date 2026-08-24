@@ -110,7 +110,7 @@ export function ComandoClient() {
             <div className="flex gap-6">
               <button
                 onClick={() => setActiveTab("comando")}
-                className={`pb-3 text-lg sm:text-2xl font-['Anton'] uppercase tracking-wider transition-colors duration-200 border-b-2 ${
+                className={`pb-3 text-lg sm:text-2xl font-['Anton'] uppercase tracking-wider transition-colors duration-200 border-b-2 text-left sm:text-center whitespace-nowrap cursor-pointer ${
                   activeTab === "comando"
                     ? "border-[#F2C21B] text-[#F2C21B]"
                     : "border-transparent text-white/50 hover:text-white"
@@ -120,14 +120,13 @@ export function ComandoClient() {
               </button>
               <button
                 onClick={() => setActiveTab("memorial")}
-                className={`pb-3 text-lg sm:text-2xl font-['Anton'] uppercase tracking-wider transition-colors duration-200 border-b-2 text-left sm:text-center leading-tight ${
+                className={`pb-3 text-lg sm:text-2xl font-['Anton'] uppercase tracking-wider transition-colors duration-200 border-b-2 text-left sm:text-center whitespace-normal sm:whitespace-nowrap cursor-pointer ${
                   activeTab === "memorial"
                     ? "border-[#F2C21B] text-[#F2C21B]"
                     : "border-transparent text-white/50 hover:text-white"
                 }`}
               >
-                Fundadores, Legado<br />
-                & In Memoriam
+                Fundadores, Legado & In Memoriam
               </button>
             </div>
           </div>

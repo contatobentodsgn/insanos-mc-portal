@@ -1003,7 +1003,7 @@ export function HomeClient() {
                   triggerHaptic(10);
                   setActiveLeaderTab("comando");
                 }}
-                className={`pb-2 text-sm sm:text-base font-['Anton'] uppercase tracking-wider transition-colors duration-200 border-b-2 text-left sm:text-center cursor-pointer active:scale-[0.98] ${
+                className={`pb-2 text-sm sm:text-base font-['Anton'] uppercase tracking-wider transition-colors duration-200 border-b-2 text-left sm:text-center cursor-pointer active:scale-[0.98] whitespace-nowrap ${
                   activeLeaderTab === "comando"
                     ? "border-[#F2C21B] text-[#F2C21B]"
                     : "border-transparent text-white/50 hover:text-white"
@@ -1016,14 +1016,13 @@ export function HomeClient() {
                   triggerHaptic(10);
                   setActiveLeaderTab("memorial");
                 }}
-                className={`pb-2 text-sm sm:text-base font-['Anton'] uppercase tracking-wider transition-colors duration-200 border-b-2 text-left sm:text-center leading-tight cursor-pointer active:scale-[0.98] ${
+                className={`pb-2 text-sm sm:text-base font-['Anton'] uppercase tracking-wider transition-colors duration-200 border-b-2 text-left sm:text-center cursor-pointer active:scale-[0.98] whitespace-normal sm:whitespace-nowrap ${
                   activeLeaderTab === "memorial"
                     ? "border-[#F2C21B] text-[#F2C21B]"
                     : "border-transparent text-white/50 hover:text-white"
                 }`}
               >
-                Fundadores, Legado<br />
-                & In Memoriam
+                Fundadores, Legado & In Memoriam
               </button>
             </div>
 
