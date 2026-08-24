@@ -41,7 +41,7 @@ const TIMELINE_EXPANDED: Array<{
     subtitle: "Osasco / SP — A Fundação do Motoclube",
     text: (
       <>
-        Em <strong>03 de dezembro de 2015</strong>, na cidade de Osasco/SP, um grupo pioneiro de motociclistas experientes liderado por <strong>Jonatas Kiss Feitosa</strong>, <strong>Bugdam Alves Nunes</strong>, <strong>Edson Lopes</strong> e <strong>Bin</strong> decidiu construir uma nova irmandade baseada no respeito à família, na disciplina de estrada, no trabalho digno e na solidariedade à comunidade. Da coragem desse recomeço nasceu a expressão: <em>"Para encarar esse desafio, é preciso ser insano"</em> — dando origem ao nome <strong>Insanos Moto Clube</strong>.
+        Em <strong>03 de dezembro de 2015</strong>, em Osasco/SP, um grupo pioneiro liderado por <strong>Jonatas Kiss Feitosa</strong>, <strong>Bugdam Alves Nunes</strong>, <strong>Edson Lopes</strong> e <strong>Bin</strong> fundou uma nova irmandade baseada na família, disciplina e solidariedade. Dessa coragem nasceu a expressão: <em>"Para encarar esse desafio, é preciso ser insano"</em> — originando o nome <strong>Insanos Moto Clube</strong>.
       </>
     ),
     badge: "Marco Zero (03/12/2015)",
