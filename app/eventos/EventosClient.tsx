@@ -410,16 +410,16 @@ export function EventosClient() {
             {/* Quick Metrics Bar — Verified & Clean */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-8 pt-6 border-t border-white/10 max-w-2xl">
               <div className="p-4 rounded-[2px] bg-[#0A0A0C] border border-white/10">
-                <span className="text-xs font-mono uppercase text-[#AAA8A1] block font-bold">Calendário Oficial</span>
-                <span className="font-['Anton'] text-2xl sm:text-3xl text-[#F2C21B]">7 Encontros</span>
+                <span className="text-xs font-mono uppercase text-[#AAA8A1] block font-bold">Calendário Geral</span>
+                <span className="font-['Anton'] text-2xl sm:text-3xl text-[#F2C21B]">{EVENTS_DATA.length} Encontros</span>
               </div>
               <div className="p-4 rounded-[2px] bg-[#0A0A0C] border border-white/10">
-                <span className="text-xs font-mono uppercase text-[#AAA8A1] block font-bold">Presença Oficial</span>
-                <span className="font-['Anton'] text-2xl sm:text-3xl text-white">{INSTITUTIONAL_METRICS.countries} Países</span>
+                <span className="text-xs font-mono uppercase text-[#AAA8A1] block font-bold">Facções Convocadas</span>
+                <span className="font-['Anton'] text-2xl sm:text-3xl text-white">{INSTITUTIONAL_METRICS.chapters} Sedes</span>
               </div>
               <div className="p-4 rounded-[2px] bg-[#0A0A0C] border border-white/10 col-span-2 sm:col-span-1">
-                <span className="text-xs font-mono uppercase text-[#AAA8A1] block font-bold">Sincronização</span>
-                <span className="font-['Anton'] text-2xl sm:text-3xl text-white">Google & .ICS</span>
+                <span className="text-xs font-mono uppercase text-[#AAA8A1] block font-bold">Presença Global</span>
+                <span className="font-['Anton'] text-2xl sm:text-3xl text-white">{INSTITUTIONAL_METRICS.countries} Países</span>
               </div>
             </div>
           </div>

@@ -138,7 +138,7 @@ function TiltExpeditionCard({
           : "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)",
         transition: tilt.isHovered ? "transform 0.1s ease-out" : "transform 0.5s ease-out",
       }}
-      className="group cursor-pointer rounded-2xl overflow-hidden bg-[#131417] border border-white/10 hover:border-[#F2C21B] flex flex-col justify-between shadow-xl relative select-none will-change-transform"
+      className="group cursor-pointer rounded-[2px] overflow-hidden bg-[#131417] border border-white/10 hover:border-[#F2C21B] flex flex-col justify-between shadow-xl relative select-none will-change-transform"
     >
       {/* Specular Ambient Glow that follows mouse */}
       {tilt.isHovered && (
@@ -306,7 +306,7 @@ export function ExpeditionsGallery() {
               <div className="pt-4 border-t border-white/10 flex justify-end">
                 <button
                   onClick={() => setSelectedExpedition(null)}
-                  className="px-6 py-3 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-xs rounded transition-colors duration-150"
+                  className="px-6 py-3 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-xs rounded-[2px] transition-colors duration-150"
                 >
                   Fechar Relatório
                 </button>

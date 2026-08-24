@@ -422,7 +422,7 @@ export function Navbar({}: NavbarProps) {
                 </a>
                 <span>•</span>
                 <a
-                  href="https://www.youtube.com/@InsanosMCOficial"
+                  href="https://www.youtube.com/@InsanosMC"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-[#F2C21B] transition-colors py-2 px-3 flex items-center"

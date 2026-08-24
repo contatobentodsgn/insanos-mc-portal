@@ -831,7 +831,7 @@ export function HomeV2Client() {
                     <p className="text-xs text-[#AAA8A1] mb-3">Relatos de veteranos e conduta na estrada.</p>
                   </div>
                   <a
-                    href="https://www.youtube.com/@18cast"
+                    href="https://www.youtube.com/@InsanosMC"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full py-2.5 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] uppercase text-xs rounded transition-colors flex items-center justify-center gap-2 shadow-md hover-lift"

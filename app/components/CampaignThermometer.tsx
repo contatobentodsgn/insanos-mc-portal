@@ -185,21 +185,21 @@ export function CampaignThermometer() {
               {/* Milestones on Desktop Road */}
               <g transform="translate(238, 411)">
                 <circle r="6" fill="#090A0D" stroke="#F2C21B" strokeWidth="2.5" />
-                <text x="0" y="22" textAnchor="middle" fill="#AAA8A1" fontSize="10" fontFamily="monospace" fontWeight="bold">
+                <text x="0" y="24" textAnchor="middle" fill="#AAA8A1" fontSize="11" fontFamily="monospace" fontWeight="bold">
                   0% (Início)
                 </text>
               </g>
 
               <g transform="translate(517, 408)">
                 <circle r="5" fill="#F2C21B" stroke="#090A0D" strokeWidth="2" />
-                <text x="0" y="-14" textAnchor="middle" fill="#AAA8A1" fontSize="10" fontFamily="monospace" fontWeight="bold">
+                <text x="0" y="-14" textAnchor="middle" fill="#AAA8A1" fontSize="11" fontFamily="monospace" fontWeight="bold">
                   25.000 (50%)
                 </text>
               </g>
 
               <g transform="translate(851, 392)">
                 <circle r="5" fill="#F2C21B" stroke="#090A0D" strokeWidth="2" />
-                <text x="0" y="-14" textAnchor="middle" fill="#AAA8A1" fontSize="10" fontFamily="monospace" fontWeight="bold">
+                <text x="0" y="-14" textAnchor="middle" fill="#AAA8A1" fontSize="11" fontFamily="monospace" fontWeight="bold">
                   37.500 (75%)
                 </text>
               </g>
@@ -207,15 +207,23 @@ export function CampaignThermometer() {
               {/* Dynamic Floating Location Pin on Road Center at 86% */}
               <g transform="translate(989, 433)">
                 <g transform="translate(0, -32)">
-                  <rect x="-52" y="-30" width="104" height="34" rx="8" fill="#090A0D" stroke="#F2C21B" strokeWidth="2" filter="drop-shadow(0 0 15px rgba(242,194,27,0.9))" />
-                  <text x="0" y="-12" textAnchor="middle" fill="#F2C21B" fontSize="18" fontFamily="Anton, sans-serif" fontWeight="bold">
+                  <rect x="-54" y="-32" width="108" height="36" rx="4" fill="#090A0D" stroke="#F2C21B" strokeWidth="2" filter="drop-shadow(0 0 15px rgba(242,194,27,0.9))" />
+                  <text x="0" y="-14" textAnchor="middle" fill="#F2C21B" fontSize="18" fontFamily="Anton, sans-serif" fontWeight="bold">
                     42.850
                   </text>
-                  <text x="0" y="-1" textAnchor="middle" fill="#FFFFFF" fontSize="7.5" fontFamily="monospace" fontWeight="bold" letterSpacing="0.5">
+                  <text x="0" y="-2" textAnchor="middle" fill="#FFFFFF" fontSize="9" fontFamily="monospace" fontWeight="bold" letterSpacing="0.5">
                     ITENS ARRECADADOS
                   </text>
                   <polygon points="-5,4 5,4 0,10" fill="#F2C21B" />
                 </g>
+              </g>
+
+              {/* 100% Meta Final Milestone Node on Desktop Road */}
+              <g transform="translate(1099, 464)">
+                <circle r="7" fill="#090A0D" stroke="#F2C21B" strokeWidth="3" />
+                <text x="0" y="25" textAnchor="middle" fill="#F2C21B" fontSize="11" fontFamily="monospace" fontWeight="bold">
+                  50.000 (100% Meta)
+                </text>
               </g>
 
               {/* Vector Checkered Flag at Goal */}
@@ -311,15 +319,23 @@ export function CampaignThermometer() {
                 {/* Dynamic Floating Location Pin on Road Center at 86% */}
                 <g transform={`translate(${DEFAULT_MOBILE_POINTS[6].x}, ${DEFAULT_MOBILE_POINTS[6].y})`}>
                   <g transform="translate(0, -28)">
-                    <rect x="-46" y="-28" width="92" height="32" rx="8" fill="#090A0D" stroke="#F2C21B" strokeWidth="2" filter="drop-shadow(0 0 15px rgba(242,194,27,0.9))" />
+                    <rect x="-48" y="-28" width="96" height="32" rx="4" fill="#090A0D" stroke="#F2C21B" strokeWidth="2" filter="drop-shadow(0 0 15px rgba(242,194,27,0.9))" />
                     <text x="0" y="-12" textAnchor="middle" fill="#F2C21B" fontSize="16" fontFamily="Anton, sans-serif" fontWeight="bold">
                       42.850
                     </text>
-                    <text x="0" y="-2" textAnchor="middle" fill="#FFFFFF" fontSize="7" fontFamily="monospace" fontWeight="bold" letterSpacing="0.5">
+                    <text x="0" y="-2" textAnchor="middle" fill="#FFFFFF" fontSize="8" fontFamily="monospace" fontWeight="bold" letterSpacing="0.5">
                       ITENS ARRECADADOS
                     </text>
                     <polygon points="-4,4 4,4 0,9" fill="#F2C21B" />
                   </g>
+                </g>
+
+                {/* 100% Meta Final Milestone Node on Mobile Road */}
+                <g transform={`translate(${DEFAULT_MOBILE_POINTS[7].x}, ${DEFAULT_MOBILE_POINTS[7].y})`}>
+                  <circle r="6" fill="#090A0D" stroke="#F2C21B" strokeWidth="2.5" />
+                  <text x="0" y="22" textAnchor="middle" fill="#F2C21B" fontSize="9.5" fontFamily="monospace" fontWeight="bold">
+                    100% (50k)
+                  </text>
                 </g>
 
                 {/* Bandeira Quadriculada Vetorial HD */}

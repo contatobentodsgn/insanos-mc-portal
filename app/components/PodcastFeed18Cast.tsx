@@ -26,7 +26,7 @@ export const EPISODES_18CAST: PodcastEpisode[] = [
     guest: "Comando Mundial & Veteranos",
     desc: "Um debate profundo sobre disciplina, respeito à família e o papel de cada integrante na expansão para mais de 65 países.",
     image: "/images/insanos/podcast_18cast_studio.webp",
-    youtubeUrl: "https://www.youtube.com/@InsanosMCOficial",
+    youtubeUrl: "https://www.youtube.com/@InsanosMC/videos",
     spotifyUrl: "https://open.spotify.com/show/insanosmc",
   },
   {
@@ -38,7 +38,7 @@ export const EPISODES_18CAST: PodcastEpisode[] = [
     guest: "Divisão Nômades Internacional",
     desc: "Relatos de superação em mais de 5.000 km sob altitude severa e o suporte mútuo entre facções da América Latina.",
     image: "/images/insanos/expedicoes/expedicao_1.webp",
-    youtubeUrl: "https://www.youtube.com/@InsanosMCOficial",
+    youtubeUrl: "https://www.youtube.com/@InsanosMC/videos",
     spotifyUrl: "https://open.spotify.com/show/insanosmc",
   },
   {
@@ -50,7 +50,7 @@ export const EPISODES_18CAST: PodcastEpisode[] = [
     guest: "Diretoria Social & Atletas PcD",
     desc: "Como as artes marciais e a engenharia de adaptação de motocicletas estão devolvendo a liberdade a centenas de irmãos.",
     image: "/images/insanos/impact_combat.webp",
-    youtubeUrl: "https://www.youtube.com/@InsanosMCOficial",
+    youtubeUrl: "https://www.youtube.com/@InsanosMC/videos",
     spotifyUrl: "https://open.spotify.com/show/insanosmc",
   },
   {
@@ -62,7 +62,7 @@ export const EPISODES_18CAST: PodcastEpisode[] = [
     guest: "Pioneiros do Asfalto (2015)",
     desc: "O registro documentado das primeiras reuniões na Av. dos Autonomistas e a inspiração heróica dos 18 do Forte de 1922.",
     image: "/images/insanos/history_1922.webp",
-    youtubeUrl: "https://www.youtube.com/@InsanosMCOficial",
+    youtubeUrl: "https://www.youtube.com/@InsanosMC/videos",
     spotifyUrl: "https://open.spotify.com/show/insanosmc",
   },
 ];
@@ -92,7 +92,7 @@ export function PodcastFeed18Cast() {
         {/* Global Channel Direct Links */}
         <div className="flex flex-wrap items-center gap-3">
           <a
-            href="https://www.youtube.com/@InsanosMCOficial"
+            href="https://www.youtube.com/@InsanosMC"
             target="_blank"
             rel="noopener noreferrer"
             className="px-5 py-3 rounded-[2px] bg-red-600 hover:bg-red-500 text-white text-xs font-mono font-bold uppercase transition-all shadow-md hover-lift flex items-center gap-2 border border-red-500 cursor-pointer"

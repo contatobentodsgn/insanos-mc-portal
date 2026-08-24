@@ -82,7 +82,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="https://www.youtube.com/@InsanosMCOficial"
+                  href="https://www.youtube.com/@InsanosMC"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#D4D1CA] hover:text-[#F2C21B] transition-colors flex items-center gap-1.5 py-1 inline-flex"
