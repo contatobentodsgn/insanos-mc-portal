@@ -243,7 +243,7 @@ export function CampaignThermometer() {
 
           {/* Mobile Road View */}
           <div className="block sm:hidden relative w-full my-1 overflow-visible">
-            <div className="w-full relative" style={{ transform: "translateY(18px)" }}>
+            <div className="w-full relative" style={{ transform: "translateY(-6px)" }}>
               <svg
                 viewBox="176 277 935 80"
                 className="w-full h-auto overflow-visible select-none"
