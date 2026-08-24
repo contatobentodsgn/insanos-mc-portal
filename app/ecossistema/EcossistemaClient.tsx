@@ -6,6 +6,7 @@ import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { IconShop, IconRadio, IconPodcast, IconShield } from "../components/ui/Icons";
 import { useRadio } from "../context/RadioContext";
+import { PodcastFeed18Cast } from "../components/PodcastFeed18Cast";
 
 const ASSETS = {
   storeBg: "/images/insanos/store_merch_official.webp",
@@ -136,61 +137,57 @@ export function EcossistemaClient() {
               </div>
             </div>
 
-            {/* 03. 18Cast & ALAMO */}
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* Podcast 18Cast */}
-              <div className="p-8 sm:p-10 rounded-2xl bg-[#131417] border border-white/15 flex flex-col justify-between overflow-hidden">
-                <div
-                  className="h-44 rounded-xl bg-cover bg-center mb-6 border border-white/10 relative overflow-hidden"
-                  style={{ backgroundImage: `url(${ASSETS.podcastBg})` }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                  <div className="absolute top-3 right-3 px-2.5 py-1 rounded bg-red-600 text-white font-mono text-[10px] uppercase font-bold tracking-wider">
-                    YouTube Oficial
-                  </div>
+            {/* 03. 18Cast — Feed de Episódios Recentes com Player Interativo Embed */}
+            <PodcastFeed18Cast />
+
+            {/* 04. ALAMO Associação */}
+            <div className="grid lg:grid-cols-12 gap-8 items-center p-8 sm:p-14 rounded-2xl bg-[#131417] border border-t-white/20 border-b-white/5 border-x-white/10 shadow-2xl overflow-hidden">
+              <div className="lg:col-span-8 space-y-6">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#F2C21B]/15 text-[#F2C21B] font-mono text-xs uppercase font-bold tracking-wider border border-[#F2C21B]/30">
+                  <IconShield className="w-4 h-4 text-[#F2C21B]" />
+                  <span>Proteção & Apoio Mútuo</span>
                 </div>
-                <div>
-                  <span className="text-xs uppercase font-extrabold text-[#F2C21B] tracking-wider flex items-center gap-1.5 mb-2">
-                    <IconPodcast className="w-4 h-4 text-[#F2C21B]" />
-                    <span>Podcast Oficial</span>
-                  </span>
-                  <h3 className="font-['Anton'] text-3xl uppercase text-white mb-4">Podcast 18Cast</h3>
-                  <p className="text-sm text-[#AAA8A1] leading-relaxed mb-6">
-                    Entrevistas com veteranos, fundadores, mecânicos especialistas e líderes comunitários debatendo a essência do motociclismo de conduta e relatos de expedições extremas.
-                  </p>
+                <h3 className="font-['Anton'] text-3xl sm:text-5xl uppercase text-white leading-tight tracking-[-0.015em]">
+                  Associação ALAMO — Proteção Veicular 24h
+                </h3>
+                <p className="text-sm sm:text-base text-[#D4D1CA] font-medium leading-relaxed max-w-3xl">
+                  Associação de proteção veicular e benefícios mútuos para motociclistas de alta e média cilindrada. Oferece socorro 24h com guincho ilimitado, assistência jurídica especializada para motociclistas e cobertura completa para estradas e rodovias em todo o Brasil.
+                </p>
+                <div className="pt-2 flex flex-wrap gap-4">
+                  <a
+                    href="https://alamo.org.br"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-8 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-base rounded shadow-lg transition-colors duration-200 hover-lift inline-flex items-center gap-3"
+                  >
+                    <span>Conhecer Benefícios ALAMO</span>
+                    <span>↗</span>
+                  </a>
                 </div>
-                <a
-                  href="https://www.youtube.com/@InsanosMCOficial"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-8 py-3.5 bg-[#F2C21B] hover:bg-[#ffe053] text-black rounded text-xs font-['Anton'] uppercase tracking-wider inline-flex items-center gap-2 self-start transition-colors duration-200 shadow-md hover-lift"
-                >
-                  <span>Acessar no YouTube</span>
-                  <span>↗</span>
-                </a>
               </div>
 
-              {/* ALAMO Associação */}
-              <div className="p-8 sm:p-10 rounded-2xl bg-[#131417] border border-white/15 flex flex-col justify-between">
-                <div>
-                  <span className="text-xs uppercase font-extrabold text-[#F2C21B] tracking-wider flex items-center gap-1.5 mb-2">
-                    <IconShield className="w-4 h-4 text-[#F2C21B]" />
-                    <span>Proteção & Apoio</span>
-                  </span>
-                  <h3 className="font-['Anton'] text-3xl uppercase text-white mb-4">Associação ALAMO</h3>
-                  <p className="text-sm text-[#AAA8A1] leading-relaxed mb-6">
-                    Associação de proteção veicular e benefícios mútuos para motociclistas, oferecendo socorro 24h com guincho, assistência jurídica especializada e cobertura para estradas e rodovias em todo o Brasil.
-                  </p>
-                </div>
-                <a
-                  href="https://alamo.org.br"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded text-xs font-bold uppercase tracking-wider inline-flex items-center gap-2 self-start"
-                >
-                  <span>Conhecer Benefícios ALAMO</span>
-                  <span>↗</span>
-                </a>
+              <div className="lg:col-span-4 p-6 rounded-2xl bg-[#0E1014] border border-white/10 space-y-3">
+                <span className="text-xs font-mono font-bold uppercase text-[#F2C21B] block">
+                  Cobertura Especializada:
+                </span>
+                <ul className="text-xs text-[#D4D1CA] space-y-2.5 font-mono">
+                  <li className="flex items-center gap-2">
+                    <span className="text-[#F2C21B]">✓</span>
+                    <span>Guincho 24h sem limite de km em sinistros</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-[#F2C21B]">✓</span>
+                    <span>Assistência jurídica rodoviária</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-[#F2C21B]">✓</span>
+                    <span>Proteção contra furto, roubo e colisão</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-[#F2C21B]">✓</span>
+                    <span>Rede conveniada de oficinas especializadas</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
