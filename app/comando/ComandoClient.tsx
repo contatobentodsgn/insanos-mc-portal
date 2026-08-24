@@ -87,16 +87,16 @@ export function ComandoClient() {
           <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-8">
             <div className="max-w-3xl">
               <div className="flex items-center gap-3 mb-4">
-                <span className="w-8 h-[2px] bg-[#F2C21B]" />
+                <span className="w-8 h-[2px] bg-gradient-to-r from-[#F2C21B] via-[#FFD700] to-[#B88E07] rounded-full shadow-[0_0_8px_rgba(242,194,27,0.4)]" />
                 <span className="text-xs uppercase font-extrabold tracking-[0.2em] text-[#F2C21B]">
                   Liderança, Hierarquia & Tradição
                 </span>
               </div>
-              <h1 className="font-['Anton'] uppercase text-5xl sm:text-7xl lg:text-8xl text-white leading-tight mb-6">
+              <h1 className="font-['Anton'] uppercase text-5xl sm:text-7xl lg:text-8xl text-white leading-tight mb-6 tracking-[-0.015em] sm:tracking-[-0.02em]">
                 Quem carrega a<br />
                 <span className="text-[#F2C21B]">história</span> adiante.
               </h1>
-              <p className="text-base sm:text-xl text-[#C7C5BF] leading-relaxed">
+              <p className="text-base sm:text-xl text-[#D4D1CA] font-medium leading-relaxed">
                 A disciplina e a hierarquia são os alicerces que sustentam mais de 12 mil integrantes em 65 países.
                 Conheça a estrutura de governança e preste homenagem àqueles que construíram o legado.
               </p>
@@ -138,10 +138,10 @@ export function ComandoClient() {
             {activeTab === "comando" ? (
               <div className="transition-opacity duration-300">
                 <div className="max-w-2xl mb-12">
-                  <h2 className="font-['Anton'] text-3xl sm:text-4xl uppercase text-white mb-3">
+                  <h2 className="font-['Anton'] text-3xl sm:text-4xl uppercase text-white mb-3 tracking-[-0.015em]">
                     Estrutura de Comando & Governança
                   </h2>
-                  <p className="text-sm text-[#AAA8A1]">
+                  <p className="text-sm text-[#D4D1CA] font-medium">
                     Cargos diretivos validados pelo conselho mundial para o ciclo 2026.
                   </p>
                 </div>
@@ -150,11 +150,11 @@ export function ComandoClient() {
                   {COMMAND_ROLES.map((item, idx) => (
                     <div
                       key={idx}
-                      className="group relative rounded-2xl bg-[#121316] border border-white/10 hover:border-[#F2C21B]/60 transition-all duration-300 overflow-hidden flex flex-col justify-between shadow-2xl hover-lift"
+                      className="group relative rounded-2xl bg-[#121316] border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/70 hover:shadow-[0_0_35px_rgba(242,194,27,0.2)] transition-all duration-300 overflow-hidden flex flex-col justify-between shadow-2xl hover-lift"
                     >
                       <div className="relative h-72 sm:h-80 w-full overflow-hidden bg-[#0A0A0C]">
                         <div
-                          className="absolute inset-0 bg-cover bg-[center_top] transition-transform duration-700 group-hover:scale-105"
+                          className="absolute inset-0 bg-cover bg-[center_top] filter grayscale-[12%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
                           style={{
                             backgroundImage: `url(${item.image})`,
                             backgroundPosition: "center top",
@@ -176,7 +176,7 @@ export function ComandoClient() {
                           <h3 className="font-['Anton'] text-xl uppercase text-white mb-2 leading-tight group-hover:text-[#F2C21B] transition-colors">
                             {item.role}
                           </h3>
-                          <p className="text-xs text-[#C7C5BF] leading-relaxed mb-4">
+                          <p className="text-xs text-[#D4D1CA] font-medium leading-relaxed mb-4">
                             {item.responsibilities}
                           </p>
                         </div>

@@ -25,15 +25,15 @@ export function EcossistemaClient() {
         <section className="py-20 sm:py-28 bg-[#111215] border-b border-white/10 relative overflow-hidden">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8 relative z-10">
             <div className="flex items-center gap-3 mb-4">
-              <span className="w-8 h-[2px] bg-[#F2C21B]" />
+              <span className="w-8 h-[2px] bg-gradient-to-r from-[#F2C21B] via-[#FFD700] to-[#B88E07] rounded-full shadow-[0_0_8px_rgba(242,194,27,0.4)]" />
               <p className="text-xs uppercase font-extrabold tracking-[0.2em] text-[#F2C21B]">
                 Universo Integrado Insanos
               </p>
             </div>
-            <h1 className="font-['Anton'] uppercase text-4xl sm:text-7xl text-white mb-6 leading-tight">
+            <h1 className="font-['Anton'] uppercase text-4xl sm:text-7xl text-white mb-6 leading-tight tracking-[-0.015em] sm:tracking-[-0.02em]">
               Nosso <span className="text-[#F2C21B]">Ecossistema.</span>
             </h1>
-            <p className="text-base sm:text-xl text-[#C7C5BF] max-w-2xl leading-relaxed">
+            <p className="text-base sm:text-xl text-[#D4D1CA] font-medium max-w-2xl leading-relaxed">
               Mais do que um motoclube: uma rede completa de produtos oficiais, comunicação independente, apoio e proteção para o motociclista.
             </p>
           </div>
@@ -43,16 +43,16 @@ export function EcossistemaClient() {
         <section className="py-20 sm:py-32 bg-[#0A0A0B]">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8 space-y-16">
             {/* 01. 18 Store */}
-            <div className="grid lg:grid-cols-12 gap-8 items-center p-8 sm:p-14 rounded-2xl bg-[#131417] border border-white/15 shadow-2xl overflow-hidden">
+            <div className="grid lg:grid-cols-12 gap-8 items-center p-8 sm:p-14 rounded-2xl bg-[#131417] border border-t-white/25 border-b-white/5 border-x-white/15 shadow-2xl overflow-hidden">
               <div className="lg:col-span-6 space-y-6">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#F2C21B]/15 text-[#F2C21B] font-mono text-xs uppercase font-bold tracking-wider">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#F2C21B]/15 text-[#F2C21B] font-mono text-xs uppercase font-bold tracking-wider border border-[#F2C21B]/30">
                   <IconShop className="w-4 h-4 text-[#F2C21B]" />
                   <span>Loja Oficial</span>
                 </div>
-                <h2 className="font-['Anton'] text-3xl sm:text-5xl uppercase text-white leading-tight">
+                <h2 className="font-['Anton'] text-3xl sm:text-5xl uppercase text-white leading-tight tracking-[-0.015em]">
                   18 Store — Wear The Story
                 </h2>
-                <p className="text-sm sm:text-base text-[#AAA8A1] leading-relaxed">
+                <p className="text-sm sm:text-base text-[#D4D1CA] font-medium leading-relaxed">
                   Camisetas exclusivas, bonés oficiais, jaquetas de couro de alta densidade, acessórios e artigos comemorativos de 10 anos de história. Vista a identidade oficial com a máxima qualidade e durabilidade.
                 </p>
                 <div className="pt-2">

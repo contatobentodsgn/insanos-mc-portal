@@ -9,7 +9,7 @@ const ASSETS = {
 
 export function Footer() {
   return (
-    <footer className="bg-[#060607] text-[#888] text-xs py-16 border-t border-white/10">
+    <footer className="bg-[#060607] text-[#AAA8A1] text-xs py-16 border-t border-white/10">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           {/* Brand Col */}
@@ -21,50 +21,59 @@ export function Footer() {
                 className="h-10 sm:h-12 w-auto max-w-[240px] sm:max-w-[280px] object-contain transition-transform duration-300 group-hover:scale-105 group-hover:drop-shadow-[0_0_15px_rgba(242,194,27,0.3)]"
               />
             </Link>
-            <p className="text-xs text-[#AAA8A1] leading-relaxed max-w-sm">
+            <p className="text-xs text-[#D4D1CA] font-medium leading-relaxed max-w-sm">
               O maior motoclube do Brasil e do mundo. Unidos por Deus, Família, Trabalho e Motoclube.
               Rompendo paradigmas do motociclismo com honra, disciplina e ajuda humanitária.
             </p>
-            <div className="text-[11px] font-mono text-[#F2C21B]">
+            <div className="text-[11px] font-mono text-[#F2C21B] font-bold">
               #SomosDeVerdade · #InsanosMC · #OriginalDeOZ
             </div>
           </div>
 
           {/* Quick Navigation */}
           <div>
-            <h4 className="font-['Anton'] text-sm uppercase text-white tracking-wider mb-4">Navegação</h4>
-            <ul className="space-y-2">
-              <li><Link href="/" className="hover:text-[#F2C21B] transition-colors">Início</Link></li>
-              <li><Link href="/historia" className="hover:text-[#F2C21B] transition-colors">História & 18 do Forte</Link></li>
-              <li><Link href="/impacto" className="hover:text-[#F2C21B] transition-colors">Ações Sociais & PcD</Link></li>
-              <li><Link href="/comando" className="hover:text-[#F2C21B] transition-colors">Liderança & Memorial</Link></li>
-              <li><Link href="/18news" className="hover:text-[#F2C21B] transition-colors">18News & Revista</Link></li>
-              <li><Link href="/faca-parte" className="hover:text-[#F2C21B] transition-colors">Adesão & Ingresso</Link></li>
+            <div className="flex items-center gap-2 mb-4">
+              <span className="w-4 h-[2px] bg-[#F2C21B] rounded-full" />
+              <h4 className="font-['Anton'] text-sm uppercase text-white tracking-wider">Navegação</h4>
+            </div>
+            <ul className="space-y-1.5">
+              <li><Link href="/" className="text-[#D4D1CA] hover:text-[#F2C21B] transition-colors py-1 inline-block">Início</Link></li>
+              <li><Link href="/historia" className="text-[#D4D1CA] hover:text-[#F2C21B] transition-colors py-1 inline-block">História & 18 do Forte</Link></li>
+              <li><Link href="/impacto" className="text-[#D4D1CA] hover:text-[#F2C21B] transition-colors py-1 inline-block">Ações Sociais & PcD</Link></li>
+              <li><Link href="/comando" className="text-[#D4D1CA] hover:text-[#F2C21B] transition-colors py-1 inline-block">Liderança & Memorial</Link></li>
+              <li><Link href="/18news" className="text-[#D4D1CA] hover:text-[#F2C21B] transition-colors py-1 inline-block">18News & Revista</Link></li>
+              <li><Link href="/faca-parte" className="text-[#D4D1CA] hover:text-[#F2C21B] transition-colors py-1 inline-block">Adesão & Ingresso</Link></li>
             </ul>
           </div>
 
           {/* Social Projects */}
           <div>
-            <h4 className="font-['Anton'] text-sm uppercase text-white tracking-wider mb-4">Projetos Oficiais</h4>
-            <ul className="space-y-2">
-              <li><Link href="/impacto" className="hover:text-[#F2C21B] transition-colors">Projeto PcD (Inclusão)</Link></li>
-              <li><Link href="/impacto" className="hover:text-[#F2C21B] transition-colors">Bonde Pela Vida (Sangue)</Link></li>
-              <li><Link href="/impacto" className="hover:text-[#F2C21B] transition-colors">Combate Insano (Artes Marciais)</Link></li>
-              <li><Link href="/ecossistema" className="hover:text-[#F2C21B] transition-colors">Rádio Insanos 24h</Link></li>
-              <li><Link href="/ecossistema" className="hover:text-[#F2C21B] transition-colors">18 Store Oficial</Link></li>
+            <div className="flex items-center gap-2 mb-4">
+              <span className="w-4 h-[2px] bg-[#F2C21B] rounded-full" />
+              <h4 className="font-['Anton'] text-sm uppercase text-white tracking-wider">Projetos Oficiais</h4>
+            </div>
+            <ul className="space-y-1.5">
+              <li><Link href="/impacto" className="text-[#D4D1CA] hover:text-[#F2C21B] transition-colors py-1 inline-block">Projeto PcD (Inclusão)</Link></li>
+              <li><Link href="/impacto" className="text-[#D4D1CA] hover:text-[#F2C21B] transition-colors py-1 inline-block">Bonde Pela Vida (Sangue)</Link></li>
+              <li><Link href="/impacto" className="text-[#D4D1CA] hover:text-[#F2C21B] transition-colors py-1 inline-block">Combate Insano (Artes Marciais)</Link></li>
+              <li><Link href="/ecossistema" className="text-[#D4D1CA] hover:text-[#F2C21B] transition-colors py-1 inline-block">Rádio Insanos 24h</Link></li>
+              <li><Link href="/ecossistema" className="text-[#D4D1CA] hover:text-[#F2C21B] transition-colors py-1 inline-block">18 Store Oficial</Link></li>
             </ul>
           </div>
 
           {/* Contact & Social */}
           <div>
-            <h4 className="font-['Anton'] text-sm uppercase text-white tracking-wider mb-4">Canais Oficiais</h4>
-            <ul className="space-y-2">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="w-4 h-[2px] bg-[#F2C21B] rounded-full" />
+              <h4 className="font-['Anton'] text-sm uppercase text-white tracking-wider">Canais Oficiais</h4>
+            </div>
+            <ul className="space-y-1.5">
               <li>
                 <a
                   href="https://www.instagram.com/insanosmc_oficial"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#F2C21B] transition-colors flex items-center gap-1.5"
+                  className="text-[#D4D1CA] hover:text-[#F2C21B] transition-colors flex items-center gap-1.5 py-1 inline-flex"
                 >
                   <span>Instagram Oficial</span>
                   <span>↗</span>
@@ -75,14 +84,14 @@ export function Footer() {
                   href="https://www.youtube.com/@InsanosMCOficial"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#F2C21B] transition-colors flex items-center gap-1.5"
+                  className="text-[#D4D1CA] hover:text-[#F2C21B] transition-colors flex items-center gap-1.5 py-1 inline-flex"
                 >
                   <span>YouTube 18Cast</span>
                   <span>↗</span>
                 </a>
               </li>
-              <li><Link href="/faca-parte" className="hover:text-[#F2C21B] transition-colors">Adesão & Recrutamento</Link></li>
-              <li><Link href="/ecossistema" className="hover:text-[#F2C21B] transition-colors">Ecossistema Digital</Link></li>
+              <li><Link href="/faca-parte" className="text-[#D4D1CA] hover:text-[#F2C21B] transition-colors py-1 inline-block">Adesão & Recrutamento</Link></li>
+              <li><Link href="/ecossistema" className="text-[#D4D1CA] hover:text-[#F2C21B] transition-colors py-1 inline-block">Ecossistema Digital</Link></li>
             </ul>
           </div>
         </div>
@@ -92,23 +101,23 @@ export function Footer() {
           <div>
             © 2015–2026 Insanos Moto Clube. Todos os direitos reservados.
           </div>
-          <div className="flex gap-6 items-center">
-            <Link href="/termos" className="text-[#C7C5BF] hover:text-[#F2C21B] transition-colors">Termos de Uso</Link>
-            <Link href="/privacidade" className="text-[#C7C5BF] hover:text-[#F2C21B] transition-colors">Política de Privacidade (LGPD)</Link>
+          <div className="flex flex-wrap gap-6 items-center">
+            <Link href="/termos" className="text-[#D4D1CA] hover:text-[#F2C21B] transition-colors py-1">Termos de Uso</Link>
+            <Link href="/privacidade" className="text-[#D4D1CA] hover:text-[#F2C21B] transition-colors py-1">Política de Privacidade (LGPD)</Link>
             <button
               onClick={() => {
                 if (typeof window !== "undefined") {
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }
               }}
-              className="text-[#C7C5BF] hover:text-[#F2C21B] transition-colors cursor-pointer"
+              className="text-[#D4D1CA] hover:text-[#F2C21B] hover:bg-white/5 px-3 py-1.5 rounded-lg border border-white/10 transition-colors cursor-pointer flex items-center gap-1.5 font-bold"
             >
-              Voltar ao Topo ↑
+              <span>Voltar ao Topo</span>
+              <span className="text-[#F2C21B]">↑</span>
             </button>
           </div>
         </div>
       </div>
     </footer>
-
   );
 }

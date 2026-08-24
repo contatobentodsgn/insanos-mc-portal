@@ -94,16 +94,16 @@ export function ImpactoClient() {
           <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-8">
             <div className="max-w-3xl">
               <div className="flex items-center gap-3 mb-4">
-                <span className="w-8 h-[2px] bg-[#F2C21B]" />
+                <span className="w-8 h-[2px] bg-gradient-to-r from-[#F2C21B] via-[#FFD700] to-[#B88E07] rounded-full shadow-[0_0_8px_rgba(242,194,27,0.4)]" />
                 <span className="text-xs uppercase font-extrabold tracking-[0.2em] text-[#F2C21B]">
                   Ações Sociais & Propósito
                 </span>
               </div>
-              <h1 className="font-['Anton'] uppercase text-5xl sm:text-7xl lg:text-8xl text-white leading-tight mb-6">
+              <h1 className="font-['Anton'] uppercase text-5xl sm:text-7xl lg:text-8xl text-white leading-tight mb-6 tracking-[-0.015em] sm:tracking-[-0.02em]">
                 <span className="text-[#F2C21B]">Ninguém</span><br />
                 fica para trás.
               </h1>
-              <p className="text-base sm:text-xl text-[#C7C5BF] leading-relaxed">
+              <p className="text-base sm:text-xl text-[#D4D1CA] font-medium leading-relaxed">
                 Nosso destino é fazer o bem. O motociclismo é a nossa paixão, mas a ajuda humanitária e a inclusão social são a nossa verdadeira missão perante Deus e a sociedade.
               </p>
             </div>
@@ -115,19 +115,19 @@ export function ImpactoClient() {
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
               <div>
-                <strong className="block font-['Anton'] text-4xl sm:text-6xl text-[#F2C21B] mb-1">+450</strong>
+                <strong className="block font-['Anton'] text-4xl sm:text-6xl text-[#F2C21B] mb-1 tracking-[0.04em]">+450</strong>
                 <span className="text-xs text-[#AAA8A1] uppercase font-bold tracking-wider">Motos Adaptadas PcD</span>
               </div>
               <div>
-                <strong className="block font-['Anton'] text-4xl sm:text-6xl text-[#F2C21B] mb-1">+25.000</strong>
+                <strong className="block font-['Anton'] text-4xl sm:text-6xl text-[#F2C21B] mb-1 tracking-[0.04em]">+25.000</strong>
                 <span className="text-xs text-[#AAA8A1] uppercase font-bold tracking-wider">Bolsas de Sangue Doadas</span>
               </div>
               <div>
-                <strong className="block font-['Anton'] text-4xl sm:text-6xl text-[#F2C21B] mb-1">+420t</strong>
+                <strong className="block font-['Anton'] text-4xl sm:text-6xl text-[#F2C21B] mb-1 tracking-[0.04em]">+420t</strong>
                 <span className="text-xs text-[#AAA8A1] uppercase font-bold tracking-wider">Alimentos Distribuídos</span>
               </div>
               <div>
-                <strong className="block font-['Anton'] text-4xl sm:text-6xl text-[#F2C21B] mb-1">+1.200</strong>
+                <strong className="block font-['Anton'] text-4xl sm:text-6xl text-[#F2C21B] mb-1 tracking-[0.04em]">+1.200</strong>
                 <span className="text-xs text-[#AAA8A1] uppercase font-bold tracking-wider">Jovens nos Tatames</span>
               </div>
             </div>
@@ -145,10 +145,14 @@ export function ImpactoClient() {
             {/* Tabs Selector */}
             <div>
               <div className="text-center max-w-2xl mx-auto mb-12">
-                <span className="text-xs uppercase font-extrabold tracking-[0.2em] text-[#F2C21B] block mb-2">
-                  Projetos Sociais Estruturados
-                </span>
-                <h2 className="font-['Anton'] uppercase text-3xl sm:text-5xl text-white">
+                <div className="flex items-center justify-center gap-3 mb-2">
+                  <span className="w-8 h-[2px] bg-gradient-to-r from-[#F2C21B] via-[#FFD700] to-[#B88E07] rounded-full shadow-[0_0_8px_rgba(242,194,27,0.4)]" />
+                  <span className="text-xs uppercase font-extrabold tracking-[0.2em] text-[#F2C21B]">
+                    Projetos Sociais Estruturados
+                  </span>
+                  <span className="w-8 h-[2px] bg-gradient-to-r from-[#B88E07] via-[#FFD700] to-[#F2C21B] rounded-full shadow-[0_0_8px_rgba(242,194,27,0.4)]" />
+                </div>
+                <h2 className="font-['Anton'] uppercase text-3xl sm:text-5xl text-white tracking-[-0.015em]">
                   Quatro Frentes de Ajuda Humanitária
                 </h2>
               </div>
@@ -158,10 +162,10 @@ export function ImpactoClient() {
                   <button
                     key={proj.id}
                     onClick={() => setActiveTab(proj.id)}
-                    className={`px-6 py-3.5 rounded-lg font-['Anton'] text-base sm:text-xl uppercase tracking-wider transition-colors duration-150 ${
+                    className={`px-6 py-3.5 rounded-xl font-['Anton'] text-base sm:text-xl uppercase tracking-wider transition-all duration-200 cursor-pointer ${
                       activeTab === proj.id
-                        ? "bg-[#F2C21B] text-black shadow-lg"
-                        : "bg-[#141517] text-white/70 hover:text-white border border-white/10"
+                        ? "bg-gradient-to-b from-[#F2C21B] to-[#D4A50E] text-black shadow-[0_0_20px_rgba(242,194,27,0.4)] border border-[#FFE066] scale-105 font-extrabold"
+                        : "bg-[#141517] text-white/70 hover:text-white hover:bg-[#1C1E23] border border-white/10 hover:border-white/20"
                     }`}
                   >
                     {proj.title.split("—")[0].trim()}
@@ -171,7 +175,7 @@ export function ImpactoClient() {
             </div>
 
             {/* Active Project Card Showcase */}
-            <div className="max-w-5xl mx-auto bg-[#141519] border border-white/15 rounded-2xl overflow-hidden shadow-2xl transition-opacity duration-300">
+            <div className="max-w-5xl mx-auto bg-[#141519] border border-t-white/25 border-b-white/5 border-x-white/15 rounded-2xl overflow-hidden shadow-2xl transition-opacity duration-300">
               <div
                 className="h-64 sm:h-96 bg-cover bg-center relative"
                 style={{

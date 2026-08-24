@@ -860,27 +860,33 @@ export function InteractiveMap() {
         </div>
 
         {/* Filter Pills */}
-        <div className="flex bg-[#0A0A0B] p-1 rounded-xl border border-white/10">
+        <div className="flex bg-[#0A0A0B] p-1.5 rounded-xl border border-white/15 shadow-inner">
           <button
             onClick={() => handleFilterClick("todos")}
-            className={`px-4 py-2 rounded-lg text-xs font-bold uppercase transition-all duration-150 ${
-              activeFilter === "todos" ? "bg-[#F2C21B] text-black shadow-md" : "text-white/60 hover:text-white"
+            className={`px-4 py-2 rounded-lg text-xs font-bold uppercase transition-all duration-200 cursor-pointer ${
+              activeFilter === "todos"
+                ? "bg-[#F2C21B] text-black shadow-[0_0_15px_rgba(242,194,27,0.3)] font-extrabold scale-[1.02]"
+                : "text-white/60 hover:text-white hover:bg-white/5"
             }`}
           >
             Sedes em Destaque ({SEDES_DATA.length})
           </button>
           <button
             onClick={() => handleFilterClick("brasil")}
-            className={`px-4 py-2 rounded-lg text-xs font-bold uppercase transition-all duration-150 ${
-              activeFilter === "brasil" ? "bg-[#F2C21B] text-black shadow-md" : "text-white/60 hover:text-white"
+            className={`px-4 py-2 rounded-lg text-xs font-bold uppercase transition-all duration-200 cursor-pointer ${
+              activeFilter === "brasil"
+                ? "bg-[#F2C21B] text-black shadow-[0_0_15px_rgba(242,194,27,0.3)] font-extrabold scale-[1.02]"
+                : "text-white/60 hover:text-white hover:bg-white/5"
             }`}
           >
             Brasil (9)
           </button>
           <button
             onClick={() => handleFilterClick("internacional")}
-            className={`px-4 py-2 rounded-lg text-xs font-bold uppercase transition-all duration-150 ${
-              activeFilter === "internacional" ? "bg-[#F2C21B] text-black shadow-md" : "text-white/60 hover:text-white"
+            className={`px-4 py-2 rounded-lg text-xs font-bold uppercase transition-all duration-200 cursor-pointer ${
+              activeFilter === "internacional"
+                ? "bg-[#F2C21B] text-black shadow-[0_0_15px_rgba(242,194,27,0.3)] font-extrabold scale-[1.02]"
+                : "text-white/60 hover:text-white hover:bg-white/5"
             }`}
           >
             Mundo (4)

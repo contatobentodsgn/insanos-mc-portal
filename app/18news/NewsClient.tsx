@@ -35,15 +35,15 @@ export function NewsClient() {
           {/* Header */}
           <div className="max-w-3xl mb-12">
             <div className="flex items-center gap-3 mb-4">
-              <span className="w-8 h-[2px] bg-[#F2C21B]" />
+              <span className="w-8 h-[2px] bg-gradient-to-r from-[#F2C21B] via-[#FFD700] to-[#B88E07] rounded-full shadow-[0_0_8px_rgba(242,194,27,0.4)]" />
               <span className="text-xs uppercase font-extrabold tracking-[0.2em] text-[#F2C21B]">
                 Portal de Notícias & Comunicação
               </span>
             </div>
-            <h1 className="font-['Anton'] uppercase text-5xl sm:text-7xl lg:text-8xl text-white leading-tight mb-6">
+            <h1 className="font-['Anton'] uppercase text-5xl sm:text-7xl lg:text-8xl text-white leading-tight mb-6 tracking-[-0.015em] sm:tracking-[-0.02em]">
               18<span className="text-[#F2C21B]">News.</span>
             </h1>
-            <p className="text-base sm:text-xl text-[#C7C5BF] leading-relaxed">
+            <p className="text-base sm:text-xl text-[#D4D1CA] font-medium leading-relaxed">
               Cobertura oficial das ações sociais, grandes expedições internacionais, bastidores dos podcasts e comunicados da diretoria mundial.
             </p>
           </div>
@@ -56,10 +56,10 @@ export function NewsClient() {
                 <button
                   key={cat}
                   onClick={() => setSelectedTag(cat)}
-                  className={`px-4 py-2 rounded-lg text-xs uppercase font-bold tracking-wider transition-colors duration-150 ${
+                  className={`px-4 py-2 rounded-xl text-xs uppercase font-bold tracking-wider transition-all duration-200 cursor-pointer ${
                     selectedTag === cat
-                      ? "bg-[#F2C21B] text-black"
-                      : "bg-[#121316] text-[#AAA8A1] hover:text-white border border-white/5"
+                      ? "bg-[#F2C21B] text-black shadow-[0_0_15px_rgba(242,194,27,0.3)] font-extrabold scale-105"
+                      : "bg-[#141518] text-white/70 hover:text-white hover:bg-white/5 border border-white/10"
                   }`}
                 >
                   {cat}

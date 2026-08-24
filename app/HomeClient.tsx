@@ -453,10 +453,10 @@ export function HomeClient() {
 
       gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((el) => {
         gsap.from(el, {
-          y: 40,
+          y: 35,
           opacity: 0,
-          duration: 0.9,
-          ease: "power2.out",
+          duration: 0.75,
+          ease: "power3.out",
           scrollTrigger: {
             trigger: el,
             start: "top 88%",
@@ -568,16 +568,16 @@ export function HomeClient() {
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8">
             <div className="max-w-3xl mb-16" data-reveal>
               <div className="flex items-center gap-3 mb-4">
-                <span className="w-8 h-[2px] bg-[#F2C21B]" />
+                <span className="w-8 h-[2px] bg-gradient-to-r from-[#F2C21B] via-[#FFD700] to-[#B88E07] rounded-full shadow-[0_0_8px_rgba(242,194,27,0.4)]" />
                 <p className="text-xs uppercase font-extrabold tracking-[0.2em] text-[#F2C21B]">
                   Presença Global & Território
                 </p>
               </div>
-              <h2 className="font-['Anton'] uppercase text-4xl sm:text-6xl lg:text-7xl leading-tight text-white mb-6">
+              <h2 className="font-['Anton'] uppercase text-4xl sm:text-6xl lg:text-7xl leading-tight text-white mb-6 tracking-[-0.015em] sm:tracking-[-0.02em]">
                 Uma irmandade que<br />
                 <span className="text-[#F2C21B]">transforma vidas.</span>
               </h2>
-              <p className="text-[#C7C5BF] text-base sm:text-lg leading-relaxed">
+              <p className="text-[#D4D1CA] font-medium text-base sm:text-lg leading-relaxed">
                 Nascido em Osasco em 2015, o Insanos Moto Clube rompeu fronteiras territoriais e culturais. Hoje somos milhares de irmãos conectados pelo mesmo estatuto,<br className="hidden sm:inline" />{" "}
                 disciplina rigorosa e compromisso com o próximo.
               </p>
@@ -591,19 +591,19 @@ export function HomeClient() {
             {/* Global Stats Grid */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 pt-10 border-t border-white/10" data-reveal>
               <div>
-                <strong className="block font-['Anton'] text-3xl sm:text-6xl text-[#F2C21B] tracking-[0.06em]">+12.000</strong>
+                <strong className="block font-['Anton'] text-3xl sm:text-6xl text-[#F2C21B] tracking-[0.04em]">+12.000</strong>
                 <span className="text-[11px] sm:text-xs text-[#AAA8A1] uppercase font-bold tracking-wider">Integrantes Ativos</span>
               </div>
               <div>
-                <strong className="block font-['Anton'] text-3xl sm:text-6xl text-[#F2C21B] tracking-[0.06em]">65</strong>
+                <strong className="block font-['Anton'] text-3xl sm:text-6xl text-[#F2C21B] tracking-[0.04em]">65</strong>
                 <span className="text-[11px] sm:text-xs text-[#AAA8A1] uppercase font-bold tracking-wider">Países Presentes</span>
               </div>
               <div>
-                <strong className="block font-['Anton'] text-3xl sm:text-6xl text-[#F2C21B] tracking-[0.06em]">+10.000</strong>
+                <strong className="block font-['Anton'] text-3xl sm:text-6xl text-[#F2C21B] tracking-[0.04em]">+10.000</strong>
                 <span className="text-[11px] sm:text-xs text-[#AAA8A1] uppercase font-bold tracking-wider">Famílias Atendidas</span>
               </div>
               <div>
-                <strong className="block font-['Anton'] text-3xl sm:text-6xl text-[#F2C21B] tracking-[0.06em]">480+</strong>
+                <strong className="block font-['Anton'] text-3xl sm:text-6xl text-[#F2C21B] tracking-[0.04em]">480+</strong>
                 <span className="text-[11px] sm:text-xs text-[#AAA8A1] uppercase font-bold tracking-wider">Capítulos & Facções</span>
               </div>
             </div>
@@ -643,7 +643,7 @@ export function HomeClient() {
                       className={`relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] bg-cover border flex flex-col justify-end p-4 sm:p-5 lg:p-6 focus:outline-none focus:ring-2 focus:ring-[#F2C21B] ${
                         isHovered
                           ? "min-h-[290px] sm:min-h-0 sm:flex-[3.2] border-[#F2C21B] shadow-[0_0_30px_rgba(242,194,27,0.25)]"
-                          : "min-h-[145px] sm:min-h-0 sm:flex-1 border-white/10 opacity-80 hover:opacity-100"
+                          : "min-h-[145px] sm:min-h-0 sm:flex-1 border-t-white/20 border-b-white/5 border-x-white/10 opacity-85 hover:opacity-100"
                       }`}
                       style={{
                         backgroundImage: `url(${pillar.image})`,
@@ -674,7 +674,7 @@ export function HomeClient() {
                               : "max-h-0 opacity-0 translate-y-2 pointer-events-none"
                           }`}
                         >
-                          <div className="text-[12px] sm:text-[12.5px] lg:text-[13px] text-[#E0DDD8] leading-tight sm:leading-snug">
+                          <div className="text-[12px] sm:text-[12.5px] lg:text-[13px] text-[#F4F1E8] font-medium leading-tight sm:leading-snug border-l-2 border-[#F2C21B] pl-2.5">
                             {pillar.desc}
                           </div>
                         </div>
@@ -687,17 +687,17 @@ export function HomeClient() {
               {/* Right Editorial Text & Banner */}
               <div className="lg:col-span-5 space-y-6">
                 <div className="flex items-center gap-3">
-                  <span className="w-8 h-[2px] bg-[#F2C21B]" />
+                  <span className="w-8 h-[2px] bg-gradient-to-r from-[#F2C21B] via-[#FFD700] to-[#B88E07] rounded-full shadow-[0_0_8px_rgba(242,194,27,0.4)]" />
                   <span className="text-xs uppercase font-extrabold tracking-[0.2em] text-[#AAA8A1]">
                     O Que Nos Move
                   </span>
                 </div>
-                <h2 className="font-['Anton'] uppercase text-4xl sm:text-6xl leading-tight text-white">
+                <h2 className="font-['Anton'] uppercase text-4xl sm:text-6xl leading-tight text-white tracking-[-0.015em]">
                   Quatro Pilares.<br />
                   <span className="text-[#F2C21B]">Uma Só Irmandade.</span>
                 </h2>
 
-                <div className="flex items-center justify-between text-[9.5px] min-[370px]:text-[11px] sm:text-xs font-mono font-bold text-white/80 py-2 border-y border-white/10 whitespace-nowrap">
+                <div className="flex items-center justify-between text-[9.5px] min-[370px]:text-[11px] sm:text-xs font-mono font-bold text-white/90 py-2 border-y border-white/10 whitespace-nowrap">
                   <span>01 DEUS</span>
                   <span className="text-[#F2C21B]">•</span>
                   <span>02 FAMÍLIA</span>
@@ -711,7 +711,7 @@ export function HomeClient() {
 "Colete não cria irmão. Atitude cria."
                 </div>
 
-                <p className="text-sm text-[#AAA8A1] leading-relaxed">
+                <p className="text-sm text-[#D4D1CA] font-medium leading-relaxed">
                   Para vestir nosso escudo, cada integrante honra esses quatro<br className="hidden sm:inline" />{" "}
                   princípios sagrados. Não há espaço para vaidade ou deslealdade:<br className="hidden sm:inline" />{" "}
                   a conduta na estrada e na vida define quem somos.
@@ -796,17 +796,17 @@ export function HomeClient() {
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8">
             <div className="max-w-3xl mb-20" data-reveal>
               <div className="flex items-center gap-3 mb-4">
-                <span className="w-8 h-[2px] bg-[#F2C21B]" />
+                <span className="w-8 h-[2px] bg-gradient-to-r from-[#F2C21B] via-[#FFD700] to-[#B88E07] rounded-full shadow-[0_0_8px_rgba(242,194,27,0.4)]" />
                 <p className="text-xs uppercase font-extrabold tracking-[0.2em] text-[#F2C21B]">
                   História & Tradição
                 </p>
               </div>
-              <h2 className="font-['Anton'] uppercase text-4xl sm:text-6xl lg:text-7xl leading-tight text-white mb-6">
+              <h2 className="font-['Anton'] uppercase text-4xl sm:text-6xl lg:text-7xl leading-tight text-white mb-6 tracking-[-0.015em] sm:tracking-[-0.02em]">
                 Rompendo<br />
                 paradigmas<br />
                 <span className="text-[#F2C21B]">desde 2015.</span>
               </h2>
-              <p className="text-[#C7C5BF] text-base sm:text-lg leading-relaxed">
+              <p className="text-[#D4D1CA] font-medium text-base sm:text-lg leading-relaxed">
                 Nossa história foi escrita no asfalto com<br className="sm:hidden" /> coragem, união e compromisso irrevogável.<br className="hidden sm:inline" />{" "}
                 Da bravura histórica de 1922 à fundação<br className="sm:hidden" /> em Osasco e à consagração como<br className="sm:hidden" />{" "}
                 o maior motoclube do planeta.
@@ -832,7 +832,7 @@ export function HomeClient() {
                     }`}
                   />
 
-                  <div className="bg-[#141517] border border-white/10 hover:border-[#F2C21B]/50 p-6 sm:p-8 rounded-xl transition-colors duration-200 max-w-4xl shadow-lg">
+                  <div className="bg-[#141517] border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 p-6 sm:p-8 rounded-xl transition-colors duration-200 max-w-4xl shadow-lg">
                     <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
                       <div className="flex items-center gap-3">
                         <span className="font-['Anton'] text-3xl sm:text-4xl text-[#F2C21B]">{item.year}</span>
@@ -840,12 +840,12 @@ export function HomeClient() {
                           {item.badge}
                         </span>
                       </div>
-                      <span className="text-xs font-mono text-[#F2C21B] bg-[#F2C21B]/10 px-3 py-1 rounded">
+                      <span className="text-xs font-mono text-[#F2C21B] bg-[#F2C21B]/10 px-3 py-1 rounded border border-[#F2C21B]/20">
                         {item.highlight}
                       </span>
                     </div>
                     <h3 className="font-['Anton'] text-2xl sm:text-3xl uppercase text-white mb-3">{item.title}</h3>
-                    <p className="text-sm sm:text-base text-[#AAA8A1] leading-relaxed">{item.desc}</p>
+                    <p className="text-sm sm:text-base text-[#D4D1CA] font-medium leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -877,10 +877,13 @@ export function HomeClient() {
             <div className="grid lg:grid-cols-12 gap-8 items-start mb-12" data-reveal>
               {/* Left Column Text */}
               <div className="lg:col-span-4 space-y-6">
-                <span className="text-xs uppercase font-extrabold tracking-[0.2em] text-[#F2C21B] block">
-                  Insanos MC — O Maior Moto Clube do Mundo
-                </span>
-                <h2 className="font-['Anton'] uppercase text-4xl sm:text-6xl leading-tight text-white">
+                <div className="flex items-center gap-3">
+                  <span className="w-8 h-[2px] bg-gradient-to-r from-[#F2C21B] via-[#FFD700] to-[#B88E07] rounded-full shadow-[0_0_8px_rgba(242,194,27,0.4)]" />
+                  <span className="text-xs uppercase font-extrabold tracking-[0.2em] text-[#F2C21B] block">
+                    Insanos MC — O Maior Moto Clube do Mundo
+                  </span>
+                </div>
+                <h2 className="font-['Anton'] uppercase text-4xl sm:text-6xl leading-tight text-white tracking-[-0.015em] sm:tracking-[-0.02em]">
                   Ninguém<br />
                   <span className="text-[#F2C21B]">fica para trás.</span>
                 </h2>
@@ -889,7 +892,7 @@ export function HomeClient() {
                     | Nosso destino é fazer o bem.
                   </p>
                 </div>
-                <p className="text-sm text-[#AAA8A1] leading-relaxed">
+                <p className="text-sm text-[#D4D1CA] font-medium leading-relaxed">
                   Acreditamos que irmandade se prova na estrada e, principalmente, fora dela.
                   Apoiamos causas que transformam realidades, com respeito, presença e atitude.
                 </p>
@@ -905,10 +908,10 @@ export function HomeClient() {
               </div>
 
               {/* Center Big Card: Projeto PcD */}
-              <div className="lg:col-span-5 group rounded-2xl overflow-hidden bg-[#1C1F2A] border border-white/15 hover:border-[#F2C21B]/60 shadow-2xl hover:shadow-[0_0_30px_rgba(242,194,27,0.15)] transition-all duration-300 hover-lift">
+              <div className="lg:col-span-5 group rounded-2xl overflow-hidden bg-[#1C1F2A] border border-t-white/25 border-b-white/5 border-x-white/15 hover:border-[#F2C21B]/60 shadow-2xl hover:shadow-[0_0_30px_rgba(242,194,27,0.15)] transition-all duration-300 hover-lift">
                 <div className="h-80 sm:h-96 overflow-hidden relative">
                   <div
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105 filter grayscale-[10%] group-hover:grayscale-0"
                     style={{ backgroundImage: `url(/images/insanos/impact_pcd.webp)` }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1C1F2A] via-transparent to-transparent" />
@@ -923,7 +926,7 @@ export function HomeClient() {
                       Projeto PcD
                     </h3>
                   </div>
-                  <p className="text-sm text-[#E0DDD8] leading-relaxed">
+                  <p className="text-sm text-[#F4F1E8] font-medium leading-relaxed">
                     Apoiamos e promovemos inclusão, mobilidade<br className="hidden sm:inline" />{" "}
                     e respeito no motociclismo. Porque liberdade<br className="hidden sm:inline" />{" "}
                     também é poder ir e vir sobre duas ou três rodas.
@@ -933,10 +936,10 @@ export function HomeClient() {
 
               {/* Right Stacked 2 Cards: Bonde Pela Vida & Combate Insano */}
               <div className="lg:col-span-3 space-y-6">
-                <div className="group p-6 rounded-2xl bg-[#1C1F2A] border border-white/10 hover:border-[#F2C21B]/60 hover:shadow-[0_0_25px_rgba(242,194,27,0.15)] transition-all duration-300 hover-lift">
+                <div className="group p-6 rounded-2xl bg-[#1C1F2A] border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 hover:shadow-[0_0_25px_rgba(242,194,27,0.15)] transition-all duration-300 hover-lift">
                   <div className="h-32 rounded-xl overflow-hidden mb-4 relative">
                     <div
-                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105 filter grayscale-[10%] group-hover:grayscale-0"
                       style={{ backgroundImage: `url(/images/insanos/impact_blood.webp)` }}
                     />
                   </div>
@@ -946,17 +949,17 @@ export function HomeClient() {
                       Bonde Pela Vida
                     </h4>
                   </div>
-                  <p className="text-xs text-[#C7C5BF] leading-relaxed">
+                  <p className="text-xs text-[#D4D1CA] font-medium leading-relaxed">
                     Conscientização no trânsito, doação<br className="hidden sm:inline" />{" "}
                     de sangue e responsabilidade social<br className="hidden sm:inline" />{" "}
                     em todo o país.
                   </p>
                 </div>
 
-                <div className="group p-6 rounded-2xl bg-[#1C1F2A] border border-white/10 hover:border-[#F2C21B]/60 hover:shadow-[0_0_25px_rgba(242,194,27,0.15)] transition-all duration-300 hover-lift">
+                <div className="group p-6 rounded-2xl bg-[#1C1F2A] border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 hover:shadow-[0_0_25px_rgba(242,194,27,0.15)] transition-all duration-300 hover-lift">
                   <div className="h-32 rounded-xl overflow-hidden mb-4 relative">
                     <div
-                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105 filter grayscale-[10%] group-hover:grayscale-0"
                       style={{ backgroundImage: `url(/images/insanos/impact_combat.webp)` }}
                     />
                   </div>
@@ -966,7 +969,7 @@ export function HomeClient() {
                       Combate Insano
                     </h4>
                   </div>
-                  <p className="text-xs text-[#C7C5BF] leading-relaxed">
+                  <p className="text-xs text-[#D4D1CA] font-medium leading-relaxed">
                     Ações de inclusão através de artes marciais para jovens em áreas de vulnerabilidade.
                   </p>
                 </div>
@@ -982,16 +985,16 @@ export function HomeClient() {
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8">
             <div className="max-w-3xl mb-12" data-reveal>
               <div className="flex items-center gap-3 mb-4">
-                <span className="w-8 h-[2px] bg-[#F2C21B]" />
+                <span className="w-8 h-[2px] bg-gradient-to-r from-[#F2C21B] via-[#FFD700] to-[#B88E07] rounded-full shadow-[0_0_8px_rgba(242,194,27,0.4)]" />
                 <p className="text-xs uppercase font-extrabold tracking-[0.2em] text-[#F2C21B]">
                   Liderança & Legado
                 </p>
               </div>
-              <h2 className="font-['Anton'] uppercase text-4xl sm:text-6xl lg:text-7xl leading-tight text-white mb-6">
+              <h2 className="font-['Anton'] uppercase text-4xl sm:text-6xl lg:text-7xl leading-tight text-white mb-6 tracking-[-0.015em] sm:tracking-[-0.02em]">
                 Quem carrega a<br />
                 <span className="text-[#F2C21B]">história</span> adiante.
               </h2>
-              <p className="text-[#C7C5BF] text-base sm:text-lg leading-relaxed">
+              <p className="text-[#D4D1CA] font-medium text-base sm:text-lg leading-relaxed">
                 Uma organização mundial com hierarquia clara, disciplina<br className="hidden sm:inline" />{" "}
                 inegociável e respeito solene àqueles que abriram a estrada.
               </p>
@@ -1031,12 +1034,12 @@ export function HomeClient() {
                 {LEADERSHIP_MEMBERS.map((item, i) => (
                   <div
                     key={i}
-                    className="group relative rounded-2xl bg-[#121316] border border-white/10 hover:border-[#F2C21B]/60 transition-all duration-300 overflow-hidden flex flex-col justify-between shadow-2xl hover-lift"
+                    className="group relative rounded-2xl bg-[#121316] border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/70 hover:shadow-[0_0_35px_rgba(242,194,27,0.2)] transition-all duration-300 overflow-hidden flex flex-col justify-between shadow-2xl hover-lift"
                   >
                     {/* Leader Portrait Image with Full Face Alignment */}
                     <div className="relative h-72 sm:h-80 w-full overflow-hidden bg-[#0A0A0C]">
                       <div
-                        className="absolute inset-0 bg-cover bg-[center_top] transition-transform duration-700 group-hover:scale-105"
+                        className="absolute inset-0 bg-cover bg-[center_top] filter grayscale-[12%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
                         style={{
                           backgroundImage: `url(${item.image})`,
                           backgroundPosition: "center top",
@@ -1061,7 +1064,7 @@ export function HomeClient() {
                         <h3 className="font-['Anton'] text-2xl uppercase text-white mb-2 leading-tight group-hover:text-[#F2C21B] transition-colors">
                           {item.role}
                         </h3>
-                        <p className="text-xs text-[#C7C5BF] leading-relaxed mb-4">
+                        <p className="text-xs text-[#D4D1CA] font-medium leading-relaxed mb-4">
                           {item.desc}
                         </p>
                       </div>
@@ -1077,7 +1080,7 @@ export function HomeClient() {
             ) : (
               <div className="space-y-10" data-reveal>
                 {/* Memorial Hero Card */}
-                <div className="p-8 sm:p-12 rounded-2xl bg-[#111215] border border-white/15 text-center max-w-4xl mx-auto shadow-2xl relative overflow-hidden">
+                <div className="p-8 sm:p-12 rounded-2xl bg-[#111215] border border-t-white/25 border-b-white/5 border-x-white/15 text-center max-w-4xl mx-auto shadow-2xl relative overflow-hidden">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(242,194,27,0.08),transparent_70%)] pointer-events-none" />
                   <span className="font-['Anton'] text-4xl sm:text-6xl text-[#F2C21B] mb-2 block tracking-tight">
                     HONRA ETERNA
@@ -1085,10 +1088,10 @@ export function HomeClient() {
                   <h3 className="font-['Anton'] text-2xl sm:text-4xl uppercase text-white mb-4">
                     Àqueles que abriram a estrada
                   </h3>
-                  <p className="text-[#C7C5BF] text-sm sm:text-base leading-relaxed mb-8 max-w-2xl mx-auto">
+                  <p className="text-[#D4D1CA] font-medium text-sm sm:text-base leading-relaxed mb-8 max-w-2xl mx-auto">
                     A história do Insanos Moto Clube é sustentada pela coragem dos irmãos pioneiros que ergueram este escudo e daqueles que continuam acelerando na estrada celestial. A memória e o legado de cada irmão jamais serão esquecidos.
                   </p>
-                  <div className="inline-block px-6 py-2 rounded-full border border-[#F2C21B]/40 bg-[#F2C21B]/10 text-[#F2C21B] font-mono text-xs uppercase tracking-widest">
+                  <div className="inline-block px-6 py-2 rounded-full border border-[#F2C21B]/40 bg-[#F2C21B]/10 text-[#F2C21B] font-mono text-xs uppercase tracking-widest shadow-inner">
                     Insanos Sempre, Sempre Insano · In Memoriam
                   </div>
                 </div>
@@ -1098,7 +1101,7 @@ export function HomeClient() {
                   {MEMORIAL_MEMBERS.map((mem, idx) => (
                     <div
                       key={idx}
-                      className="group relative rounded-2xl bg-[#121316] border border-white/10 hover:border-[#F2C21B]/40 transition-all duration-300 overflow-hidden shadow-xl"
+                      className="group relative rounded-2xl bg-[#121316] border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/50 transition-all duration-300 overflow-hidden shadow-xl"
                     >
                       <div
                         className="h-64 bg-cover bg-[center_top] transition-transform duration-500 group-hover:scale-105 filter grayscale contrast-125 relative"
@@ -1115,10 +1118,8 @@ export function HomeClient() {
                         <h4 className="font-['Anton'] text-xl uppercase text-white mb-1">
                           {mem.name}
                         </h4>
-                        <span className="text-xs text-[#F2C21B] font-mono uppercase block mb-3 font-bold">
-                          {mem.role}
-                        </span>
-                        <p className="text-xs text-[#AAA8A1] leading-relaxed">
+                        <p className="text-xs font-mono uppercase text-[#F2C21B] mb-3 font-bold">{mem.role}</p>
+                        <p className="text-xs text-[#D4D1CA] font-medium leading-relaxed">
                           {mem.desc}
                         </p>
                       </div>
