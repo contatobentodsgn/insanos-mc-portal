@@ -102,9 +102,9 @@ export function CampaignThermometer() {
           {/* 1. TOP HEADER (Título + Missão + 86%) */}
           <div className="flex flex-col sm:flex-row items-start justify-between gap-6 mb-4 sm:mb-6">
             <div className="max-w-xl">
-              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 rounded bg-black/70 border border-[#F2C21B]/40 text-[#F2C21B] text-xs font-mono font-bold uppercase tracking-wider mb-3 backdrop-blur-sm shadow-md whitespace-nowrap">
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 rounded bg-black/70 border border-[#F2C21B]/40 text-[#F2C21B] text-[10px] sm:text-xs font-mono font-bold uppercase tracking-tight sm:tracking-wider mb-3 backdrop-blur-sm shadow-md max-w-full">
                 <IconFire className="w-3.5 h-3.5 text-[#F2C21B] shrink-0" />
-                <span>Campanha Nacional Ativa · Inverno 2026</span>
+                <span className="truncate">Campanha Nacional Ativa · Inverno 2026</span>
               </div>
               <h3 className="font-['Anton'] text-3xl sm:text-5xl lg:text-6xl uppercase text-white leading-[1.02] tracking-wide drop-shadow-[0_4px_12px_rgba(0,0,0,0.95)]">
                 Campanha do<br />
@@ -416,10 +416,10 @@ export function CampaignThermometer() {
                 href="https://wa.me/5511988881818?text=Ola%2C%20gostaria%20de%20entregar%20uma%20doacao%20para%20a%20Campanha%20Insanos%20MC"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto px-8 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider text-sm sm:text-base uppercase rounded-[2px] border-2 border-[#F2C21B] transition-all shadow-[0_2px_15px_rgba(242,194,27,0.4)] hover:shadow-[0_4px_25px_rgba(242,194,27,0.7)] flex items-center justify-center gap-3 hover-lift cursor-pointer"
+                className="w-full sm:w-auto px-4 sm:px-8 py-3.5 sm:py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider text-xs sm:text-base uppercase rounded-[2px] border-2 border-[#F2C21B] transition-all shadow-[0_2px_15px_rgba(242,194,27,0.4)] hover:shadow-[0_4px_25px_rgba(242,194,27,0.7)] flex items-center justify-center gap-2 sm:gap-3 hover-lift cursor-pointer whitespace-nowrap"
               >
-                <IconChat className="w-5 h-5 text-black" />
-                <span>Entregar Doação via WhatsApp</span>
+                <IconChat className="w-4 h-4 sm:w-5 sm:h-5 text-black shrink-0" />
+                <span className="whitespace-nowrap">Entregar Doação via WhatsApp</span>
                 <span className="font-sans font-bold">↗</span>
               </a>
             </div>
