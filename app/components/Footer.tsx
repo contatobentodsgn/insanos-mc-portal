@@ -71,7 +71,7 @@ export function Footer() {
             <ul className="space-y-1.5">
               <li>
                 <a
-                  href="https://www.instagram.com/insanosmc_oficial"
+                  href="https://www.instagram.com/insanosmc/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#D4D1CA] hover:text-[#F2C21B] transition-colors flex items-center gap-1.5 py-1 inline-flex"

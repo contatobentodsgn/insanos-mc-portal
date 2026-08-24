@@ -185,14 +185,14 @@ export function SocialProofGallery() {
 
           {/* Instagram Social Proof Link Badge */}
           <a
-            href="https://www.instagram.com/insanosmc_oficial"
+            href="https://www.instagram.com/insanosmc/"
             target="_blank"
             rel="noopener noreferrer"
             className="self-start md:self-auto px-5 py-3 rounded-[2px] bg-[#14161D] border border-white/15 hover:border-[#F2C21B] text-white hover:text-[#F2C21B] transition-all flex items-center gap-2.5 group shadow-lg cursor-pointer"
           >
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             <span className="font-mono text-xs font-bold uppercase tracking-wider">
-              @insanosmc_oficial
+              @insanosmc
             </span>
             <span className="font-sans text-xs group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-[#F2C21B]">
               ↗
