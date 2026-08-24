@@ -235,34 +235,34 @@ export function Navbar({}: NavbarProps) {
 
           {/* Header Action Buttons */}
           <div className="flex items-center gap-3">
-            {/* Tactical Radio Button (Stable Width & Gold Equalizer) */}
+            {/* Tactical Radio Button (Industrial Mechanical Placa de Aço) */}
             <button
               onClick={toggleRadio}
-              className={`hidden sm:inline-flex items-center justify-center gap-2 px-3.5 py-2 rounded-lg border text-xs font-bold transition-all duration-200 min-w-[122px] ${
+              className={`hidden sm:inline-flex items-center justify-center gap-2 px-3.5 py-2 rounded-[2px] border text-xs font-bold transition-all duration-200 min-w-[122px] ${
                 isPlayingRadio
                   ? "bg-[#F2C21B]/15 border-[#F2C21B] text-[#F2C21B] shadow-[0_0_15px_rgba(242,194,27,0.25)]"
-                  : "bg-[#141517] border-white/15 text-[#F4F1E8] hover:border-[#F2C21B]/60 hover:text-white"
+                  : "bg-[#141517] border-white/20 text-[#F4F1E8] hover:border-[#F2C21B]/60 hover:text-white"
               }`}
               title={isPlayingRadio ? "Pausar Rádio" : "Ouvir Rádio Insanos Web"}
             >
               {isPlayingRadio ? (
                 <div className="flex items-end gap-0.5 h-3 w-3 shrink-0" aria-hidden="true">
-                  <span className="w-0.5 bg-[#F2C21B] h-full animate-[bounce_0.8s_infinite] rounded-t-sm" />
-                  <span className="w-0.5 bg-[#F2C21B] h-2/3 animate-[bounce_1.1s_infinite] rounded-t-sm" />
-                  <span className="w-0.5 bg-[#F2C21B] h-4/5 animate-[bounce_0.9s_infinite] rounded-t-sm" />
+                  <span className="w-0.5 bg-[#F2C21B] h-full animate-[bounce_0.8s_infinite] rounded-none" />
+                  <span className="w-0.5 bg-[#F2C21B] h-2/3 animate-[bounce_1.1s_infinite] rounded-none" />
+                  <span className="w-0.5 bg-[#F2C21B] h-4/5 animate-[bounce_0.9s_infinite] rounded-none" />
                 </div>
               ) : (
-                <span className="w-2 h-2 rounded-full bg-[#F2C21B] shrink-0" />
+                <span className="w-1.5 h-1.5 bg-[#F2C21B] shrink-0 rounded-none" />
               )}
               <span className="font-mono text-[11px] tracking-wider uppercase whitespace-nowrap">
                 {isPlayingRadio ? "NO AR" : "RÁDIO 24H"}
               </span>
             </button>
 
-            {/* CTA Faça Parte */}
+            {/* CTA Faça Parte (Industrial Mechanical Placa de Aço) */}
             <Link
               href="/faca-parte"
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider text-xs sm:text-sm uppercase transition-all shadow-[0_0_20px_rgba(242,194,27,0.35)] hover:shadow-[0_0_30px_rgba(242,194,27,0.6)] transform hover:-translate-y-0.5 whitespace-nowrap shrink-0"
+              className="inline-flex items-center gap-2 px-5 py-2 rounded-[2px] border border-[#F2C21B] bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider text-xs sm:text-sm uppercase transition-all shadow-[0_2px_12px_rgba(242,194,27,0.35)] hover:shadow-[0_4px_20px_rgba(242,194,27,0.6)] transform hover:-translate-y-0.5 whitespace-nowrap shrink-0"
             >
               <span>Faça Parte</span>
               <IconArrowRight className="w-3.5 h-3.5 text-black" strokeWidth={2.5} />
@@ -271,7 +271,7 @@ export function Navbar({}: NavbarProps) {
             {/* Mobile Hamburger Button */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="lg:hidden min-w-[44px] min-h-[44px] p-2.5 rounded-xl border border-white/20 bg-[#121314] text-white hover:border-[#F2C21B] focus:outline-none flex items-center justify-center active:scale-95 transition-transform"
+              className="lg:hidden min-w-[44px] min-h-[44px] p-2.5 rounded-[2px] border border-white/20 bg-[#121314] text-white hover:border-[#F2C21B] focus:outline-none flex items-center justify-center active:scale-95 transition-transform"
               aria-label={menuOpen ? "Fechar menu de navegação" : "Abrir menu de navegação"}
               aria-expanded={menuOpen}
             >

@@ -460,11 +460,11 @@ export default function HeroScrollMedalThree() {
             Nas ruas, na estrada ou na ação social: <strong>#SomosDeVerdade</strong>.
           </p>
 
-          {/* Action CTAs */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-6">
+          {/* Action CTAs — Industrial Mechanical (0px–4px Placas de Aço) */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-5">
             <Link
               href="/faca-parte"
-              className="w-full sm:w-auto min-h-[52px] px-8 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider text-base sm:text-lg uppercase rounded-xl shadow-[0_0_30px_rgba(242,194,27,0.35)] transition-all duration-200 inline-flex items-center justify-center gap-3 active:scale-[0.98]"
+              className="w-full sm:w-auto min-h-[54px] px-8 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider text-base sm:text-lg uppercase rounded-[2px] border-2 border-[#F2C21B] shadow-[0_4px_20px_rgba(242,194,27,0.35)] transition-all duration-200 inline-flex items-center justify-center gap-3 active:scale-[0.98] hover:-translate-y-0.5"
             >
               <span>Faça Parte da Irmandade</span>
               <IconArrowRight className="w-5 h-5 text-black shrink-0" strokeWidth={2.5} />
@@ -472,7 +472,7 @@ export default function HeroScrollMedalThree() {
 
             <Link
               href="/historia"
-              className="w-full sm:w-auto min-h-[52px] px-6 py-4 border border-white/30 hover:border-[#F2C21B] bg-[#121314]/80 text-white hover:text-[#F2C21B] font-bold text-xs sm:text-sm uppercase tracking-wider rounded-xl transition-all duration-200 inline-flex items-center justify-center gap-2 active:scale-[0.98]"
+              className="w-full sm:w-auto min-h-[54px] px-8 py-4 border-2 border-white/30 hover:border-[#F2C21B] bg-[#121314]/90 text-white hover:text-[#F2C21B] font-['Anton'] text-base sm:text-lg uppercase tracking-wider rounded-[2px] transition-all duration-200 inline-flex items-center justify-center gap-2.5 active:scale-[0.98] hover:-translate-y-0.5"
             >
               <span>Conheça Nossa História</span>
               <IconArrowRight className="w-4 h-4 text-inherit" />
