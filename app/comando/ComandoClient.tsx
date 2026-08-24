@@ -206,41 +206,45 @@ export function ComandoClient() {
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-6">
-                  <div className="group rounded-[2px] bg-[#121316] border-2 border-white/10 overflow-hidden shadow-xl">
-                    <div
-                      className="h-60 bg-cover bg-center filter grayscale contrast-125 transition-transform duration-500 group-hover:scale-105"
-                      style={{ backgroundImage: `url(/images/insanos/memorial_edson_lopes.webp)` }}
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#121316] to-transparent" />
-                    </div>
-                    <div className="p-8">
-                      <span className="text-xs font-mono text-[#F2C21B] uppercase tracking-wider block mb-2 font-bold">
-                        Homenagem Solene
-                      </span>
-                      <h3 className="font-['Anton'] text-2xl uppercase text-white mb-2">Edson Lopes</h3>
-                      <p className="text-xs text-[#F2C21B] uppercase font-bold mb-3 font-mono">Fundador & Ícone da Disciplina (1965 – 09/11/2024)</p>
-                      <p className="text-sm text-[#AAA8A1] leading-relaxed">
-                        Líder exemplar cuja integridade moldou o regimento de disciplina e conduta do clube desde a fundação em 2015. Seu legado continuará guiando cada comboio pelo mundo.
-                      </p>
+                  <div className="group rounded-[2px] bg-[#121316] border-2 border-white/10 hover:border-[#F2C21B]/40 transition-all duration-300 overflow-hidden shadow-xl flex flex-col justify-between">
+                    <div>
+                      <div
+                        className="h-72 sm:h-80 bg-cover bg-[center_top] filter grayscale contrast-125 transition-transform duration-500 group-hover:scale-105 relative"
+                        style={{ backgroundImage: `url(/images/insanos/memorial_edson_lopes.webp)` }}
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-transparent to-transparent" />
+                      </div>
+                      <div className="p-8">
+                        <span className="text-xs font-mono text-[#F2C21B] uppercase tracking-wider block mb-2 font-bold">
+                          Homenagem Solene
+                        </span>
+                        <h3 className="font-['Anton'] text-2xl uppercase text-white mb-2">Edson Lopes</h3>
+                        <p className="text-xs text-[#F2C21B] uppercase font-bold mb-3 font-mono">Fundador & Ícone da Disciplina (1965 – 09/11/2024)</p>
+                        <p className="text-sm text-[#AAA8A1] leading-relaxed">
+                          Líder exemplar cuja integridade moldou o regimento de disciplina e conduta do clube desde a fundação em 2015. Seu legado continuará guiando cada comboio pelo mundo.
+                        </p>
+                      </div>
                     </div>
                   </div>
 
-                  <div className="group rounded-[2px] bg-[#121316] border-2 border-white/10 overflow-hidden shadow-xl">
-                    <div
-                      className="h-60 bg-cover bg-center filter grayscale contrast-125 transition-transform duration-500 group-hover:scale-105"
-                      style={{ backgroundImage: `url(/images/insanos/memorial_fundadores_oz.webp)` }}
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#121316] to-transparent" />
-                    </div>
-                    <div className="p-8">
-                      <span className="text-xs font-mono text-[#F2C21B] uppercase tracking-wider block mb-2 font-bold">
-                        Pioneirismo & Coragem
-                      </span>
-                      <h3 className="font-['Anton'] text-2xl uppercase text-white mb-2">Os Fundadores de 2015</h3>
-                      <p className="text-xs text-[#F2C21B] uppercase font-bold mb-3 font-mono">Original de OZ — 03 de Dezembro de 2015</p>
-                      <p className="text-sm text-[#AAA8A1] leading-relaxed">
-                        Aos pioneiros liderados por Jonatas Kiss Feitosa, Bugdam Alves Nunes, Edson Lopes e Bin, que tiveram a coragem de romper paradigmas e fundar em Osasco uma nova história de fraternidade e caridade.
-                      </p>
+                  <div className="group rounded-[2px] bg-[#121316] border-2 border-white/10 hover:border-[#F2C21B]/40 transition-all duration-300 overflow-hidden shadow-xl flex flex-col justify-between">
+                    <div>
+                      <div
+                        className="h-72 sm:h-80 bg-cover bg-[center_top] filter grayscale contrast-125 transition-transform duration-500 group-hover:scale-105 relative"
+                        style={{ backgroundImage: `url(/images/insanos/memorial_fundadores_oz.webp)` }}
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-transparent to-transparent" />
+                      </div>
+                      <div className="p-8">
+                        <span className="text-xs font-mono text-[#F2C21B] uppercase tracking-wider block mb-2 font-bold">
+                          Pioneirismo & Coragem
+                        </span>
+                        <h3 className="font-['Anton'] text-2xl uppercase text-white mb-2">Os Fundadores de 2015</h3>
+                        <p className="text-xs text-[#F2C21B] uppercase font-bold mb-3 font-mono">Original de OZ — 03 de Dezembro de 2015</p>
+                        <p className="text-sm text-[#AAA8A1] leading-relaxed">
+                          Aos pioneiros liderados por Jonatas Kiss Feitosa, Bugdam Alves Nunes, Edson Lopes e Bin, que tiveram a coragem de romper paradigmas e fundar em Osasco uma nova história de fraternidade e caridade.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
