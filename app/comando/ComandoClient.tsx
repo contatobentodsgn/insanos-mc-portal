@@ -97,7 +97,8 @@ export function ComandoClient() {
                 <span className="text-[#F2C21B]">história</span> adiante.
               </h1>
               <p className="text-base sm:text-xl text-[#D4D1CA] font-medium leading-relaxed">
-                Conheça os responsáveis pela administração, representação e coordenação dos capítulos no Brasil e no exterior.
+                Conheça os responsáveis pela administração, representação<br className="hidden sm:inline" />{" "}
+                e coordenação dos capítulos no Brasil e no exterior.
               </p>
             </div>
           </div>
