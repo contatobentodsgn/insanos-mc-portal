@@ -567,23 +567,23 @@ export function HomeClient() {
               <InteractiveMap />
             </div>
 
-            {/* Global Stats Grid */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 pt-10 border-t border-white/10" data-reveal>
-              <div>
-                <strong className="block font-['Anton'] text-3xl sm:text-6xl text-[#F2C21B] tracking-[0.04em]">{INSTITUTIONAL_METRICS.members}</strong>
-                <span className="text-xs text-[#AAA8A1] uppercase font-bold tracking-wider">{INSTITUTIONAL_METRICS.membersLabel}</span>
+            {/* Global Stats Grid — Structured Industrial Cards for Mobile and Desktop */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 pt-8 sm:pt-10 border-t border-white/10" data-reveal>
+              <div className="p-4 sm:p-6 rounded-[2px] bg-[#0E0F12] border border-white/10 flex flex-col justify-between">
+                <strong className="block font-['Anton'] text-3xl sm:text-5xl lg:text-6xl text-[#F2C21B] tracking-[0.02em] leading-none mb-1.5">{INSTITUTIONAL_METRICS.members}</strong>
+                <span className="text-[11px] sm:text-xs text-[#AAA8A1] uppercase font-bold tracking-wider block">{INSTITUTIONAL_METRICS.membersLabel}</span>
               </div>
-              <div>
-                <strong className="block font-['Anton'] text-3xl sm:text-6xl text-[#F2C21B] tracking-[0.04em]">{INSTITUTIONAL_METRICS.countries}</strong>
-                <span className="text-xs text-[#AAA8A1] uppercase font-bold tracking-wider">{INSTITUTIONAL_METRICS.countriesLabel}</span>
+              <div className="p-4 sm:p-6 rounded-[2px] bg-[#0E0F12] border border-white/10 flex flex-col justify-between">
+                <strong className="block font-['Anton'] text-3xl sm:text-5xl lg:text-6xl text-[#F2C21B] tracking-[0.02em] leading-none mb-1.5">{INSTITUTIONAL_METRICS.countries}</strong>
+                <span className="text-[11px] sm:text-xs text-[#AAA8A1] uppercase font-bold tracking-wider block">{INSTITUTIONAL_METRICS.countriesLabel}</span>
               </div>
-              <div>
-                <strong className="block font-['Anton'] text-3xl sm:text-6xl text-[#F2C21B] tracking-[0.04em]">{INSTITUTIONAL_METRICS.familiesAssisted}</strong>
-                <span className="text-xs text-[#AAA8A1] uppercase font-bold tracking-wider">{INSTITUTIONAL_METRICS.familiesAssistedLabel}</span>
+              <div className="p-4 sm:p-6 rounded-[2px] bg-[#0E0F12] border border-white/10 flex flex-col justify-between">
+                <strong className="block font-['Anton'] text-3xl sm:text-5xl lg:text-6xl text-[#F2C21B] tracking-[0.02em] leading-none mb-1.5">{INSTITUTIONAL_METRICS.familiesAssisted}</strong>
+                <span className="text-[11px] sm:text-xs text-[#AAA8A1] uppercase font-bold tracking-wider block">{INSTITUTIONAL_METRICS.familiesAssistedLabel}</span>
               </div>
-              <div>
-                <strong className="block font-['Anton'] text-3xl sm:text-6xl text-[#F2C21B] tracking-[0.04em]">{INSTITUTIONAL_METRICS.chapters}</strong>
-                <span className="text-xs text-[#AAA8A1] uppercase font-bold tracking-wider">{INSTITUTIONAL_METRICS.chaptersLabel}</span>
+              <div className="p-4 sm:p-6 rounded-[2px] bg-[#0E0F12] border border-white/10 flex flex-col justify-between">
+                <strong className="block font-['Anton'] text-3xl sm:text-5xl lg:text-6xl text-[#F2C21B] tracking-[0.02em] leading-none mb-1.5">{INSTITUTIONAL_METRICS.chapters}</strong>
+                <span className="text-[11px] sm:text-xs text-[#AAA8A1] uppercase font-bold tracking-wider block">{INSTITUTIONAL_METRICS.chaptersLabel}</span>
               </div>
             </div>
           </div>
@@ -811,10 +811,10 @@ export function HomeClient() {
             <div className="text-center pt-2" data-reveal>
               <Link
                 href="/historia"
-                className="px-8 py-4 bg-[#141517] hover:bg-[#F2C21B] hover:text-black border-2 border-white/20 text-white font-['Anton'] tracking-wider uppercase text-base rounded-[2px] transition-colors duration-200 inline-flex items-center gap-3 hover-lift shadow-xl"
+                className="w-full sm:w-auto px-6 sm:px-8 py-4 bg-[#141517] hover:bg-[#F2C21B] hover:text-black border-2 border-white/20 text-white font-['Anton'] tracking-wider uppercase text-sm sm:text-base rounded-[2px] transition-colors duration-200 inline-flex items-center justify-center gap-3 hover-lift shadow-xl text-center"
               >
                 <span>Ler História Completa, Documentos & Fundadores</span>
-                <IconArrowRight className="w-4 h-4 text-inherit" />
+                <IconArrowRight className="w-4 h-4 text-inherit shrink-0" />
               </Link>
             </div>
           </div>
@@ -1157,23 +1157,23 @@ export function HomeClient() {
                     </span>
                   </div>
 
-                  <div className="space-y-3">
+                  <div className="space-y-2.5 sm:space-y-3">
                     {[
                       { title: "Encontro Nacional em Osasco", date: "Julho 2026", desc: "Berço Oficial de OZ · 3 Dias" },
-                      { title: "Bonde Pela Vida — Etapa Inverno", date: "Agosto 2026", desc: "Mega Coleta de Sangue Nacional" },
-                      { title: "Expedição Serra do Rio do Rastro", date: "Setembro 2026", desc: "Travessia Alpinas Santa Catarina" },
-                      { title: "Aniversário Oficial de Fundação", date: "Novembro 2026", desc: "Mega Celebração Magna" },
+                      { title: "Bonde Pela Vida — Sangue", date: "Agosto 2026", desc: "Doação de Sangue Nacional" },
+                      { title: "Expedição Serra do Rio do Rastro", date: "Setembro 2026", desc: "Travessia de Santa Catarina" },
+                      { title: "Aniversário Oficial de Fundação", date: "Novembro 2026", desc: "Celebração Magna em OZ" },
                     ].map((evt, idx) => (
                       <Link
                         key={idx}
                         href="/eventos"
-                        className="p-3.5 rounded-[2px] bg-[#090A0B] border border-white/10 hover:border-[#F2C21B]/60 flex items-center justify-between transition-all group/item block"
+                        className="p-3 sm:p-3.5 rounded-[2px] bg-[#090A0B] border border-white/10 hover:border-[#F2C21B]/60 flex items-center justify-between gap-3 transition-all group/item block"
                       >
-                        <div>
-                          <h5 className="font-bold text-xs text-white group-hover/item:text-[#F2C21B] transition-colors mb-0.5">{evt.title}</h5>
-                          <span className="text-xs text-[#AAA8A1] font-mono">{evt.desc}</span>
+                        <div className="min-w-0 flex-1">
+                          <h5 className="font-bold text-xs text-white group-hover/item:text-[#F2C21B] transition-colors truncate mb-0.5">{evt.title}</h5>
+                          <span className="text-[11px] sm:text-xs text-[#AAA8A1] font-mono block truncate">{evt.desc}</span>
                         </div>
-                        <span className="text-xs font-mono text-[#F2C21B] bg-[#F2C21B]/10 px-2 py-1 rounded-[2px] shrink-0">
+                        <span className="text-[11px] sm:text-xs font-mono font-bold text-[#F2C21B] bg-[#F2C21B]/10 px-2 py-1 rounded-[2px] shrink-0 whitespace-nowrap">
                           {evt.date}
                         </span>
                       </Link>

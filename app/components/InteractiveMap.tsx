@@ -1200,14 +1200,16 @@ export function InteractiveMap() {
       </div>
 
       {/* Network Coverage Footnote */}
-      <div className="p-4 bg-[#0A0A0C] border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#AAA8A1]">
-        <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span>13 sedes regionais com ponto de apoio fixo em destaque. Mais de <strong>{INSTITUTIONAL_METRICS.chapters} capítulos</strong> presentes em <strong>{INSTITUTIONAL_METRICS.countries} países</strong>.</span>
+      <div className="p-4 sm:p-5 bg-[#0A0A0C] border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-[#AAA8A1]">
+        <div className="flex items-start sm:items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0 mt-1 sm:mt-0" />
+          <span className="leading-relaxed">
+            13 sedes regionais com ponto de apoio fixo em destaque. Mais de <strong>{INSTITUTIONAL_METRICS.chapters} capítulos</strong> em <strong>{INSTITUTIONAL_METRICS.countries} países</strong>.
+          </span>
         </div>
         <Link
           href="/faca-parte"
-          className="text-[#F2C21B] font-bold hover:underline whitespace-nowrap"
+          className="text-[#F2C21B] font-bold hover:underline inline-block pt-1 sm:pt-0"
         >
           Não encontrou sua cidade? Encontre seu capítulo regional →
         </Link>

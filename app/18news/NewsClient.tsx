@@ -64,14 +64,14 @@ export function NewsClient() {
 
           {/* Search & Categories Filter Bar */}
           <div className="flex flex-col lg:flex-row gap-4 items-start lg:items-center justify-between pb-8 mb-12 border-b border-white/10">
-            {/* Categories */}
-            <div className="flex flex-wrap gap-2 w-full lg:w-auto" role="group" aria-label="Filtrar por categoria editorial">
+            {/* Categories — Horizontal scroll on mobile, wrap on desktop */}
+            <div className="flex flex-nowrap sm:flex-wrap gap-2 w-full lg:w-auto overflow-x-auto scrollbar-none pb-2 sm:pb-0 -mx-1 px-1" role="group" aria-label="Filtrar por categoria editorial">
               {categories.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setSelectedTag(cat)}
                   aria-pressed={selectedTag === cat}
-                  className={`px-4 py-2 rounded-[2px] text-xs uppercase font-bold tracking-wider transition-all duration-200 cursor-pointer border ${
+                  className={`px-4 py-2 rounded-[2px] text-xs uppercase font-bold tracking-wider transition-all duration-200 cursor-pointer border whitespace-nowrap shrink-0 ${
                     selectedTag === cat
                       ? "bg-[#F2C21B] text-black border-[#FFE066] shadow-[0_0_15px_rgba(242,194,27,0.3)] font-extrabold scale-105"
                       : "bg-[#141518] text-white/70 hover:text-white hover:bg-white/5 border-white/10"

@@ -209,13 +209,13 @@ export function FacaParteClient() {
         <section className="py-20 sm:py-32 bg-[#0A0A0B]">
           <div className="max-w-[1000px] mx-auto px-4 sm:px-8">
             {/* Tab Selector */}
-            <div className="flex justify-center mb-10">
-              <div className="inline-flex bg-[#141519] p-1.5 rounded-[2px] border border-white/10" role="group" aria-label="Selecione o modo de inscrição ou avaliação">
+            <div className="flex justify-center mb-8 sm:mb-10">
+              <div className="w-full sm:w-auto flex flex-col sm:flex-row bg-[#141519] p-1.5 rounded-[2px] border border-white/10 gap-1.5" role="group" aria-label="Selecione o modo de inscrição ou avaliação">
                 <button
                   onClick={() => setCurrentTab("formulario")}
                   aria-pressed={currentTab === "formulario"}
-                  className={`px-6 py-2.5 rounded-[2px] font-['Anton'] uppercase text-sm tracking-wider transition-colors duration-150 cursor-pointer ${
-                    currentTab === "formulario" ? "bg-[#F2C21B] text-black font-extrabold" : "text-white/60 hover:text-white"
+                  className={`w-full sm:w-auto px-6 py-3 rounded-[2px] font-['Anton'] uppercase text-xs sm:text-sm tracking-wider transition-colors duration-150 cursor-pointer text-center ${
+                    currentTab === "formulario" ? "bg-[#F2C21B] text-black font-extrabold shadow-md" : "text-white/60 hover:text-white"
                   }`}
                 >
                   Ficha de Inscrição Oficial
@@ -223,8 +223,8 @@ export function FacaParteClient() {
                 <button
                   onClick={() => setCurrentTab("simulador")}
                   aria-pressed={currentTab === "simulador"}
-                  className={`px-6 py-2.5 rounded-[2px] font-['Anton'] uppercase text-sm tracking-wider transition-colors duration-150 flex items-center gap-2 cursor-pointer ${
-                    currentTab === "simulador" ? "bg-[#F2C21B] text-black font-extrabold" : "text-white/60 hover:text-white"
+                  className={`w-full sm:w-auto px-6 py-3 rounded-[2px] font-['Anton'] uppercase text-xs sm:text-sm tracking-wider transition-colors duration-150 flex items-center justify-center gap-2 cursor-pointer text-center ${
+                    currentTab === "simulador" ? "bg-[#F2C21B] text-black font-extrabold shadow-md" : "text-white/60 hover:text-white"
                   }`}
                 >
                   <IconShield className="w-4 h-4 text-inherit" />

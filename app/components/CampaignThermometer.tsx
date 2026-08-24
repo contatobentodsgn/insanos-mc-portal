@@ -91,22 +91,21 @@ export function CampaignThermometer() {
           }}
         />
 
-        {/* Vinhetas sutis de contraste para legibilidade */}
         <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-black/85 via-black/40 to-transparent pointer-events-none" />
         <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#090A0D] via-[#090A0D]/80 to-transparent pointer-events-none" />
         <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-black/80 to-transparent pointer-events-none" />
         <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-black/80 to-transparent pointer-events-none" />
 
         {/* Estrutura de Conteúdo Unificada */}
-        <div className="relative z-10 p-6 sm:p-10 lg:p-12 flex flex-col justify-between">
+        <div className="relative z-10 p-4 sm:p-10 lg:p-12 flex flex-col justify-between">
           {/* 1. TOP HEADER (Título + Missão + 86%) */}
-          <div className="flex flex-col sm:flex-row items-start justify-between gap-6 mb-4 sm:mb-6">
+          <div className="flex flex-col sm:flex-row items-start justify-between gap-4 sm:gap-6 mb-4 sm:mb-6">
             <div className="max-w-xl">
-              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 rounded bg-black/70 border border-[#F2C21B]/40 text-[#F2C21B] text-xs font-mono font-bold uppercase tracking-wider mb-3 backdrop-blur-sm shadow-md whitespace-nowrap">
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 rounded bg-black/70 border border-[#F2C21B]/40 text-[#F2C21B] text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider mb-2.5 sm:mb-3 backdrop-blur-sm shadow-md">
                 <IconFire className="w-3.5 h-3.5 text-[#F2C21B] shrink-0" />
                 <span>Campanha Nacional Ativa · Inverno 2026</span>
               </div>
-              <h3 className="font-['Anton'] text-3xl sm:text-5xl lg:text-6xl uppercase text-white leading-[1.02] tracking-wide drop-shadow-[0_4px_12px_rgba(0,0,0,0.95)]">
+              <h3 className="font-['Anton'] text-2xl sm:text-5xl lg:text-6xl uppercase text-white leading-tight sm:leading-[1.02] tracking-wide drop-shadow-[0_4px_12px_rgba(0,0,0,0.95)]">
                 Campanha do<br />
                 <span className="text-[#F2C21B]">Agasalho & Alimentos</span>
               </h3>
@@ -116,15 +115,12 @@ export function CampaignThermometer() {
             </div>
 
             {/* 86% Big Counter */}
-            <div className="text-right flex flex-col items-end">
-              <span className="font-['Anton'] text-6xl sm:text-8xl lg:text-9xl text-[#F2C21B] drop-shadow-[0_0_35px_rgba(242,194,27,0.5)] leading-none">
+            <div className="text-left sm:text-right flex flex-col items-start sm:items-end">
+              <span className="font-['Anton'] text-5xl sm:text-8xl lg:text-9xl text-[#F2C21B] drop-shadow-[0_0_35px_rgba(242,194,27,0.5)] leading-none">
                 {percentage}%
               </span>
               <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#F2C21B] block mt-1 drop-shadow-md">
                 Meta Consolidada
-              </span>
-              <span className="text-xs sm:text-sm font-mono text-white/90 drop-shadow-md">
-                {currentTotal.toLocaleString("pt-BR")} / {goalTotal.toLocaleString("pt-BR")} itens
               </span>
             </div>
           </div>
@@ -151,31 +147,31 @@ export function CampaignThermometer() {
                   <stop offset="100%" stopColor="#FFF27A" />
                 </linearGradient>
 
-                <pattern id="checkered-pattern" width="6" height="6" patternUnits="userSpaceOnUse">
-                  <rect width="3" height="3" fill="#FFFFFF" />
-                  <rect x="3" width="3" height="3" fill="#111111" />
-                  <rect y="3" width="3" height="3" fill="#111111" />
-                  <rect x="3" y="3" width="3" height="3" fill="#FFFFFF" />
+                <pattern id="checkered-pattern" width="8" height="8" patternUnits="userSpaceOnUse">
+                  <rect width="4" height="4" fill="#FFFFFF" />
+                  <rect x="4" width="4" height="4" fill="#111111" />
+                  <rect y="4" width="4" height="4" fill="#111111" />
+                  <rect x="4" y="4" width="4" height="4" fill="#FFFFFF" />
                 </pattern>
               </defs>
 
               {/* Inactive Trail Ahead */}
               <path
-                d="M238 411 C284 408.081 289.747 406.367 351 416.086 C446 431.16 434.52 438.618 517 408.081 C557.5 393.088 580 387.835 696.5 389.083 C773.996 389.913 810.824 389.492 851.324 391.992 C923.5 394.5 941.678 408.757 989.324 433.485 C1028.82 453.985 1066.32 460.485 1086.82 463.985 L1099 464.062"
+                d="M 238 411 C 271 411.3, 304 411.7, 337 412 C 375.5 412.3, 413.8 421.4, 452 429 C 494 437.4, 536.8 414.7, 578 389 C 618.4 363.8, 658.2 360.7, 699 371 C 752.7 384.6, 806.8 384.3, 860 385 C 903.7 385.6, 947.5 407.3, 991 429 C 1027 446.9, 1063 458.6, 1099 464"
                 fill="none"
                 stroke="#4A4E5C"
-                strokeWidth="2.5"
-                strokeDasharray="8 6"
+                strokeWidth="4"
+                strokeDasharray="10 8"
                 strokeLinecap="round"
-                opacity="0.4"
+                opacity="0.5"
               />
 
-              {/* Active Glowing Highway Yellow Line (86%) */}
+              {/* Active Glowing Highway Yellow Line */}
               <path
-                d="M238 411 C284 408.081 289.747 406.367 351 416.086 C446 431.16 434.52 438.618 517 408.081 C557.5 393.088 580 387.835 696.5 389.083 C773.996 389.913 810.824 389.492 851.324 391.992 C923.5 394.5 941.678 408.757 989.324 433.485 C1028.82 453.985 1066.32 460.485 1086.82 463.985 L1099 464.062"
+                d="M 238 411 C 271 411.3, 304 411.7, 337 412 C 375.5 412.3, 413.8 421.4, 452 429 C 494 437.4, 536.8 414.7, 578 389 C 618.4 363.8, 658.2 360.7, 699 371 C 752.7 384.6, 806.8 384.3, 860 385 C 903.7 385.6, 947.5 407.3, 991 429 C 1027 446.9, 1063 458.6, 1099 464"
                 fill="none"
                 stroke="url(#road-highway-gold-final)"
-                strokeWidth={4}
+                strokeWidth={10}
                 strokeLinecap="round"
                 strokeDasharray="920"
                 strokeDashoffset="128"
@@ -243,7 +239,7 @@ export function CampaignThermometer() {
 
           {/* Mobile Road View */}
           <div className="block sm:hidden relative w-full my-1 overflow-visible">
-            <div className="w-full relative" style={{ transform: "translateY(-32px)" }}>
+            <div className="w-full relative" style={{ transform: "translateY(-16px)" }}>
               <svg
                 viewBox="176 277 935 80"
                 className="w-full h-auto overflow-visible select-none"
@@ -271,7 +267,6 @@ export function CampaignThermometer() {
                   </pattern>
                 </defs>
 
-                {/* Inactive Trail Ahead */}
                 <path
                   d={getCatmullRomSVG(DEFAULT_MOBILE_POINTS)}
                   fill="none"
@@ -282,7 +277,6 @@ export function CampaignThermometer() {
                   opacity="0.4"
                 />
 
-                {/* Active Glowing Highway Yellow Line */}
                 <path
                   d={getCatmullRomSVG(DEFAULT_MOBILE_POINTS)}
                   fill="none"
@@ -355,10 +349,10 @@ export function CampaignThermometer() {
           </div>
 
           {/* 3. REGIONAL DROP POINTS */}
-          <div className="mt-[60px] sm:mt-[80px] pt-8 sm:pt-10 border-t border-white/15">
-            <div className="flex flex-wrap items-center justify-between gap-4 mb-6 pb-2">
+          <div className="mt-4 sm:mt-10 pt-6 sm:pt-10 border-t border-white/15">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pb-2">
               <div>
-                <h4 className="font-['Anton'] text-2xl sm:text-3xl uppercase text-white tracking-wide drop-shadow-md">
+                <h4 className="font-['Anton'] text-xl sm:text-3xl uppercase text-white tracking-wide drop-shadow-md">
                   Pontos de Coleta Oficiais por Região
                 </h4>
                 <p className="text-xs text-[#C7C5BF] font-mono mt-0.5">
@@ -383,31 +377,29 @@ export function CampaignThermometer() {
               </div>
             </div>
 
-            {/* Drop Points Cards — Industrial Mechanical */}
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8">
               {filteredPoints.map((dp, i) => (
                 <div
                   key={i}
-                  className="p-5 rounded-[2px] bg-[#0D0F14]/90 backdrop-blur-md border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 transition-all duration-200 group hover-lift shadow-xl"
+                  className="p-4 sm:p-5 rounded-[2px] bg-[#0D0F14]/90 backdrop-blur-md border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 transition-all duration-200 group hover-lift shadow-xl"
                 >
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="flex items-center gap-2">
-                      <IconPin className="w-4 h-4 text-[#F2C21B] group-hover:scale-110 transition-transform" />
+                  <div className="flex items-center justify-between gap-2 mb-1.5">
+                    <div className="flex items-center gap-1.5">
+                      <IconPin className="w-3.5 h-3.5 text-[#F2C21B] shrink-0" />
                       <span className="text-xs font-mono font-bold text-[#F2C21B]">[{dp.state}] {dp.city}</span>
                     </div>
-                    <span className="text-xs font-mono text-white/70">{dp.phone}</span>
+                    <span className="text-xs font-mono text-white/80 whitespace-nowrap shrink-0">{dp.phone}</span>
                   </div>
-                  <p className="text-xs sm:text-sm font-semibold text-white mb-1.5 leading-snug">{dp.location}</p>
-                  <p className="text-xs text-[#AAA8A1]">{dp.responsible}</p>
+                  <p className="text-xs sm:text-sm font-semibold text-white mb-1 leading-snug">{dp.location}</p>
+                  <p className="text-[11px] sm:text-xs text-[#AAA8A1]">{dp.responsible}</p>
                 </div>
               ))}
             </div>
 
-            {/* Bottom Slogan & Textured Gold WhatsApp CTA */}
-            <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6">
-              <div className="flex items-center gap-3">
-                <span className="w-8 h-[2px] bg-[#F2C21B]" />
-                <span className="font-['Anton'] uppercase text-base sm:text-xl text-[#F2C21B] tracking-wider drop-shadow-md">
+            <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+              <div className="flex items-center gap-2.5">
+                <span className="w-6 h-[2px] bg-[#F2C21B] shrink-0" />
+                <span className="font-['Anton'] uppercase text-sm sm:text-xl text-[#F2C21B] tracking-wider drop-shadow-md">
                   Ninguém enfrenta o frio sozinho.
                 </span>
               </div>
@@ -416,9 +408,9 @@ export function CampaignThermometer() {
                 href="https://wa.me/5511988881818?text=Ola%2C%20gostaria%20de%20entregar%20uma%20doacao%20para%20a%20Campanha%20Insanos%20MC"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto px-8 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider text-sm sm:text-base uppercase rounded-[2px] border-2 border-[#F2C21B] transition-all shadow-[0_2px_15px_rgba(242,194,27,0.4)] hover:shadow-[0_4px_25px_rgba(242,194,27,0.7)] flex items-center justify-center gap-3 hover-lift cursor-pointer"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider text-xs sm:text-base uppercase rounded-[2px] border-2 border-[#F2C21B] transition-all shadow-[0_2px_15px_rgba(242,194,27,0.4)] hover:shadow-[0_4px_25px_rgba(242,194,27,0.7)] flex items-center justify-center gap-2.5 active:scale-[0.98] cursor-pointer"
               >
-                <IconChat className="w-5 h-5 text-black" />
+                <IconChat className="w-4 h-4 text-black shrink-0" />
                 <span>Entregar Doação via WhatsApp</span>
                 <span className="font-sans font-bold">↗</span>
               </a>
