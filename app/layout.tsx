@@ -92,6 +92,8 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap"
           rel="stylesheet"
         />
+        {/* Preload 3D Master Model for instant mobile and desktop rendering */}
+        <link rel="preload" href="/models/medalha_insanos_web_final.glb" as="fetch" crossOrigin="anonymous" />
       </head>
       <body className="bg-[#0A0A0A] text-[#F4F1E8] antialiased selection:bg-[#F2C21B] selection:text-black">
         <ScrollToTopOnNav />

@@ -73,6 +73,7 @@ export default function HeroScrollMedalThree() {
     const mount = canvasMountRef.current;
     let width = mount.clientWidth || window.innerWidth;
     let height = mount.clientHeight || window.innerHeight;
+    const isMobileInitial = width < 768;
 
     // 1. WebGL Renderer with High Precision & ACES Tone Mapping
     let renderer: THREE.WebGLRenderer;
@@ -81,6 +82,7 @@ export default function HeroScrollMedalThree() {
         antialias: true,
         alpha: true,
         powerPreference: "high-performance",
+        precision: isMobileInitial ? "mediump" : "highp",
       });
     } catch (err) {
       console.warn("WebGL initialization failed, falling back to 2D canvas:", err);
@@ -89,7 +91,7 @@ export default function HeroScrollMedalThree() {
       return;
     }
 
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(isMobileInitial ? Math.min(window.devicePixelRatio, 1.5) : Math.min(window.devicePixelRatio, 2));
     renderer.setSize(width, height);
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -270,7 +272,10 @@ export default function HeroScrollMedalThree() {
       medalGroup.rotation.y = currentRotationY + mouseTiltX;
       medalGroup.rotation.x = mouseTiltY;
 
-      medalGroup.scale.set(scrollObj.scale, scrollObj.scale, scrollObj.scale);
+      // 10% reduction in base scale on mobile (width < 768px)
+      const responsiveMultiplier = width < 768 ? 0.90 : 1.0;
+      const finalScale = scrollObj.scale * responsiveMultiplier;
+      medalGroup.scale.set(finalScale, finalScale, finalScale);
       medalGroup.position.y = scrollObj.yOffset;
       renderer.domElement.style.opacity = String(scrollObj.opacity);
 
@@ -283,8 +288,10 @@ export default function HeroScrollMedalThree() {
       if (!mount) return;
       width = mount.clientWidth || window.innerWidth;
       height = mount.clientHeight || window.innerHeight;
+      const isMob = width < 768;
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
+      renderer.setPixelRatio(isMob ? Math.min(window.devicePixelRatio, 1.5) : Math.min(window.devicePixelRatio, 2));
       renderer.setSize(width, height);
       ScrollTrigger.refresh();
     };
@@ -405,7 +412,7 @@ export default function HeroScrollMedalThree() {
         </div>
       ) : (
         <div className="absolute inset-0 z-20 w-full h-full pointer-events-none flex items-center justify-center overflow-hidden">
-          <div className="relative w-[340px] h-[340px] sm:w-[460px] sm:h-[460px]">
+          <div className="relative w-[306px] h-[306px] sm:w-[460px] sm:h-[460px]">
             <canvas
               ref={fallbackCanvasRef}
               width={540}

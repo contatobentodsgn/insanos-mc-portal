@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { IconRadio, IconArrowRight, IconPlay, IconPause, IconVolumeUp, IconVolumeMute, IconClose } from "./ui/Icons";
 import { useRadio } from "../context/RadioContext";
-import { INSTITUTIONAL_METRICS } from "../data/institutional";
 
 const ASSETS = {
   logo: "/images/insanos/insanos_mc_logo.svg",
@@ -120,91 +119,7 @@ export function Navbar({}: NavbarProps) {
         className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:px-4 focus:py-2 focus:bg-[#F2C21B] focus:text-black focus:font-extrabold focus:rounded-lg focus:shadow-2xl"
       >
         Pular para o conteúdo principal
-      </a>      {/* Top Banner / Ticker */}
-      <div className="bg-[#0E0F11] border-b border-white/5 py-1.5 px-4 sm:px-8 text-xs text-[#AAA8A1] flex justify-between items-center select-none overflow-hidden relative w-full max-w-full">
-        {/* Mobile Horizontal Auto-scrolling Marquee */}
-        <div className="md:hidden flex overflow-hidden w-full max-w-full min-w-0">
-          <div className="animate-marquee-track flex items-center gap-6 text-[#AAA8A1] shrink-0">
-            <div className="flex items-center gap-2 shrink-0">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse inline-block" />
-              <span className="font-mono text-xs text-[#F2C21B] font-bold uppercase tracking-wider">
-                Impacto Global:
-              </span>
-              <span className="text-[#E0DDD8] font-bold">
-                +{INSTITUTIONAL_METRICS.members} Integrantes
-              </span>
-              <span className="text-white/30">•</span>
-              <span className="text-[#E0DDD8] font-bold">
-                {INSTITUTIONAL_METRICS.countries} Países
-              </span>
-              <span className="text-white/30">•</span>
-              <span className="text-[#E0DDD8] font-bold">
-                {INSTITUTIONAL_METRICS.chapters} Capítulos
-              </span>
-            </div>
-
-            <div className="flex items-center gap-2 shrink-0">
-              <span className="text-white/30">•</span>
-              <span className="font-mono text-xs text-[#F2C21B] font-bold uppercase tracking-wider">
-                #SomosDeVerdade
-              </span>
-              <span className="text-white/30">•</span>
-              <button
-                type="button"
-                onClick={toggleRadio}
-                className="text-[#E0DDD8] hover:text-[#F2C21B] font-mono text-xs flex items-center gap-1 underline underline-offset-2 cursor-pointer"
-              >
-                <span>Rádio Insanos 24h {isPlayingRadio ? "(Ao Vivo)" : ""}</span>
-              </button>
-              <span className="text-white/30">•</span>
-              <span className="font-mono text-xs text-[#F2C21B]">{INSTITUTIONAL_METRICS.slogan}</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Desktop Ticker Content */}
-        <div className="hidden md:flex items-center gap-3 text-xs">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse inline-block" />
-          <span className="font-mono text-xs text-[#F2C21B] font-bold uppercase tracking-wider">
-            Impacto Global Consolidado:
-          </span>
-          <span className="text-[#E0DDD8] font-semibold">
-            {INSTITUTIONAL_METRICS.members} Integrantes Ativos
-          </span>
-          <span className="text-white/30">•</span>
-          <span className="text-[#E0DDD8] font-semibold">
-            {INSTITUTIONAL_METRICS.countries} Países
-          </span>
-          <span className="text-white/30">•</span>
-          <span className="text-[#E0DDD8] font-semibold">
-            {INSTITUTIONAL_METRICS.chapters} Capítulos Oficiais
-          </span>
-          <span className="text-white/30">•</span>
-          <span className="text-[#E0DDD8] font-semibold">
-            {INSTITUTIONAL_METRICS.familiesAssisted} Famílias Atendidas
-          </span>
-        </div>
-
-        <div className="hidden md:flex items-center gap-4">
-          <span className="font-mono text-xs text-[#F2C21B] font-bold uppercase tracking-wider">
-            #SomosDeVerdade
-          </span>
-          <span className="text-white/20">|</span>
-          <button
-            type="button"
-            onClick={toggleRadio}
-            className="text-xs text-[#AAA8A1] hover:text-[#F2C21B] transition-colors flex items-center gap-1.5 focus:outline-none cursor-pointer"
-            title={isPlayingRadio ? "Pausar transmissão" : "Sintonizar Rádio Insanos Web"}
-          >
-            <span className={`w-2 h-2 rounded-full ${isPlayingRadio ? "bg-red-500 animate-ping" : "bg-[#F2C21B]"}`} />
-            <span className="font-mono text-xs">
-              Rádio Insanos 24h {isPlayingRadio ? "(Ao Vivo)" : ""}
-            </span>
-          </button>
-          <span className="text-white/20">|</span>
-          <span className="font-mono text-xs text-[#F2C21B]">{INSTITUTIONAL_METRICS.slogan}</span>
-        </div>
-      </div>
+      </a>
 
       {/* Main Navbar */}
       <header

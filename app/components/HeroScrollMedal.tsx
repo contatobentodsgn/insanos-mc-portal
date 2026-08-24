@@ -213,7 +213,7 @@ export default function HeroScrollMedal() {
         {/* Ambient Halo Glow */}
         <div className="absolute w-[360px] sm:w-[520px] h-[360px] sm:h-[520px] rounded-full bg-gradient-to-r from-[#F2C21B]/15 via-white/10 to-[#F2C21B]/15 blur-3xl -z-10 animate-pulse" />
 
-        <div className="relative w-[280px] h-[280px] sm:w-[380px] sm:h-[380px] md:w-[440px] md:h-[440px]">
+        <div className="relative w-[252px] h-[252px] sm:w-[380px] sm:h-[380px] md:w-[440px] md:h-[440px]">
           <canvas
             ref={canvasRef}
             width={480}
