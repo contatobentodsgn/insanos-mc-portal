@@ -393,6 +393,16 @@ export function HomeClient() {
   const [activeLeaderTab, setActiveLeaderTab] = useState<"comando" | "memorial">("comando");
   const [activeAdmissionTab, setActiveAdmissionTab] = useState<"direto" | "simulador">("direto");
 
+  const triggerHaptic = (ms = 12) => {
+    if (typeof navigator !== "undefined" && "vibrate" in navigator) {
+      try {
+        navigator.vibrate(ms);
+      } catch {
+        // ignore
+      }
+    }
+  };
+
   // Mouse Ambient Spotlight on Hero
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
 
@@ -599,11 +609,15 @@ export function HomeClient() {
                       onKeyDown={(e) => {
                         if (e.key === "Enter" || e.key === " ") {
                           e.preventDefault();
+                          triggerHaptic(10);
                           setActivePillarHover(activePillarHover === idx ? -1 : idx);
                         }
                       }}
                       onMouseEnter={() => setActivePillarHover(idx)}
-                      onClick={() => setActivePillarHover(activePillarHover === idx ? -1 : idx)}
+                      onClick={() => {
+                        triggerHaptic(10);
+                        setActivePillarHover(activePillarHover === idx ? -1 : idx);
+                      }}
                       className={`relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] bg-cover border flex flex-col justify-end p-4 sm:p-5 lg:p-6 focus:outline-none focus:ring-2 focus:ring-[#F2C21B] ${
                         isHovered
                           ? "min-h-[290px] sm:min-h-0 sm:flex-[3.2] border-[#F2C21B] shadow-[0_0_30px_rgba(242,194,27,0.25)]"
@@ -963,8 +977,11 @@ export function HomeClient() {
 
             <div className="flex flex-wrap sm:flex-nowrap gap-4 sm:gap-6 mb-10 border-b border-white/10 pb-4 items-end" data-reveal>
               <button
-                onClick={() => setActiveLeaderTab("comando")}
-                className={`pb-2 text-sm sm:text-base font-['Anton'] uppercase tracking-wider transition-colors duration-200 border-b-2 text-left sm:text-center ${
+                onClick={() => {
+                  triggerHaptic(10);
+                  setActiveLeaderTab("comando");
+                }}
+                className={`pb-2 text-sm sm:text-base font-['Anton'] uppercase tracking-wider transition-colors duration-200 border-b-2 text-left sm:text-center cursor-pointer active:scale-[0.98] ${
                   activeLeaderTab === "comando"
                     ? "border-[#F2C21B] text-[#F2C21B]"
                     : "border-transparent text-white/50 hover:text-white"
@@ -973,8 +990,11 @@ export function HomeClient() {
                 Comando Mundial Ativo
               </button>
               <button
-                onClick={() => setActiveLeaderTab("memorial")}
-                className={`pb-2 text-sm sm:text-base font-['Anton'] uppercase tracking-wider transition-colors duration-200 border-b-2 text-left sm:text-center leading-tight ${
+                onClick={() => {
+                  triggerHaptic(10);
+                  setActiveLeaderTab("memorial");
+                }}
+                className={`pb-2 text-sm sm:text-base font-['Anton'] uppercase tracking-wider transition-colors duration-200 border-b-2 text-left sm:text-center leading-tight cursor-pointer active:scale-[0.98] ${
                   activeLeaderTab === "memorial"
                     ? "border-[#F2C21B] text-[#F2C21B]"
                     : "border-transparent text-white/50 hover:text-white"

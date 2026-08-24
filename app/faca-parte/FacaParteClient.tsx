@@ -96,13 +96,25 @@ export function FacaParteClient() {
     }
   };
 
+  const triggerHaptic = (pattern: number | number[] = 15) => {
+    if (typeof navigator !== "undefined" && "vibrate" in navigator) {
+      try {
+        navigator.vibrate(pattern);
+      } catch {
+        // ignore
+      }
+    }
+  };
+
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.city || !formData.phone || !formData.email) {
+      triggerHaptic(20);
       setFormError("Por favor, preencha todos os campos obrigatórios.");
       return;
     }
     if (!formData.agreedTerms) {
+      triggerHaptic(20);
       setFormError("É obrigatório concordar com o estatuto e com a política de privacidade.");
       return;
     }
@@ -120,6 +132,7 @@ export function FacaParteClient() {
       const data = await res.json();
       if (res.ok && data.success) {
         setProtocol(data.protocolId || `INS-${Math.floor(100000 + Math.random() * 900000)}`);
+        triggerHaptic([20, 60, 20]);
         setFormSubmitted(true);
       } else {
         setFormError(data.error || "Ocorreu um erro ao enviar. Tente novamente.");
@@ -127,6 +140,7 @@ export function FacaParteClient() {
     } catch {
       // Fallback in case of network issue
       setProtocol(`INS-${Math.floor(100000 + Math.random() * 900000)}`);
+      triggerHaptic([20, 60, 20]);
       setFormSubmitted(true);
     } finally {
       setIsSubmitting(false);
@@ -372,13 +386,15 @@ export function FacaParteClient() {
                         type="button"
                         onClick={() => {
                           if (!formData.name || !formData.city || !formData.phone || !formData.email) {
+                            triggerHaptic(20);
                             setFormError("Preencha nome, cidade, WhatsApp e e-mail para prosseguir.");
                             return;
                           }
+                          triggerHaptic(12);
                           setFormError("");
                           setFormStep(2);
                         }}
-                        className="w-full py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-base rounded transition-colors duration-200 hover-lift mt-4 flex items-center justify-center gap-2.5"
+                        className="w-full py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-base rounded transition-colors duration-200 hover-lift mt-4 flex items-center justify-center gap-2.5 active:scale-[0.98] cursor-pointer"
                       >
                         <span>Avançar para Perfil & Moto</span>
                         <IconArrowRight className="w-4 h-4 text-black" strokeWidth={2.5} />
@@ -396,7 +412,7 @@ export function FacaParteClient() {
                             name="hasBike"
                             value={formData.hasBike}
                             onChange={handleFormChange}
-                            className="w-full bg-[#090A0B] border border-white/20 rounded-xl px-4 py-3 text-base sm:text-sm text-white focus:outline-none focus:border-[#F2C21B]"
+                            className="w-full bg-[#090A0B] border border-white/20 rounded-xl px-4 py-3 text-base sm:text-sm text-white focus:outline-none focus:border-[#F2C21B] focus-visible:ring-2 focus-visible:ring-[#F2C21B]"
                           >
                             <option value="sim">Sim, possuo moto própria</option>
                             <option value="pretendo">Não, pretendo adquirir em breve</option>
@@ -414,7 +430,7 @@ export function FacaParteClient() {
                             placeholder="Ex: Shadow 750, Tiger 900, Harley"
                             value={formData.bikeModel}
                             onChange={handleFormChange}
-                            className="w-full bg-[#090A0B] border border-white/20 rounded-xl px-4 py-3 text-base sm:text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#F2C21B]"
+                            className="w-full bg-[#090A0B] border border-white/20 rounded-xl px-4 py-3 text-base sm:text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#F2C21B] focus-visible:ring-2 focus-visible:ring-[#F2C21B]"
                           />
                         </div>
                       </div>
@@ -429,7 +445,7 @@ export function FacaParteClient() {
                             name="cnhCategory"
                             value={formData.cnhCategory}
                             onChange={handleFormChange}
-                            className="w-full bg-[#090A0B] border border-white/20 rounded-xl px-4 py-3 text-base sm:text-sm text-white focus:outline-none focus:border-[#F2C21B]"
+                            className="w-full bg-[#090A0B] border border-white/20 rounded-xl px-4 py-3 text-base sm:text-sm text-white focus:outline-none focus:border-[#F2C21B] focus-visible:ring-2 focus-visible:ring-[#F2C21B]"
                           >
                             <option value="A">Categoria A (Moto)</option>
                             <option value="AB">Categoria AB (Carro e Moto)</option>
@@ -445,7 +461,7 @@ export function FacaParteClient() {
                             name="ridingExperience"
                             value={formData.ridingExperience}
                             onChange={handleFormChange}
-                            className="w-full bg-[#090A0B] border border-white/20 rounded-xl px-4 py-3 text-base sm:text-sm text-white focus:outline-none focus:border-[#F2C21B]"
+                            className="w-full bg-[#090A0B] border border-white/20 rounded-xl px-4 py-3 text-base sm:text-sm text-white focus:outline-none focus:border-[#F2C21B] focus-visible:ring-2 focus-visible:ring-[#F2C21B]"
                           >
                             <option value="Iniciante">Menos de 1 ano</option>
                             <option value="1 a 3 anos">1 a 3 anos</option>
@@ -494,8 +510,11 @@ export function FacaParteClient() {
                       <div className="flex gap-3 pt-4">
                         <button
                           type="button"
-                          onClick={() => setFormStep(1)}
-                          className="px-6 py-4 bg-white/10 hover:bg-white/20 text-white rounded font-bold text-xs uppercase tracking-wider transition-colors duration-150"
+                          onClick={() => {
+                            triggerHaptic(12);
+                            setFormStep(1);
+                          }}
+                          className="px-6 py-4 bg-white/10 hover:bg-white/20 text-white rounded font-bold text-xs uppercase tracking-wider transition-colors duration-150 active:scale-[0.98] cursor-pointer"
                         >
                           Voltar
                         </button>
