@@ -16,9 +16,7 @@ interface NavbarProps {
 }
 
 const navLinks = [
-  { label: "Início", href: "/" },
   { label: "História", href: "/historia" },
-  { label: "Escala", href: "/#escala" },
   { label: "Impacto", href: "/impacto" },
   { label: "Comando", href: "/comando" },
   { label: "Eventos", href: "/eventos" },
@@ -211,7 +209,7 @@ export function Navbar({}: NavbarProps) {
 
           {/* Desktop Navigation */}
           <nav
-            className="hidden xl:flex items-center gap-7 text-[11.5px] uppercase font-bold tracking-[0.14em]"
+            className="hidden lg:flex items-center gap-6 xl:gap-8 text-[11.5px] uppercase font-bold tracking-[0.14em]"
             aria-label="Menu Principal"
           >
             {navLinks.map((link) => {
@@ -269,11 +267,11 @@ export function Navbar({}: NavbarProps) {
               <IconArrowRight className="w-3.5 h-3.5 text-black" strokeWidth={2.5} />
             </Link>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Hamburger Button */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="xl:hidden min-w-[44px] min-h-[44px] p-2.5 rounded-xl border border-white/20 bg-[#121314] text-white hover:border-[#F2C21B] focus:outline-none flex items-center justify-center active:scale-95 transition-transform"
-              aria-label="Abrir menu de navegação"
+              className="lg:hidden min-w-[44px] min-h-[44px] p-2.5 rounded-xl border border-white/20 bg-[#121314] text-white hover:border-[#F2C21B] focus:outline-none flex items-center justify-center active:scale-95 transition-transform"
+              aria-label={menuOpen ? "Fechar menu de navegação" : "Abrir menu de navegação"}
               aria-expanded={menuOpen}
             >
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -354,7 +352,7 @@ export function Navbar({}: NavbarProps) {
 
         {/* Mobile Navigation Drawer */}
         {menuOpen && (
-          <div className="xl:hidden bg-[#0D0E10] border-b border-white/10 px-5 py-5 transition-all duration-300">
+          <div className="lg:hidden bg-[#0D0E10] border-b border-white/10 px-5 py-5 transition-all duration-300">
             <nav className="flex flex-col gap-2 text-sm font-bold uppercase tracking-wider">
               {/* Mobile Radio Button */}
               <button
