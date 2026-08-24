@@ -20,12 +20,7 @@ const QUESTIONS: Question[] = [
   {
     id: 1,
     pillar: "Pilar 01: Deus & Família",
-    question: (
-      <>
-        Em caso de conflito de tempo ou decisão pessoal, qual a<br className="hidden sm:inline" />{" "}
-        ordem sagrada e inegociável de prioridades do integrante?
-      </>
-    ),
+    question: "Em relação aos 4 Pilares do Insanos MC (Deus, Família, Trabalho e Motoclube), qual é a ordem de prioridade na vida do integrante?",
     options: [
       {
         text: "1º Deus, 2º Família, 3º Trabalho e 4º Motoclube.",
@@ -219,9 +214,9 @@ export function DnaQuiz({ onProceedToForm }: DnaQuizProps = {}) {
     ctx.fillStyle = "#FFFFFF";
     ctx.fillText("CERTIFICADO DE AFINIDADE", 540, 270);
 
-    ctx.font = "bold 32px monospace";
+    ctx.font = "bold 22px 'Space Grotesk', sans-serif";
     ctx.fillStyle = "#E0DDD8";
-    ctx.fillText("SIMULADOR DOUTRINÁRIO OFICIAL", 540, 330);
+    ctx.fillText("TESTE OFICIAL DE AFINIDADE", 540, 330);
 
     // Divider Line
     ctx.strokeStyle = "rgba(242, 194, 27, 0.5)";
@@ -256,9 +251,9 @@ export function DnaQuiz({ onProceedToForm }: DnaQuizProps = {}) {
     ctx.fillText(`${scorePercentage}%`, 540, 675);
 
     // Result Classification
-    ctx.font = "900 48px Anton, Impact, sans-serif";
-    ctx.fillStyle = "#FFFFFF";
-    ctx.fillText(scorePercentage === 100 ? "ALINHAMENTO DOUTRINÁRIO TOTAL" : "ALTO ALINHAMENTO DE CONDUTA", 540, 860);
+    ctx.font = "bold 32px 'Anton', sans-serif";
+    ctx.fillStyle = "#F2C21B";
+    ctx.fillText(scorePercentage === 100 ? "AFINIDADE TOTAL COM OS PILARES" : "ALTA AFINIDADE DE CONDUTA", 540, 860);
 
     ctx.font = "bold 26px sans-serif";
     ctx.fillStyle = "#E0DDD8";
@@ -320,7 +315,7 @@ export function DnaQuiz({ onProceedToForm }: DnaQuizProps = {}) {
   };
 
   const whatsappMessage = encodeURIComponent(
-    `Olá! Acabei de realizar o Teste de DNA Doutrinário no site oficial do Insanos Moto Clube e obtive ${scorePercentage}% de alinhamento com os 4 Pilares. Gostaria de saber como participar do próximo encontro da regional mais próxima!`
+    `Olá! Acabei de realizar o Teste de Afinidade no site oficial do Insanos Moto Clube e obtive ${scorePercentage}% de alinhamento com os 4 Pilares. Gostaria de saber como conhecer o capítulo mais próximo!`
   );
 
   return (
@@ -334,7 +329,7 @@ export function DnaQuiz({ onProceedToForm }: DnaQuizProps = {}) {
                 {currentQ.pillar}
               </span>
               <h3 className="font-['Anton'] text-2xl sm:text-3xl uppercase text-white">
-                Simulador de Afinidade Doutrinária
+                Teste de Afinidade com os 4 Pilares
               </h3>
             </div>
             <div className="flex items-center gap-2">
@@ -434,7 +429,7 @@ export function DnaQuiz({ onProceedToForm }: DnaQuizProps = {}) {
               </div>
               <div>
                 <h4 className="font-['Anton'] text-lg uppercase text-white leading-tight">
-                  {scorePercentage === 100 ? "Alinhamento Doutrinário Total" : "Alto Alinhamento de Conduta"}
+                  {scorePercentage === 100 ? "Afinidade Total com os Pilares" : "Alta Afinidade de Conduta"}
                 </h4>
                 <p className="text-xs text-[#AAA8A1]">Perfil: Disciplina, Fé & Ação Social</p>
               </div>

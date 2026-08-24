@@ -13,10 +13,10 @@ const ASSETS = {
 
 const COMMAND_ROLES = [
   {
-    role: "Presidência Mundial",
-    name: "Comando Geral",
+    role: "Presidência Nacional & Geral",
+    name: "Diretoria Geral",
     division: "Matriz Original de OZ",
-    responsibilities: "Direção geral do clube, representação institucional máxima, preservação da doutrina dos 4 Pilares e comando de expansão global.",
+    responsibilities: "Direção geral da associação, representação institucional, preservação dos 4 Pilares e coordenação da expansão internacional.",
     image: "/images/insanos/leader_presidencia.webp",
   },
   {
@@ -27,10 +27,10 @@ const COMMAND_ROLES = [
     image: "/images/insanos/leader_executiva.webp",
   },
   {
-    role: "Diretoria Geral de Disciplina",
-    name: "Conselho de Honra",
+    role: "Diretoria de Ética & Conduta",
+    name: "Conselho de Ética",
     division: "Conselho Geral",
-    responsibilities: "Guardiã do estatuto e do regimento interno, julgamento de condutas e garantia da segurança e padronização dos comboios de estrada.",
+    responsibilities: "Acompanhamento do estatuto e regimento interno, mediação de questões éticas e orientação de segurança nos comboios de estrada.",
     image: "/images/insanos/leader_disciplina.webp",
   },
   {
@@ -42,9 +42,9 @@ const COMMAND_ROLES = [
   },
   {
     role: "Diretoria de Expansão Internacional",
-    name: "Comando Exterior",
+    name: "Diretoria Internacional",
     division: "América, Europa & Ásia",
-    responsibilities: "Abertura e acompanhamento de novos capítulos fora do território brasileiro, garantindo a uniformidade da hierarquia e da honra.",
+    responsibilities: "Abertura e acompanhamento de novos capítulos fora do território brasileiro, integrando novos integrantes às diretrizes do clube.",
     image: "/images/insanos/leader_exterior.webp",
   },
   {
@@ -97,8 +97,7 @@ export function ComandoClient() {
                 <span className="text-[#F2C21B]">história</span> adiante.
               </h1>
               <p className="text-base sm:text-xl text-[#D4D1CA] font-medium leading-relaxed">
-                A disciplina e a hierarquia são os alicerces que sustentam mais de 12 mil integrantes em 65 países.
-                Conheça a estrutura de governança e preste homenagem àqueles que construíram o legado.
+                Conheça os responsáveis pela administração, representação e coordenação dos capítulos no Brasil e no exterior.
               </p>
             </div>
           </div>

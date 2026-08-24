@@ -17,18 +17,18 @@ const ADMISSION_STEPS = [
   },
   {
     step: "02",
-    title: "Apresentação na Sede / Reunião",
-    desc: "Visita à sede regional para conhecer a liderança local, compreender a doutrina dos 4 Pilares (Deus, Família, Trabalho e Motoclube) e esclarecer dúvidas.",
+    title: "Apresentação na Sede Regional",
+    desc: "Visita à sede regional para conhecer os integrantes do capítulo, compreender os 4 Pilares (Deus, Família, Trabalho e Motoclube) e tirar dúvidas sobre a rotina do motoclube.",
   },
   {
     step: "03",
     title: "Período de Pré-Postulante (PP)",
-    desc: "Fase de vivência e conhecimento mútuo. O candidato passa a acompanhar reuniões, viagens em comboio e, obrigatoriamente, as ações sociais do clube.",
+    desc: "Fase de vivência e conhecimento mútuo. O candidato acompanha encontros semanais, viagens em comboio e participa das ações sociais do clube.",
   },
   {
     step: "04",
-    title: "Graduação & Colete Oficial",
-    desc: "Avaliação pelo conselho disciplinar e comando regional. A graduação ao colete com o escudo Insanos MC ocorre por merecimento, conduta e atitude.",
+    title: "Ingresso & Colete Oficial",
+    desc: "Avaliação pela diretoria regional e pelos integrantes do capítulo. O ingresso oficial com o colete ocorre por conduta na estrada, companheirismo e dedicação.",
   },
 ];
 
@@ -166,8 +166,8 @@ export function FacaParteClient() {
                 Faça <span className="text-[#F2C21B]">parte.</span>
               </h1>
               <p className="text-base sm:text-xl text-[#C7C5BF] leading-relaxed">
-                O Insanos Moto Clube não vende coletes. Aqui você conquista irmãos.
-                Entenda as etapas de ingresso e envie sua solicitação para a diretoria regional da sua localidade.
+                Não vendemos coletes nem aceitamos inscrições automáticas. O ingresso no Insanos MC passa por convivência presencial e companheirismo na estrada.
+                Entenda as etapas abaixo e envie sua ficha para a diretoria regional da sua localidade.
               </p>
             </div>
           </div>

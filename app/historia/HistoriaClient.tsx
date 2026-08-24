@@ -29,7 +29,7 @@ const TIMELINE_EXPANDED: Array<{
     subtitle: "Raiz Simbólica de Resistência & União",
     text: (
       <>
-        A referência ao numeral <strong>18</strong> remete ao episódio histórico consagrado como a Revolta dos 18 do Forte de Copacabana, em julho de 1922. Para o Insanos MC, a memória desse acontecimento simboliza a decisão inegociável de um grupo em desvantagem numérica de permanecer unido, leal e firme em seus valores diante de adversidades muito superiores.
+        A referência ao numeral <strong>18</strong> remete ao episódio histórico da Revolta dos 18 do Forte de Copacabana, em julho de 1922. Para o Insanos MC, a memória desse acontecimento simboliza a união e a fidelidade de um grupo que permaneceu leal aos seus companheiros mesmo em momentos de grande adversidade.
       </>
     ),
     badge: "Raiz Histórica",
@@ -38,10 +38,10 @@ const TIMELINE_EXPANDED: Array<{
     year: "2015",
     dateBadge: "03 de Dezembro de 2015",
     title: "Fundação Histórica: Original de OZ",
-    subtitle: "Osasco / SP — A Decisão Que Rompeu Paradigmas",
+    subtitle: "Osasco / SP — A Fundação do Motoclube",
     text: (
       <>
-        Em <strong>03 de dezembro de 2015</strong>, na cidade de Osasco/SP, um grupo pioneiro de motociclistas experientes liderado por <strong>Jonatas Kiss Feitosa</strong>, <strong>Bugdam Alves Nunes</strong>, <strong>Edson Lopes</strong> e <strong>Bin</strong> rompeu com um motoclube anterior para construir uma nova irmandade pautada no respeito à família, hierarquia militar, trabalho honrado e ação social permanente. Da bravura de encarar esse recomeço nasceu a máxima institucional: <em>"Para encarar isso, é preciso ser insano"</em> — batizando o <strong>Insanos Moto Clube</strong>.
+        Em <strong>03 de dezembro de 2015</strong>, na cidade de Osasco/SP, um grupo pioneiro de motociclistas experientes liderado por <strong>Jonatas Kiss Feitosa</strong>, <strong>Bugdam Alves Nunes</strong>, <strong>Edson Lopes</strong> e <strong>Bin</strong> decidiu construir uma nova irmandade baseada no respeito à família, na disciplina de estrada, no trabalho digno e na solidariedade à comunidade. Da coragem desse recomeço nasceu a expressão: <em>"Para encarar esse desafio, é preciso ser insano"</em> — dando origem ao nome <strong>Insanos Moto Clube</strong>.
       </>
     ),
     badge: "Marco Zero (03/12/2015)",
@@ -101,7 +101,7 @@ const TIMELINE_EXPANDED: Array<{
     subtitle: "Salva de Prata e Presença Global",
     text: (
       <>
-        Homenageado pela Câmara Municipal de São Paulo com a <strong>Salva de Prata</strong> por sua extraordinária contribuição humanitária, o Insanos MC reúne mais de {INSTITUTIONAL_METRICS.members} integrantes e presença consolidada em {INSTITUTIONAL_METRICS.countries} países. Uma só irmandade movida pela disciplina, pela família e pela certeza inabalável de que colete não cria irmão: atitude cria.
+        Homenageado pela Câmara Municipal de São Paulo com a <strong>Salva de Prata</strong> por sua relevante atuação humanitária, o Insanos MC reúne mais de {INSTITUTIONAL_METRICS.members} integrantes e presença consolidada em {INSTITUTIONAL_METRICS.countries} países. Uma irmandade unida pelo respeito à família, pela disciplina na estrada e pelo lema de que colete não cria irmão: atitude cria.
       </>
     ),
     badge: "Consolidação Global",
@@ -131,12 +131,12 @@ export function HistoriaClient() {
                 </span>
               </div>
               <h1 className="font-['Anton'] uppercase text-5xl sm:text-7xl lg:text-8xl text-white leading-tight mb-6 tracking-[-0.015em] sm:tracking-[-0.02em]">
-                Rompendo<br />
-                paradigmas<br />
+                Tradição &<br />
+                irmandade<br />
                 <span className="text-[#F2C21B]">desde 2015.</span>
               </h1>
               <p className="text-base sm:text-xl text-[#D4D1CA] font-medium leading-relaxed">
-                Nascido em <strong>3 de dezembro de 2015</strong> em Osasco/SP (Original de OZ), o Insanos MC surgiu da união de homens com disciplina militar, lealdade inegociável e uma vocação inabalável para fazer o bem. Conheça a história documentada da maior irmandade do planeta.
+                Fundado em <strong>3 de dezembro de 2015</strong> em Osasco/SP (Original de OZ), o Insanos MC nasceu da união de motociclistas que buscavam companheirismo na estrada, respeito à família, valorização do trabalho e auxílio ao próximo. Conheça nossa história e documentos oficiais.
               </p>
             </div>
           </div>
@@ -156,7 +156,7 @@ export function HistoriaClient() {
                 Os Pioneiros do Asfalto
               </h2>
               <p className="text-sm sm:text-base text-[#D4D1CA] font-medium leading-relaxed">
-                A história do Insanos MC foi forjada pela coragem de romper paradigmas. Liderados por um núcleo histórico de comando, estes pioneiros estabeleceram os alicerces de honra, conduta e fraternidade que hoje unem milhares de irmãos em {INSTITUTIONAL_METRICS.countries} países.
+                A trajetória do Insanos MC começou com a iniciativa de seus pioneiros, que estabeleceram as diretrizes de conduta, respeito e fraternidade hoje compartilhadas por milhares de irmãos em {INSTITUTIONAL_METRICS.countries} países.
               </p>
             </div>
 
@@ -167,7 +167,7 @@ export function HistoriaClient() {
                 </span>
                 <h3 className="font-['Anton'] text-2xl uppercase text-white mb-2">Jonatas Kiss Feitosa</h3>
                 <p className="text-xs text-[#D4D1CA] font-medium leading-relaxed">
-                  Líder fundador e Presidente da Associação, responsável pelo comando institucional, direcionamento doutrinário e expansão global do motoclube.
+                  Líder fundador e Presidente da Associação, responsável pela representação institucional, alinhamento estatutário e expansão do motoclube.
                 </p>
               </div>
 

@@ -34,8 +34,8 @@ const PROJECTS = [
   {
     id: "bonde",
     title: "Bonde Pela Vida — Doação de Sangue",
-    tagline: "Mobilização Nacional de Salvação de Vidas",
-    desc: "O Bonde Pela Vida organiza mutirões nacionais e simultâneos de doação de sangue e cadastro de medula óssea. Em datas críticas (como invernos rigorosos e feriados prolongados), centenas de integrantes comparecem em massa aos hemocentros para suprir os estoques públicos.",
+    tagline: "Campanha Nacional de Doação de Sangue",
+    desc: "O Bonde Pela Vida organiza mutirões de doação de sangue e cadastro de medula óssea. Em períodos críticos (como invernos e feriados prolongados), integrantes comparecem aos hemocentros locais para apoiar os estoques públicos.",
     stats: "+25.000 Bolsas de sangue coletadas",
     points: [
       "Parceria com mais de 42 hemocentros estaduais e municipais",
@@ -53,17 +53,17 @@ const PROJECTS = [
     stats: "+1.200 Crianças e adolescentes atendidos",
     points: [
       "Aulas gratuitas ministradas por faixas-pretas integrantes do clube",
-      "Exigência de frequência escolar e bom rendimento acadêmico",
+      "Exigência de frequência escolar e bom rendimento nos estudos",
       "Fornecimento de quimonos, luvas e equipamentos de proteção",
-      "Ensino de disciplina, hierarquia, respeito e autocontrole",
+      "Valores de respeito, disciplina, trabalho em equipe e foco",
     ],
     image: ASSETS.boxingBg,
   },
   {
     id: "comunitario",
     title: "Ação Social Permanente",
-    tagline: "Alimento, Agasalho e Dignidade Humanitária",
-    desc: "Todas as facções e capítulos do Insanos MC possuem a obrigação estatutária de realizar ações sociais mensais em seus municípios. Atuamos com distribuição direta de cestas básicas, roupas, cobertores no inverno e atendimento rápido em situações de calamidade pública e enchentes.",
+    tagline: "Alimento, Agasalho e Apoio Comunitário",
+    desc: "Os capítulos do Insanos MC realizam ações sociais frequentes em seus municípios. Atuamos com distribuição de cestas básicas, roupas, cobertores no inverno e apoio em situações emergenciais na comunidade.",
     stats: "+420 Toneladas de alimentos e agasalhos entregues",
     points: [
       "Campanha do Agasalho anual com distribuição noturna para pessoas em situação de rua",
@@ -104,7 +104,7 @@ export function ImpactoClient() {
                 fica para trás.
               </h1>
               <p className="text-base sm:text-xl text-[#D4D1CA] font-medium leading-relaxed">
-                Nosso destino é fazer o bem. O motociclismo é a nossa paixão, mas a ajuda humanitária e a inclusão social são a nossa verdadeira missão perante Deus e a sociedade.
+                Nosso destino é fazer o bem. Rodar na estrada é nossa paixão, mas apoiar quem precisa e estender a mão à comunidade é o que dá sentido à nossa irmandade.
               </p>
             </div>
           </div>

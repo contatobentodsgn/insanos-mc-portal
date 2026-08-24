@@ -50,8 +50,8 @@ const LEADERSHIP_MEMBERS = [
     loc: "Matriz Original de OZ",
     desc: (
       <>
-        Direção geral, preservação da doutrina, expansão<br className="hidden sm:inline" />{" "}
-        global e representação institucional do clube.
+        Coordenação executiva, preservação dos princípios,<br className="hidden sm:inline" />{" "}
+        expansão internacional e representação institucional do clube.
       </>
     ),
     tag: "Berço Oficial 2015",
@@ -103,7 +103,7 @@ const LEADERSHIP_MEMBERS = [
     desc: (
       <>
         Estruturação de novos capítulos fora do Brasil<br className="hidden sm:inline" />{" "}
-        e padronização doutrinária internacional em 65 países.
+        e integração dos integrantes nos 65 países.
       </>
     ),
     tag: "65 Países Conectados",
@@ -187,15 +187,15 @@ const PILLARS_DATA: Array<{
     subtitle: (
       <>
         <span className="block whitespace-nowrap">Base</span>
-        <span className="block whitespace-nowrap">Inegociável</span>
+        <span className="block whitespace-nowrap">Principal</span>
       </>
     ),
-    tagline: "O Lar é Sagrado",
+    tagline: "O Lar em Primeiro Lugar",
     desc: (
       <>
-        <span className="block">O lar e os filhos são a base sagrada.</span>
-        <span className="block">O clube jamais divide a nossa casa:</span>
-        <span className="block">o irmão de verdade cuida dos seus.</span>
+        <span className="block">A família e os filhos são a prioridade.</span>
+        <span className="block">O motoclube apoia e valoriza o lar:</span>
+        <span className="block">quem é de verdade cuida dos seus.</span>
       </>
     ),
     quote: "Nenhum sucesso na estrada compensa o descuido com a família.",
@@ -691,9 +691,8 @@ export function HomeClient() {
                 </div>
 
                 <p className="text-sm text-[#D4D1CA] font-medium leading-relaxed">
-                  Para vestir nosso escudo, cada integrante honra esses quatro<br className="hidden sm:inline" />{" "}
-                  princípios sagrados. Não há espaço para vaidade ou deslealdade:<br className="hidden sm:inline" />{" "}
-                  a conduta na estrada e na vida define quem somos.
+                  Esses quatro pilares orientam a conduta de cada integrante.<br className="hidden sm:inline" />{" "}
+                  Na estrada e na vida, a lealdade, a família e a humildade definem quem somos.
                 </p>
 
                 <div className="pt-2">
@@ -738,7 +737,7 @@ export function HomeClient() {
                 <span className="text-[#F2C21B]">Osasco / SP.</span>
               </h2>
               <p className="text-[#D4D1CA] font-medium text-base sm:text-lg leading-relaxed">
-                Nascido em <strong>03 de dezembro de {INSTITUTIONAL_METRICS.foundingYear}</strong> em Osasco/SP (Original de OZ), o Insanos Moto Clube surgiu da união de homens com disciplina militar, lealdade inegociável e uma vocação inabalável para fazer o bem. Conheça os três marcos fundamentais da nossa jornada:
+                Fundado em <strong>03 de dezembro de {INSTITUTIONAL_METRICS.foundingYear}</strong> em Osasco/SP (Original de OZ), o Insanos Moto Clube nasceu da união de motociclistas comprometidos com o companheirismo na estrada, o respeito à família, a dedicação ao trabalho e a ajuda solidária à comunidade:
               </p>
             </div>
 
@@ -757,7 +756,7 @@ export function HomeClient() {
                     A Bravura dos 18 do Forte
                   </h3>
                   <p className="text-xs sm:text-sm text-[#AAA8A1] leading-relaxed">
-                    A referência ao numeral <strong>18</strong> remete ao episódio histórico de 1922 em Copacabana: a decisão inegociável de manter-se unido, leal e firme em seus valores diante de qualquer adversidade.
+                    A referência ao numeral <strong>18</strong> remete ao episódio histórico de 1922 em Copacabana: o valor inegociável de manter a união, a palavra e a fidelidade aos irmãos diante de grandes desafios.
                   </p>
                 </div>
                 <div className="pt-4 mt-4 border-t border-white/5 text-[11px] font-mono text-[#F2C21B]">
@@ -778,7 +777,7 @@ export function HomeClient() {
                     Fundação Oficial em Osasco
                   </h3>
                   <p className="text-xs sm:text-sm text-[#AAA8A1] leading-relaxed">
-                    Em 03 de dezembro de 2015, motociclistas experientes romperam paradigmas do motociclismo tradicional, fundando o Insanos MC com quatro pilares sagrados: Deus, Família, Trabalho e Motoclube.
+                    Em 03 de dezembro de 2015, motociclistas experientes fundaram o Insanos MC sobre quatro pilares fundamentais: Deus, Família, Trabalho e Motoclube.
                   </p>
                 </div>
                 <div className="pt-4 mt-4 border-t border-white/5 text-[11px] font-mono text-[#F2C21B]">
@@ -953,8 +952,8 @@ export function HomeClient() {
                 <span className="text-[#F2C21B]">história</span> adiante.
               </h2>
               <p className="text-[#D4D1CA] font-medium text-base sm:text-lg leading-relaxed">
-                Uma organização mundial com hierarquia clara, disciplina<br className="hidden sm:inline" />{" "}
-                inegociável e respeito solene àqueles que abriram a estrada.
+                Uma organização com representação estruturada, respeito às regras<br className="hidden sm:inline" />{" "}
+                e reconhecimento àqueles que abriram a estrada.
               </p>
             </div>
 
@@ -1250,7 +1249,7 @@ export function HomeClient() {
         </section>
 
         {/* =========================================================================
-            CAPÍTULO 08: FAÇA PARTE & SIMULADOR DE AFINIDADE DOUTRINÁRIA
+            CAPÍTULO 08: FAÇA PARTE & TESTE DE AFINIDADE
         ========================================================================= */}
         <section id="faca-parte" className="py-24 sm:py-32 bg-[#080809] relative overflow-hidden">
           <div className="max-w-5xl mx-auto px-4 sm:px-8" data-reveal>
