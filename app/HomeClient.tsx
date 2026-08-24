@@ -414,6 +414,28 @@ export function HomeClient() {
     setMousePos({ x, y });
   };
 
+  // Hash Scroll Handler (for links like /#escala, /#pilares)
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const handleHashScroll = () => {
+        const hash = window.location.hash;
+        if (hash) {
+          const id = hash.replace("#", "");
+          const el = document.getElementById(id);
+          if (el) {
+            setTimeout(() => {
+              el.scrollIntoView({ behavior: "smooth", block: "start" });
+            }, 300);
+          }
+        }
+      };
+
+      handleHashScroll();
+      window.addEventListener("hashchange", handleHashScroll);
+      return () => window.removeEventListener("hashchange", handleHashScroll);
+    }
+  }, []);
+
   // GSAP Animations
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);

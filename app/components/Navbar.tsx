@@ -60,6 +60,37 @@ export function Navbar({}: NavbarProps) {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [menuOpen]);
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("/#")) {
+      const targetId = href.replace("/#", "");
+      if (pathname === "/") {
+        e.preventDefault();
+        const el = document.getElementById(targetId);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+          window.history.pushState(null, "", `#${targetId}`);
+        }
+      }
+    }
+  };
+
+  const handleMobileNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    setMenuOpen(false);
+    if (href.startsWith("/#")) {
+      const targetId = href.replace("/#", "");
+      if (pathname === "/") {
+        e.preventDefault();
+        setTimeout(() => {
+          const el = document.getElementById(targetId);
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
+            window.history.pushState(null, "", `#${targetId}`);
+          }
+        }, 100);
+      }
+    }
+  };
+
   return (
     <>
       {/* Accessible Skip to Content Link */}
@@ -166,6 +197,7 @@ export function Navbar({}: NavbarProps) {
                 <Link
                   key={link.href}
                   href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
                   className={`py-1.5 transition-colors duration-200 relative ${
                     isActive ? "text-[#F2C21B]" : "text-white/80 hover:text-white"
                   }`}
@@ -334,7 +366,7 @@ export function Navbar({}: NavbarProps) {
                   <Link
                     key={link.href}
                     href={link.href}
-                    onClick={() => setMenuOpen(false)}
+                    onClick={(e) => handleMobileNavClick(e, link.href)}
                     className={`min-h-[46px] flex items-center justify-between px-3.5 py-2.5 rounded-xl transition-all duration-150 active:scale-[0.98] ${
                       isActive
                         ? "bg-[#F2C21B]/15 text-[#F2C21B] border border-[#F2C21B]/30 font-extrabold"
