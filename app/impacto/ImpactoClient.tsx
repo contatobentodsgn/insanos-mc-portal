@@ -7,6 +7,7 @@ import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { RadioBar } from "../components/RadioBar";
 import { CampaignThermometer } from "../components/CampaignThermometer";
+import { SocialProofGallery } from "../components/SocialProofGallery";
 import { IconArrowRight, IconCheck } from "../components/ui/Icons";
 
 const ASSETS = {
@@ -238,6 +239,9 @@ export function ImpactoClient() {
             </div>
           </div>
         </section>
+
+        {/* Galeria de Prova Social Oficial */}
+        <SocialProofGallery />
       </main>
 
       <Footer />

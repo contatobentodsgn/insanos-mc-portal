@@ -12,6 +12,7 @@ import { DnaQuiz } from "./components/DnaQuiz";
 import { CampaignThermometer } from "./components/CampaignThermometer";
 import { useRadio } from "./context/RadioContext";
 import { ExpeditionsGallery } from "./components/ExpeditionsGallery";
+import { SocialProofGallery } from "./components/SocialProofGallery";
 import HeroScrollMedalThree from "./components/HeroScrollMedalThree";
 import { INSTITUTIONAL_METRICS } from "./data/institutional";
 import {
@@ -934,6 +935,11 @@ export function HomeClient() {
             </div>
           </div>
         </section>
+
+        {/* =========================================================================
+            CAPÍTULO 05.5: PROVA SOCIAL & ACERVO OFICIAL DE AÇÕES REAIS
+        ========================================================================= */}
+        <SocialProofGallery />
 
         {/* =========================================================================
             CAPÍTULO 06: COMANDO MUNDIAL, FUNDADORES & IN MEMORIAM
