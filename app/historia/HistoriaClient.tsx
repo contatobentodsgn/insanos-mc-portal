@@ -142,63 +142,137 @@ export function HistoriaClient() {
           </div>
         </section>
 
-        {/* Section: Fundadores Históricos */}
-        <section className="py-20 bg-[#0C0D0F] border-b border-white/10">
+        {/* Section: Quem começou essa história (Painel Fotográfico & Documental) */}
+        <section className="py-24 sm:py-32 bg-[#0C0D0F] border-b border-white/10 relative overflow-hidden">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8">
             <div className="max-w-3xl mb-12">
-              <div className="flex items-center gap-2 mb-2">
+              <div className="flex items-center gap-2 mb-3">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#F2C21B] shadow-[0_0_8px_#F2C21B]" />
                 <span className="text-xs font-mono text-[#F2C21B] uppercase tracking-wider font-bold">
-                  Núcleo de Fundação (03/12/2015)
+                  Registro Histórico · 03 de Dezembro de 2015
                 </span>
               </div>
-              <h2 className="font-['Anton'] text-3xl sm:text-5xl uppercase text-white mb-4 tracking-[-0.015em]">
-                Os Pioneiros do Asfalto
+              <h2 className="font-['Anton'] text-3xl sm:text-5xl lg:text-6xl uppercase text-white mb-4 tracking-[-0.015em]">
+                Quem começou essa história
               </h2>
               <p className="text-sm sm:text-base text-[#D4D1CA] font-medium leading-relaxed">
-                A trajetória do Insanos MC começou com a iniciativa de seus pioneiros, que estabeleceram as diretrizes de conduta, respeito e fraternidade hoje compartilhadas por milhares de irmãos em {INSTITUTIONAL_METRICS.countries} países.
+                Em 03 de dezembro de 2015, motociclistas experientes reuniram-se em Osasco/SP para fundar uma irmandade baseada em quatro pilares sagrados: Deus, Família, Trabalho e Motoclube. Conheça as lideranças pioneiras que deram início à nossa caminhada no asfalto:
               </p>
             </div>
 
+            {/* Documentary Historical Foundation Banner */}
+            <div className="mb-14 rounded-3xl overflow-hidden border border-white/15 relative group shadow-2xl">
+              <div
+                className="h-64 sm:h-96 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 filter grayscale-[20%] group-hover:grayscale-0"
+                style={{ backgroundImage: `url('/images/insanos/memorial_fundadores_oz.webp')` }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0C0D0F] via-[#0C0D0F]/40 to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+                <div>
+                  <span className="px-3 py-1 rounded bg-[#F2C21B] text-black font-mono text-xs font-extrabold uppercase tracking-wider mb-2 inline-block shadow-md">
+                    Registro de Fundação
+                  </span>
+                  <h3 className="font-['Anton'] text-xl sm:text-3xl uppercase text-white drop-shadow-md">
+                    O Berço de OZ · Osasco, São Paulo
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[#E0DDD8] max-w-2xl font-medium drop-shadow-sm">
+                    Reunião inaugural que consolidou o estatuto social, o símbolo dos 18 do Forte e o compromisso permanente de fazer o bem.
+                  </p>
+                </div>
+                <div className="shrink-0 text-right font-mono text-xs text-[#F2C21B] bg-black/70 px-4 py-2 rounded-xl border border-white/10 backdrop-blur-md">
+                  03.12.2015 · Fundação Oficial
+                </div>
+              </div>
+            </div>
+
+            {/* 4 Founders Photographic Cards */}
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="p-6 rounded-2xl bg-[#141518] border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 transition-all hover-lift">
-                <span className="text-[10px] font-mono text-[#F2C21B] uppercase tracking-wider block mb-1 font-bold">
-                  Fundador & Presidente Mundial
-                </span>
-                <h3 className="font-['Anton'] text-2xl uppercase text-white mb-2">Jonatas Kiss Feitosa</h3>
-                <p className="text-xs text-[#D4D1CA] font-medium leading-relaxed">
-                  Líder fundador e Presidente da Associação, responsável pela representação institucional, alinhamento estatutário e expansão do motoclube.
-                </p>
+              {/* Jonatas Kiss */}
+              <div className="bg-[#121316] border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 rounded-2xl overflow-hidden transition-all duration-300 group hover-lift shadow-xl flex flex-col justify-between">
+                <div>
+                  <div
+                    className="h-64 bg-cover bg-[center_top] relative transition-transform duration-500 group-hover:scale-105 filter grayscale-[15%] group-hover:grayscale-0"
+                    style={{ backgroundImage: `url('/images/insanos/leader_presidencia.webp')` }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-transparent to-transparent" />
+                    <span className="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/75 text-[#F2C21B] font-mono text-[9.5px] font-bold uppercase tracking-wider border border-white/10">
+                      Fundador & Presidência
+                    </span>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="font-['Anton'] text-2xl uppercase text-white mb-1">Jonatas Kiss Feitosa</h3>
+                    <p className="text-xs font-mono text-[#F2C21B] font-bold uppercase mb-3">Presidente Geral</p>
+                    <p className="text-xs text-[#D4D1CA] font-medium leading-relaxed">
+                      Líder fundador e Presidente da Associação, responsável pela representação institucional, alinhamento estatutário e expansão do motoclube no Brasil e no exterior.
+                    </p>
+                  </div>
+                </div>
               </div>
 
-              <div className="p-6 rounded-2xl bg-[#141518] border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 transition-all hover-lift">
-                <span className="text-[10px] font-mono text-[#F2C21B] uppercase tracking-wider block mb-1 font-bold">
-                  Fundador & Vice-Presidente Mundial
-                </span>
-                <h3 className="font-['Anton'] text-2xl uppercase text-white mb-2">Bugdam Alves Nunes</h3>
-                <p className="text-xs text-[#D4D1CA] font-medium leading-relaxed">
-                  Cofundador e Vice-Presidente, liderança executiva central, interlocutor institucional e idealizador do projeto social Combate Insano.
-                </p>
+              {/* Bugdam Alves Nunes */}
+              <div className="bg-[#121316] border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 rounded-2xl overflow-hidden transition-all duration-300 group hover-lift shadow-xl flex flex-col justify-between">
+                <div>
+                  <div
+                    className="h-64 bg-cover bg-[center_top] relative transition-transform duration-500 group-hover:scale-105 filter grayscale-[15%] group-hover:grayscale-0"
+                    style={{ backgroundImage: `url('/images/insanos/leader_executiva.webp')` }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-transparent to-transparent" />
+                    <span className="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/75 text-[#F2C21B] font-mono text-[9.5px] font-bold uppercase tracking-wider border border-white/10">
+                      Cofundador & Vice-Presidência
+                    </span>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="font-['Anton'] text-2xl uppercase text-white mb-1">Bugdam Alves Nunes</h3>
+                    <p className="text-xs font-mono text-[#F2C21B] font-bold uppercase mb-3">Vice-Presidente</p>
+                    <p className="text-xs text-[#D4D1CA] font-medium leading-relaxed">
+                      Cofundador e Vice-Presidente, liderança executiva central, coordenação regional e idealizador do projeto de inclusão social Combate Insano.
+                    </p>
+                  </div>
+                </div>
               </div>
 
-              <div className="p-6 rounded-2xl bg-[#141518] border border-t-[#F2C21B]/40 border-b-white/5 border-x-white/10 bg-[#17181D] hover-lift">
-                <span className="text-[10px] font-mono text-[#F2C21B] uppercase tracking-wider block mb-1 font-bold">
-                  Fundador · In Memoriam (1965–2024)
-                </span>
-                <h3 className="font-['Anton'] text-2xl uppercase text-white mb-2">Edson Lopes</h3>
-                <p className="text-xs text-[#D4D1CA] font-medium leading-relaxed">
-                  Pilar histórico e eterno Diretor de Disciplina, estabeleceu as normas de conduta e segurança que balizam o regimento interno do motoclube.
-                </p>
+              {/* Edson Lopes (Memorial) */}
+              <div className="bg-[#15161A] border border-t-[#F2C21B]/50 border-b-white/5 border-x-white/15 rounded-2xl overflow-hidden transition-all duration-300 group hover-lift shadow-2xl flex flex-col justify-between relative">
+                <div>
+                  <div
+                    className="h-64 bg-cover bg-[center_top] relative transition-transform duration-500 group-hover:scale-105 filter grayscale contrast-125"
+                    style={{ backgroundImage: `url('/images/insanos/memorial_edson_lopes.webp')` }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#15161A] via-black/40 to-transparent" />
+                    <span className="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/90 text-[#F2C21B] font-mono text-[9.5px] font-bold uppercase tracking-wider border border-[#F2C21B]/40 shadow-lg">
+                      Pioneiro · In Memoriam
+                    </span>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="font-['Anton'] text-2xl uppercase text-white mb-1">Edson Lopes</h3>
+                    <p className="text-xs font-mono text-[#F2C21B] font-bold uppercase mb-3">Honra Eterna</p>
+                    <p className="text-xs text-[#D4D1CA] font-medium leading-relaxed">
+                      Pilar histórico na consolidação das regras de conduta e segurança nos comboios de estrada, cujo legado de retidão e companheirismo permanece gravado na memória de todos os irmãos.
+                    </p>
+                  </div>
+                </div>
               </div>
 
-              <div className="p-6 rounded-2xl bg-[#141518] border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 transition-all hover-lift">
-                <span className="text-[10px] font-mono text-[#F2C21B] uppercase tracking-wider block mb-1 font-bold">
-                  Fundador & Identidade Visual
-                </span>
-                <h3 className="font-['Anton'] text-2xl uppercase text-white mb-2">Bin</h3>
-                <p className="text-xs text-[#D4D1CA] font-medium leading-relaxed">
-                  Cofundador e responsável histórico pela criação da simbologia, brasões, padronização visual e comunicação do Insanos MC.
-                </p>
+              {/* Bin */}
+              <div className="bg-[#121316] border border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 rounded-2xl overflow-hidden transition-all duration-300 group hover-lift shadow-xl flex flex-col justify-between">
+                <div>
+                  <div
+                    className="h-64 bg-cover bg-center relative transition-transform duration-500 group-hover:scale-105 filter grayscale-[15%] group-hover:grayscale-0"
+                    style={{ backgroundImage: `url('/images/insanos/leader_midia.webp')` }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-transparent to-transparent" />
+                    <span className="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/75 text-[#F2C21B] font-mono text-[9.5px] font-bold uppercase tracking-wider border border-white/10">
+                      Cofundador & Identidade
+                    </span>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="font-['Anton'] text-2xl uppercase text-white mb-1">Bin</h3>
+                    <p className="text-xs font-mono text-[#F2C21B] font-bold uppercase mb-3">Identidade & Comunicação</p>
+                    <p className="text-xs text-[#D4D1CA] font-medium leading-relaxed">
+                      Cofundador e responsável pela criação da simbologia visual do motoclube, padronização dos brasões dos 18 do Forte e comunicação editorial histórica.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

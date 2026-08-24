@@ -101,11 +101,11 @@ export function EcossistemaClient() {
                     onClick={toggleRadio}
                     className="px-8 py-4 bg-[#F2C21B] hover:bg-[#ffe053] text-black font-['Anton'] tracking-wider uppercase text-base rounded-xl shadow-lg transition-colors duration-200 hover-lift flex items-center gap-3"
                   >
-                    <span>{isPlayingRadio ? "Pausar Rádio" : "Ouvir Ao Vivo Agora"}</span>
+                    <span>{isPlayingRadio ? "Pausar Rádio" : "Ouvir Rádio Ao Vivo"}</span>
                     <span>{isPlayingRadio ? "⏸" : "▶"}</span>
                   </button>
                   <span className="text-xs font-mono text-[#AAA8A1]">
-                    +1.800 ouvintes conectados simultaneamente
+                    Transmissão online 24h · Rock clássico & Informes da estrada
                   </span>
                 </div>
               </div>
