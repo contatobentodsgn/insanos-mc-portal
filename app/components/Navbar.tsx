@@ -76,11 +76,9 @@ export function Navbar({}: NavbarProps) {
       const targetId = href.replace("/#", "");
       if (pathname === "/") {
         e.preventDefault();
-        const mapTarget = targetId === "escala" 
-          ? (document.getElementById("escala-mapa") || document.getElementById("escala")) 
-          : document.getElementById(targetId);
-        if (mapTarget) {
-          mapTarget.scrollIntoView({ behavior: "smooth", block: targetId === "escala" ? "center" : "start" });
+        const target = document.getElementById(targetId);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
           window.history.pushState(null, "", `#${targetId}`);
         }
       }
@@ -105,11 +103,9 @@ export function Navbar({}: NavbarProps) {
       if (pathname === "/") {
         e.preventDefault();
         setTimeout(() => {
-          const mapTarget = targetId === "escala" 
-            ? (document.getElementById("escala-mapa") || document.getElementById("escala")) 
-            : document.getElementById(targetId);
-          if (mapTarget) {
-            mapTarget.scrollIntoView({ behavior: "smooth", block: targetId === "escala" ? "center" : "start" });
+          const target = document.getElementById(targetId);
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
             window.history.pushState(null, "", `#${targetId}`);
           }
         }, 100);

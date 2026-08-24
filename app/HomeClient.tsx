@@ -421,20 +421,11 @@ export function HomeClient() {
         const hash = window.location.hash;
         if (hash) {
           const id = hash.replace("#", "");
-          if (id === "escala") {
-            const mapEl = document.getElementById("escala-mapa") || document.getElementById("escala");
-            if (mapEl) {
-              setTimeout(() => {
-                mapEl.scrollIntoView({ behavior: "smooth", block: "center" });
-              }, 350);
-            }
-          } else {
-            const el = document.getElementById(id);
-            if (el) {
-              setTimeout(() => {
-                el.scrollIntoView({ behavior: "smooth", block: "start" });
-              }, 350);
-            }
+          const el = document.getElementById(id);
+          if (el) {
+            setTimeout(() => {
+              el.scrollIntoView({ behavior: "smooth", block: "start" });
+            }, 350);
           }
         }
       };
@@ -573,7 +564,7 @@ export function HomeClient() {
         {/* =========================================================================
             CAPÍTULO 02: ESCALA MUNDIAL & MAPA INTERATIVO DE SEDES
         ========================================================================= */}
-        <section id="escala" className="py-24 sm:py-32 bg-[#0C0D0E] border-b border-white/10 relative overflow-hidden">
+        <section id="escala" className="scroll-mt-20 py-24 sm:py-32 bg-[#0C0D0E] border-b border-white/10 relative overflow-hidden">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8">
             <div className="max-w-3xl mb-16" data-reveal>
               <div className="flex items-center gap-3 mb-4">
