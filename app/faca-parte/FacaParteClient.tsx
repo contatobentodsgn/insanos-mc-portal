@@ -471,6 +471,21 @@ export function FacaParteClient() {
                         </div>
                       </div>
 
+                      {/* LGPD Compliance Notice Box */}
+                      <div className="p-3.5 rounded-xl bg-black/40 border border-[#F2C21B]/30 flex items-start gap-3 text-xs text-[#D4D1CA]">
+                        <span className="text-[#F2C21B] text-base shrink-0 mt-0.5">🔒</span>
+                        <p className="leading-relaxed text-[11.5px]">
+                          <strong>Aviso de Privacidade & LGPD:</strong> Seus dados serão utilizados exclusivamente para analisar sua solicitação de ingresso e encaminhá-la à diretoria regional responsável pela sua cidade. Consulte nossa{" "}
+                          <Link href="/privacidade" target="_blank" className="text-[#F2C21B] underline hover:text-[#ffe053]">
+                            Política de Privacidade
+                          </Link>{" "}
+                          e{" "}
+                          <Link href="/termos" target="_blank" className="text-[#F2C21B] underline hover:text-[#ffe053]">
+                            Termos de Uso
+                          </Link>.
+                        </p>
+                      </div>
+
                       <div className="pt-2 space-y-3">
                         <label className="flex items-start gap-3 cursor-pointer text-xs text-[#AAA8A1]">
                           <input

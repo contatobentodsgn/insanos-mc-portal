@@ -913,7 +913,7 @@ export function HomeV2Client() {
                     className="w-4 h-4 accent-[#F2C21B] rounded cursor-pointer"
                   />
                   <label htmlFor="privacy-agree" className="cursor-pointer">
-                    Li e concordo com a <Link href="/faca-parte" className="text-[#F2C21B] underline">política de privacidade</Link> e doutrina dos 4 Pilares.
+                    Li e concordo com a <Link href="/privacidade" target="_blank" className="text-[#F2C21B] underline">política de privacidade</Link> e doutrina dos 4 Pilares.
                   </label>
                 </div>
 
