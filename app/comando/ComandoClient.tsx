@@ -13,60 +13,76 @@ const ASSETS = {
 
 const COMMAND_ROLES = [
   {
-    role: "Presidência Nacional & Geral",
-    name: "Diretoria Geral",
-    division: "Matriz Original de OZ",
-    responsibilities: "Direção geral da associação, representação institucional, preservação dos 4 Pilares e coordenação da expansão internacional.",
+    name: "Jonatas Kiss",
+    role: "Presidente Mundial",
+    division: "Original de OZ · Fundação 2015",
+    responsibilities: "Líder fundador e Presidente da Associação. Direção geral, representação institucional, preservação dos 4 Pilares e coordenação da expansão internacional.",
     image: "/images/insanos/leader_presidencia.webp",
+    founder: true,
   },
   {
-    role: "Vice-Presidência Mundial",
-    name: "Diretoria Executiva",
+    name: "Bugdam Nunes · Bug",
+    role: "Vice-Presidente",
     division: "Comando Central",
-    responsibilities: "Coordenação executiva das diretorias regionais, supervisão de eventos nacionais e alinhamento de conduta entre os continentes.",
+    responsibilities: "Cofundador e Vice-Presidente. Coordenação executiva das diretorias regionais, supervisão de eventos nacionais e alinhamento de conduta entre os continentes.",
     image: "/images/insanos/leader_executiva.webp",
+    founder: true,
   },
   {
-    role: "Diretoria de Ética & Conduta",
-    name: "Conselho de Ética",
-    division: "Conselho Geral",
-    responsibilities: "Acompanhamento do estatuto e regimento interno, mediação de questões éticas e orientação de segurança nos comboios de estrada.",
-    image: "/images/insanos/leader_disciplina.webp",
-  },
-  {
-    role: "Diretoria Nacional de Ação Social",
-    name: "Diretoria Humanitária",
+    name: "Diego Faster",
+    role: "Social Mundial",
     division: "Divisão Nacional",
-    responsibilities: "Planejamento e execução de campanhas beneficentes, Bonde Pela Vida, Projeto PcD e resposta rápida a calamidades públicas.",
+    responsibilities: "Planejamento e execução de campanhas beneficentes, Bonde Pela Vida, Projeto PcD e resposta rápida a calamidades públicas em todo o território.",
     image: "/images/insanos/leader_social.webp",
+    founder: false,
   },
   {
-    role: "Diretoria de Expansão Internacional",
-    name: "Diretoria Internacional",
-    division: "América, Europa & Ásia",
-    responsibilities: "Abertura e acompanhamento de novos capítulos fora do território brasileiro, integrando novos integrantes às diretrizes do clube.",
-    image: "/images/insanos/leader_exterior.webp",
-  },
-  {
-    role: "Diretoria de Comunicação & 18News",
-    name: "Núcleo de Mídia",
-    division: "Núcleo de Mídia & Rádio",
-    responsibilities: "Gestão editorial da revista 18News, podcast 18Cast, Rádio Insanos Web e canais oficiais de distribuição digital.",
+    name: "Bin",
+    role: "Comunicação Mundial",
+    division: "Núcleo de Mídia",
+    responsibilities: "Cofundador. Gestão editorial da 18News, podcast 18Cast, Rádio Insanos Web, padronização visual e canais oficiais de distribuição digital.",
     image: "/images/insanos/leader_midia.webp",
+    founder: true,
   },
   {
-    role: "Divisão Nômades",
-    name: "Estrada Livre",
-    division: "Estrada Permanente",
-    responsibilities: "Integrantes veteranos sem capítulo fixo dedicados a rodar continuamente pelo mundo prestando suporte e união a todas as facções.",
-    image: "/images/insanos/pillar_04_estrada_motoclube.webp",
+    name: "Monge",
+    role: "Disciplina Mundial",
+    division: "Comando Mundial",
+    responsibilities: "Garantia do cumprimento do estatuto e regimento interno, conduta em comboio, mediação de assuntos éticos e orientação de segurança nas estradas.",
+    image: "/images/insanos/leader_monge.png",
+    founder: false,
   },
   {
-    role: "Divisão de Apoio & Famílias",
-    name: "Irmandade & Acolhimento",
-    division: "Divisão de Famílias",
-    responsibilities: "Coordenação de apoio logístico, integração de famílias e liderança em campanhas de acolhimento e assistência a comunidades.",
-    image: "/images/insanos/pillar_01_deus_familia.webp",
+    name: "Kefir",
+    role: "Disciplina Mundial",
+    division: "Comando Mundial",
+    responsibilities: "Acompanhamento do estatuto, supervisão de conduta nos capítulos e apoio à segurança nos comboios e eventos oficiais em território nacional e internacional.",
+    image: "/images/insanos/leader_kefir.png",
+    founder: false,
+  },
+  {
+    name: "Jonas",
+    role: "Financeiro Mundial",
+    division: "Comando Mundial",
+    responsibilities: "Administração financeira da associação, gestão de recursos para campanhas sociais, transparência contábil e planejamento orçamentário dos capítulos.",
+    image: "/images/insanos/leader_jonas.png",
+    founder: false,
+  },
+  {
+    name: "Baptista",
+    role: "Expansão Mundial",
+    division: "América, Europa & Ásia",
+    responsibilities: "Abertura e acompanhamento de novos capítulos fora do território brasileiro, integrando novos integrantes às diretrizes e cultura do clube.",
+    image: "/images/insanos/leader_baptista.png",
+    founder: false,
+  },
+  {
+    name: "Roney",
+    role: "Operacional Mundial",
+    division: "Comando Mundial",
+    responsibilities: "Logística operacional de comboios, eventos, estrutura de segurança em rodovias e coordenação de equipes de apoio em todo o território.",
+    image: "/images/insanos/leader_roney.png",
+    founder: false,
   },
 ];
 
@@ -148,13 +164,17 @@ export function ComandoClient() {
                   </p>
                 </div>
 
-                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   {COMMAND_ROLES.map((item, idx) => (
                     <div
                       key={idx}
-                      className="group relative rounded-[2px] bg-[#121316] border-2 border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/70 hover:shadow-[0_0_35px_rgba(242,194,27,0.2)] transition-all duration-300 overflow-hidden flex flex-col justify-between shadow-2xl hover-lift"
+                      className={`group relative rounded-[2px] bg-[#121316] border-2 overflow-hidden flex flex-col justify-between shadow-2xl hover-lift transition-all duration-300 ${
+                        item.founder
+                          ? "border-t-[#F2C21B]/50 border-b-white/5 border-x-[#F2C21B]/20 hover:border-[#F2C21B]/80 hover:shadow-[0_0_40px_rgba(242,194,27,0.25)]"
+                          : "border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/70 hover:shadow-[0_0_35px_rgba(242,194,27,0.2)]"
+                      }`}
                     >
-                      <div className="relative h-80 sm:h-96 w-full overflow-hidden bg-[#0A0A0C]">
+                      <div className="relative h-72 sm:h-80 w-full overflow-hidden bg-[#0A0A0C]">
                         <div
                           className="absolute inset-0 bg-cover bg-[center_top] filter grayscale-[10%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
                           style={{
@@ -165,26 +185,36 @@ export function ComandoClient() {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-[#121316]/15 to-transparent opacity-80" />
                         <div className="absolute top-3 left-3">
-                          <span className="px-2.5 py-1 rounded-[2px] bg-black/85 backdrop-blur-md border border-[#F2C21B]/40 text-[#F2C21B] font-mono text-xs font-bold uppercase tracking-wider">
+                          <span className="px-2.5 py-1 rounded-[2px] bg-black/85 backdrop-blur-md border border-[#F2C21B]/40 text-[#F2C21B] font-mono text-[10px] font-bold uppercase tracking-wider">
                             {item.division}
                           </span>
                         </div>
+
+                        {/* Founder Badge */}
+                        {item.founder && (
+                          <div className="absolute top-3 right-3">
+                            <span className="px-2.5 py-1 rounded-[2px] bg-[#F2C21B] text-black font-mono text-[10px] font-extrabold uppercase tracking-wider shadow-[0_0_12px_rgba(242,194,27,0.5)]">
+                              ★ Fundador
+                            </span>
+                          </div>
+                        )}
                       </div>
 
                       <div className="p-5 flex flex-col justify-between flex-1">
                         <div>
-                          <span className="text-xs font-mono uppercase font-bold text-[#AAA8A1] block mb-1">
+                          <h3 className="font-['Anton'] text-xl sm:text-2xl uppercase text-white mb-0.5 leading-tight group-hover:text-[#F2C21B] transition-colors">
                             {item.name}
-                          </span>
-                          <h3 className="font-['Anton'] text-xl uppercase text-white mb-2 leading-tight group-hover:text-[#F2C21B] transition-colors">
-                            {item.role}
                           </h3>
-                          <p className="text-xs text-[#D4D1CA] font-medium leading-relaxed mb-4">
+                          <span className="text-xs font-mono uppercase font-bold text-[#F2C21B] block mb-2">
+                            {item.role}
+                          </span>
+                          <p className="text-xs text-[#D4D1CA] font-medium leading-relaxed mb-3">
                             {item.responsibilities}
                           </p>
                         </div>
-                        <div className="pt-3 border-t border-white/5 text-xs font-mono text-white/40 uppercase">
-                          Corpo Diretivo Oficial
+                        <div className="pt-3 border-t border-white/5 text-xs font-mono text-white/40 uppercase flex items-center justify-between">
+                          <span>Corpo Diretivo Oficial</span>
+                          <span className="text-[#F2C21B] font-bold text-[10px]">Comando Mundial</span>
                         </div>
                       </div>
                     </div>
