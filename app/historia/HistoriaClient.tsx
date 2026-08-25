@@ -191,10 +191,14 @@ export function HistoriaClient() {
               <div className="bg-[#121316] border-2 border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 rounded-[2px] overflow-hidden transition-all duration-300 group hover-lift shadow-xl flex flex-col justify-between">
                 <div>
                   <div
-                    className="h-64 bg-cover bg-[center_top] relative transition-transform duration-500 group-hover:scale-105 filter grayscale-[15%] group-hover:grayscale-0"
-                    style={{ backgroundImage: `url('/images/insanos/leader_presidencia.webp')` }}
+                    className="h-80 sm:h-96 bg-cover bg-[center_top] relative transition-transform duration-500 group-hover:scale-105 filter grayscale-[10%] group-hover:grayscale-0"
+                    style={{
+                      backgroundImage: `url('/images/insanos/leader_presidencia.webp')`,
+                      backgroundPosition: "center top",
+                      backgroundSize: "cover",
+                    }}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-[#121316]/15 to-transparent opacity-80" />
                     <span className="absolute top-3 left-3 px-2.5 py-1 rounded-[2px] bg-black/75 text-[#F2C21B] font-mono text-xs font-bold uppercase tracking-wider border border-white/10">
                       Fundador & Presidência
                     </span>
@@ -213,10 +217,14 @@ export function HistoriaClient() {
               <div className="bg-[#121316] border-2 border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 rounded-[2px] overflow-hidden transition-all duration-300 group hover-lift shadow-xl flex flex-col justify-between">
                 <div>
                   <div
-                    className="h-64 bg-cover bg-[center_top] relative transition-transform duration-500 group-hover:scale-105 filter grayscale-[15%] group-hover:grayscale-0"
-                    style={{ backgroundImage: `url('/images/insanos/leader_executiva.webp')` }}
+                    className="h-80 sm:h-96 bg-cover bg-[center_top] relative transition-transform duration-500 group-hover:scale-105 filter grayscale-[10%] group-hover:grayscale-0"
+                    style={{
+                      backgroundImage: `url('/images/insanos/leader_executiva.webp')`,
+                      backgroundPosition: "center top",
+                      backgroundSize: "cover",
+                    }}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-[#121316]/15 to-transparent opacity-80" />
                     <span className="absolute top-3 left-3 px-2.5 py-1 rounded-[2px] bg-black/75 text-[#F2C21B] font-mono text-xs font-bold uppercase tracking-wider border border-white/10">
                       Cofundador & Vice-Presidência
                     </span>
@@ -235,10 +243,14 @@ export function HistoriaClient() {
               <div className="bg-[#15161A] border-2 border-t-[#F2C21B]/50 border-b-white/5 border-x-white/15 rounded-[2px] overflow-hidden transition-all duration-300 group hover-lift shadow-2xl flex flex-col justify-between relative">
                 <div>
                   <div
-                    className="h-64 bg-cover bg-[center_top] relative transition-transform duration-500 group-hover:scale-105 filter grayscale contrast-125"
-                    style={{ backgroundImage: `url('/images/insanos/memorial_edson_lopes.webp')` }}
+                    className="h-80 sm:h-96 bg-cover bg-[center_top] relative transition-transform duration-500 group-hover:scale-105 filter grayscale contrast-125"
+                    style={{
+                      backgroundImage: `url('/images/insanos/memorial_edson_lopes.webp')`,
+                      backgroundPosition: "center top",
+                      backgroundSize: "cover",
+                    }}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#15161A] via-black/40 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#15161A] via-black/30 to-transparent" />
                     <span className="absolute top-3 left-3 px-2.5 py-1 rounded-[2px] bg-black/90 text-[#F2C21B] font-mono text-xs font-bold uppercase tracking-wider border border-[#F2C21B]/40 shadow-lg">
                       Pioneiro · In Memoriam
                     </span>
@@ -257,10 +269,14 @@ export function HistoriaClient() {
               <div className="bg-[#121316] border-2 border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/60 rounded-[2px] overflow-hidden transition-all duration-300 group hover-lift shadow-xl flex flex-col justify-between">
                 <div>
                   <div
-                    className="h-64 bg-cover bg-center relative transition-transform duration-500 group-hover:scale-105 filter grayscale-[15%] group-hover:grayscale-0"
-                    style={{ backgroundImage: `url('/images/insanos/leader_midia.webp')` }}
+                    className="h-80 sm:h-96 bg-cover bg-[center_top] relative transition-transform duration-500 group-hover:scale-105 filter grayscale-[10%] group-hover:grayscale-0"
+                    style={{
+                      backgroundImage: `url('/images/insanos/leader_midia.webp')`,
+                      backgroundPosition: "center top",
+                      backgroundSize: "cover",
+                    }}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-[#121316]/15 to-transparent opacity-80" />
                     <span className="absolute top-3 left-3 px-2.5 py-1 rounded-[2px] bg-black/75 text-[#F2C21B] font-mono text-xs font-bold uppercase tracking-wider border border-white/10">
                       Cofundador & Identidade
                     </span>

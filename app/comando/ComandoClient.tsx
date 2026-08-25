@@ -154,15 +154,16 @@ export function ComandoClient() {
                       key={idx}
                       className="group relative rounded-[2px] bg-[#121316] border-2 border-t-white/20 border-b-white/5 border-x-white/10 hover:border-[#F2C21B]/70 hover:shadow-[0_0_35px_rgba(242,194,27,0.2)] transition-all duration-300 overflow-hidden flex flex-col justify-between shadow-2xl hover-lift"
                     >
-                      <div className="relative h-72 sm:h-80 w-full overflow-hidden bg-[#0A0A0C]">
+                      <div className="relative h-80 sm:h-96 w-full overflow-hidden bg-[#0A0A0C]">
                         <div
-                          className="absolute inset-0 bg-cover bg-[center_top] filter grayscale-[12%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                          className="absolute inset-0 bg-cover bg-[center_top] filter grayscale-[10%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
                           style={{
                             backgroundImage: `url(${item.image})`,
                             backgroundPosition: "center top",
+                            backgroundSize: "cover",
                           }}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-[#121316]/20 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#121316] via-[#121316]/15 to-transparent opacity-80" />
                         <div className="absolute top-3 left-3">
                           <span className="px-2.5 py-1 rounded-[2px] bg-black/85 backdrop-blur-md border border-[#F2C21B]/40 text-[#F2C21B] font-mono text-xs font-bold uppercase tracking-wider">
                             {item.division}
